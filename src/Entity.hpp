@@ -5,17 +5,16 @@
 
 class Entity {
 public:
-    Entity(double x, double y, double mass); 
+    Entity(double xPos, double yPos, double mass, double xPosVelocity, double yPosVelocity); 
     virtual ~Entity(); 
 
 protected:
     virtual void draw(SDL_Renderer* renderer);
-
-private:
     SDL_Texture* texture;
     double xPos, yPos;
     double xVelocity, yVelocity;
-    double mass;
+    double mass; 
+    double acceleration;
 };
 
 #endif 

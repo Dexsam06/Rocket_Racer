@@ -1,4 +1,4 @@
 #include "Entity.hpp"
 
-Entity::Entity(double x, double y, double mass)
-    : xPos(x), yPos(y), mass(mass) {}
+Entity::Entity(double xPos, double yPos, double mass, double xVelocity, double yVelocity)
+    : xPos(xPos), yPos(yPos), mass(mass), xVelocity(xVelocity), yVelocity(yVelocity) {}

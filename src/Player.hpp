@@ -5,10 +5,13 @@
 
 class Player : public Entity {
 public:
-    Player(double x, double y, double mass, int playerId); // Constructor declaration
-
+    Player(SDL_Texture* texture, double xPos, double yPos, double mass, double xVelocity, double yVelocity); 
+    ~Player(){}
+    void setThrust(double thrust) {this->thrust = thrust; }
 private:
-    
+    SDL_Texture* texture; 
+    double thrust;
+    void calculatePhysics(double& distance, double& massPlanet);
 };
 
-#endif // PLAYER_HPP
+#endif 
