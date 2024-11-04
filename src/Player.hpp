@@ -11,7 +11,7 @@ public:
 private:
     SDL_Texture* texture; 
     double thrust;
-    void calculatePhysics(double& distance, double& massPlanet);
+    void calculatePhysics(double& distance, double& massPlanet, double& xPosPlanet, double& yPosPlanet);
 };
 
 #endif 
