@@ -4,7 +4,10 @@
 
 #include <vector>
 #include <SDL2/SDL.h>
-#include "GameView.hpp"
+#include <GameView.hpp>
+#include <TextureManager.hpp>
+#include <Player.hpp>
+#include <Planet.hpp>
 
 class GameController {
 
@@ -15,14 +18,15 @@ class GameController {
     private:
         void render();
         void loadResources();
-        void update(float deltaTime); 
+        void update(double deltaTime); 
         void handleEvents();
 
         Player* player;  
-        PLanet* earth; 
+        Planet* earth; 
         GameView* gv;
         std::vector<Entity*> entityList;
         InputHandler inputHandler;
+        TextureManager textureManager;
 };
 
 #endif
