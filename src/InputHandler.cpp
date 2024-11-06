@@ -1,4 +1,4 @@
-#include <InputHandler.hpp>
+#include "InputHandler.hpp"
 
 void InputHandler::handleInput(Player* player) {
     SDL_Event event;

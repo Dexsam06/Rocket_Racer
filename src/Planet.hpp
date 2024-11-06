@@ -9,7 +9,7 @@ public:
     ~Planet(){};
 private:
     double radius;
-    void draw(SDL_Renderer *renderer, double screenWidth, double screenHeight) override; 
+    void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight) override; 
 };
 
 #endif 

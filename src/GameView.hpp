@@ -1,6 +1,6 @@
 
-#ifndef GameView_hpp
-#define GameView_hpp
+#ifndef GAMEVIEW_HPP
+#define GAMEVIEW_HPP
 
 #include <SDL2/SDL.h>
 

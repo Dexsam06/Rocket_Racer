@@ -1,5 +1,5 @@
 
-#include <GameView.hpp>
+#include "GameView.hpp"
 #include <iostream>
 
 GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fullscreen) : screenWidth(screenWidth), screenHeight(screenHeight), fullscreen(fullscreen)
@@ -17,7 +17,7 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
     }
 }
 
-GameView::~GameView(){}
+GameView::~GameView(){}                                                          
 
 void GameView::clear() {
     SDL_RenderClear(renderer); 

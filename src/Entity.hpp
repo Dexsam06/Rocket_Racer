@@ -6,8 +6,8 @@
 class Entity {
 public:
     Entity(double xPos, double yPos, double mass, double xPosVelocity, double yPosVelocity); 
-    virtual ~Entity(); 
-    virtual void draw(SDL_Renderer *renderer, double screenWidth, double screenHeight);
+    virtual ~Entity() {}
+    virtual void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight) {}
     double getXPos() {return xPos; }
     double getYPos() {return yPos; }
     double getMass() {return mass; }

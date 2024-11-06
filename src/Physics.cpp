@@ -1,9 +1,10 @@
 
-#include <Physics.hpp>
+#include "Physics.hpp"
 #include <cmath>
 
 // Define the gravity constant and Earth's mass
 const double Physics::GRAVITY_CONSTANT = 6.6743e-11;
+const double Physics::EARTH_MASS = 5.972e24;
 
 double Physics::distance(double velocity, double acceleration, double timeDelta) {
     return velocity * timeDelta + 0.5 * acceleration * timeDelta * timeDelta;

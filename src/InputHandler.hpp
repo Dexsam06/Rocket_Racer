@@ -2,7 +2,6 @@
 #define INPUTHANDLER_H
 
 #include <SDL2/SDL.h>
-#include <InputHandler.hpp>
 #include "Player.hpp"
 
 class InputHandler {

@@ -7,7 +7,7 @@ Planet::Planet(double radius, double xPos, double yPos, double mass, double xVel
 
 
 
-void Planet::draw (SDL_Renderer *renderer, double screenWidth, double screenHeight) 
+void Planet::draw (SDL_Renderer *renderer, int screenWidth, int screenHeight) 
 {
    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
     // Iterate over the bounding square of the circle

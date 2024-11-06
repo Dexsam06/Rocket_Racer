@@ -16,8 +16,8 @@ void Player::calculatePhysics(std::vector<std::vector<double>> data, double& del
         double distance = sqrt(std::pow(row[1] - xPos, 2) + pow(row[2] - yPos, 2));
         gravitationForce = Physics::gravityPull(row[0], mass, distance); 
         angleOfRotationAroundPlanet = atan2(row[2] - yPos, row[1] - xPos); 
-        xForceAxis += Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundPlanet);
-        yForceAxis += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundPlanet);
+        xForceAxis += Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundPlanet); 
+        yForceAxis += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundPlanet); 
     }
 
     xForceAxis += Physics::forceVectorXAxis(thrust, rotation);
@@ -33,7 +33,7 @@ void Player::calculatePhysics(std::vector<std::vector<double>> data, double& del
     yVelocity += Physics::velocity(yAcceleration, deltaTime);
 }
 
-void Player::draw (SDL_Renderer *renderer, double screenWidth, double screenHeight) 
+void Player::draw (SDL_Renderer *renderer, int screenWidth, int screenHeight) 
 {
     SDL_Rect playerDestRect = { screenWidth / 2 - playerWidth / 2, screenHeight / 2 - playerHeight / 2, playerWidth, playerHeight };
     SDL_RenderCopyEx(renderer, texture, nullptr, &playerDestRect, rotation, nullptr, SDL_FLIP_NONE);

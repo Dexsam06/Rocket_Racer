@@ -1,7 +1,7 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include <Entity.hpp>
+#include "Entity.hpp"
 #include <vector>
 
 class Player : public Entity {
@@ -17,8 +17,8 @@ private:
     SDL_Texture* texture;   
     double thrust;
     double rotationSpeed, rotation; 
-    double playerWidth, playerHeight;
-    void draw(SDL_Renderer *renderer, double screenWidth, double screenHeight) override; 
+    int playerWidth, playerHeight;
+    void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight) override; 
 };  
 
 #endif 

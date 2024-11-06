@@ -1,13 +1,14 @@
 
-#ifndef GameController_hpp
-#define GameController_hpp
+#ifndef GAMECONTROLLER_HPP
+#define GAMECONTROLLER_HPP
 
 #include <vector>
 #include <SDL2/SDL.h>
-#include <GameView.hpp>
-#include <TextureManager.hpp>
-#include <Player.hpp>
-#include <Planet.hpp>
+#include "GameView.hpp"
+#include "TextureManager.hpp"
+#include "Player.hpp"
+#include "Planet.hpp"
+#include "InputHandler.hpp"
 
 class GameController {
 

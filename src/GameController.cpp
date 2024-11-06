@@ -1,6 +1,5 @@
 
-#include <GameController.hpp>
-#include <InputHandler.hpp>
+#include "GameController.hpp"
 #include <iostream>
 
 GameController::GameController(GameView* gv){

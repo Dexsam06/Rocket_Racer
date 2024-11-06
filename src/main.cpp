@@ -1,6 +1,6 @@
 
-#include <GameController.hpp>
-#include <GameView.hpp>
+#include "GameController.hpp"
+#include "GameView.hpp"
 
 int main(int argc, const char * argv[]) {
 
