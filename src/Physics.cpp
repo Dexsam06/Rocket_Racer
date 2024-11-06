@@ -33,6 +33,10 @@ double Physics::forceVectorXAxis(double totalForce, double angle) {
     return std::sin(angle) * totalForce;
 }
 
+double Physics::rotation(double rotationSpeed, double deltaTime) {
+    return rotationSpeed * deltaTime;
+}
+
 // Getters for constants
 double Physics::getEarthMass() {
     return EARTH_MASS;

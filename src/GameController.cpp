@@ -2,38 +2,42 @@
 #include "GameController.hpp"
 #include <iostream>
 
-GameController::GameController(GameView* gv){
+GameController::GameController(GameView* gv) : gv(gv){ 
     loadResources();
 }
 
 GameController::~GameController(){}
 
-void GameController::loadResources(){
+void GameController::loadResources(){ 
     int height, width;
     SDL_Texture* playerTexture = textureManager.loadTexture("player", "../res/apollo11.png", gv->getRenderer()); 
     if (SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height) != 0) {
             std::cerr << "SDL_QueryTexture Error: " << SDL_GetError() << std::endl;
             width = height = 0; 
         }
-    player = new Player(playerTexture, gv->getScreenWidth() / 2 - width / 2, gv->getScreenHeight() / 2, 300, 0, 0);
-    player->setPlayerWidth(width);
+    player = new Player(playerTexture, gv->getScreenWidth() / 2, gv->getScreenHeight() / 2, 300, 0, 0); 
+    player->setPlayerWidth(width);  
     player->setPlayerHeight(height);
     entityList.push_back(player);
 
-    earth = new Planet(2000, gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2, 10000, 0, 0);
+    earth = new Planet(200, gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 200, 10000, 0, 0);
     entityList.push_back(earth);
 }
 
 void GameController::render(){
     SDL_SetRenderDrawColor(gv->getRenderer(), 0, 0, 0, 255); 
-    gv->clear();
+    gv->clear(); 
     for(Entity* entity : entityList) {
+         if (typeid(*entity) == typeid(Planet)) {
+            entity->setAnotherEntityXPos(entityList[0]->getXPos());
+            entity->setAnotherEntityYPos(entityList[0]->getYPos());
+        }
         entity->draw(gv->getRenderer(), gv->getScreenWidth(), gv->getScreenHeight());
     }
     gv->present();
 }
 
-void GameController::gameLoop() {
+void GameController::gameLoop() { 
     Uint32 previousTime = SDL_GetTicks();
     while (gv->running()) {
         Uint32 currentTime = SDL_GetTicks();

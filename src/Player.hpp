@@ -8,11 +8,12 @@ class Player : public Entity {
 public:
     Player(SDL_Texture* texture, double xPos, double yPos, double mass, double xVelocity, double yVelocity); 
     ~Player(){}
-    void calculatePhysics(std::vector<std::vector<double>> data, double& deltaTime);
+    void calculatePhysics(std::vector<std::vector<double>>& data, double& deltaTime);
 
     void setThrust(double thrust) {this->thrust = thrust; }
     void setPlayerWidth(int playerWidth) {this->playerWidth = playerWidth; }
     void setPlayerHeight(int playerHeight) {this->playerHeight = playerHeight; }
+    void setRotationSpeed(double rotationSpeed) {this->rotationSpeed += rotationSpeed; }
 private:
     SDL_Texture* texture;   
     double thrust;

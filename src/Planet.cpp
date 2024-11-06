@@ -5,21 +5,23 @@ Planet::Planet(double radius, double xPos, double yPos, double mass, double xVel
     : radius(radius), Entity(xPos, yPos, mass, xVelocity, yVelocity) { 
 } 
 
+void Planet::draw(SDL_Renderer* renderer, int screenWidth, int screenHeight) {
+   
+    int centerX = xPos - entityXPos + screenWidth / 2;
+    int centerY = yPos - entityYPos + screenHeight / 2;
 
+    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); 
 
-void Planet::draw (SDL_Renderer *renderer, int screenWidth, int screenHeight) 
-{
-   SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-    // Iterate over the bounding square of the circle
-    for (int y = yPos - radius; y <= yPos + radius; ++y) {
-        for (int x = xPos - radius; x <= xPos + radius; ++x) {
-            int dx = x - xPos;
-            int dy = y - yPos;
+    for (int y = centerY - radius; y <= centerY + radius; ++y) {
+        for (int x = centerX - radius; x <= centerX + radius; ++x) {
+            int dx = x - centerX;
+            int dy = y - centerY;
 
-            // Check if the point (x, y) is inside the circle
-            if (dx * dx + dy * dy <= radius * radius) {
+            if (dx * dx + dy * dy <= radius * radius) { 
                 SDL_RenderDrawPoint(renderer, x, y);  
             }
         }
     }
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_RenderDrawLine(renderer, centerX, centerY, screenWidth / 2, screenHeight / 2);
 }

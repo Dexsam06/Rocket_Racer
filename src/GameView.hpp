@@ -11,7 +11,7 @@ class GameView {
         ~GameView();
         bool running() {return isRunning; }
         void setIsRunning(bool isRunning) {this->isRunning = isRunning; }
-        SDL_Renderer* getRenderer() {return renderer; }
+        SDL_Renderer* getRenderer();
         double getScreenWidth() {return screenWidth; }
         double getScreenHeight() {return screenHeight; }
         void clear();

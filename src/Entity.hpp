@@ -11,12 +11,15 @@ public:
     double getXPos() {return xPos; }
     double getYPos() {return yPos; }
     double getMass() {return mass; }
+    void setAnotherEntityXPos(double entityXPos) {this->entityXPos = entityXPos; } 
+    void setAnotherEntityYPos(double entityYPos) {this->entityYPos = entityYPos; } 
 protected:
     SDL_Texture* texture;
     double xPos, yPos;
     double xVelocity, yVelocity;
     double mass; 
     double xAcceleration, yAcceleration;
+    double entityXPos, entityYPos;
 };
 
 #endif 
