@@ -12,13 +12,13 @@ GameController::~GameController() {}
 
 void GameController::loadResources() 
 {
+    SDL_Texture* backgroundTexture = textureManager.loadTexture("background", "../res/spaceBackgroundTiling.jpg", gv->getRenderer());
+    gv->setBackground(backgroundTexture);
+
     int height, width;
-    SDL_Texture *playerTexture = textureManager.loadTexture("player", "../res/apollo11.png", gv->getRenderer());
-    if (SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height) != 0)
-    {
-        std::cerr << "SDL_QueryTexture Error: " << SDL_GetError() << std::endl;
-        width = height = 0;
-    }
+    SDL_Texture* playerTexture = textureManager.loadTexture("player", "../res/apollo11.png", gv->getRenderer());
+    SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height);
+
     player = new Player(playerTexture, gv->getScreenWidth() / 2, gv->getScreenHeight() / 2, 100, 0, 0); 
     player->setPlayerWidth(width);
     player->setPlayerHeight(height);
@@ -33,8 +33,9 @@ void GameController::loadResources()
 
 void GameController::render()
 {
-    SDL_SetRenderDrawColor(gv->getRenderer(), 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(gv->getRenderer(), 0, 0, 0, 255); 
     gv->clear();
+    gv->drawBackground(player); 
     for (Entity *entity : entityList)
     {
         if (typeid(*entity) == typeid(Planet))

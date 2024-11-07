@@ -1,5 +1,6 @@
 
 #include "GameView.hpp"
+#include "Player.hpp"
 #include <iostream>
 
 GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fullscreen)
@@ -62,6 +63,27 @@ void GameView::clean() {
     std::cout << "Game Cleaned" << std::endl;
 }
 
-SDL_Renderer* GameView::getRenderer() { 
-    return renderer;
+void GameView::drawBackground(Player* player) {
+    int bgWidth, bgHeight; 
+    SDL_QueryTexture(background, nullptr, nullptr, &bgWidth, &bgHeight);
+
+    double xScale = 1 + (std::pow(std::abs(player->getPlayerXVelocity()), 2) / 1000000.0);
+    double yScale = 1 + (std::pow(std::abs(player->getPlayerYVelocity()), 2) / 1000000.0);
+    
+    SDL_RenderSetScale(renderer, xScale, yScale);
+
+    int offsetX = static_cast<int>(player->getPlayerXPos()) % bgWidth; 
+    int offsetY = static_cast<int>(player->getPlayerYPos()) % bgHeight;
+
+    int startX = -((offsetX % bgWidth) + bgWidth) % bgWidth; 
+    int startY = -((offsetY % bgHeight) + bgHeight) % bgHeight; 
+
+    for (int x = startX; x < screenWidth; x += bgWidth) {
+        for (int y = startY; y < screenHeight; y += bgHeight) { 
+            SDL_Rect destRect = { x, y, bgWidth, bgHeight };
+            SDL_RenderCopy(renderer, background, nullptr, &destRect);
+        }
+    }
+
+    SDL_RenderSetScale(renderer, 1.0, 1.0);
 }

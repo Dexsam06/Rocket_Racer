@@ -13,6 +13,10 @@ public:
     void setPlayerWidth(int playerWidth) {this->playerWidth = playerWidth; }
     void setPlayerHeight(int playerHeight) {this->playerHeight = playerHeight; }
     void setRotationSpeed(double rotationSpeed) {this->rotationSpeed += rotationSpeed; }
+    double getPlayerXPos() {return xPos; }
+    double getPlayerYPos() {return yPos; }
+    double getPlayerXVelocity() {return xVelocity; }
+    double getPlayerYVelocity() {return yVelocity; }
 private:
     SDL_Texture* texture;   
     double thrust;

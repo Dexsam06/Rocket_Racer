@@ -239,6 +239,9 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/GameView.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Player.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
+ /usr/include/SDL2/SDL_render.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.hpp \
  /usr/include/c++/14.2.1/string /usr/include/c++/14.2.1/bits/stringfwd.h \
  /usr/include/c++/14.2.1/bits/char_traits.h \
@@ -269,9 +272,6 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/enable_special_members.h \
  /usr/include/c++/14.2.1/bits/node_handle.h \
  /usr/include/c++/14.2.1/bits/erase_if.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/Player.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
- /usr/include/SDL2/SDL_render.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/Planet.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/InputHandler.hpp \
  /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/ostream \
