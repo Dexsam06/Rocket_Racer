@@ -274,6 +274,7 @@ CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o: \
  /usr/include/SDL2/SDL_render.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/Planet.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/InputHandler.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Physics.hpp \
  /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/ostream \
  /usr/include/c++/14.2.1/ios /usr/include/c++/14.2.1/exception \
  /usr/include/c++/14.2.1/bits/exception_ptr.h \

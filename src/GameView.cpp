@@ -8,7 +8,7 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
     int flags = fullscreen ? SDL_WINDOW_FULLSCREEN : 0;
 
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-        std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
+        std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl; 
         return;
     }
 
@@ -43,6 +43,10 @@ void GameView::present() {
     if (renderer) {
         SDL_RenderPresent(renderer); 
     }
+}
+
+void GameView::setScalingFactor(double xScale, double yScale) {
+    SDL_RenderSetScale(renderer, xScale, yScale);
 }
 
 void GameView::clean() {

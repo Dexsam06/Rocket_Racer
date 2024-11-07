@@ -24,6 +24,7 @@ class GameController {
 
         Player* player;  
         Planet* earth; 
+        Planet* moon;
         GameView* gv;
         std::vector<Entity*> entityList;
         InputHandler inputHandler;

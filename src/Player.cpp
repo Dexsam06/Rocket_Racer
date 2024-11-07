@@ -7,23 +7,23 @@ Player::Player(SDL_Texture* texture, double xPos, double yPos, double mass, doub
     : texture(texture), rotationSpeed(0), rotation(0), Entity(xPos, yPos, mass, xVelocity, yVelocity) { 
 } 
 
-void Player::calculatePhysics(std::vector<std::vector<double>>& data, double& deltaTime){
+void Player::calculatePhysics(std::vector<std::vector<double>>& entityData, double& deltaTime){
     rotation += Physics::rotation(rotationSpeed, deltaTime);
 
-    double xGravityForce = 0;
-    double yGravityForce = 0;
+    double xGravityForce = 0; 
+    double yGravityForce = 0; 
 
-    for (auto& planet : data) {
-        double distance = sqrt(pow(planet[1] - xPos, 2) + pow(planet[2] - yPos, 2));
-        double gravitationForce = Physics::gravityPull(planet[0], mass, distance);
+    for (auto& entity : entityData) {
+        double distance = sqrt(pow(entity[1] - xPos, 2) + pow(entity[2] - yPos, 2)); 
+        double gravitationForce = Physics::gravityPull(entity[0], mass, distance);
 
-        double angleOfRotationAroundPlanet = atan2(planet[2] - yPos, planet[1] - xPos) - M_PI / 2;
+        double angleOfRotationAroundEntity = atan2(entity[2] - yPos, entity[1] - xPos) - M_PI / 2;
         
-        xGravityForce -= Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundPlanet);
-        yGravityForce += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundPlanet); 
+        xGravityForce -= Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundEntity); 
+        yGravityForce += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundEntity); 
     }
 
-    double xThrustForce = Physics::forceVectorXAxis(thrust, (rotation * M_PI) / 180);
+    double xThrustForce = Physics::forceVectorXAxis(thrust, (rotation * M_PI) / 180); 
     double yThrustForce = -Physics::forceVectorYAxis(thrust, (rotation * M_PI) / 180);
 
     double xTotalForce = xGravityForce + xThrustForce;
@@ -33,10 +33,13 @@ void Player::calculatePhysics(std::vector<std::vector<double>>& data, double& de
     yAcceleration = Physics::acceleration(yTotalForce, mass);
 
     xPos += Physics::distance(xVelocity, xAcceleration, deltaTime);
-    yPos += Physics::distance(yVelocity, yAcceleration, deltaTime);
+    yPos += Physics::distance(yVelocity, yAcceleration, deltaTime); 
 
     xVelocity += Physics::velocity(xAcceleration, deltaTime);
     yVelocity += Physics::velocity(yAcceleration, deltaTime);
+
+    std::cout << "xPosPlayer: " << xPos << std::endl;
+    std::cout << "yPosPlayer: " << yPos << std::endl;
 }
 
 void Player::draw (SDL_Renderer *renderer, int screenWidth, int screenHeight) 

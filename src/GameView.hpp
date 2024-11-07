@@ -16,6 +16,7 @@ class GameView {
         double getScreenHeight() {return screenHeight; }
         void clear();
         void present();
+        void setScalingFactor(double xScale, double yScale);
         void clean();
     private:
         SDL_Window* window;

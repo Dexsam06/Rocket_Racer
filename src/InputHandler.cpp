@@ -1,4 +1,5 @@
 #include "InputHandler.hpp"
+#include "Physics.hpp"
 
 void InputHandler::handleInput(Player* player) {
     SDL_Event event;
@@ -16,7 +17,7 @@ void InputHandler::handleInput(Player* player) {
                 player->setRotationSpeed(-0.3); 
                 break;
             case SDLK_SPACE:
-                player->setThrust(20000);
+                player->setThrust(10000);
                 break;
         }
     } else if (event.type == SDL_KEYUP) {
