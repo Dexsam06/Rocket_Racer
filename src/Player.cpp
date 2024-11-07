@@ -4,31 +4,33 @@
 #include <iostream>
 
 Player::Player(SDL_Texture* texture, double xPos, double yPos, double mass, double xVelocity, double yVelocity)
-    : texture(texture), Entity(xPos, yPos, mass, xVelocity, yVelocity) { 
+    : texture(texture), rotationSpeed(0), rotation(0), Entity(xPos, yPos, mass, xVelocity, yVelocity) { 
 } 
 
 void Player::calculatePhysics(std::vector<std::vector<double>>& data, double& deltaTime){
-
     rotation += Physics::rotation(rotationSpeed, deltaTime);
 
-    double xForceAxis = 0;
-    double yForceAxis = 0;
-    double gravitationForce = 0;
-    double angleOfRotationAroundPlanet = 0;
+    double xGravityForce = 0;
+    double yGravityForce = 0;
 
-    for (const auto& row : data) {
-        double distance = sqrt(std::pow(row[1] - xPos, 2) + pow(row[2] - yPos, 2));
-        gravitationForce = Physics::gravityPull(row[0], mass, distance); 
-        angleOfRotationAroundPlanet = atan2(row[2] - yPos, row[1] - xPos) - M_PI / 2; 
-        //xForceAxis += Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundPlanet); 
-        //yForceAxis += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundPlanet); 
+    for (auto& planet : data) {
+        double distance = sqrt(pow(planet[1] - xPos, 2) + pow(planet[2] - yPos, 2));
+        double gravitationForce = Physics::gravityPull(planet[0], mass, distance);
+
+        double angleOfRotationAroundPlanet = atan2(planet[2] - yPos, planet[1] - xPos) - M_PI / 2;
+        
+        xGravityForce -= Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundPlanet);
+        yGravityForce += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundPlanet); 
     }
 
-    xForceAxis += Physics::forceVectorXAxis(thrust, rotation);
-    yForceAxis += Physics::forceVectorYAxis(thrust, rotation);
+    double xThrustForce = Physics::forceVectorXAxis(thrust, (rotation * M_PI) / 180);
+    double yThrustForce = -Physics::forceVectorYAxis(thrust, (rotation * M_PI) / 180);
 
-    xAcceleration = Physics::acceleration(xForceAxis, mass);
-    yAcceleration = Physics::acceleration(yForceAxis, mass);
+    double xTotalForce = xGravityForce + xThrustForce;
+    double yTotalForce = yGravityForce + yThrustForce;
+
+    xAcceleration = Physics::acceleration(xTotalForce, mass);
+    yAcceleration = Physics::acceleration(yTotalForce, mass);
 
     xPos += Physics::distance(xVelocity, xAcceleration, deltaTime);
     yPos += Physics::distance(yVelocity, yAcceleration, deltaTime);

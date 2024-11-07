@@ -10,10 +10,10 @@ void InputHandler::handleInput(Player* player) {
         if (event.type == SDL_KEYDOWN) {
         switch (event.key.keysym.sym) {
             case SDLK_RIGHT:
-                player->setRotationSpeed((0.01 * 180) / M_PI); 
+                player->setRotationSpeed(0.3); 
                 break;
             case SDLK_LEFT: 
-                player->setRotationSpeed(-((0.01 * 180) / M_PI)); 
+                player->setRotationSpeed(-0.3); 
                 break;
             case SDLK_SPACE:
                 player->setThrust(20000);

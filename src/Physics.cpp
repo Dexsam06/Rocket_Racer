@@ -7,7 +7,7 @@ const double Physics::GRAVITY_CONSTANT = 6.6743e-11;
 const double Physics::EARTH_MASS = 5.972e24;
 
 double Physics::distance(double velocity, double acceleration, double timeDelta) {
-    return velocity * timeDelta + 0.5 * acceleration * timeDelta * timeDelta;
+    return (velocity * timeDelta) + (0.5 * acceleration * timeDelta * timeDelta);
 }
 
 double Physics::velocity(double acceleration, double timeDelta) {
