@@ -32,18 +32,18 @@ void Planet::calculatePhysics(std::vector<std::vector<double>>& entityData, doub
 }
 
 void Planet::draw(SDL_Renderer* renderer, int screenWidth, int screenHeight) {
-   
+
     int centerX = xPos - entityXPos + screenWidth / 2;
     int centerY = yPos - entityYPos + screenHeight / 2;
 
     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); 
 
-    for (int y = centerY - radius; y <= centerY + radius; ++y) {
-        for (int x = centerX - radius; x <= centerX + radius; ++x) { 
-            int dx = x - centerX;
-            int dy = y - centerY;
+    for (int y = centerY - radius; y <= centerY + radius; ++y) { 
+        for (int x = centerX - radius; x <= centerX + radius; ++x) {
+            int dx = x - centerX; 
+            int dy = y - centerY; 
 
-            if (dx * dx + dy * dy <= radius * radius) { 
+            if (dx * dx + dy * dy <= radius * radius) {  
                 SDL_RenderDrawPoint(renderer, x, y);  
             }
         }

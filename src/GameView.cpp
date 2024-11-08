@@ -20,7 +20,7 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
         return;
     }
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED); 
     if (!renderer) {
         std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
@@ -69,7 +69,7 @@ void GameView::drawBackground(Player* player) {
 
     double xScale = 1 + (std::pow(std::abs(player->getPlayerXVelocity()), 2) / 1000000.0);
     double yScale = 1 + (std::pow(std::abs(player->getPlayerYVelocity()), 2) / 1000000.0);
-    
+
     SDL_RenderSetScale(renderer, xScale, yScale);
 
     int offsetX = static_cast<int>(player->getPlayerXPos()) % bgWidth; 

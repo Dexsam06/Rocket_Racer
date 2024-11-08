@@ -20,7 +20,7 @@ void Player::calculatePhysics(std::vector<std::vector<double>>& entityData, doub
         double angleOfRotationAroundEntity = atan2(entity[2] - yPos, entity[1] - xPos) - M_PI / 2;
         
         xGravityForce -= Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundEntity); 
-        yGravityForce += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundEntity); 
+        yGravityForce += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundEntity);  
     }
 
     double xThrustForce = Physics::forceVectorXAxis(thrust, (rotation * M_PI) / 180); 
@@ -32,14 +32,11 @@ void Player::calculatePhysics(std::vector<std::vector<double>>& entityData, doub
     xAcceleration = Physics::acceleration(xTotalForce, mass);
     yAcceleration = Physics::acceleration(yTotalForce, mass);
 
-    xPos += Physics::distance(xVelocity, xAcceleration, deltaTime);
+    xPos += Physics::distance(xVelocity, xAcceleration, deltaTime); 
     yPos += Physics::distance(yVelocity, yAcceleration, deltaTime); 
 
-    xVelocity += Physics::velocity(xAcceleration, deltaTime);
+    xVelocity += Physics::velocity(xAcceleration, deltaTime); 
     yVelocity += Physics::velocity(yAcceleration, deltaTime);
-
-    std::cout << "xPosPlayer: " << xPos << std::endl;
-    std::cout << "yPosPlayer: " << yPos << std::endl;
 }
 
 void Player::draw (SDL_Renderer *renderer, int screenWidth, int screenHeight) 

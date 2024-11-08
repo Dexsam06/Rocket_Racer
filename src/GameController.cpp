@@ -12,19 +12,19 @@ GameController::~GameController() {}
 
 void GameController::loadResources() 
 {
-    SDL_Texture* backgroundTexture = textureManager.loadTexture("background", "../res/spaceBackgroundTiling.jpg", gv->getRenderer());
+    SDL_Texture* backgroundTexture = textureManager.loadTexture("background", "../res/spaceBackgroundTiling.jpg", gv->getRenderer()); 
     gv->setBackground(backgroundTexture);
 
     int height, width;
-    SDL_Texture* playerTexture = textureManager.loadTexture("player", "../res/apollo11.png", gv->getRenderer());
+    SDL_Texture* playerTexture = textureManager.loadTexture("player", "../res/apollo11.png", gv->getRenderer()); 
     SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height);
 
     player = new Player(playerTexture, gv->getScreenWidth() / 2, gv->getScreenHeight() / 2, 100, 0, 0); 
     player->setPlayerWidth(width);
-    player->setPlayerHeight(height);
+    player->setPlayerHeight(height); 
     entityList.push_back(player);
 
-    earth = new Planet(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 200, 200, 2000000, 0, 0); 
+    earth = new Planet(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 300, 300, 2000000, 0, 0); 
     entityList.push_back(earth);
 
     moon = new Planet(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 - 400, 100, 20000, 100, 0); 
@@ -40,7 +40,7 @@ void GameController::render()
     {
         if (typeid(*entity) == typeid(Planet))
         {
-            entity->setAnotherEntityXPos(entityList[0]->getXPos());
+            entity->setAnotherEntityXPos(entityList[0]->getXPos()); 
             entity->setAnotherEntityYPos(entityList[0]->getYPos());
         }
         entity->draw(gv->getRenderer(), gv->getScreenWidth(), gv->getScreenHeight());
@@ -50,17 +50,19 @@ void GameController::render()
 
 void GameController::gameLoop()
 {
+    int fps = 60;
+    int updateTime = (int)((1/fps) * 1000.0); 
     Uint32 previousTime = SDL_GetTicks();
     while (gv->running())
     {
-        Uint32 currentTime = SDL_GetTicks();
-        double deltaTime = (currentTime - previousTime) / 1000.0;
-        previousTime = currentTime;
-
-        handleEvents();
-        update(deltaTime);
-        render();
-        SDL_Delay(16);
+        long deltaTime = (SDL_GetTicks() - previousTime);
+        
+        if(deltaTime > updateTime) {
+            previousTime = SDL_GetTicks();
+            handleEvents();
+            update(deltaTime / 1000.0);
+            render();
+        }
     }
     gv->clean();
 }
@@ -70,14 +72,14 @@ void GameController::update(double deltaTime)
     std::vector<std::vector<double>> entityData;
     for (const auto &entity : entityList)
     {
-        entityData.push_back({entity->getMass(), entity->getXPos(), entity->getYPos()});
+        entityData.push_back({entity->getMass(), entity->getXPos(), entity->getYPos()}); 
     }
 
     for (size_t i = 0; i < entityList.size(); ++i)
     {
-        std::vector<std::vector<double>> entityDataFinal;
+        std::vector<std::vector<double>> entityDataFinal; 
 
-        for (size_t j = 0; j < entityList.size(); ++j)
+        for (size_t j = 0; j < entityList.size(); ++j) 
         {
             if (i == j)
                 continue; 

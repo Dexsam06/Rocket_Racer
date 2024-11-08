@@ -4,11 +4,9 @@
 
 // Define the gravity constant and Earth's mass
 const double Physics::GRAVITY_CONSTANT = 6.6743e-11;
-const double Physics::UNIVERSAL_SCALING_NUMBER = 100000;
-
 
 double Physics::distance(double velocity, double acceleration, double timeDelta) {
-    return (velocity * timeDelta) + (0.5 * acceleration * timeDelta * timeDelta);
+    return (velocity * timeDelta) + (0.5 * acceleration * timeDelta * timeDelta); 
 }
 
 double Physics::velocity(double acceleration, double timeDelta) { 
@@ -19,7 +17,7 @@ double Physics::acceleration(double totalForce, double massEntity) {
     return totalForce / massEntity;
 }
 
-double Physics::gravityPull(double massPlanet, double massEntity, double distance) {
+double Physics::gravityPull(double massPlanet, double massEntity, double distance) {  
     // Formula: F = G * (m1 * m2) / r^2
     return (3 * massPlanet * massEntity) / (distance * distance);
 }

@@ -565,7 +565,9 @@ CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocke
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h
 
 CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/GameView.cpp \
+  /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/src/GameView.hpp \
+  /home/samuel/Dev/c++/Rocket_Racer/src/Player.hpp \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
@@ -734,12 +736,15 @@ CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/specfun.h \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
+  /usr/include/c++/14.2.1/bits/stl_bvector.h \
   /usr/include/c++/14.2.1/bits/stl_construct.h \
   /usr/include/c++/14.2.1/bits/stl_function.h \
   /usr/include/c++/14.2.1/bits/stl_iterator.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
   /usr/include/c++/14.2.1/bits/stl_pair.h \
+  /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
+  /usr/include/c++/14.2.1/bits/stl_vector.h \
   /usr/include/c++/14.2.1/bits/streambuf.tcc \
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/string_view.tcc \
@@ -747,6 +752,7 @@ CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/uses_allocator.h \
   /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/14.2.1/bits/utility.h \
+  /usr/include/c++/14.2.1/bits/vector.tcc \
   /usr/include/c++/14.2.1/bits/version.h \
   /usr/include/c++/14.2.1/cctype \
   /usr/include/c++/14.2.1/cerrno \
@@ -797,6 +803,7 @@ CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/tuple \
   /usr/include/c++/14.2.1/type_traits \
   /usr/include/c++/14.2.1/typeinfo \
+  /usr/include/c++/14.2.1/vector \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h \

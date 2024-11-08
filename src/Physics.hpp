@@ -6,7 +6,6 @@ class Physics
 public:
     // Constants
     static const double GRAVITY_CONSTANT;
-    static const double UNIVERSAL_SCALING_NUMBER;
 
     // Physics methods
     static double distance(double velocity, double acceleration, double deltaTime);
@@ -16,9 +15,6 @@ public:
     static double forceVectorYAxis(double totalForce, double angle); 
     static double forceVectorXAxis(double totalForce, double angle);
     static double rotation(double rotationSpeed, double deltaTime);
-
-    // Getters for constants
-    static double getUniversalScalingNumber() {return UNIVERSAL_SCALING_NUMBER; }
 };
 
 #endif 
