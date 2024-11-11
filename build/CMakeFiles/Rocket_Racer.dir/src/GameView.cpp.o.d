@@ -212,9 +212,7 @@ CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/Player.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
- /usr/include/SDL2/SDL_render.h /usr/include/c++/14.2.1/vector \
- /usr/include/c++/14.2.1/bits/allocator.h \
+ /usr/include/c++/14.2.1/vector /usr/include/c++/14.2.1/bits/allocator.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
  /usr/include/c++/14.2.1/bits/new_allocator.h /usr/include/c++/14.2.1/new \
  /usr/include/c++/14.2.1/bits/exception.h \
@@ -238,9 +236,13 @@ CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: \
  /usr/include/c++/14.2.1/cstddef \
  /usr/include/c++/14.2.1/bits/uses_allocator.h \
  /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
- /usr/include/c++/14.2.1/tuple /usr/include/c++/14.2.1/iostream \
- /usr/include/c++/14.2.1/ostream /usr/include/c++/14.2.1/ios \
- /usr/include/c++/14.2.1/iosfwd /usr/include/c++/14.2.1/bits/stringfwd.h \
+ /usr/include/c++/14.2.1/tuple \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
+ /usr/include/SDL2/SDL_render.h \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
+ /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/ostream \
+ /usr/include/c++/14.2.1/ios /usr/include/c++/14.2.1/iosfwd \
+ /usr/include/c++/14.2.1/bits/stringfwd.h \
  /usr/include/c++/14.2.1/bits/postypes.h /usr/include/c++/14.2.1/cwchar \
  /usr/include/c++/14.2.1/exception \
  /usr/include/c++/14.2.1/bits/exception_ptr.h \

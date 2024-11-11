@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.o.d"
   "CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o"
   "CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o.d"
+  "CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o"
+  "CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o.d"
   "CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o"
   "CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o.d"
   "CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o"

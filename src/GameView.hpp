@@ -4,6 +4,7 @@
 
 #include <SDL2/SDL.h>
 #include "Player.hpp"
+#include "Vector2D.hpp"
 
 class GameView {
 
@@ -13,6 +14,7 @@ class GameView {
         void clear();
         void present();
         void setScalingFactor(double xScale, double yScale);
+        void render(Entity *entity, Vector2D playerPos);
         void clean();
         void drawBackground(Player* player);
 

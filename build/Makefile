@@ -249,6 +249,30 @@ src/Physics.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Rocket_Racer.dir/build.make CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.s
 .PHONY : src/Physics.cpp.s
 
+src/PhysicsSystem.o: src/PhysicsSystem.cpp.o
+.PHONY : src/PhysicsSystem.o
+
+# target to build an object file
+src/PhysicsSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Rocket_Racer.dir/build.make CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o
+.PHONY : src/PhysicsSystem.cpp.o
+
+src/PhysicsSystem.i: src/PhysicsSystem.cpp.i
+.PHONY : src/PhysicsSystem.i
+
+# target to preprocess a source file
+src/PhysicsSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Rocket_Racer.dir/build.make CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.i
+.PHONY : src/PhysicsSystem.cpp.i
+
+src/PhysicsSystem.s: src/PhysicsSystem.cpp.s
+.PHONY : src/PhysicsSystem.s
+
+# target to generate assembly for a file
+src/PhysicsSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Rocket_Racer.dir/build.make CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.s
+.PHONY : src/PhysicsSystem.cpp.s
+
 src/Planet.o: src/Planet.cpp.o
 .PHONY : src/Planet.o
 
@@ -369,6 +393,9 @@ help:
 	@echo "... src/Physics.o"
 	@echo "... src/Physics.i"
 	@echo "... src/Physics.s"
+	@echo "... src/PhysicsSystem.o"
+	@echo "... src/PhysicsSystem.i"
+	@echo "... src/PhysicsSystem.s"
 	@echo "... src/Planet.o"
 	@echo "... src/Planet.i"
 	@echo "... src/Planet.s"

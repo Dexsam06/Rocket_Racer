@@ -19,6 +19,7 @@ set(SOURCES
     src/InputHandler.cpp
     src/main.cpp
     src/Physics.cpp
+    src/PhysicsSystem.cpp
     src/Planet.cpp
     src/Player.cpp
     src/TextureManager.cpp

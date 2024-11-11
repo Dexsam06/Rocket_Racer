@@ -2,8 +2,8 @@
 #include "Physics.hpp"
 #include <vector>
 
-Planet::Planet(double xPos, double yPos, double radius, double mass, double xVelocity, double yVelocity)
-    : radius(radius), Entity(xPos, yPos, mass, xVelocity, yVelocity) { 
+Planet::Planet(Vector2D pos, Vector2D vel, double mass, double radius)
+    : radius(radius), Entity(pos, vel, mass) { 
 } 
 
 void Planet::calculatePhysics(std::vector<std::vector<double>>& entityData, double& deltaTime){
@@ -12,29 +12,32 @@ void Planet::calculatePhysics(std::vector<std::vector<double>>& entityData, doub
     double yGravityForce = 0; 
 
     for (auto& entity : entityData) {
-        double distance = sqrt(pow(entity[1] - xPos, 2) + pow(entity[2] - yPos, 2)); 
+        double distance = sqrt(pow(entity[1] - position.x, 2) + pow(entity[2] - position.y, 2)); 
         double gravitationForce = Physics::gravityPull(entity[0], mass, distance);
 
-        double angleOfRotationAroundEntity = atan2(entity[2] - yPos, entity[1] - xPos) - M_PI / 2;
+        double angleOfRotationAroundEntity = atan2(entity[2] - position.y, entity[1] - position.x) - M_PI / 2;
         
-        xGravityForce -= Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundEntity);
-        yGravityForce += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundEntity); 
+        xGravityForce -= Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundEntity); 
+        yGravityForce += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundEntity);  
     }
 
-    xAcceleration = Physics::acceleration(xGravityForce, mass);
-    yAcceleration = Physics::acceleration(yGravityForce, mass);
+    double xTotalForce = xGravityForce;
+    double yTotalForce = yGravityForce;
 
-    xPos += Physics::distance(xVelocity, xAcceleration, deltaTime);
-    yPos += Physics::distance(yVelocity, yAcceleration, deltaTime); 
+    acceleration.x = Physics::acceleration(xTotalForce, mass);
+    acceleration.y = Physics::acceleration(yTotalForce, mass);
 
-    xVelocity += Physics::velocity(xAcceleration, deltaTime);
-    yVelocity += Physics::velocity(yAcceleration, deltaTime);
+    position.x += Physics::distance(velocity.x, acceleration.x, deltaTime); 
+    position.y += Physics::distance(velocity.y, acceleration.y, deltaTime); 
+
+    velocity.x += Physics::velocity(acceleration.x, deltaTime); 
+    velocity.y += Physics::velocity(acceleration.y, deltaTime);
 }
 
-void Planet::draw(SDL_Renderer* renderer, int screenWidth, int screenHeight) {
+void Planet::draw(SDL_Renderer* renderer, int screenWidth, int screenHeight, Vector2D playerPos) {
 
-    int centerX = xPos - entityXPos + screenWidth / 2;
-    int centerY = yPos - entityYPos + screenHeight / 2;
+    int centerX = position.x - playerPos.x + screenWidth / 2;
+    int centerY = position.y - playerPos.y + screenHeight / 2;
 
     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); 
 

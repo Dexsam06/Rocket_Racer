@@ -50,6 +50,10 @@ void GameView::setScalingFactor(double xScale, double yScale) {
     SDL_RenderSetScale(renderer, xScale, yScale);
 }
 
+void GameView::render(Entity *entity, Vector2D playerPos){
+    entity->draw(renderer, screenWidth, screenHeight, playerPos);
+}
+
 void GameView::clean() {
     if (renderer) {
         SDL_DestroyRenderer(renderer); 
@@ -65,15 +69,15 @@ void GameView::clean() {
 
 void GameView::drawBackground(Player* player) {
     int bgWidth, bgHeight; 
-    SDL_QueryTexture(background, nullptr, nullptr, &bgWidth, &bgHeight);
+    SDL_QueryTexture(background, nullptr, nullptr, &bgWidth, &bgHeight); 
 
-    double xScale = 1 + (std::pow(std::abs(player->getPlayerXVelocity()), 2) / 1000000.0);
-    double yScale = 1 + (std::pow(std::abs(player->getPlayerYVelocity()), 2) / 1000000.0);
+    double xScale = 1 + (std::pow(std::abs(player->getVelocity().x), 2) / 1000000.0);
+    double yScale = 1 + (std::pow(std::abs(player->getVelocity().y), 2) / 1000000.0);
 
-    SDL_RenderSetScale(renderer, xScale, yScale);
+    SDL_RenderSetScale(renderer, xScale, yScale); 
 
-    int offsetX = static_cast<int>(player->getPlayerXPos()) % bgWidth; 
-    int offsetY = static_cast<int>(player->getPlayerYPos()) % bgHeight;
+    int offsetX = static_cast<int>(player->getPosition().x) % bgWidth; 
+    int offsetY = static_cast<int>(player->getPosition().y) % bgHeight;
 
     int startX = -((offsetX % bgWidth) + bgWidth) % bgWidth; 
     int startY = -((offsetY % bgHeight) + bgHeight) % bgHeight; 

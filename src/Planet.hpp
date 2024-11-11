@@ -5,13 +5,13 @@
 
 class Planet : public Entity {
 public:
-    Planet(double xPos, double yPos, double radius, double mass, double xVelocity, double yVelocity); 
+    Planet(Vector2D pos, Vector2D vel, double mass, double radius); 
     ~Planet(){};
 private:
     double radius;
 
     void calculatePhysics(std::vector<std::vector<double>>& entityData, double& deltaTime) override;
-    void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight) override; 
+    void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos) override; 
 };
 
 #endif 

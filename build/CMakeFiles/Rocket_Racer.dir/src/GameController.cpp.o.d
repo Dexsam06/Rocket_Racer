@@ -242,6 +242,7 @@ CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o: \
  /home/samuel/Dev/c++/Rocket_Racer/src/Player.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
  /usr/include/SDL2/SDL_render.h \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.hpp \
  /usr/include/c++/14.2.1/string /usr/include/c++/14.2.1/bits/stringfwd.h \
  /usr/include/c++/14.2.1/bits/char_traits.h \
@@ -274,6 +275,7 @@ CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o: \
  /usr/include/c++/14.2.1/bits/erase_if.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/Planet.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/InputHandler.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/PhysicsSystem.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/Physics.hpp \
  /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/ostream \
  /usr/include/c++/14.2.1/ios /usr/include/c++/14.2.1/exception \
