@@ -2,36 +2,20 @@
 #include "Physics.hpp"
 #include <vector>
 
-Planet::Planet(Vector2D pos, Vector2D vel, double mass, double radius)
-    : radius(radius), Entity(pos, vel, mass) { 
+Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius)
+    : radius(radius), Entity(std::move(collider), pos, vel, mass) { 
 } 
 
-void Planet::calculatePhysics(std::vector<std::vector<double>>& entityData, double& deltaTime){
-
-    double xGravityForce = 0; 
-    double yGravityForce = 0; 
-
-    for (auto& entity : entityData) {
-        double distance = sqrt(pow(entity[1] - position.x, 2) + pow(entity[2] - position.y, 2)); 
-        double gravitationForce = Physics::gravityPull(entity[0], mass, distance);
-
-        double angleOfRotationAroundEntity = atan2(entity[2] - position.y, entity[1] - position.x) - M_PI / 2;
-        
-        xGravityForce -= Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundEntity); 
-        yGravityForce += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundEntity);  
-    }
-
-    double xTotalForce = xGravityForce;
-    double yTotalForce = yGravityForce;
-
-    acceleration.x = Physics::acceleration(xTotalForce, mass);
-    acceleration.y = Physics::acceleration(yTotalForce, mass);
+void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaTime){
+    acceleration.x = Physics::acceleration(xGravityForce, mass);
+    acceleration.y = Physics::acceleration(yGravityForce, mass);
 
     position.x += Physics::distance(velocity.x, acceleration.x, deltaTime); 
     position.y += Physics::distance(velocity.y, acceleration.y, deltaTime); 
 
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
-    velocity.y += Physics::velocity(acceleration.y, deltaTime);
+    velocity.y += Physics::velocity(acceleration.y, deltaTime); 
+    getCollider()->updatePosition(getPosition());
 }
 
 void Planet::draw(SDL_Renderer* renderer, int screenWidth, int screenHeight, Vector2D playerPos) {

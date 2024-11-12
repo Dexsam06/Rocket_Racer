@@ -8,7 +8,7 @@
 
 class Player : public Entity {
 public:
-    Player(SDL_Texture* texture, Vector2D pos, Vector2D vel, double mass); 
+    Player(std::unique_ptr<Collider> collider, SDL_Texture* texture, Vector2D pos, Vector2D vel, double mass); 
     ~Player(){}
 
     void setThrust(double thrust) {this->thrust = thrust; }
@@ -21,7 +21,7 @@ private:
     double rotationSpeed, rotation;  
     int playerWidth, playerHeight; 
 
-    void calculatePhysics(std::vector<std::vector<double>>& entityData, double& deltaTime) override;
+    void update(double& xGravityForce, double& yGravityForce, double& deltaTime) override;
     void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos) override; 
 };  
 

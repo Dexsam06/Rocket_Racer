@@ -241,47 +241,20 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /home/samuel/Dev/c++/Rocket_Racer/src/GameView.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/Player.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
- /usr/include/SDL2/SDL_render.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.hpp \
- /usr/include/c++/14.2.1/string /usr/include/c++/14.2.1/bits/stringfwd.h \
- /usr/include/c++/14.2.1/bits/char_traits.h \
+ /usr/include/SDL2/SDL_render.h /usr/include/c++/14.2.1/iostream \
+ /usr/include/c++/14.2.1/ostream /usr/include/c++/14.2.1/ios \
+ /usr/include/c++/14.2.1/iosfwd /usr/include/c++/14.2.1/bits/stringfwd.h \
  /usr/include/c++/14.2.1/bits/postypes.h /usr/include/c++/14.2.1/cwchar \
- /usr/include/c++/14.2.1/bits/localefwd.h \
- /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
- /usr/include/c++/14.2.1/clocale /usr/include/locale.h \
- /usr/include/bits/locale.h /usr/include/c++/14.2.1/iosfwd \
- /usr/include/c++/14.2.1/cctype \
- /usr/include/c++/14.2.1/bits/ostream_insert.h \
- /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
- /usr/include/c++/14.2.1/bits/basic_string.h \
- /usr/include/c++/14.2.1/string_view \
- /usr/include/c++/14.2.1/bits/string_view.tcc \
- /usr/include/c++/14.2.1/ext/string_conversions.h \
- /usr/include/c++/14.2.1/cstdio /usr/include/c++/14.2.1/cerrno \
- /usr/include/errno.h /usr/include/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/bits/types/error_t.h \
- /usr/include/c++/14.2.1/bits/charconv.h \
- /usr/include/c++/14.2.1/bits/basic_string.tcc \
- /usr/include/c++/14.2.1/unordered_map \
- /usr/include/c++/14.2.1/bits/unordered_map.h \
- /usr/include/c++/14.2.1/bits/hashtable.h \
- /usr/include/c++/14.2.1/bits/hashtable_policy.h \
- /usr/include/c++/14.2.1/ext/aligned_buffer.h \
- /usr/include/c++/14.2.1/bits/enable_special_members.h \
- /usr/include/c++/14.2.1/bits/node_handle.h \
- /usr/include/c++/14.2.1/bits/erase_if.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/Planet.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/InputHandler.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/PhysicsSystem.hpp \
- /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/ostream \
- /usr/include/c++/14.2.1/ios /usr/include/c++/14.2.1/exception \
+ /usr/include/c++/14.2.1/exception \
  /usr/include/c++/14.2.1/bits/exception_ptr.h \
  /usr/include/c++/14.2.1/bits/cxxabi_init_exception.h \
  /usr/include/c++/14.2.1/typeinfo \
  /usr/include/c++/14.2.1/bits/nested_exception.h \
+ /usr/include/c++/14.2.1/bits/char_traits.h \
+ /usr/include/c++/14.2.1/bits/localefwd.h \
+ /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
+ /usr/include/c++/14.2.1/clocale /usr/include/locale.h \
+ /usr/include/bits/locale.h /usr/include/c++/14.2.1/cctype \
  /usr/include/c++/14.2.1/bits/ios_base.h \
  /usr/include/c++/14.2.1/ext/atomicity.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr.h \
@@ -296,6 +269,20 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
  /usr/include/sys/single_threaded.h \
  /usr/include/c++/14.2.1/bits/locale_classes.h \
+ /usr/include/c++/14.2.1/string \
+ /usr/include/c++/14.2.1/bits/ostream_insert.h \
+ /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
+ /usr/include/c++/14.2.1/bits/basic_string.h \
+ /usr/include/c++/14.2.1/string_view \
+ /usr/include/c++/14.2.1/bits/string_view.tcc \
+ /usr/include/c++/14.2.1/ext/string_conversions.h \
+ /usr/include/c++/14.2.1/cstdio /usr/include/c++/14.2.1/cerrno \
+ /usr/include/errno.h /usr/include/bits/errno.h \
+ /usr/include/linux/errno.h /usr/include/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/include/bits/types/error_t.h \
+ /usr/include/c++/14.2.1/bits/charconv.h \
+ /usr/include/c++/14.2.1/bits/basic_string.tcc \
  /usr/include/c++/14.2.1/bits/locale_classes.tcc \
  /usr/include/c++/14.2.1/system_error \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
@@ -311,4 +298,35 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/locale_facets.tcc \
  /usr/include/c++/14.2.1/bits/basic_ios.tcc \
  /usr/include/c++/14.2.1/bits/ostream.tcc /usr/include/c++/14.2.1/istream \
- /usr/include/c++/14.2.1/bits/istream.tcc
+ /usr/include/c++/14.2.1/bits/istream.tcc /usr/include/c++/14.2.1/memory \
+ /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
+ /usr/include/c++/14.2.1/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/14.2.1/bits/align.h \
+ /usr/include/c++/14.2.1/bits/unique_ptr.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr_base.h \
+ /usr/include/c++/14.2.1/bits/allocated_ptr.h \
+ /usr/include/c++/14.2.1/ext/aligned_buffer.h \
+ /usr/include/c++/14.2.1/ext/concurrence.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr_atomic.h \
+ /usr/include/c++/14.2.1/bits/atomic_base.h \
+ /usr/include/c++/14.2.1/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/14.2.1/backward/auto_ptr.h \
+ /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
+ /usr/include/c++/14.2.1/pstl/execution_defs.h \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Collider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.hpp \
+ /usr/include/c++/14.2.1/unordered_map \
+ /usr/include/c++/14.2.1/bits/unordered_map.h \
+ /usr/include/c++/14.2.1/bits/hashtable.h \
+ /usr/include/c++/14.2.1/bits/hashtable_policy.h \
+ /usr/include/c++/14.2.1/bits/enable_special_members.h \
+ /usr/include/c++/14.2.1/bits/node_handle.h \
+ /usr/include/c++/14.2.1/bits/erase_if.h \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Planet.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/InputHandler.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/PhysicsSystem.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Physics.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/RectangleCollider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/CircleCollider.hpp

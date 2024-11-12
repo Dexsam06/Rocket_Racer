@@ -3,31 +3,18 @@
 
 #include <iostream>
 
-Player::Player(SDL_Texture* texture, Vector2D pos, Vector2D vel, double mass)
-    : texture(texture), rotationSpeed(0), rotation(0), Entity(pos, vel, mass) { 
+Player::Player(std::unique_ptr<Collider> collider, SDL_Texture* texture, Vector2D pos, Vector2D vel, double mass)
+    : texture(texture), rotationSpeed(0), rotation(0), Entity(std::move(collider), pos, vel, mass) { 
 } 
 
-void Player::calculatePhysics(std::vector<std::vector<double>>& entityData, double& deltaTime){
+void Player::update(double& xGravityForce, double& yGravityForce, double& deltaTime){
     rotation += Physics::rotation(rotationSpeed, deltaTime);
-
-    double xGravityForce = 0; 
-    double yGravityForce = 0; 
-
-    for (auto& entity : entityData) {
-        double distance = sqrt(pow(entity[1] - position.x, 2) + pow(entity[2] - position.y, 2)); 
-        double gravitationForce = Physics::gravityPull(entity[0], mass, distance);
-
-        double angleOfRotationAroundEntity = atan2(entity[2] - position.y, entity[1] - position.x) - M_PI / 2;
-        
-        xGravityForce -= Physics::forceVectorXAxis(gravitationForce, angleOfRotationAroundEntity); 
-        yGravityForce += Physics::forceVectorYAxis(gravitationForce, angleOfRotationAroundEntity);  
-    }
 
     double xThrustForce = Physics::forceVectorXAxis(thrust, (rotation * M_PI) / 180); 
     double yThrustForce = -Physics::forceVectorYAxis(thrust, (rotation * M_PI) / 180);
 
-    double xTotalForce = xGravityForce + xThrustForce;
-    double yTotalForce = yGravityForce + yThrustForce;
+    double xTotalForce = xGravityForce + xThrustForce; 
+    double yTotalForce = yGravityForce + yThrustForce; 
 
     acceleration.x = Physics::acceleration(xTotalForce, mass);
     acceleration.y = Physics::acceleration(yTotalForce, mass);
@@ -37,8 +24,9 @@ void Player::calculatePhysics(std::vector<std::vector<double>>& entityData, doub
 
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
     velocity.y += Physics::velocity(acceleration.y, deltaTime); 
-    std::cout << "accelerationX: " << acceleration.x << "accelerationY: " << acceleration.y << std::endl;
-}
+    getCollider()->updatePosition(getPosition()); 
+    getCollider()->setRotation((rotation * M_PI) / 180);
+} 
 
 void Player::draw (SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos) 
 {

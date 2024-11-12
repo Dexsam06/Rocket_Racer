@@ -12,6 +12,9 @@
 #include "InputHandler.hpp"
 #include "PhysicsSystem.hpp"
 #include "Vector2D.hpp"
+#include "Collider.hpp"
+#include "RectangleCollider.hpp"
+#include "CircleCollider.hpp"
 
 class GameController {
 

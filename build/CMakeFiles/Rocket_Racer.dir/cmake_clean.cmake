@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o"
+  "CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o.d"
   "CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o"
   "CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o.d"
   "CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o"
@@ -15,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o.d"
   "CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o"
   "CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o.d"
+  "CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o"
+  "CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o.d"
   "CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o"
   "CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o.d"
   "CMakeFiles/Rocket_Racer.dir/src/main.cpp.o"

@@ -238,11 +238,9 @@ CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: \
  /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
  /usr/include/c++/14.2.1/tuple \
  /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
- /usr/include/SDL2/SDL_render.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
- /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/ostream \
- /usr/include/c++/14.2.1/ios /usr/include/c++/14.2.1/iosfwd \
- /usr/include/c++/14.2.1/bits/stringfwd.h \
+ /usr/include/SDL2/SDL_render.h /usr/include/c++/14.2.1/iostream \
+ /usr/include/c++/14.2.1/ostream /usr/include/c++/14.2.1/ios \
+ /usr/include/c++/14.2.1/iosfwd /usr/include/c++/14.2.1/bits/stringfwd.h \
  /usr/include/c++/14.2.1/bits/postypes.h /usr/include/c++/14.2.1/cwchar \
  /usr/include/c++/14.2.1/exception \
  /usr/include/c++/14.2.1/bits/exception_ptr.h \
@@ -297,4 +295,21 @@ CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: \
  /usr/include/c++/14.2.1/bits/locale_facets.tcc \
  /usr/include/c++/14.2.1/bits/basic_ios.tcc \
  /usr/include/c++/14.2.1/bits/ostream.tcc /usr/include/c++/14.2.1/istream \
- /usr/include/c++/14.2.1/bits/istream.tcc
+ /usr/include/c++/14.2.1/bits/istream.tcc /usr/include/c++/14.2.1/memory \
+ /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
+ /usr/include/c++/14.2.1/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/14.2.1/bits/align.h \
+ /usr/include/c++/14.2.1/bits/unique_ptr.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr_base.h \
+ /usr/include/c++/14.2.1/bits/allocated_ptr.h \
+ /usr/include/c++/14.2.1/ext/aligned_buffer.h \
+ /usr/include/c++/14.2.1/ext/concurrence.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr_atomic.h \
+ /usr/include/c++/14.2.1/bits/atomic_base.h \
+ /usr/include/c++/14.2.1/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/14.2.1/backward/auto_ptr.h \
+ /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
+ /usr/include/c++/14.2.1/pstl/execution_defs.h \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Collider.hpp

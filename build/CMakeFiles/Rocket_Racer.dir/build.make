@@ -69,10 +69,24 @@ include CMakeFiles/Rocket_Racer.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Rocket_Racer.dir/flags.make
 
+CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
+CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/CircleCollider.cpp
+CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/CircleCollider.cpp
+
+CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samuel/Dev/c++/Rocket_Racer/src/CircleCollider.cpp > CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.i
+
+CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/src/CircleCollider.cpp -o CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.s
+
 CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/Entity.cpp
 CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/Entity.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.s: cmake_force
 CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/GameController.cpp
 CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/GameController.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.s: cmake_force
 CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/GameView.cpp
 CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/GameView.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.s: cmake_force
 CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/InputHandler.cpp
 CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/InputHandler.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/Rocket_Racer.dir/src/InputHandler.cpp.s: cmake_force
 CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/main.cpp
 CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/main.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/main.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/main.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/main.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/main.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.s: cmake_force
 CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/Physics.cpp
 CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/Physics.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.s: cmake_force
 CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/PhysicsSystem.cpp
 CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/PhysicsSystem.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.s: cmake_force
 CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/Planet.cpp
 CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/Planet.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.s: cmake_force
 CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/Player.cpp
 CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/Player.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/Player.cpp.i: cmake_force
@@ -195,10 +209,24 @@ CMakeFiles/Rocket_Racer.dir/src/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Rocket_Racer.dir/src/Player.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/src/Player.cpp -o CMakeFiles/Rocket_Racer.dir/src/Player.cpp.s
 
+CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
+CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/RectangleCollider.cpp
+CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/RectangleCollider.cpp
+
+CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samuel/Dev/c++/Rocket_Racer/src/RectangleCollider.cpp > CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.i
+
+CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/src/RectangleCollider.cpp -o CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.s
+
 CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o: CMakeFiles/Rocket_Racer.dir/flags.make
 CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.cpp
 CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o: CMakeFiles/Rocket_Racer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o -MF CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o.d -o CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.cpp
 
 CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.i: cmake_force
@@ -211,6 +239,7 @@ CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.s: cmake_force
 
 # Object files for target Rocket_Racer
 Rocket_Racer_OBJECTS = \
+"CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o" \
 "CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o" \
 "CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o" \
 "CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o" \
@@ -220,11 +249,13 @@ Rocket_Racer_OBJECTS = \
 "CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o" \
 "CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o" \
 "CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o" \
+"CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o" \
 "CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o"
 
 # External object files for target Rocket_Racer
 Rocket_Racer_EXTERNAL_OBJECTS =
 
+bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o
 bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o
 bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/GameController.cpp.o
 bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o
@@ -234,12 +265,13 @@ bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/Physics.cpp.o
 bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o
 bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o
 bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/Player.cpp.o
+bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o
 bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o
 bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/build.make
 bin/Rocket_Racer: /usr/lib/libSDL2main.a
 bin/Rocket_Racer: /usr/lib/libSDL2-2.0.so.0.3000.7
 bin/Rocket_Racer: CMakeFiles/Rocket_Racer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable bin/Rocket_Racer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable bin/Rocket_Racer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Rocket_Racer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -13,6 +13,7 @@ include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
 
 # Set the source files
 set(SOURCES
+    src/CircleCollider.cpp
     src/Entity.cpp 
     src/GameController.cpp
     src/GameView.cpp
@@ -22,6 +23,7 @@ set(SOURCES
     src/PhysicsSystem.cpp
     src/Planet.cpp
     src/Player.cpp
+    src/RectangleCollider.cpp
     src/TextureManager.cpp
 )
 

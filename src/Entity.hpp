@@ -2,20 +2,26 @@
 #define ENTITY_HPP
 
 #include <SDL2/SDL_render.h>
+#include <iostream>
 #include <vector>
+#include <memory>
 #include "Vector2D.hpp"
+#include "Collider.hpp" 
 
 class Entity {
 public:
-    Entity(Vector2D pos, Vector2D vel, double mass); 
+    Entity(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass); 
     virtual ~Entity() {}
     virtual void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos) {}
-    virtual void calculatePhysics(std::vector<std::vector<double>>& entityData, double& deltaTime) {}
+    virtual void update(double& xGravityForce, double& yGravityForce, double& deltaTime) {}
+    bool checkCollision(const Entity& other, Vector2D& collisionNormal, double restitution);
 
     Vector2D getPosition() {return position; }
-    Vector2D getVelocity() {return velocity; }
+    Vector2D& getVelocity() {return velocity; }
+    std::unique_ptr<Collider>& getCollider() {return collider; }
     double getMass() {return mass; }
 protected:
+    std::unique_ptr<Collider> collider;
     Vector2D position;
     Vector2D velocity;
     Vector2D acceleration;
