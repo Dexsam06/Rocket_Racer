@@ -1,8 +1,8 @@
 #include "InputHandler.hpp"
 #include "Physics.hpp"
 
-void InputHandler::handleInput(Player* player) {
-    SDL_Event event;
+void InputHandler::handleInput(Player* player, std::vector<Button*> buttonList) { 
+    SDL_Event event; 
     quit = false;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
@@ -32,5 +32,10 @@ void InputHandler::handleInput(Player* player) {
                 break;
         }
     }
+      else if (event.type == SDL_MOUSEBUTTONDOWN) { 
+        for(Button* button : buttonList) {
+            button->handleEvent(event);
+        }
+      }
     }
 }

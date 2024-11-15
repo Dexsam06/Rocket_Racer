@@ -15,6 +15,7 @@
 #include "Collider.hpp"
 #include "RectangleCollider.hpp"
 #include "CircleCollider.hpp"
+#include "Button.hpp"
 
 class GameController {
 
@@ -30,11 +31,19 @@ class GameController {
         Player* player;  
         Planet* earth; 
         Planet* moon;
-        GameView* gv;
-        std::vector<Entity*> entityList;
+
+        Button* zoomButtonIn;
+        Button* zoomButtonOut;
+
+        GameView* gv;   
+        std::vector<Entity*> entityList; 
+        std::vector<Button*> buttonList;
         InputHandler inputHandler;
         TextureManager textureManager;
         PhysicsSystem physicsSystem;
+
+        void onZoomButtonClickIn();
+        void onZoomButtonClickOut();
 };
 
 #endif

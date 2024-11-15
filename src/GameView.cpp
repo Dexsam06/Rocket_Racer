@@ -13,6 +13,12 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
         return;
     }
 
+    if (TTF_Init() != 0) {
+        std::cerr << "TTF_Init Error: " << TTF_GetError() << std::endl;
+        SDL_Quit();
+        return;
+    }
+
     window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, flags);
     if (!window) {
         std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
@@ -28,9 +34,16 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
         return;
     }
 
+    font = TTF_OpenFont("../res/Fonts/Roboto-Regular.ttf", 24);
+    if (!font) {
+        std::cerr << "Font Load Error: " << TTF_GetError() << std::endl;
+        TTF_Quit();
+        SDL_Quit();
+        return;
+    }
+
     isRunning = true;  
 }
-
 
 GameView::~GameView() {}                                                       
 
@@ -44,10 +57,6 @@ void GameView::present() {
     if (renderer) {
         SDL_RenderPresent(renderer); 
     }
-}
-
-void GameView::setScalingFactor(double xScale, double yScale) {
-    SDL_RenderSetScale(renderer, xScale, yScale);
 }
 
 void GameView::render(Entity *entity, Vector2D playerPos){
@@ -64,7 +73,15 @@ void GameView::clean() {
         window = nullptr;
     }
     SDL_Quit();
-    std::cout << "Game Cleaned" << std::endl;
+    std::cout << "Game Cleaned" << std::endl; 
+}
+
+void GameView::setScalingFactor() {
+    SDL_RenderSetScale(renderer, scalingFactor.x, scalingFactor.y);
+}
+
+void GameView::setScalingFactorNormal() {
+    SDL_RenderSetScale(renderer, 1.0, 1.0);
 }
 
 void GameView::drawBackground(Player* player) {
@@ -72,7 +89,7 @@ void GameView::drawBackground(Player* player) {
     SDL_QueryTexture(background, nullptr, nullptr, &bgWidth, &bgHeight); 
 
     double xScale = 1 + (std::pow(std::abs(player->getVelocity().x), 2) / 1000000.0);
-    double yScale = 1 + (std::pow(std::abs(player->getVelocity().y), 2) / 1000000.0);
+    double yScale = 1 + (std::pow(std::abs(player->getVelocity().y), 2) / 1000000.0); 
 
     SDL_RenderSetScale(renderer, xScale, yScale); 
 

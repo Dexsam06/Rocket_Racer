@@ -312,4 +312,5 @@ CMakeFiles/Rocket_Racer.dir/src/GameView.cpp.o: \
  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Collider.hpp
+ /home/samuel/Dev/c++/Rocket_Racer/src/Collider.hpp \
+ /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h

@@ -129,6 +129,30 @@ Rocket_Racer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Rocket_Racer.dir/build.make CMakeFiles/Rocket_Racer.dir/build
 .PHONY : Rocket_Racer/fast
 
+src/Button.o: src/Button.cpp.o
+.PHONY : src/Button.o
+
+# target to build an object file
+src/Button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Rocket_Racer.dir/build.make CMakeFiles/Rocket_Racer.dir/src/Button.cpp.o
+.PHONY : src/Button.cpp.o
+
+src/Button.i: src/Button.cpp.i
+.PHONY : src/Button.i
+
+# target to preprocess a source file
+src/Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Rocket_Racer.dir/build.make CMakeFiles/Rocket_Racer.dir/src/Button.cpp.i
+.PHONY : src/Button.cpp.i
+
+src/Button.s: src/Button.cpp.s
+.PHONY : src/Button.s
+
+# target to generate assembly for a file
+src/Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Rocket_Racer.dir/build.make CMakeFiles/Rocket_Racer.dir/src/Button.cpp.s
+.PHONY : src/Button.cpp.s
+
 src/CircleCollider.o: src/CircleCollider.cpp.o
 .PHONY : src/CircleCollider.o
 
@@ -426,6 +450,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Rocket_Racer"
+	@echo "... src/Button.o"
+	@echo "... src/Button.i"
+	@echo "... src/Button.s"
 	@echo "... src/CircleCollider.o"
 	@echo "... src/CircleCollider.i"
 	@echo "... src/CircleCollider.s"

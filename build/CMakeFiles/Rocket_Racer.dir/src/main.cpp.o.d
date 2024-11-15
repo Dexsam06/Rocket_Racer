@@ -316,6 +316,7 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/Collider.hpp \
+ /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.hpp \
  /usr/include/c++/14.2.1/unordered_map \
  /usr/include/c++/14.2.1/bits/unordered_map.h \
@@ -326,6 +327,10 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/erase_if.h \
  /home/samuel/Dev/c++/Rocket_Racer/src/Planet.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/InputHandler.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/src/Button.hpp \
+ /usr/include/c++/14.2.1/functional \
+ /usr/include/c++/14.2.1/bits/std_function.h \
+ /usr/include/c++/14.2.1/array /usr/include/c++/14.2.1/compare \
  /home/samuel/Dev/c++/Rocket_Racer/src/PhysicsSystem.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/Physics.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/src/RectangleCollider.hpp \
