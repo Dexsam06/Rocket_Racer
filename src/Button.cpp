@@ -18,7 +18,7 @@ Button::~Button() {
 
 void Button::render() {
     SDL_Rect buttonRect = { x, y, w, h };
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a); 
     SDL_RenderFillRect(renderer, &buttonRect); 
 
     int textWidth, textHeight;
@@ -32,7 +32,7 @@ void Button::handleEvent(SDL_Event& event) {
         int mouseX, mouseY;
         SDL_GetMouseState(&mouseX, &mouseY);
         
-        if (isClicked(mouseX, mouseY) && callback) {
+        if (isClicked(mouseX, mouseY) && callback) { 
             callback();  
         }
     }
