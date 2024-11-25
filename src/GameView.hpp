@@ -24,7 +24,7 @@ class GameView {
         double getScreenWidth() {return screenWidth; }
         double getScreenHeight() {return screenHeight; }
         void setBackground(SDL_Texture* background) {this->background = background; }
-        void setScalingFactors(Vector2D scalingFactor) {this->scalingFactor += scalingFactor; } 
+        void setScalingFactors(Vector2D scalingFactor) {this->scalingFactor *= scalingFactor; } 
     private:
         SDL_Texture* background; 
         SDL_Window* window;

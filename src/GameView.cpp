@@ -58,7 +58,6 @@ void GameView::render(std::vector<Entity *> entityList, std::vector<Button *> bu
     SDL_RenderClear(renderer);
 
     drawBackground(entityList[0]);
-
     Vector2D playerPos = entityList[0]->getPosition(); 
 
     for (Entity *entity : entityList)

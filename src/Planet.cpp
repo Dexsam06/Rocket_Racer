@@ -46,7 +46,7 @@ void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vec
         {
             if (dx * dx + dy * dy <= scaledRadius * scaledRadius)
             {
-                SDL_RenderDrawPoint(renderer, static_cast<int>(scaledPosition.x + dx), static_cast<int>(scaledPosition.y + dy)); 
+                SDL_RenderDrawPoint(renderer, static_cast<int>(scaledPosition.x + dx), static_cast<int>(scaledPosition.y + dy));  
             } 
         }
     }

@@ -11,10 +11,10 @@ GameController::GameController(GameView *gv) : gv(gv)
 GameController::~GameController() {}
 
 void GameController::onZoomButtonClickOut() {
-    gv->setScalingFactors(Vector2D(-0.1, -0.1)); 
+    gv->setScalingFactors(Vector2D(0.9, 0.9)); 
 }   
 void GameController::onZoomButtonClickIn() {
-    gv->setScalingFactors(Vector2D(0.1, 0.1));
+    gv->setScalingFactors(Vector2D(1.1, 1.1));
 }   
 
 void GameController::loadResources() 
