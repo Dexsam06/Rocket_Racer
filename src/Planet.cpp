@@ -18,23 +18,39 @@ void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaT
     getCollider()->updatePosition(getPosition());
 }
 
-void Planet::draw(SDL_Renderer* renderer, int screenWidth, int screenHeight, Vector2D playerPos) {
+void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos, Vector2D scalingFactor)  
+{
+    Vector2D screenCenter(screenWidth / 2, screenHeight / 2);
 
-    int centerX = position.x - playerPos.x + screenWidth / 2;
-    int centerY = position.y - playerPos.y + screenHeight / 2;
+    Vector2D offsetFromPlayer(
+        position.x - playerPos.x, 
+        position.y - playerPos.y
+    );
 
-    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); 
+    Vector2D scaledOffset(
+        offsetFromPlayer.x * scalingFactor.x, 
+        offsetFromPlayer.y * scalingFactor.y 
+    );
 
-    for (int y = centerY - radius; y <= centerY + radius; ++y) { 
-        for (int x = centerX - radius; x <= centerX + radius; ++x) {
-            int dx = x - centerX; 
-            int dy = y - centerY; 
+    Vector2D scaledPosition(
+        screenCenter.x + scaledOffset.x,
+        screenCenter.y + scaledOffset.y
+    );
 
-            if (dx * dx + dy * dy <= radius * radius) {  
-                SDL_RenderDrawPoint(renderer, x, y);  
-            }
+    int scaledRadius = static_cast<int>(radius * (scalingFactor.x + scalingFactor.y) / 2); 
+
+    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+    for (int dy = -scaledRadius; dy <= scaledRadius; ++dy)
+    {
+        for (int dx = -scaledRadius; dx <= scaledRadius; ++dx)
+        {
+            if (dx * dx + dy * dy <= scaledRadius * scaledRadius)
+            {
+                SDL_RenderDrawPoint(renderer, static_cast<int>(scaledPosition.x + dx), static_cast<int>(scaledPosition.y + dy)); 
+            } 
         }
     }
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderDrawLine(renderer, centerX, centerY, screenWidth / 2, screenHeight / 2);
+
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); 
+    SDL_RenderDrawLine(renderer, scaledPosition.x, scaledPosition.y, screenCenter.x, screenCenter.y);
 }

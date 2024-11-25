@@ -8,7 +8,7 @@
 class InputHandler {
 public:
     void handleInput(Player* player, std::vector<Button*> buttonList);
-    bool isQuit() const { return quit; }
+    bool isQuit() const { return quit; } 
 
 private:
     bool quit = false;

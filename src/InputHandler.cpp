@@ -11,10 +11,10 @@ void InputHandler::handleInput(Player* player, std::vector<Button*> buttonList) 
         if (event.type == SDL_KEYDOWN) {
         switch (event.key.keysym.sym) {
             case SDLK_RIGHT:
-                player->setRotationSpeed(0.3); 
+                player->setRotationSpeed(0.4); 
                 break;
             case SDLK_LEFT: 
-                player->setRotationSpeed(-0.3); 
+                player->setRotationSpeed(-0.4); 
                 break;
             case SDLK_SPACE:
                 player->setThrust(10000);
@@ -38,4 +38,5 @@ void InputHandler::handleInput(Player* player, std::vector<Button*> buttonList) 
         }
       }
     }
-}
+} 
+

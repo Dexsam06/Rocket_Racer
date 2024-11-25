@@ -28,8 +28,16 @@ void Player::update(double& xGravityForce, double& yGravityForce, double& deltaT
     getCollider()->setRotation((rotation * M_PI) / 180);
 } 
 
-void Player::draw (SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos) 
+void Player::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos, Vector2D scalingFactor)
 {
-    SDL_Rect playerDestRect = { screenWidth / 2 - playerWidth / 2, screenHeight / 2 - playerHeight / 2, playerWidth, playerHeight};
+    int scaledWidth = static_cast<int>(playerWidth * scalingFactor.x);
+    int scaledHeight = static_cast<int>(playerHeight * scalingFactor.y); 
+
+    SDL_Rect playerDestRect = {
+        screenWidth / 2 - scaledWidth / 2, 
+        screenHeight / 2 - scaledHeight / 2, 
+        scaledWidth,
+        scaledHeight}; 
+
     SDL_RenderCopyEx(renderer, texture, nullptr, &playerDestRect, rotation, nullptr, SDL_FLIP_NONE);
 }

@@ -22,7 +22,7 @@ private:
     int playerWidth, playerHeight; 
 
     void update(double& xGravityForce, double& yGravityForce, double& deltaTime) override;
-    void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos) override; 
+    void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos, Vector2D scalingFactor) override; 
 };  
 
 #endif 

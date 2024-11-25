@@ -56,18 +56,17 @@ void GameView::render(std::vector<Entity *> entityList, std::vector<Button *> bu
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
+
     drawBackground(entityList[0]);
 
-    SDL_RenderSetScale(renderer, scalingFactor.x, scalingFactor.y);
+    Vector2D playerPos = entityList[0]->getPosition(); 
 
     for (Entity *entity : entityList)
     {
-        entity->draw(renderer, screenWidth, screenHeight, entityList[0]->getPosition());
+        entity->draw(renderer, screenWidth, screenHeight, playerPos, scalingFactor); 
     }
 
-    SDL_RenderSetScale(renderer, 1.0, 1.0); 
-
-    for (Button *button : buttonList)
+    for (Button *button : buttonList) 
     {
         button->render();
     }

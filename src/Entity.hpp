@@ -12,7 +12,7 @@ class Entity {
 public:
     Entity(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass); 
     virtual ~Entity() {}
-    virtual void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos) {}
+    virtual void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos, Vector2D scalingFactor) {}
     virtual void update(double& xGravityForce, double& yGravityForce, double& deltaTime) {}
     bool checkCollision(const Entity& other, Vector2D& collisionNormal, double restitution);
 
