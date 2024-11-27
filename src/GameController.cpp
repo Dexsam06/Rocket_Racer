@@ -16,8 +16,14 @@ void GameController::onZoomButtonClickOut() {
 void GameController::onZoomButtonClickIn() {
     gv->setScalingFactors(Vector2D(1.1, 1.1));
 }   
+void GameController::ResetPlayerButton() {
+    player->setPosition(Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 -30));   
+    player->setVelocity(Vector2D(0, 0));
+    player->setRotationSpeed(-player->getRotationSpeed());   
+    player->setRotation(0);
+}
 
-void GameController::loadResources() 
+void GameController::loadResources()    
 {
     //Background
     SDL_Texture* backgroundTexture = textureManager.loadTexture("background", "../res/spaceBackgroundTiling.jpg", gv->getRenderer()); 
@@ -34,11 +40,11 @@ void GameController::loadResources()
     entityList.push_back(player);     
 
     //Planets
-    earth = new Planet(std::make_unique<CircleCollider>(Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 300), 300.0), Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 300), Vector2D (0, 0), 2000000.0, 300.0); 
+    earth = new Planet(std::make_unique<CircleCollider>(Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 300), 300.0), Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 300), Vector2D (0, 0), 2000000.0, 300.0, 0, 250 ,0); 
     entityList.push_back(earth); 
 
-    moon = new Planet(std::make_unique<CircleCollider>(Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 - 500), 100.0), Vector2D (gv->getScreenWidth() / 2 + 300, gv->getScreenHeight() / 2 + height / 2 - 500), Vector2D (100, 0), 20000.0, 100.0); 
-    entityList.push_back(moon);
+    moon = new Planet(std::make_unique<CircleCollider>(Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 - 500), 150.0), Vector2D (gv->getScreenWidth() / 2 + 300, gv->getScreenHeight() / 2 + height / 2 - 500), Vector2D (100, 0), 20000.0, 150.0, 194, 197, 204); 
+    entityList.push_back(moon); 
 
     //Buttons
     zoomButtonIn = new Button(0.85 * gv->getScreenWidth(), 0.4 * gv->getScreenHeight(), 200, 50, {0, 128, 255, 255}, "Zoom Out", gv->getRenderer(), gv->getFont(), std::bind(&GameController::onZoomButtonClickOut, this)); 
@@ -46,11 +52,14 @@ void GameController::loadResources()
 
     zoomButtonOut = new Button(0.85 * gv->getScreenWidth(), 0.45 * gv->getScreenHeight(), 200, 50, {0, 78, 255, 255}, "Zoom In", gv->getRenderer(), gv->getFont(), std::bind(&GameController::onZoomButtonClickIn, this));
     buttonList.push_back(zoomButtonOut); 
+
+    resetButton = new Button(0.85 * gv->getScreenWidth(), 0.5 * gv->getScreenHeight(), 200, 50, {0, 78, 255, 255}, "Reset Player", gv->getRenderer(), gv->getFont(), std::bind(&GameController::ResetPlayerButton, this));
+    buttonList.push_back(resetButton);
 }  
 
-void GameController::render() 
+void GameController::render(std::vector<Vector2D> futurePath) 
 {
-    gv->render(entityList, buttonList);
+    gv->render(entityList, buttonList, futurePath);
 }
 
 void GameController::gameLoop() 
@@ -65,8 +74,7 @@ void GameController::gameLoop()
         if(deltaTime > updateTime) {
             previousTime = SDL_GetTicks();
             handleEvents();
-            physicsSystem.update(entityList, deltaTime / 1000.0);
-            render();
+            render(physicsSystem.update(entityList, deltaTime / 1000.0));
         }
     }
     gv->clean();

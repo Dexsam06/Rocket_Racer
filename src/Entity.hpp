@@ -20,6 +20,7 @@ public:
     Vector2D& getVelocity() {return velocity; }
     std::unique_ptr<Collider>& getCollider() {return collider; }
     double getMass() {return mass; }
+    Vector2D getAcceleration() {return acceleration; }
 protected:
     std::unique_ptr<Collider> collider;
     Vector2D position;

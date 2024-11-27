@@ -8,13 +8,14 @@
 #include "Physics.hpp"
 #include "Collider.hpp"
 
-class PhysicsSystem
+class PhysicsSystem 
 {
 public:
-    void update(std::vector<Entity *> &entityList, double deltaTime);
+    std::vector<Vector2D> update(std::vector<Entity *> &entityList, double deltaTime);
 private:
     void applyGravity(std::vector<Entity *> &entityList, double deltaTime);
     void handleCollision(std::vector<Entity *> &entityList); 
+    std::vector<Vector2D> calculateFuturePath(std::vector<Entity *> &entityList, double deltaTime, double predictionTime);
 };
 
 #endif

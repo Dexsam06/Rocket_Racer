@@ -13,9 +13,11 @@ class GameView {
     public:
         GameView(int screenWidth, int screenHeight, const char* title, bool fullscreen);
         ~GameView();
-        void render(std::vector<Entity *> entityList, std::vector<Button *> buttonList);
+        void render(std::vector<Entity *> entityList, std::vector<Button *> buttonList, std::vector<Vector2D>& futurePath);
         void clean();
         void drawBackground(Entity* player);
+        void drawFuturePath(std::vector<Vector2D>& futurePath);
+        std::vector<SDL_Point> convertToSDLPoints(const std::vector<Vector2D>& points);
 
         bool running() {return isRunning; } 
         void setIsRunning(bool isRunning) {this->isRunning = isRunning; }

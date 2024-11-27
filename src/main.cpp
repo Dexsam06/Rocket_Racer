@@ -6,8 +6,8 @@
 int main(int argc, const char * argv[]) {
     std::cout << "Starting game..." << std::endl;
 
-    const int windowWidth = 1400;
-    const int windowHeight = 1000;
+    const int windowWidth = 1920;
+    const int windowHeight = 1080;
     const char* windowTitle = "Rocket Racer";
 
     GameView gv(windowWidth, windowHeight, windowTitle, false);

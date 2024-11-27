@@ -17,9 +17,9 @@ std::vector<Vector2D> RectangleCollider::getVertices() const {
 
     return {
         center + Vector2D( halfWidth * cosTheta - halfHeight * sinTheta,  halfWidth * sinTheta + halfHeight * cosTheta),
-        center + Vector2D(-halfWidth * cosTheta - halfHeight * sinTheta, -halfWidth * sinTheta + halfHeight * cosTheta),
+        center + Vector2D(-halfWidth * cosTheta - halfHeight * sinTheta, -halfWidth * sinTheta + halfHeight * cosTheta), 
         center + Vector2D(-halfWidth * cosTheta + halfHeight * sinTheta, -halfWidth * sinTheta - halfHeight * cosTheta),
-        center + Vector2D( halfWidth * cosTheta + halfHeight * sinTheta,  halfWidth * sinTheta - halfHeight * cosTheta)
+        center + Vector2D( halfWidth * cosTheta + halfHeight * sinTheta,  halfWidth * sinTheta - halfHeight * cosTheta) 
     };
 }
 
@@ -139,3 +139,4 @@ void RectangleCollider::resolveCollision(Vector2D& velocity, const Vector2D& col
     Vector2D relativeVelocityAlongNormal = velocity.dot(collisionNormal) * collisionNormal;
     velocity -= (1 + restitution) * relativeVelocityAlongNormal; 
 }
+

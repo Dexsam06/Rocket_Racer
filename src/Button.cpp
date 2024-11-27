@@ -8,7 +8,7 @@ Button::Button(int x, int y, int w, int h, SDL_Color color, const char* text, SD
 {
    
     SDL_Surface* textSurface = TTF_RenderText_Blended(font, text, {255, 255, 255, 255}); 
-    textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+    textTexture = SDL_CreateTextureFromSurface(renderer, textSurface); 
     SDL_FreeSurface(textSurface);
 }
 

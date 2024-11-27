@@ -52,7 +52,7 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
 
 GameView::~GameView() {}
 
-void GameView::render(std::vector<Entity *> entityList, std::vector<Button *> buttonList)
+void GameView::render(std::vector<Entity *> entityList, std::vector<Button *> buttonList, std::vector<Vector2D>& futurePath)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
@@ -70,6 +70,7 @@ void GameView::render(std::vector<Entity *> entityList, std::vector<Button *> bu
         button->render();
     }
 
+    drawFuturePath(futurePath);
     SDL_RenderPresent(renderer);
 }
 
@@ -116,3 +117,21 @@ void GameView::drawBackground(Entity *player)
 
     SDL_RenderSetScale(renderer, 1.0, 1.0);
 }
+
+void GameView::drawFuturePath(std::vector<Vector2D>& futurePath) {
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255 ,255);
+    auto sdlPoints = convertToSDLPoints(futurePath); 
+    SDL_RenderDrawLines(renderer, sdlPoints.data(), futurePath.size());
+}
+
+std::vector<SDL_Point> GameView::convertToSDLPoints(const std::vector<Vector2D>& points) {
+    std::vector<SDL_Point> sdlPoints;
+    sdlPoints.reserve(points.size()); 
+
+    for (const auto& point : points) {
+        sdlPoints.push_back(SDL_Point{static_cast<int>(point.x), static_cast<int>(point.y)});
+    }
+
+    return sdlPoints; 
+}
+

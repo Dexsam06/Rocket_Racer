@@ -15,6 +15,11 @@ public:
     void setPlayerWidth(int playerWidth) {this->playerWidth = playerWidth; }
     void setPlayerHeight(int playerHeight) {this->playerHeight = playerHeight; }
     void setRotationSpeed(double rotationSpeed) {this->rotationSpeed += rotationSpeed; }
+    void setPosition(Vector2D position) {this->position = position; }
+    void setVelocity(Vector2D velocity) {this->velocity = velocity; }
+    void setRotation(double rotation) {this->rotation = rotation; }
+
+    double getRotationSpeed() {return rotationSpeed; } 
 private:
     SDL_Texture* texture;   
     double thrust;

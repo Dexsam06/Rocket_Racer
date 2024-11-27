@@ -24,7 +24,7 @@ class GameController {
         ~GameController(); 
         void gameLoop();
     private:
-        void render();
+        void render(std::vector<Vector2D> futurePath);
         void loadResources();
         void handleEvents();
 
@@ -34,6 +34,7 @@ class GameController {
 
         Button* zoomButtonIn;
         Button* zoomButtonOut;
+        Button* resetButton;
 
         GameView* gv;   
         std::vector<Entity*> entityList; 
@@ -44,6 +45,7 @@ class GameController {
 
         void onZoomButtonClickIn();
         void onZoomButtonClickOut();
+        void ResetPlayerButton();
 };
 
 #endif

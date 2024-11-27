@@ -7,3 +7,4 @@ Entity::Entity(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, d
 bool Entity::checkCollision(const Entity& other, Vector2D& collisionNormal, double restitution) {
     return collider->checkCollision(*other.collider, collisionNormal, restitution);
 }
+

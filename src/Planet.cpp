@@ -2,8 +2,8 @@
 #include "Physics.hpp"
 #include <vector>
 
-Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius)
-    : radius(radius), Entity(std::move(collider), pos, vel, mass) { 
+Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius, int R, int G, int B)
+    : radius(radius), color{R, G, B}, Entity(std::move(collider), pos, vel, mass) { 
 } 
 
 void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaTime){
@@ -16,9 +16,9 @@ void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaT
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
     velocity.y += Physics::velocity(acceleration.y, deltaTime); 
     getCollider()->updatePosition(getPosition());
-}
+}  
 
-void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos, Vector2D scalingFactor)  
+void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos, Vector2D scalingFactor)   
 {
     Vector2D screenCenter(screenWidth / 2, screenHeight / 2);
 
@@ -39,7 +39,7 @@ void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vec
 
     int scaledRadius = static_cast<int>(radius * (scalingFactor.x + scalingFactor.y) / 2); 
 
-    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+    SDL_SetRenderDrawColor(renderer, color.R, color.G, color.B, 255);
     for (int dy = -scaledRadius; dy <= scaledRadius; ++dy)
     {
         for (int dx = -scaledRadius; dx <= scaledRadius; ++dx)
@@ -50,7 +50,4 @@ void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vec
             } 
         }
     }
-
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); 
-    SDL_RenderDrawLine(renderer, scaledPosition.x, scaledPosition.y, screenCenter.x, screenCenter.y);
 }
