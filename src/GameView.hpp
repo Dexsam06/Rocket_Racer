@@ -13,7 +13,7 @@ class GameView {
     public:
         GameView(int screenWidth, int screenHeight, const char* title, bool fullscreen);
         ~GameView();
-        void render(std::vector<Entity *> entityList, std::vector<Button *> buttonList, std::vector<Vector2D>& futurePath);
+        void render(std::vector<std::unique_ptr<Entity>>& entityList, std::vector<std::unique_ptr<Button>>& buttonList, std::vector<Vector2D>& futurePath);
         void clean();
         void drawBackground(Entity* player);
         void drawFuturePath(std::vector<Vector2D>& futurePath);

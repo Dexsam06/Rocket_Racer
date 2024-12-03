@@ -18,4 +18,4 @@ private:
     double radius;
 };
 
-#endif // CIRCLE_COLLIDER_HPP
+#endif

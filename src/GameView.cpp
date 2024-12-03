@@ -52,20 +52,22 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
 
 GameView::~GameView() {}
 
-void GameView::render(std::vector<Entity *> entityList, std::vector<Button *> buttonList, std::vector<Vector2D>& futurePath)
+void GameView::render(std::vector<std::unique_ptr<Entity>>& entityList, std::vector<std::unique_ptr<Button>>& buttonList, std::vector<Vector2D>& futurePath)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    drawBackground(entityList[0]);
-    Vector2D playerPos = entityList[0]->getPosition(); 
+    if (!entityList.empty()) {
+        drawBackground(entityList[0].get());
+        Vector2D playerPos = entityList[0]->getPosition();
 
-    for (Entity *entity : entityList)
-    {
-        entity->draw(renderer, screenWidth, screenHeight, playerPos, scalingFactor); 
+        for (const auto& entity : entityList)
+        {
+            entity->draw(renderer, screenWidth, screenHeight, playerPos, scalingFactor);
+        }
     }
 
-    for (Button *button : buttonList) 
+    for (const auto& button : buttonList) 
     {
         button->render();
     }
@@ -73,6 +75,7 @@ void GameView::render(std::vector<Entity *> entityList, std::vector<Button *> bu
     drawFuturePath(futurePath);
     SDL_RenderPresent(renderer);
 }
+
 
 void GameView::clean()
 {

@@ -7,11 +7,11 @@
 
 class InputHandler {
 public:
-    void handleInput(Player* player, std::vector<Button*> buttonList);
+    void handleInput(std::unique_ptr<Player> &player, std::vector<std::unique_ptr<Button>> &buttonList);
     bool isQuit() const { return quit; } 
 
 private:
     bool quit = false;
 };
 
-#endif // INPUTHANDLER_H
+#endif 

@@ -1,14 +1,14 @@
 
 #include "PhysicsSystem.hpp"
 
-std::vector<Vector2D> PhysicsSystem::update(std::vector<Entity *> &entityList, double deltaTime)
+std::vector<Vector2D> PhysicsSystem::update(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime)
 {
     applyGravity(entityList, deltaTime);
     handleCollision(entityList);
     return calculateFuturePath(entityList, deltaTime, 10);
 }
 
-void PhysicsSystem::applyGravity(std::vector<Entity *> &entityList, double deltaTime)
+void PhysicsSystem::applyGravity(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime)
 {
     size_t n = entityList.size();
     std::vector<std::pair<double, double>> forces(n, {0.0, 0.0});
@@ -17,9 +17,14 @@ void PhysicsSystem::applyGravity(std::vector<Entity *> &entityList, double delta
     {
         for (size_t j = i + 1; j < n; ++j)
         {
-            double dx = entityList[j]->getPosition().x - entityList[i]->getPosition().x;
-            double dy = entityList[j]->getPosition().y - entityList[i]->getPosition().y;
-            double distance = std::sqrt(dx * dx + dy * dy);
+            // Use local copies to avoid mutating const getters
+            const Vector2D pos1 = entityList[i]->getPosition();
+            const Vector2D pos2 = entityList[j]->getPosition();
+
+            double dx = pos2.x - pos1.x;
+            double dy = pos2.y - pos1.y;
+            double epsilon = 1e-3;
+            double distance = std::sqrt(dx * dx + dy * dy) + epsilon;
             double force = Physics::gravityPull(entityList[i]->getMass(), entityList[j]->getMass(), distance);
 
             double angle = std::atan2(dy, dx);
@@ -39,7 +44,7 @@ void PhysicsSystem::applyGravity(std::vector<Entity *> &entityList, double delta
     }
 }
 
-void PhysicsSystem::handleCollision(std::vector<Entity *> &entityList)
+void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entityList)
 {
     double restitution = 0.2;
     for (size_t i = 0; i < entityList.size(); ++i)
@@ -48,72 +53,42 @@ void PhysicsSystem::handleCollision(std::vector<Entity *> &entityList)
         {
             if (i == j)
                 continue;
+            
             Vector2D collisionNormal;
-            if (entityList[i]->checkCollision(*entityList[j], collisionNormal, restitution))
+
+            // Use const references to avoid modifying objects when not necessary
+            const auto& entity1 = *entityList[i];
+            const auto& entity2 = *entityList[j];
+
+            if (entity1.checkCollision(entity2, collisionNormal, restitution))
             {
-                entityList[i]->getCollider()->resolveCollision(entityList[i]->getVelocity(), collisionNormal, restitution);
-                entityList[j]->getCollider()->resolveCollision(entityList[j]->getVelocity(), -collisionNormal, restitution);
+                // Pass velocity by reference where modifications are intended
+                entity1.getCollider()->resolveCollision(entityList[i]->getVelocity(), collisionNormal, restitution); 
+                entity2.getCollider()->resolveCollision(entityList[j]->getVelocity(), -collisionNormal, restitution);
             }
         }
     }
 }
 
-std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<Entity *> &entityList, double deltaTime, double predictionTime)
+
+std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime, double predictionTime)
 {
+    std::vector<std::unique_ptr<Entity>> tempEntities;
+    for (const auto &entity : entityList)
+    {
+        tempEntities.push_back(entity->clone());
+    }
+    
     int steps = static_cast<int>(predictionTime / deltaTime);
     std::vector<Vector2D> futurePath;
 
-    std::vector<std::vector<Vector2D>> temporaryEntityList;
-    for (size_t i = 0; i < entityList.size(); i++)
-    {
-        std::vector<Vector2D> temporaryEntity;
-        Vector2D currentPosition = entityList[i]->getPosition();
-        Vector2D currentAcceleration = entityList[i]->getAcceleration();
-        Vector2D currentVelocity = entityList[i]->getVelocity();
-        temporaryEntity.push_back(currentAcceleration);
-        temporaryEntity.push_back(currentPosition);
-        temporaryEntity.push_back(currentVelocity);
-        temporaryEntityList.push_back(temporaryEntity);
-    }
-
-    size_t n = temporaryEntityList.size();
-
     for (int i = 0; i < steps; ++i)
     {
-        std::vector<std::pair<double, double>> forces(n, {0.0, 0.0});
+        applyGravity(tempEntities, deltaTime);
+        handleCollision(tempEntities);
 
-        for (size_t i = 0; i < n; ++i)
-        {
-            for (size_t j = i + 1; j < n; ++j)
-            {
-                double dx = temporaryEntityList[j][1].x - temporaryEntityList[i][1].x;
-                double dy = temporaryEntityList[j][1].y - temporaryEntityList[i][1].y;
-                double distance = std::sqrt(dx * dx + dy * dy);
-                double force = Physics::gravityPull(entityList[i]->getMass(), entityList[j]->getMass(), distance);
-
-                double angle = std::atan2(dy, dx);
-                double fx = force * std::cos(angle);
-                double fy = force * std::sin(angle);
-
-                forces[i].first += fx;
-                forces[i].second += fy;
-                forces[j].first -= fx;
-                forces[j].second -= fy;
-            }
-        }
-
-        for (size_t j = 0; j < n; j++)
-        {
-            temporaryEntityList[j][0].x = Physics::acceleration(forces[j].first, entityList[j]->getMass());
-            temporaryEntityList[j][0].y = Physics::acceleration(forces[j].second, entityList[j]->getMass());
-
-            temporaryEntityList[j][1].x += Physics::distance(temporaryEntityList[j][2].x, temporaryEntityList[j][0].x, deltaTime);
-            temporaryEntityList[j][1].y += Physics::distance(temporaryEntityList[j][2].y, temporaryEntityList[j][0].y, deltaTime);
-
-            temporaryEntityList[j][2].x += Physics::velocity(temporaryEntityList[j][0].x, deltaTime);
-            temporaryEntityList[j][2].y += Physics::velocity(temporaryEntityList[j][0].y, deltaTime);
-        }
-        futurePath.push_back(temporaryEntityList[0][1]);
+        // Store the position without modifying it
+        futurePath.push_back(tempEntities[0]->getPosition());
     }
 
     return futurePath;

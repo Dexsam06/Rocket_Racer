@@ -1,7 +1,7 @@
 #include "InputHandler.hpp"
 #include "Physics.hpp"
 
-void InputHandler::handleInput(Player* player, std::vector<Button*> buttonList) { 
+void InputHandler::handleInput(std::unique_ptr<Player> &player, std::vector<std::unique_ptr<Button>> &buttonList) { 
     SDL_Event event; 
     quit = false;
     while (SDL_PollEvent(&event)) {
@@ -33,7 +33,7 @@ void InputHandler::handleInput(Player* player, std::vector<Button*> buttonList) 
         }
     }
       else if (event.type == SDL_MOUSEBUTTONDOWN) { 
-        for(Button* button : buttonList) {
+        for(std::unique_ptr<Button>& button : buttonList) {
             button->handleEvent(event);
         }
       }

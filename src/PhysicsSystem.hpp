@@ -11,11 +11,11 @@
 class PhysicsSystem 
 {
 public:
-    std::vector<Vector2D> update(std::vector<Entity *> &entityList, double deltaTime);
+    std::vector<Vector2D> update(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime);
 private:
-    void applyGravity(std::vector<Entity *> &entityList, double deltaTime);
-    void handleCollision(std::vector<Entity *> &entityList); 
-    std::vector<Vector2D> calculateFuturePath(std::vector<Entity *> &entityList, double deltaTime, double predictionTime);
+    void applyGravity(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime);
+    void handleCollision(std::vector<std::unique_ptr<Entity>> &entityList); 
+    std::vector<Vector2D> calculateFuturePath(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime, double predictionTime);
 };
 
 #endif

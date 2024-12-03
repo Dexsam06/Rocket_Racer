@@ -13,7 +13,7 @@ bool CircleCollider::checkCollision(const Collider& other, Vector2D& collisionNo
         double radiusSum = radius + circle->getRadius(); 
         double epsilon = 1e-6;
         if (distance < radiusSum + epsilon) {
-            collisionNormal = distanceVec.normalized();  // Set the collision normal 
+            collisionNormal = distanceVec.normalized();  
             return true; 
         }
         return false; 
@@ -21,7 +21,7 @@ bool CircleCollider::checkCollision(const Collider& other, Vector2D& collisionNo
     
     const RectangleCollider* rect = dynamic_cast<const RectangleCollider*>(&other);
     if (rect) {
-        return rect->checkCollision(*this, collisionNormal, restitution); // Delegate to rectangle's handling
+        return rect->checkCollision(*this, collisionNormal, restitution); 
     }
     
     return false;

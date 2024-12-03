@@ -28,17 +28,17 @@ class GameController {
         void loadResources();
         void handleEvents();
 
-        Player* player;  
-        Planet* earth; 
-        Planet* moon;
+        std::unique_ptr<Player> player;  
+        std::unique_ptr<Planet> earth; 
+        std::unique_ptr<Planet> moon;
 
-        Button* zoomButtonIn;
-        Button* zoomButtonOut;
-        Button* resetButton;
+        std::unique_ptr<Button> zoomButtonIn;
+        std::unique_ptr<Button> zoomButtonOut;
+        std::unique_ptr<Button> resetButton;
 
         GameView* gv;   
-        std::vector<Entity*> entityList; 
-        std::vector<Button*> buttonList;
+        std::vector<std::unique_ptr<Entity>> entityList; 
+        std::vector<std::unique_ptr<Button>> buttonList;
         InputHandler inputHandler;
         TextureManager textureManager;
         PhysicsSystem physicsSystem;
