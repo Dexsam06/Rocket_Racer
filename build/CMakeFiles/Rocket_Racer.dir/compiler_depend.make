@@ -430,6 +430,8 @@ CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocke
   /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
   /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-least.h \
+  /usr/include/bits/stdint-uintn.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/bits/struct_mutex.h \
@@ -471,10 +473,15 @@ CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocke
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/c++/14.2.1/backward/auto_ptr.h \
   /usr/include/c++/14.2.1/backward/binders.h \
   /usr/include/c++/14.2.1/bit \
+  /usr/include/c++/14.2.1/bits/align.h \
   /usr/include/c++/14.2.1/bits/alloc_traits.h \
+  /usr/include/c++/14.2.1/bits/allocated_ptr.h \
   /usr/include/c++/14.2.1/bits/allocator.h \
+  /usr/include/c++/14.2.1/bits/atomic_base.h \
+  /usr/include/c++/14.2.1/bits/atomic_lockfree_defines.h \
   /usr/include/c++/14.2.1/bits/basic_ios.h \
   /usr/include/c++/14.2.1/bits/basic_ios.tcc \
   /usr/include/c++/14.2.1/bits/basic_string.h \
@@ -512,6 +519,9 @@ CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocke
   /usr/include/c++/14.2.1/bits/range_access.h \
   /usr/include/c++/14.2.1/bits/refwrap.h \
   /usr/include/c++/14.2.1/bits/requires_hosted.h \
+  /usr/include/c++/14.2.1/bits/shared_ptr.h \
+  /usr/include/c++/14.2.1/bits/shared_ptr_atomic.h \
+  /usr/include/c++/14.2.1/bits/shared_ptr_base.h \
   /usr/include/c++/14.2.1/bits/specfun.h \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
@@ -522,12 +532,15 @@ CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocke
   /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
   /usr/include/c++/14.2.1/bits/stl_pair.h \
+  /usr/include/c++/14.2.1/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
   /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
   /usr/include/c++/14.2.1/bits/stl_vector.h \
   /usr/include/c++/14.2.1/bits/streambuf.tcc \
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
+  /usr/include/c++/14.2.1/bits/unique_ptr.h \
   /usr/include/c++/14.2.1/bits/uses_allocator.h \
   /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/14.2.1/bits/utility.h \
@@ -546,8 +559,10 @@ CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocke
   /usr/include/c++/14.2.1/debug/assertions.h \
   /usr/include/c++/14.2.1/debug/debug.h \
   /usr/include/c++/14.2.1/exception \
+  /usr/include/c++/14.2.1/ext/aligned_buffer.h \
   /usr/include/c++/14.2.1/ext/alloc_traits.h \
   /usr/include/c++/14.2.1/ext/atomicity.h \
+  /usr/include/c++/14.2.1/ext/concurrence.h \
   /usr/include/c++/14.2.1/ext/numeric_traits.h \
   /usr/include/c++/14.2.1/ext/string_conversions.h \
   /usr/include/c++/14.2.1/ext/type_traits.h \
@@ -557,8 +572,11 @@ CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocke
   /usr/include/c++/14.2.1/iostream \
   /usr/include/c++/14.2.1/istream \
   /usr/include/c++/14.2.1/limits \
+  /usr/include/c++/14.2.1/memory \
   /usr/include/c++/14.2.1/new \
   /usr/include/c++/14.2.1/ostream \
+  /usr/include/c++/14.2.1/pstl/execution_defs.h \
+  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/14.2.1/pstl/pstl_config.h \
   /usr/include/c++/14.2.1/stdexcept \
   /usr/include/c++/14.2.1/streambuf \
@@ -605,6 +623,7 @@ CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocke
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
+  /usr/include/stdint.h \
   /usr/include/stdio.h \
   /usr/include/stdlib.h \
   /usr/include/sys/cdefs.h \
@@ -615,7 +634,8 @@ CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocke
   /usr/include/wchar.h \
   /usr/include/wctype.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
 
 CMakeFiles/Rocket_Racer.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/Entity.cpp \
   /home/samuel/Dev/c++/Rocket_Racer/src/Collider.hpp \
@@ -3056,6 +3076,8 @@ CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Ro
   /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
   /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-least.h \
+  /usr/include/bits/stdint-uintn.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/bits/struct_mutex.h \
@@ -3098,11 +3120,16 @@ CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Ro
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
   /usr/include/c++/14.2.1/algorithm \
+  /usr/include/c++/14.2.1/backward/auto_ptr.h \
   /usr/include/c++/14.2.1/backward/binders.h \
   /usr/include/c++/14.2.1/bit \
   /usr/include/c++/14.2.1/bits/algorithmfwd.h \
+  /usr/include/c++/14.2.1/bits/align.h \
   /usr/include/c++/14.2.1/bits/alloc_traits.h \
+  /usr/include/c++/14.2.1/bits/allocated_ptr.h \
   /usr/include/c++/14.2.1/bits/allocator.h \
+  /usr/include/c++/14.2.1/bits/atomic_base.h \
+  /usr/include/c++/14.2.1/bits/atomic_lockfree_defines.h \
   /usr/include/c++/14.2.1/bits/basic_ios.h \
   /usr/include/c++/14.2.1/bits/basic_ios.tcc \
   /usr/include/c++/14.2.1/bits/basic_string.h \
@@ -3140,6 +3167,9 @@ CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Ro
   /usr/include/c++/14.2.1/bits/range_access.h \
   /usr/include/c++/14.2.1/bits/refwrap.h \
   /usr/include/c++/14.2.1/bits/requires_hosted.h \
+  /usr/include/c++/14.2.1/bits/shared_ptr.h \
+  /usr/include/c++/14.2.1/bits/shared_ptr_atomic.h \
+  /usr/include/c++/14.2.1/bits/shared_ptr_base.h \
   /usr/include/c++/14.2.1/bits/specfun.h \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/stl_algo.h \
@@ -3152,6 +3182,7 @@ CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Ro
   /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
   /usr/include/c++/14.2.1/bits/stl_pair.h \
+  /usr/include/c++/14.2.1/bits/stl_raw_storage_iter.h \
   /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
   /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
   /usr/include/c++/14.2.1/bits/stl_vector.h \
@@ -3160,6 +3191,7 @@ CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Ro
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
   /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
+  /usr/include/c++/14.2.1/bits/unique_ptr.h \
   /usr/include/c++/14.2.1/bits/uses_allocator.h \
   /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/14.2.1/bits/utility.h \
@@ -3178,8 +3210,10 @@ CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Ro
   /usr/include/c++/14.2.1/debug/assertions.h \
   /usr/include/c++/14.2.1/debug/debug.h \
   /usr/include/c++/14.2.1/exception \
+  /usr/include/c++/14.2.1/ext/aligned_buffer.h \
   /usr/include/c++/14.2.1/ext/alloc_traits.h \
   /usr/include/c++/14.2.1/ext/atomicity.h \
+  /usr/include/c++/14.2.1/ext/concurrence.h \
   /usr/include/c++/14.2.1/ext/numeric_traits.h \
   /usr/include/c++/14.2.1/ext/string_conversions.h \
   /usr/include/c++/14.2.1/ext/type_traits.h \
@@ -3189,10 +3223,12 @@ CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Ro
   /usr/include/c++/14.2.1/iostream \
   /usr/include/c++/14.2.1/istream \
   /usr/include/c++/14.2.1/limits \
+  /usr/include/c++/14.2.1/memory \
   /usr/include/c++/14.2.1/new \
   /usr/include/c++/14.2.1/ostream \
   /usr/include/c++/14.2.1/pstl/execution_defs.h \
   /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/14.2.1/pstl/pstl_config.h \
   /usr/include/c++/14.2.1/stdexcept \
   /usr/include/c++/14.2.1/streambuf \
@@ -3239,6 +3275,7 @@ CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Ro
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
+  /usr/include/stdint.h \
   /usr/include/stdio.h \
   /usr/include/stdlib.h \
   /usr/include/sys/cdefs.h \
@@ -3249,7 +3286,8 @@ CMakeFiles/Rocket_Racer.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Ro
   /usr/include/wchar.h \
   /usr/include/wctype.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
 
 CMakeFiles/Rocket_Racer.dir/src/TextureManager.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.cpp \
   /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.hpp \
@@ -4030,6 +4068,10 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/sr
 
 /home/samuel/Dev/c++/Rocket_Racer/src/GameView.hpp:
 
+/home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp:
+
+/home/samuel/Dev/c++/Rocket_Racer/src/Entity.cpp:
+
 /usr/include/c++/14.2.1/pstl/glue_memory_defs.h:
 
 /usr/include/c++/14.2.1/ext/concurrence.h:
@@ -4043,10 +4085,6 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/sr
 /usr/include/c++/14.2.1/bits/align.h:
 
 /usr/include/c++/14.2.1/backward/auto_ptr.h:
-
-/home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp:
-
-/home/samuel/Dev/c++/Rocket_Racer/src/Entity.cpp:
 
 /home/samuel/Dev/c++/Rocket_Racer/src/RectangleCollider.hpp:
 

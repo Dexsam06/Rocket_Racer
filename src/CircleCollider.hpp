@@ -8,6 +8,10 @@ class CircleCollider : public Collider {
 public:
     CircleCollider(Vector2D center, double radius);
 
+    std::unique_ptr<Collider> clone() const override {
+        return std::make_unique<CircleCollider>(center, radius);
+    }
+
     bool checkCollision(const Collider& other, Vector2D& collisionNormal, double restitution) const override;
     void resolveCollision(Vector2D& velocity, const Vector2D& collisionNormal, double restitution) const override;
     

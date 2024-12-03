@@ -11,6 +11,11 @@ class RectangleCollider : public Collider {
 public:
     RectangleCollider(const Vector2D center, double width, double height, double rotation = 0.0);
 
+    std::unique_ptr<Collider> clone() const override {
+        return std::make_unique<RectangleCollider>(center, width, height);
+    }
+
+
     bool checkCollision(const Collider& other, Vector2D& collisionNormal, double restitution) const override;
     void resolveCollision(Vector2D& velocity, const Vector2D& collisionNormal, double restitution) const override;
 

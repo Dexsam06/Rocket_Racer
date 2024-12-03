@@ -16,15 +16,9 @@ void GameController::onZoomButtonClickOut()
 }
 void GameController::onZoomButtonClickIn()
 {
-    gv->setScalingFactors(Vector2D(1.1, 1.1));
+    gv->setScalingFactors(Vector2D(1.1, 1.1)); 
 }
-void GameController::ResetPlayerButton()
-{
-    player->setPosition(Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 - 30));
-    player->setVelocity(Vector2D(0, 0));
-    player->setRotationSpeed(-player->getRotationSpeed());
-    player->setRotation(0);
-}
+
 
 void GameController::loadResources()
 {
@@ -49,7 +43,7 @@ void GameController::loadResources()
         100.0);
     player->setPlayerWidth(width);
     player->setPlayerHeight(height);
-    entityList.push_back(std::move(player));
+    entityList.push_back(std::move(player)); 
 
     // Planets
     earth = std::make_unique<Planet>(
@@ -102,18 +96,6 @@ void GameController::loadResources()
         gv->getFont(),
         std::bind(&GameController::onZoomButtonClickIn, this));
     buttonList.push_back(std::move(zoomButtonOut));
-
-    resetButton = std::make_unique<Button>( 
-        0.85 * gv->getScreenWidth(),
-        0.5 * gv->getScreenHeight(),
-        200,
-        50,
-        SDL_Color{0, 78, 255, 255},
-        "Reset Player",
-        gv->getRenderer(),
-        gv->getFont(),
-        std::bind(&GameController::ResetPlayerButton, this));
-    buttonList.push_back(std::move(resetButton));
 }
 
 void GameController::render(std::vector<Vector2D> futurePath)
@@ -142,7 +124,7 @@ void GameController::gameLoop()
 
 void GameController::handleEvents()
 {
-    inputHandler.handleInput(player, buttonList); 
+    inputHandler.handleInput(dynamic_cast<Player*>(entityList[0].get()), buttonList); 
     if (inputHandler.isQuit())
     {
         gv->setIsRunning(false);

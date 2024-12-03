@@ -17,7 +17,6 @@ void PhysicsSystem::applyGravity(std::vector<std::unique_ptr<Entity>> &entityLis
     {
         for (size_t j = i + 1; j < n; ++j)
         {
-            // Use local copies to avoid mutating const getters
             const Vector2D pos1 = entityList[i]->getPosition();
             const Vector2D pos2 = entityList[j]->getPosition();
 
@@ -56,13 +55,12 @@ void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entity
             
             Vector2D collisionNormal;
 
-            // Use const references to avoid modifying objects when not necessary
-            const auto& entity1 = *entityList[i];
+            
+            const auto& entity1 = *entityList[i]; 
             const auto& entity2 = *entityList[j];
 
             if (entity1.checkCollision(entity2, collisionNormal, restitution))
             {
-                // Pass velocity by reference where modifications are intended
                 entity1.getCollider()->resolveCollision(entityList[i]->getVelocity(), collisionNormal, restitution); 
                 entity2.getCollider()->resolveCollision(entityList[j]->getVelocity(), -collisionNormal, restitution);
             }
@@ -74,9 +72,9 @@ void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entity
 std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime, double predictionTime)
 {
     std::vector<std::unique_ptr<Entity>> tempEntities;
-    for (const auto &entity : entityList)
+    for (std::unique_ptr<Entity> &entity : entityList)
     {
-        tempEntities.push_back(entity->clone());
+        tempEntities.push_back(entity->clone()); 
     }
     
     int steps = static_cast<int>(predictionTime / deltaTime);
@@ -85,11 +83,10 @@ std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<std::unique
     for (int i = 0; i < steps; ++i)
     {
         applyGravity(tempEntities, deltaTime);
-        handleCollision(tempEntities);
+        handleCollision(tempEntities); 
 
-        // Store the position without modifying it
-        futurePath.push_back(tempEntities[0]->getPosition());
+        futurePath.push_back(tempEntities[0]->getPosition()); 
     }
 
-    return futurePath;
+    return futurePath; 
 }

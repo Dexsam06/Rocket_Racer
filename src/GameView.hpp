@@ -16,7 +16,7 @@ class GameView {
         void render(std::vector<std::unique_ptr<Entity>>& entityList, std::vector<std::unique_ptr<Button>>& buttonList, std::vector<Vector2D>& futurePath);
         void clean();
         void drawBackground(Entity* player);
-        void drawFuturePath(std::vector<Vector2D>& futurePath);
+        void drawFuturePath(std::vector<Vector2D>& futurePath, Vector2D playerPos);
         std::vector<SDL_Point> convertToSDLPoints(const std::vector<Vector2D>& points);
 
         bool running() {return isRunning; } 

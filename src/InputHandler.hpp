@@ -7,7 +7,7 @@
 
 class InputHandler {
 public:
-    void handleInput(std::unique_ptr<Player> &player, std::vector<std::unique_ptr<Button>> &buttonList);
+    void handleInput(Player* player, std::vector<std::unique_ptr<Button>> &buttonList);
     bool isQuit() const { return quit; } 
 
 private:

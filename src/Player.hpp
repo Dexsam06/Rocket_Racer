@@ -9,46 +9,24 @@ class Player : public Entity
 {
 public:
     // Constructor
-    Player(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass)
-        : Entity(std::move(collider), pos, vel, mass), texture(texture), thrust(0.0), rotationSpeed(0.0), rotation(0.0), playerWidth(0), playerHeight(0) {}
-
-    // Default constructor for cloning
-    Player() : texture(nullptr), thrust(0.0), rotationSpeed(0.0), rotation(0.0), playerWidth(0), playerHeight(0) {}
-
-    ~Player() override {}
-
-    std::unique_ptr<Entity> clone() const override
-    {
-        auto playerClone = std::make_unique<Player>();
-
-        playerClone->setPosition(this->getPosition());
-        playerClone->setVelocity(this->getVelocity());
-        playerClone->setAcceleration(this->getAcceleration());
-        playerClone->setMass(this->getMass());
-
-        if (this->collider)
-        {
-            playerClone->collider = this->collider->clone();
-        }
-
-        playerClone->setThrust(this->thrust);
-        playerClone->setPlayerWidth(this->playerWidth);
-        playerClone->setPlayerHeight(this->playerHeight);
-        playerClone->setRotationSpeed(this->rotationSpeed);
-        playerClone->setRotation(this->rotation);
-
-        return playerClone;
-    }
-
+    Player(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass);
+    ~Player(){};
     void setThrust(double thrust) { this->thrust = thrust; }
     void setPlayerWidth(int playerWidth) { this->playerWidth = playerWidth; }
     void setPlayerHeight(int playerHeight) { this->playerHeight = playerHeight; }
-    void setRotationSpeed(double rotationSpeed) { this->rotationSpeed = rotationSpeed; }
+    void setRotationSpeed(double rotationSpeed) { this->rotationSpeed += rotationSpeed; }
     void setPosition(Vector2D position) { this->position = position; }
     void setVelocity(Vector2D velocity) { this->velocity = velocity; }
     void setRotation(double rotation) { this->rotation = rotation; }
 
     double getRotationSpeed() const { return rotationSpeed; }
+
+    std::unique_ptr<Entity> clone() const override
+    {
+        return std::make_unique<Player>(
+            collider->clone(), texture, position, velocity, mass
+        );
+    }
 
 private:
     SDL_Texture *texture;

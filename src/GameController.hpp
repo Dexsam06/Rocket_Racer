@@ -45,7 +45,6 @@ class GameController {
 
         void onZoomButtonClickIn();
         void onZoomButtonClickOut();
-        void ResetPlayerButton();
 };
 
 #endif

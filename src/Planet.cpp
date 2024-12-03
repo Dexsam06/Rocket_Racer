@@ -3,8 +3,8 @@
 #include <vector>
 
 Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius, int R, int G, int B)
-    : radius(radius), color{R, G, B}, Entity(std::move(collider), pos, vel, mass) { 
-} 
+    : Entity(std::move(collider), pos, vel, mass), radius(radius), color{static_cast<Uint8>(R), static_cast<Uint8>(G), static_cast<Uint8>(B)} {
+}
 
 void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaTime){
     acceleration.x = Physics::acceleration(xGravityForce, mass);
@@ -39,7 +39,7 @@ void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vec
 
     int scaledRadius = static_cast<int>(radius * (scalingFactor.x + scalingFactor.y) / 2); 
 
-    SDL_SetRenderDrawColor(renderer, color.R, color.G, color.B, 255);
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
     for (int dy = -scaledRadius; dy <= scaledRadius; ++dy)
     {
         for (int dx = -scaledRadius; dx <= scaledRadius; ++dx)

@@ -52,30 +52,27 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
 
 GameView::~GameView() {}
 
-void GameView::render(std::vector<std::unique_ptr<Entity>>& entityList, std::vector<std::unique_ptr<Button>>& buttonList, std::vector<Vector2D>& futurePath)
+void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vector<std::unique_ptr<Button>> &buttonList, std::vector<Vector2D> &futurePath)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    if (!entityList.empty()) {
-        drawBackground(entityList[0].get());
-        Vector2D playerPos = entityList[0]->getPosition();
+    drawBackground(entityList[0].get());
+    Vector2D playerPos = entityList[0]->getPosition();
 
-        for (const auto& entity : entityList)
-        {
-            entity->draw(renderer, screenWidth, screenHeight, playerPos, scalingFactor);
-        }
+    for (std::unique_ptr<Entity> &entity : entityList)
+    {
+        entity->draw(renderer, screenWidth, screenHeight, playerPos, scalingFactor);
     }
 
-    for (const auto& button : buttonList) 
+    for (std::unique_ptr<Button> &button : buttonList)
     {
         button->render();
     }
 
-    drawFuturePath(futurePath);
+    drawFuturePath(futurePath, playerPos);
     SDL_RenderPresent(renderer);
 }
-
 
 void GameView::clean()
 {
@@ -121,20 +118,32 @@ void GameView::drawBackground(Entity *player)
     SDL_RenderSetScale(renderer, 1.0, 1.0);
 }
 
-void GameView::drawFuturePath(std::vector<Vector2D>& futurePath) {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255 ,255);
-    auto sdlPoints = convertToSDLPoints(futurePath); 
+void GameView::drawFuturePath(std::vector<Vector2D> &futurePath, Vector2D playerPos)
+{
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+
+    std::vector<Vector2D> adjustedPath;
+    for (const auto& point : futurePath)
+    {
+        Vector2D adjusted = point - playerPos;  
+        adjusted.x *= scalingFactor.x;  
+        adjusted.y *= scalingFactor.y;  
+        adjustedPath.push_back(adjusted);
+    }
+    
+    auto sdlPoints = convertToSDLPoints(adjustedPath);
     SDL_RenderDrawLines(renderer, sdlPoints.data(), futurePath.size());
 }
 
-std::vector<SDL_Point> GameView::convertToSDLPoints(const std::vector<Vector2D>& points) {
+std::vector<SDL_Point> GameView::convertToSDLPoints(const std::vector<Vector2D> &points)
+{
     std::vector<SDL_Point> sdlPoints;
-    sdlPoints.reserve(points.size()); 
+    sdlPoints.reserve(points.size());
 
-    for (const auto& point : points) {
+    for (const auto &point : points)
+    {
         sdlPoints.push_back(SDL_Point{static_cast<int>(point.x), static_cast<int>(point.y)});
     }
 
-    return sdlPoints; 
+    return sdlPoints;
 }
-
