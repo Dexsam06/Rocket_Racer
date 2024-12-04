@@ -1,7 +1,7 @@
 
 #include "PhysicsSystem.hpp"
 
-std::vector<Vector2D> PhysicsSystem::update(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime)
+std::vector<Vector2D> PhysicsSystem::update(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime) 
 {
     applyGravity(entityList, deltaTime);
     handleCollision(entityList);
@@ -91,3 +91,5 @@ std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<std::unique
 
     return futurePath; 
 }
+
+
