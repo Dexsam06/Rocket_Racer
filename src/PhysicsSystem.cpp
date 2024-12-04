@@ -5,7 +5,7 @@ std::vector<Vector2D> PhysicsSystem::update(std::vector<std::unique_ptr<Entity>>
 {
     applyGravity(entityList, deltaTime);
     handleCollision(entityList);
-    return calculateFuturePath(entityList, deltaTime, 10);
+    return calculateFuturePath(entityList, deltaTime, 30);
 }
 
 void PhysicsSystem::applyGravity(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime)

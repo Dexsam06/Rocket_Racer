@@ -20,7 +20,7 @@ public:
     void setRotation(double rotation) { this->rotation = rotation; }
 
     double getRotationSpeed() const { return rotationSpeed; }
-
+    
     std::unique_ptr<Entity> clone() const override
     {
         return std::make_unique<Player>(
@@ -29,7 +29,6 @@ public:
     }
 
 private:
-    SDL_Texture *texture;
     double thrust;
     double rotationSpeed, rotation;
     int playerWidth, playerHeight;

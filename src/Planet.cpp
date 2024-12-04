@@ -2,8 +2,8 @@
 #include "Physics.hpp"
 #include <vector>
 
-Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius, int R, int G, int B)
-    : Entity(std::move(collider), pos, vel, mass), radius(radius), color{static_cast<Uint8>(R), static_cast<Uint8>(G), static_cast<Uint8>(B)} {
+Planet::Planet(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass, double radius)
+    : Entity(std::move(collider), texture, pos, vel, mass), radius(radius) {
 }
 
 void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaTime){
@@ -37,17 +37,14 @@ void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vec
         screenCenter.y + scaledOffset.y
     );
 
-    int scaledRadius = static_cast<int>(radius * (scalingFactor.x + scalingFactor.y) / 2); 
+    int scaledWidth = static_cast<int>((2 * radius) * scalingFactor.x);
+    int scaledHeight = static_cast<int>((2 * radius) * scalingFactor.y); 
 
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
-    for (int dy = -scaledRadius; dy <= scaledRadius; ++dy)
-    {
-        for (int dx = -scaledRadius; dx <= scaledRadius; ++dx)
-        {
-            if (dx * dx + dy * dy <= scaledRadius * scaledRadius)
-            {
-                SDL_RenderDrawPoint(renderer, static_cast<int>(scaledPosition.x + dx), static_cast<int>(scaledPosition.y + dy));  
-            } 
-        }
-    }
+    SDL_Rect planetDestRect = {
+        scaledPosition.x - scaledWidth / 2, 
+        scaledPosition.y - scaledHeight /2, 
+        scaledWidth,
+        scaledHeight}; 
+
+    SDL_RenderCopy(renderer, texture, nullptr, &planetDestRect);
 }

@@ -123,9 +123,12 @@ void GameView::drawFuturePath(std::vector<Vector2D> &futurePath, Vector2D player
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
     std::vector<Vector2D> adjustedPath;
-    for (const auto& point : futurePath)
+    for (const auto& point : futurePath) 
     {
-        Vector2D adjusted = point - playerPos + Vector2D(screenWidth / 2, screenHeight / 2); 
+        Vector2D adjusted = point - playerPos; 
+        adjusted.x *= scalingFactor.x;  
+        adjusted.y *= scalingFactor.y; 
+        adjusted += Vector2D(screenWidth / 2, screenHeight / 2); 
         adjustedPath.push_back(adjusted);
     }
     

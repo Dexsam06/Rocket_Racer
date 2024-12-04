@@ -4,7 +4,7 @@
 #include <iostream>
 
 Player::Player(std::unique_ptr<Collider> collider, SDL_Texture* texture, Vector2D pos, Vector2D vel, double mass)
-    : texture(texture), rotationSpeed(0), rotation(0), Entity(std::move(collider), pos, vel, mass) { 
+    : rotationSpeed(0), rotation(0), Entity(std::move(collider), texture, pos, vel, mass) { 
 } 
 
 void Player::update(double& xGravityForce, double& yGravityForce, double& deltaTime){
@@ -26,7 +26,7 @@ void Player::update(double& xGravityForce, double& yGravityForce, double& deltaT
     velocity.y += Physics::velocity(acceleration.y, deltaTime); 
     getCollider()->updatePosition(getPosition()); 
     getCollider()->setRotation((rotation * M_PI) / 180);
-} 
+}  
 
 void Player::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos, Vector2D scalingFactor)
 {
@@ -35,7 +35,7 @@ void Player::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vec
 
     SDL_Rect playerDestRect = {
         screenWidth / 2 - scaledWidth / 2, 
-        screenHeight / 2 - scaledHeight / 2, 
+        screenHeight / 2 - scaledHeight / 2,  
         scaledWidth,
         scaledHeight}; 
 

@@ -16,9 +16,8 @@ void GameController::onZoomButtonClickOut()
 }
 void GameController::onZoomButtonClickIn()
 {
-    gv->setScalingFactors(Vector2D(1.1, 1.1)); 
+    gv->setScalingFactors(Vector2D(1.1, 1.1));
 }
-
 
 void GameController::loadResources()
 {
@@ -26,8 +25,8 @@ void GameController::loadResources()
     SDL_Texture *backgroundTexture = textureManager.loadTexture("background", "../res/spaceBackgroundTiling.jpg", gv->getRenderer());
     gv->setBackground(backgroundTexture);
 
-    // Player
     int height, width;
+    // Player
     SDL_Texture *playerTexture = textureManager.loadTexture("player", "../res/apollo11.png", gv->getRenderer());
     SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height);
 
@@ -43,33 +42,33 @@ void GameController::loadResources()
         100.0);
     player->setPlayerWidth(width);
     player->setPlayerHeight(height);
-    entityList.push_back(std::move(player)); 
+    entityList.push_back(std::move(player));
 
     // Planets
+    SDL_Texture *earthTexture = textureManager.loadTexture("earth", "../res/earth.png", gv->getRenderer());
     earth = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 300),
-            300.0),
-        Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 300),
+            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 800),
+            800.0),
+        earthTexture,
+        Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 800),
         Vector2D(0, 0),
         2000000.0,
-        300.0,
-        0,
-        250,
-        0);
+        800.0
+        );
     entityList.push_back(std::move(earth));
 
+    SDL_Texture *moonTexture = textureManager.loadTexture("moon", "../res/moon.png", gv->getRenderer());
     moon = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 - 500),
-            150.0),
-        Vector2D(gv->getScreenWidth() / 2 + 300, gv->getScreenHeight() / 2 + height / 2 - 500),
+            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 - 600),
+            300.0),
+        moonTexture,
+        Vector2D(gv->getScreenWidth() / 2 + 300, gv->getScreenHeight() / 2 + height / 2 - 600),
         Vector2D(100, 0),
         20000.0,
-        150.0,
-        194,
-        197,
-        204);
+        300.0
+        );
     entityList.push_back(std::move(moon));
 
     // Buttons
@@ -124,7 +123,7 @@ void GameController::gameLoop()
 
 void GameController::handleEvents()
 {
-    inputHandler.handleInput(dynamic_cast<Player*>(entityList[0].get()), buttonList); 
+    inputHandler.handleInput(dynamic_cast<Player *>(entityList[0].get()), buttonList);
     if (inputHandler.isQuit())
     {
         gv->setIsRunning(false);
