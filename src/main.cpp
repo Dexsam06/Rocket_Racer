@@ -13,8 +13,8 @@ int main(int argc, const char * argv[]) {
     GameView gv(windowWidth, windowHeight, windowTitle, false);
 
     if (!gv.running()) {
-        std::cerr << "Error: GameView initialization failed!" << std::endl;
-        return -1;  // Return an error code to indicate failure
+        std::cerr << "Error: GameView initialization failed!" << std::endl;   
+        return -1; 
     }
 
     GameController gc(&gv);

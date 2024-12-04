@@ -5,7 +5,7 @@
 #include "Vector2D.hpp"
 #include <vector>
 
-class CircleCollider; // Forward declaration to avoid circular dependency
+class CircleCollider; 
 
 class RectangleCollider : public Collider {
 public:

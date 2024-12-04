@@ -32,12 +32,12 @@ void GameController::loadResources()
 
     player = std::make_unique<Player>(
         std::make_unique<RectangleCollider>(
-            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2),
+            Vector2D(gv->getScreenWidth() / 2, (gv->getScreenHeight() / 2) - 50),
             width,
             height,
             0),
         playerTexture,
-        Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2),
+        Vector2D(gv->getScreenWidth() / 2, (gv->getScreenHeight() / 2) - 50), 
         Vector2D(0, 0),
         100.0);
     player->setPlayerWidth(width);
@@ -48,26 +48,26 @@ void GameController::loadResources()
     SDL_Texture *earthTexture = textureManager.loadTexture("earth", "../res/earth.png", gv->getRenderer());
     earth = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 800),
-            800.0),
+            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 900),
+            900.0),
         earthTexture,
-        Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 800),
+        Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 900),    
         Vector2D(0, 0),
-        2000000.0,
-        800.0
+        10000000.0,
+        900.0
         );
     entityList.push_back(std::move(earth));
 
     SDL_Texture *moonTexture = textureManager.loadTexture("moon", "../res/moon.png", gv->getRenderer());
     moon = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 - 600),
-            300.0),
+            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 - 900),
+            400.0),
         moonTexture,
-        Vector2D(gv->getScreenWidth() / 2 + 300, gv->getScreenHeight() / 2 + height / 2 - 600),
-        Vector2D(100, 0),
-        20000.0,
-        300.0
+        Vector2D(gv->getScreenWidth() / 2 + 300, gv->getScreenHeight() / 2 + height / 2 - 900),
+        Vector2D(200, 0), 
+        100000.0, 
+        400.0
         );
     entityList.push_back(std::move(moon));
 

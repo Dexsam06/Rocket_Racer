@@ -33,7 +33,7 @@ public:
     Vector2D& operator+=(const Vector2D& other) { x += other.x; y += other.y; return *this; }
 };
 
-#endif // VECTOR2D_HPPc
+#endif 
 
 
 

@@ -8,7 +8,7 @@
 #include "Vector2D.hpp"
 #include "Collider.hpp"
 
-class Entity
+class Entity 
 {
 public:
     Entity(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass); 

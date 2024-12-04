@@ -23,7 +23,7 @@ std::vector<Vector2D> RectangleCollider::getVertices() const {
     };
 }
 
-std::vector<Vector2D> RectangleCollider::getAxes() const {
+std::vector<Vector2D> RectangleCollider::getAxes() const { 
     std::vector<Vector2D> vertices = getVertices();
     std::vector<Vector2D> axes;
 
@@ -80,7 +80,7 @@ bool RectangleCollider::checkCircleCollision(const CircleCollider& circle, Vecto
         projectOntoAxis(axis, minA, maxA);
         circle.projectOntoAxis(axis, minB, maxB);
 
-        double overlap = std::min(maxA, maxB) - std::max(minA, minB);
+        double overlap = std::min(maxA, maxB) - std::max(minA, minB);         
         if (overlap <= 0) return false;
 
         if (overlap < minOverlap) {

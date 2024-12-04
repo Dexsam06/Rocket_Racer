@@ -5,13 +5,13 @@ std::vector<Vector2D> PhysicsSystem::update(std::vector<std::unique_ptr<Entity>>
 {
     applyGravity(entityList, deltaTime);
     handleCollision(entityList);
-    return calculateFuturePath(entityList, deltaTime, 30);
+    return calculateFuturePath(entityList, deltaTime, 180);  
 }
 
 void PhysicsSystem::applyGravity(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime)
 {
     size_t n = entityList.size();
-    std::vector<std::pair<double, double>> forces(n, {0.0, 0.0});
+    std::vector<std::pair<double, double>> forces(n, {0.0, 0.0}); 
 
     for (size_t i = 0; i < n; ++i)
     {
@@ -48,12 +48,12 @@ void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entity
     double restitution = 0.2;
     for (size_t i = 0; i < entityList.size(); ++i)
     {
-        for (size_t j = i + 1; j < entityList.size(); ++j)
+        for (size_t j = i + 1; j < entityList.size(); ++j) 
         {
-            if (i == j)
-                continue;
+            if (i == j) 
+                continue; 
             
-            Vector2D collisionNormal;
+            Vector2D collisionNormal; 
 
             
             const auto& entity1 = *entityList[i]; 
@@ -86,6 +86,7 @@ std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<std::unique
         handleCollision(tempEntities); 
 
         futurePath.push_back(tempEntities[0]->getPosition()); 
+        futurePath.push_back(tempEntities[2]->getPosition()); 
     }
 
     return futurePath; 

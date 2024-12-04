@@ -120,20 +120,33 @@ void GameView::drawBackground(Entity *player)
 
 void GameView::drawFuturePath(std::vector<Vector2D> &futurePath, Vector2D playerPos)
 {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-
-    std::vector<Vector2D> adjustedPath;
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); 
+    
+    std::vector<Vector2D> adjustedPathPlayer;
+    std::vector<Vector2D> adjustedPathMoon;
+    int count = 0;
     for (const auto& point : futurePath) 
     {
         Vector2D adjusted = point - playerPos; 
         adjusted.x *= scalingFactor.x;  
         adjusted.y *= scalingFactor.y; 
         adjusted += Vector2D(screenWidth / 2, screenHeight / 2); 
-        adjustedPath.push_back(adjusted);
+        if (count % 2 == 0) {
+            adjustedPathPlayer.push_back(adjusted);
+        }
+        else {
+            adjustedPathMoon.push_back(adjusted);
+        }
+       count++;
     }
-    
-    auto sdlPoints = convertToSDLPoints(adjustedPath);
-    SDL_RenderDrawLines(renderer, sdlPoints.data(), futurePath.size());
+
+    //Player future path
+    auto sdlPoints = convertToSDLPoints(adjustedPathPlayer);
+    SDL_RenderDrawLines(renderer, sdlPoints.data(), futurePath.size() / 2);
+
+    //Moon future path
+    sdlPoints = convertToSDLPoints(adjustedPathMoon);
+    SDL_RenderDrawLines(renderer, sdlPoints.data(), futurePath.size() / 2);
 }
 
 std::vector<SDL_Point> GameView::convertToSDLPoints(const std::vector<Vector2D> &points)
