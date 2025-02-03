@@ -72,7 +72,7 @@ void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entity
 std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime, double predictionTime)
 {
     std::vector<std::unique_ptr<Entity>> tempEntities;
-    for (std::unique_ptr<Entity> &entity : entityList)
+    for (std::unique_ptr<Entity> &entity : entityList) 
     {
         tempEntities.push_back(entity->clone()); 
     }

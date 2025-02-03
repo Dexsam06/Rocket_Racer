@@ -13,7 +13,7 @@ Button::Button(int x, int y, int w, int h, SDL_Color color, const char* text, SD
 }
 
 Button::~Button() {
-    SDL_DestroyTexture(textTexture);
+    SDL_DestroyTexture(textTexture); 
 }
 
 void Button::render() {
@@ -23,7 +23,7 @@ void Button::render() {
 
     int textWidth, textHeight;
     SDL_QueryTexture(textTexture, nullptr, nullptr, &textWidth, &textHeight);
-    SDL_Rect textRect = { x + (w - textWidth) / 2, y + (h - textHeight) / 2, textWidth, textHeight };
+    SDL_Rect textRect = { x + (w - textWidth) / 2, y + (h - textHeight) / 2, textWidth, textHeight }; 
     SDL_RenderCopy(renderer, textTexture, nullptr, &textRect); 
 }
 

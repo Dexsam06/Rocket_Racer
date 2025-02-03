@@ -10,15 +10,6 @@ GameController::GameController(GameView *gv) : gv(gv)
 
 GameController::~GameController() {}
 
-void GameController::onZoomButtonClickOut()
-{
-    gv->setScalingFactors(Vector2D(0.9, 0.9));
-}
-void GameController::onZoomButtonClickIn()
-{
-    gv->setScalingFactors(Vector2D(1.1, 1.1));
-}
-
 void GameController::loadResources()
 {
     // Background
@@ -48,24 +39,24 @@ void GameController::loadResources()
     SDL_Texture *earthTexture = textureManager.loadTexture("earth", "../res/earth.png", gv->getRenderer());
     earth = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 900),
-            900.0),
+            Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 1000),
+            1000.0),
         earthTexture,
-        Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 900),    
+        Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 + 1000),    
         Vector2D(0, 0),
         10000000.0,
-        900.0
+        1000.0
         );
-    entityList.push_back(std::move(earth));
+    entityList.push_back(std::move(earth)); 
 
     SDL_Texture *moonTexture = textureManager.loadTexture("moon", "../res/moon.png", gv->getRenderer());
     moon = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
             Vector2D(gv->getScreenWidth() / 2, gv->getScreenHeight() / 2 + height / 2 - 900),
-            400.0),
+            400.0), 
         moonTexture,
         Vector2D(gv->getScreenWidth() / 2 + 300, gv->getScreenHeight() / 2 + height / 2 - 900),
-        Vector2D(200, 0), 
+        Vector2D(150, 0), 
         100000.0, 
         400.0
         );
@@ -97,9 +88,9 @@ void GameController::loadResources()
     buttonList.push_back(std::move(zoomButtonOut));
 }
 
-void GameController::render(std::vector<Vector2D> futurePath)
+void GameController::render(std::vector<Vector2D> futurePath) 
 {
-    gv->render(entityList, buttonList, futurePath);
+    gv->render(entityList, buttonList, futurePath); 
 }
 
 void GameController::gameLoop()
@@ -109,7 +100,7 @@ void GameController::gameLoop()
     Uint32 previousTime = SDL_GetTicks();
     while (gv->running())
     {
-        long deltaTime = (SDL_GetTicks() - previousTime);
+        long deltaTime = (SDL_GetTicks() - previousTime); 
 
         if (deltaTime > updateTime)
         {
@@ -128,4 +119,13 @@ void GameController::handleEvents()
     {
         gv->setIsRunning(false);
     }
+}
+
+void GameController::onZoomButtonClickOut()
+{
+    gv->setScalingFactors(Vector2D(0.9, 0.9));
+}
+void GameController::onZoomButtonClickIn()
+{
+    gv->setScalingFactors(Vector2D(1.1, 1.1));
 }
