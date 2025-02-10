@@ -1,7 +1,7 @@
 CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
- /home/samuel/Dev/c++/Rocket_Racer/src/main.cpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/main.cpp \
  /usr/include/stdc-predef.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/GameController.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/GameController.hpp \
  /usr/include/c++/14.2.1/vector \
  /usr/include/c++/14.2.1/bits/requires_hosted.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -238,8 +238,8 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/GameView.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/GameView.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Entity.hpp \
  /usr/include/SDL2/SDL_render.h /usr/include/c++/14.2.1/iostream \
  /usr/include/c++/14.2.1/ostream /usr/include/c++/14.2.1/ios \
  /usr/include/c++/14.2.1/iosfwd /usr/include/c++/14.2.1/bits/stringfwd.h \
@@ -313,10 +313,10 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/backward/auto_ptr.h \
  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Collider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Vector2D.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Collider.hpp \
  /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/Button.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Button.hpp \
  /usr/include/c++/14.2.1/functional \
  /usr/include/c++/14.2.1/bits/std_function.h \
  /usr/include/c++/14.2.1/unordered_map \
@@ -327,11 +327,11 @@ CMakeFiles/Rocket_Racer.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/node_handle.h \
  /usr/include/c++/14.2.1/bits/erase_if.h /usr/include/c++/14.2.1/array \
  /usr/include/c++/14.2.1/compare \
- /home/samuel/Dev/c++/Rocket_Racer/src/TextureManager.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Player.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Planet.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/InputHandler.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/PhysicsSystem.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Physics.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/RectangleCollider.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/CircleCollider.hpp
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/TextureManager.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Player.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Planet.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/InputHandler.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/PhysicsSystem.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Physics.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/RectangleCollider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/CircleCollider.hpp

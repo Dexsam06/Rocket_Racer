@@ -6,6 +6,11 @@
 #include <unordered_map>
 #include <enet/enet.h>
 
+#include "Player.hpp"
+#include "RectangleCollider.hpp"
+#include "Vector2D.hpp"
+#include "Planet.hpp"
+
 class NetworkCommunicator
 {
 
@@ -15,11 +20,12 @@ public:
     void NetworkHandler();
     bool serverRunning() { return serverRunningState; }
     void setEntityList(std::vector<std::unique_ptr<Entity>> *entityList) { this->entityList = entityList; }
+    void sendWorldStateToClients();
 
 private:
     ENetAddress address;
     ENetEvent event;
-    ENetHost *server;
+    ENetHost *server; 
 
     bool serverRunningState = true;
 
@@ -39,9 +45,21 @@ private:
         double rotation;
     };
 
+    struct EntityData
+    {
+        int entityType; // 0 = Player, 1 = Planet
+        enet_uint32 ID; 
+        double radius;
+        double posX, posY;
+        double velocityX, velocityY;
+        double accelerationX, accelerationY;
+        double mass;
+    };
+
     void handleIncomingConnections(ENetEvent &event);
     void handleDisconnections(ENetEvent &event);
     void handleIncomingPacket(ENetEvent &event);
+    ENetPacket *createWorldStatePacket(enet_uint32 peerID);
 };
 
 #endif

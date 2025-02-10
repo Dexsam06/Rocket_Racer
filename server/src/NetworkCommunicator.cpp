@@ -1,8 +1,5 @@
 
 #include "NetworkCommunicator.hpp"
-#include "Player.hpp"
-#include "RectangleCollider.hpp"
-#include "Vector2D.hpp"
 
 NetworkCommunicator::NetworkCommunicator()
 {
@@ -61,19 +58,21 @@ void NetworkCommunicator::handleIncomingConnections(ENetEvent &event)
             std::cout << "Client connected! Username: " << client->username << " and ID: " << peerID << std::endl;
 
             std::unique_ptr<Player> player = std::make_unique<Player>(
-                                        std::make_unique<RectangleCollider>(
-                                            Vector2D(700 + (50 * peerID), 500),
-                                            client->width,
-                                            client->height),
-                                        Vector2D(70 + (50 * peerID), 500), 
-                                        Vector2D(0, 0),
-                                        100.0),
-                                    username,
-                                    peerID;
+                std::make_unique<RectangleCollider>(
+                    Vector2D(700 + (50 * peerID), 500),
+                    client->width,
+                    client->height),
+                Vector2D(700 + (50 * peerID), 500),
+                Vector2D(0, 0),
+                100.0,
+                client->username,
+                peerID);
             player->setPlayerWidth(50);
             player->setPlayerHeight(100);
             entityList->push_back(std::move(player));
 
+            ENetPacket *packet = createWorldStatePacket(player->getPeerID());
+            enet_peer_send(event.peer, 0, packet);
             enet_packet_destroy(clientEvent.packet);
         }
     }
@@ -87,14 +86,19 @@ void NetworkCommunicator::handleIncomingPacket(ENetEvent &event)
     {
         ClientGameData *gameData = reinterpret_cast<ClientGameData *>(event.packet->data);
 
-        auto client = clients.find(peerID); 
-        if (client != clients.end())
+        for (auto it = entityList->begin(); it != entityList->end();)
         {
-            
-        }
-        else
-        {
-            std::cout << "Unknown client!" << std::endl;
+            Player *player = dynamic_cast<Player *>(it->get());
+            if (player && player->getPeerID() == peerID)
+            {
+                player->setThrust(gameData->thrust);
+                player->setRotation(gameData->rotation);
+                break;
+            }
+            else
+            {
+                ++it;
+            }
         }
     }
     enet_packet_destroy(event.packet);
@@ -108,10 +112,10 @@ void NetworkCommunicator::handleDisconnections(ENetEvent &event)
 
     for (auto it = entityList->begin(); it != entityList->end();)
     {
-        Player *player = dynamic_cast<Player *>(it->get()); 
+        Player *player = dynamic_cast<Player *>(it->get());
         if (player && player->getPeerID() == peerID)
         {
-            it = entityList->erase(it); 
+            it = entityList->erase(it);
             break;
         }
         else
@@ -121,4 +125,52 @@ void NetworkCommunicator::handleDisconnections(ENetEvent &event)
     }
 
     std::cout << "Client disconnected! Peer ID: " << peerID << std::endl;
+}
+
+void NetworkCommunicator::sendWorldStateToClients()
+{
+    for (const auto &client : clients)
+    {
+        ENetPacket *packet = createWorldStatePacket(client.first);
+        enet_peer_send(client.second, 0, packet);
+        enet_packet_destroy(packet);
+    }
+}
+
+ENetPacket *NetworkCommunicator::createWorldStatePacket(enet_uint32 peerID)
+{
+    std::vector<EntityData> dataList;
+
+    for (const auto &entity : *entityList)
+    {
+        EntityData data;
+
+        if (Player *player = dynamic_cast<Player *>(entity.get()))
+        {
+            data.entityType = 0; // Player
+            data.ID = player->getPeerID();
+        }
+        else if (Planet *planet = dynamic_cast<Planet *>(entity.get()))
+        {
+            data.entityType = 1; // Planet
+            data.radius = planet->getRadius();
+            data.ID = planet->getUniqueID();
+        }
+
+        // Serialize common attributes
+        data.posX = entity->getPosition().x;
+        data.posY = entity->getPosition().y;
+        data.velocityX = entity->getVelocity().x;
+        data.velocityY = entity->getVelocity().y;
+        data.accelerationX = entity->getAcceleration().x;
+        data.accelerationY = entity->getAcceleration().y;
+        data.mass = entity->getMass();
+
+        dataList.push_back(data);
+    }
+
+    size_t dataSize = dataList.size() * sizeof(EntityData);
+    ENetPacket *packet = enet_packet_create(dataList.data(), dataSize, ENET_PACKET_FLAG_RELIABLE);
+
+    return packet;
 }

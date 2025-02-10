@@ -166,4 +166,52 @@ CMakeFiles/Server.dir/src/NetworkCommunicator.cpp.o: \
  /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
  /usr/include/linux/close_range.h /usr/include/enet/types.h \
  /usr/include/enet/protocol.h /usr/include/enet/list.h \
- /usr/include/enet/callbacks.h
+ /usr/include/enet/callbacks.h \
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/Player.hpp \
+ /usr/include/c++/14.2.1/vector \
+ /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
+ /usr/include/c++/14.2.1/bits/stl_vector.h \
+ /usr/include/c++/14.2.1/bits/stl_bvector.h \
+ /usr/include/c++/14.2.1/bits/vector.tcc \
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/Entity.hpp \
+ /usr/include/c++/14.2.1/memory \
+ /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
+ /usr/include/c++/14.2.1/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/14.2.1/bits/align.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/stdint-least.h \
+ /usr/include/c++/14.2.1/bits/unique_ptr.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr_base.h \
+ /usr/include/c++/14.2.1/bits/allocated_ptr.h \
+ /usr/include/c++/14.2.1/ext/concurrence.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr_atomic.h \
+ /usr/include/c++/14.2.1/bits/atomic_base.h \
+ /usr/include/c++/14.2.1/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/14.2.1/backward/auto_ptr.h \
+ /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
+ /usr/include/c++/14.2.1/pstl/execution_defs.h \
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/Vector2D.hpp \
+ /usr/include/c++/14.2.1/cmath /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
+ /usr/include/bits/fp-fast.h \
+ /usr/include/bits/mathcalls-helper-functions.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
+ /usr/include/bits/iscanonical.h /usr/include/c++/14.2.1/bits/specfun.h \
+ /usr/include/c++/14.2.1/limits /usr/include/c++/14.2.1/tr1/gamma.tcc \
+ /usr/include/c++/14.2.1/tr1/special_function_util.h \
+ /usr/include/c++/14.2.1/tr1/bessel_function.tcc \
+ /usr/include/c++/14.2.1/tr1/beta_function.tcc \
+ /usr/include/c++/14.2.1/tr1/ell_integral.tcc \
+ /usr/include/c++/14.2.1/tr1/exp_integral.tcc \
+ /usr/include/c++/14.2.1/tr1/hypergeometric.tcc \
+ /usr/include/c++/14.2.1/tr1/legendre_function.tcc \
+ /usr/include/c++/14.2.1/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/14.2.1/tr1/poly_hermite.tcc \
+ /usr/include/c++/14.2.1/tr1/poly_laguerre.tcc \
+ /usr/include/c++/14.2.1/tr1/riemann_zeta.tcc \
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/Collider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/RectangleCollider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/CircleCollider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/Planet.hpp

@@ -12,10 +12,10 @@ find_package(SDL2_ttf REQUIRED)  # Ensure SDL2_ttf is found
 # Include directories for SDL2, SDL2_image, and SDL2_ttf
 include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS})
 
-# Set the source files
+# Set the source files 
 set(SOURCES
     src/Button.cpp
-    src/CircleCollider.cpp
+    src/CircleCollider.cpp  
     src/Entity.cpp 
     src/GameController.cpp
     src/GameView.cpp

@@ -26,15 +26,15 @@ public:
     std::unique_ptr<Entity> clone() const override
     {
         return std::make_unique<Player>(
-            collider->clone(), position, velocity, mass
+            collider->clone(), position, velocity, mass, username, peerID
         );
     }
 
 private:
     double thrust;
     double rotationSpeed, rotation; 
-    int playerWidth, playerHeight;
-    std::string username;
+    int playerWidth, playerHeight; 
+    std::string username; 
     enet_uint32 peerID;
 
     void update(double &xGravityForce, double &yGravityForce, double &deltaTime) override;

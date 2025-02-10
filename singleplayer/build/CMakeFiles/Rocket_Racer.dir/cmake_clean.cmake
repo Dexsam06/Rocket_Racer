@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Rocket_Racer.dir/link.d"
   "CMakeFiles/Rocket_Racer.dir/src/Button.cpp.o"
   "CMakeFiles/Rocket_Racer.dir/src/Button.cpp.o.d"
   "CMakeFiles/Rocket_Racer.dir/src/CircleCollider.cpp.o"

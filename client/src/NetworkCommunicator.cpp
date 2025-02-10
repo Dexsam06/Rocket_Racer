@@ -3,7 +3,7 @@
 
 bool NetworkCommunicator::connected = true;
 
-NetworkCommunicator::NetworkCommunicator(std::string &ipAddress) 
+NetworkCommunicator::NetworkCommunicator(std::string &ipAddress)
 {
     signal(SIGINT, onExit);
 
@@ -16,7 +16,7 @@ NetworkCommunicator::NetworkCommunicator(std::string &ipAddress)
     }
     atexit(enet_deinitialize);
 
-    client = enet_host_create(NULL, 1, 1, 0, 0);  
+    client = enet_host_create(NULL, 1, 1, 0, 0);
 
     if (client == NULL)
     {
@@ -24,23 +24,24 @@ NetworkCommunicator::NetworkCommunicator(std::string &ipAddress)
         return;
     }
 
-    enet_address_set_host(&address, ipAddress.c_str()); 
+    enet_address_set_host(&address, ipAddress.c_str());
     address.port = 7777;
 
-    std::cout << "Type your username: "; 
-    std::cin >> username;         
+    std::cout << "Type your username: ";
+    std::cin >> connectData.username;
+    double width, height = 50;
 
-    serverPeer = enet_host_connect(client, &address, 1, 0); 
+    serverPeer = enet_host_connect(client, &address, 1, 0);
     if (serverPeer == NULL)
     {
         fprintf(stderr, "No available peers for initalizing an ENet connection!\n");
         return;
     }
 
-    if (enet_host_service(client, &event, 5000) > 0 && event.type == ENET_EVENT_TYPE_CONNECT) 
+    if (enet_host_service(client, &event, 5000) > 0 && event.type == ENET_EVENT_TYPE_CONNECT)
     {
-        puts("Connection to 127.0.0.1:7777 succeeded!");
-        ENetPacket *packet = enet_packet_create(&username, sizeof(username), ENET_PACKET_FLAG_RELIABLE);
+        std::cout << "Connection to " << address.host << ":7777 succeeded!" << std::endl;
+        ENetPacket *packet = enet_packet_create(&connectData, sizeof(connectData), ENET_PACKET_FLAG_RELIABLE);
 
         // Send the packet to the server
         enet_peer_send(serverPeer, 0, packet);
@@ -50,12 +51,12 @@ NetworkCommunicator::NetworkCommunicator(std::string &ipAddress)
     else
     {
         enet_peer_reset(serverPeer);
-        puts("Connection to 127.0.0.1:777 failed!");
+        std::cout << "Connection to " << address.host << ":7777 failed!" << std::endl;
         return;
     }
 }
 
-NetworkCommunicator::~NetworkCommunicator() {}
+NetworkCommunicator::~NetworkCommunicator() {} 
 
 void NetworkCommunicator::NetworkHandler()
 {
@@ -66,12 +67,27 @@ void NetworkCommunicator::NetworkHandler()
             switch (event.type)
             {
             case ENET_EVENT_TYPE_RECEIVE:
-                printf("A packet of length %u containing %s was received from %x:%u on channel %u.\n", 
-                       event.packet->dataLength,
-                       event.packet->data,
-                       event.peer->address.host,
-                       event.peer->address.port,
-                       event.channelID);
+                if (!event.packet || event.packet->dataLength < sizeof(EntityData))
+                {
+                    std::cerr << "Invalid packet received!" << std::endl;
+                    return;
+                }
+
+                size_t entityCount = event.packet->dataLength / sizeof(EntityData);
+                EntityData *dataArray = reinterpret_cast<EntityData *>(event.packet->data);
+
+                std::vector<EntityData> receivedEntities;
+                for (size_t i = 0; i < entityCount; i++)
+                {
+                    receivedEntities.push_back(dataArray[i]);
+                }
+
+                if (entityCallback)
+                {
+                    entityCallback(receivedEntities);
+                }
+
+                enet_packet_destroy(event.packet);
                 break;
             }
         }
@@ -93,4 +109,12 @@ void NetworkCommunicator::NetworkHandler()
             break;
         }
     }
+}
+
+void NetworkCommunicator::sendInputToServer(NetworkCommunicator::PlayerInputs inputs)
+{
+    ENetPacket *packet = enet_packet_create(&inputs, sizeof(inputs), ENET_PACKET_FLAG_RELIABLE);
+    enet_peer_send(serverPeer, 0 ,packet);
+    enet_host_flush(client);
+    enet_packet_destroy(packet);
 }

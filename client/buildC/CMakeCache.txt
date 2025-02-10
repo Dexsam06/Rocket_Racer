@@ -230,6 +230,15 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
+//The directory containing a CMake configuration file for SDL2.
+SDL2_DIR:PATH=/usr/lib/cmake/SDL2
+
+//The directory containing a CMake configuration file for SDL2_image.
+SDL2_image_DIR:PATH=/usr/lib/cmake/SDL2_image
+
+//The directory containing a CMake configuration file for SDL2_ttf.
+SDL2_ttf_DIR:PATH=/usr/lib/cmake/SDL2_ttf
+
 //Path to a library.
 pkgcfg_lib_ENet_enet:FILEPATH=/usr/lib/libenet.so
 

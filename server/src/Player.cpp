@@ -16,10 +16,10 @@ void Player::update(double& xGravityForce, double& yGravityForce, double& deltaT
     double xTotalForce = xGravityForce + xThrustForce; 
     double yTotalForce = yGravityForce + yThrustForce; 
 
-    acceleration.x = Physics::acceleration(xTotalForce, mass);
+    acceleration.x = Physics::acceleration(xTotalForce, mass); 
     acceleration.y = Physics::acceleration(yTotalForce, mass);
 
-    position.x += Physics::distance(velocity.x, acceleration.x, deltaTime); 
+    position.x += Physics::distance(velocity.x, acceleration.x, deltaTime);  
     position.y += Physics::distance(velocity.y, acceleration.y, deltaTime); 
 
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 

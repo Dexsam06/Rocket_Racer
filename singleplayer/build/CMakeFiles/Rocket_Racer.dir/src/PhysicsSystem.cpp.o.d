@@ -1,7 +1,7 @@
 CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o: \
- /home/samuel/Dev/c++/Rocket_Racer/src/PhysicsSystem.cpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/PhysicsSystem.cpp \
  /usr/include/stdc-predef.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/PhysicsSystem.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/PhysicsSystem.hpp \
  /usr/include/c++/14.2.1/vector \
  /usr/include/c++/14.2.1/bits/requires_hosted.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -58,7 +58,7 @@ CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o: \
  /usr/include/c++/14.2.1/bits/uses_allocator.h \
  /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
  /usr/include/c++/14.2.1/tuple \
- /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Entity.hpp \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_stdinc.h \
  /usr/include/SDL2/SDL_config.h /usr/include/SDL2/SDL_platform.h \
  /usr/include/SDL2/begin_code.h /usr/include/SDL2/close_code.h \
@@ -194,6 +194,6 @@ CMakeFiles/Rocket_Racer.dir/src/PhysicsSystem.cpp.o: \
  /usr/include/c++/14.2.1/backward/auto_ptr.h \
  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Collider.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Physics.hpp
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Vector2D.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Collider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Physics.hpp

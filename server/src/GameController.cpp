@@ -29,7 +29,8 @@ void GameController::gameLoop()
             previousTime = std::chrono::steady_clock::now();
             nc->NetworkHandler();
             physicsSystem.update(entityList, deltaTime / 1000.0); // Convert to seconds
-        }
+            nc->sendWorldStateToClients(); 
+        } 
     }
 }
 
@@ -43,18 +44,20 @@ void GameController::loadResources()
         Vector2D(700, 1500),    
         Vector2D(0, 0),
         10000000.0,
-        1000.0
+        1000.0,
+        0
         );
     entityList.push_back(std::move(earth)); 
 
     moon = std::make_unique<Planet>(
-        std::make_unique<CircleCollider>(
+        std::make_unique<CircleCollider>( 
             Vector2D(900, 100), 
             400.0), 
         Vector2D(900, 100), 
         Vector2D(150, 0), 
         100000.0, 
-        400.0
+        400.0,
+        1
         );
     entityList.push_back(std::move(moon));
 }

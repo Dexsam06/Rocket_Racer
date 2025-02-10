@@ -1,8 +1,8 @@
 CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o: \
- /home/samuel/Dev/c++/Rocket_Racer/src/Planet.cpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Planet.cpp \
  /usr/include/stdc-predef.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/Planet.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Entity.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Planet.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Entity.hpp \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_stdinc.h \
  /usr/include/SDL2/SDL_config.h /usr/include/SDL2/SDL_platform.h \
  /usr/include/SDL2/begin_code.h /usr/include/SDL2/close_code.h \
@@ -190,6 +190,6 @@ CMakeFiles/Rocket_Racer.dir/src/Planet.cpp.o: \
  /usr/include/c++/14.2.1/backward/auto_ptr.h \
  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
- /home/samuel/Dev/c++/Rocket_Racer/src/Vector2D.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Collider.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/src/Physics.hpp
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Vector2D.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Collider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/singleplayer/src/Physics.hpp

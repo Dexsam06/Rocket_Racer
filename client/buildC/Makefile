@@ -129,6 +129,150 @@ Client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
 .PHONY : Client/fast
 
+src/Button.o: src/Button.cpp.o
+.PHONY : src/Button.o
+
+# target to build an object file
+src/Button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Button.cpp.o
+.PHONY : src/Button.cpp.o
+
+src/Button.i: src/Button.cpp.i
+.PHONY : src/Button.i
+
+# target to preprocess a source file
+src/Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Button.cpp.i
+.PHONY : src/Button.cpp.i
+
+src/Button.s: src/Button.cpp.s
+.PHONY : src/Button.s
+
+# target to generate assembly for a file
+src/Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Button.cpp.s
+.PHONY : src/Button.cpp.s
+
+src/CircleCollider.o: src/CircleCollider.cpp.o
+.PHONY : src/CircleCollider.o
+
+# target to build an object file
+src/CircleCollider.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/CircleCollider.cpp.o
+.PHONY : src/CircleCollider.cpp.o
+
+src/CircleCollider.i: src/CircleCollider.cpp.i
+.PHONY : src/CircleCollider.i
+
+# target to preprocess a source file
+src/CircleCollider.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/CircleCollider.cpp.i
+.PHONY : src/CircleCollider.cpp.i
+
+src/CircleCollider.s: src/CircleCollider.cpp.s
+.PHONY : src/CircleCollider.s
+
+# target to generate assembly for a file
+src/CircleCollider.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/CircleCollider.cpp.s
+.PHONY : src/CircleCollider.cpp.s
+
+src/Entity.o: src/Entity.cpp.o
+.PHONY : src/Entity.o
+
+# target to build an object file
+src/Entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Entity.cpp.o
+.PHONY : src/Entity.cpp.o
+
+src/Entity.i: src/Entity.cpp.i
+.PHONY : src/Entity.i
+
+# target to preprocess a source file
+src/Entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Entity.cpp.i
+.PHONY : src/Entity.cpp.i
+
+src/Entity.s: src/Entity.cpp.s
+.PHONY : src/Entity.s
+
+# target to generate assembly for a file
+src/Entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Entity.cpp.s
+.PHONY : src/Entity.cpp.s
+
+src/GameController.o: src/GameController.cpp.o
+.PHONY : src/GameController.o
+
+# target to build an object file
+src/GameController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/GameController.cpp.o
+.PHONY : src/GameController.cpp.o
+
+src/GameController.i: src/GameController.cpp.i
+.PHONY : src/GameController.i
+
+# target to preprocess a source file
+src/GameController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/GameController.cpp.i
+.PHONY : src/GameController.cpp.i
+
+src/GameController.s: src/GameController.cpp.s
+.PHONY : src/GameController.s
+
+# target to generate assembly for a file
+src/GameController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/GameController.cpp.s
+.PHONY : src/GameController.cpp.s
+
+src/GameView.o: src/GameView.cpp.o
+.PHONY : src/GameView.o
+
+# target to build an object file
+src/GameView.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/GameView.cpp.o
+.PHONY : src/GameView.cpp.o
+
+src/GameView.i: src/GameView.cpp.i
+.PHONY : src/GameView.i
+
+# target to preprocess a source file
+src/GameView.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/GameView.cpp.i
+.PHONY : src/GameView.cpp.i
+
+src/GameView.s: src/GameView.cpp.s
+.PHONY : src/GameView.s
+
+# target to generate assembly for a file
+src/GameView.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/GameView.cpp.s
+.PHONY : src/GameView.cpp.s
+
+src/InputHandler.o: src/InputHandler.cpp.o
+.PHONY : src/InputHandler.o
+
+# target to build an object file
+src/InputHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/InputHandler.cpp.o
+.PHONY : src/InputHandler.cpp.o
+
+src/InputHandler.i: src/InputHandler.cpp.i
+.PHONY : src/InputHandler.i
+
+# target to preprocess a source file
+src/InputHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/InputHandler.cpp.i
+.PHONY : src/InputHandler.cpp.i
+
+src/InputHandler.s: src/InputHandler.cpp.s
+.PHONY : src/InputHandler.s
+
+# target to generate assembly for a file
+src/InputHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/InputHandler.cpp.s
+.PHONY : src/InputHandler.cpp.s
+
 src/NetworkCommunicator.o: src/NetworkCommunicator.cpp.o
 .PHONY : src/NetworkCommunicator.o
 
@@ -152,6 +296,150 @@ src/NetworkCommunicator.s: src/NetworkCommunicator.cpp.s
 src/NetworkCommunicator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.s
 .PHONY : src/NetworkCommunicator.cpp.s
+
+src/Physics.o: src/Physics.cpp.o
+.PHONY : src/Physics.o
+
+# target to build an object file
+src/Physics.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Physics.cpp.o
+.PHONY : src/Physics.cpp.o
+
+src/Physics.i: src/Physics.cpp.i
+.PHONY : src/Physics.i
+
+# target to preprocess a source file
+src/Physics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Physics.cpp.i
+.PHONY : src/Physics.cpp.i
+
+src/Physics.s: src/Physics.cpp.s
+.PHONY : src/Physics.s
+
+# target to generate assembly for a file
+src/Physics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Physics.cpp.s
+.PHONY : src/Physics.cpp.s
+
+src/PhysicsSystem.o: src/PhysicsSystem.cpp.o
+.PHONY : src/PhysicsSystem.o
+
+# target to build an object file
+src/PhysicsSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o
+.PHONY : src/PhysicsSystem.cpp.o
+
+src/PhysicsSystem.i: src/PhysicsSystem.cpp.i
+.PHONY : src/PhysicsSystem.i
+
+# target to preprocess a source file
+src/PhysicsSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/PhysicsSystem.cpp.i
+.PHONY : src/PhysicsSystem.cpp.i
+
+src/PhysicsSystem.s: src/PhysicsSystem.cpp.s
+.PHONY : src/PhysicsSystem.s
+
+# target to generate assembly for a file
+src/PhysicsSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/PhysicsSystem.cpp.s
+.PHONY : src/PhysicsSystem.cpp.s
+
+src/Planet.o: src/Planet.cpp.o
+.PHONY : src/Planet.o
+
+# target to build an object file
+src/Planet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Planet.cpp.o
+.PHONY : src/Planet.cpp.o
+
+src/Planet.i: src/Planet.cpp.i
+.PHONY : src/Planet.i
+
+# target to preprocess a source file
+src/Planet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Planet.cpp.i
+.PHONY : src/Planet.cpp.i
+
+src/Planet.s: src/Planet.cpp.s
+.PHONY : src/Planet.s
+
+# target to generate assembly for a file
+src/Planet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Planet.cpp.s
+.PHONY : src/Planet.cpp.s
+
+src/Player.o: src/Player.cpp.o
+.PHONY : src/Player.o
+
+# target to build an object file
+src/Player.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Player.cpp.o
+.PHONY : src/Player.cpp.o
+
+src/Player.i: src/Player.cpp.i
+.PHONY : src/Player.i
+
+# target to preprocess a source file
+src/Player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Player.cpp.i
+.PHONY : src/Player.cpp.i
+
+src/Player.s: src/Player.cpp.s
+.PHONY : src/Player.s
+
+# target to generate assembly for a file
+src/Player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Player.cpp.s
+.PHONY : src/Player.cpp.s
+
+src/RectangleCollider.o: src/RectangleCollider.cpp.o
+.PHONY : src/RectangleCollider.o
+
+# target to build an object file
+src/RectangleCollider.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/RectangleCollider.cpp.o
+.PHONY : src/RectangleCollider.cpp.o
+
+src/RectangleCollider.i: src/RectangleCollider.cpp.i
+.PHONY : src/RectangleCollider.i
+
+# target to preprocess a source file
+src/RectangleCollider.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/RectangleCollider.cpp.i
+.PHONY : src/RectangleCollider.cpp.i
+
+src/RectangleCollider.s: src/RectangleCollider.cpp.s
+.PHONY : src/RectangleCollider.s
+
+# target to generate assembly for a file
+src/RectangleCollider.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/RectangleCollider.cpp.s
+.PHONY : src/RectangleCollider.cpp.s
+
+src/TextureManager.o: src/TextureManager.cpp.o
+.PHONY : src/TextureManager.o
+
+# target to build an object file
+src/TextureManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/TextureManager.cpp.o
+.PHONY : src/TextureManager.cpp.o
+
+src/TextureManager.i: src/TextureManager.cpp.i
+.PHONY : src/TextureManager.i
+
+# target to preprocess a source file
+src/TextureManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/TextureManager.cpp.i
+.PHONY : src/TextureManager.cpp.i
+
+src/TextureManager.s: src/TextureManager.cpp.s
+.PHONY : src/TextureManager.s
+
+# target to generate assembly for a file
+src/TextureManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/TextureManager.cpp.s
+.PHONY : src/TextureManager.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -186,9 +474,45 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Client"
+	@echo "... src/Button.o"
+	@echo "... src/Button.i"
+	@echo "... src/Button.s"
+	@echo "... src/CircleCollider.o"
+	@echo "... src/CircleCollider.i"
+	@echo "... src/CircleCollider.s"
+	@echo "... src/Entity.o"
+	@echo "... src/Entity.i"
+	@echo "... src/Entity.s"
+	@echo "... src/GameController.o"
+	@echo "... src/GameController.i"
+	@echo "... src/GameController.s"
+	@echo "... src/GameView.o"
+	@echo "... src/GameView.i"
+	@echo "... src/GameView.s"
+	@echo "... src/InputHandler.o"
+	@echo "... src/InputHandler.i"
+	@echo "... src/InputHandler.s"
 	@echo "... src/NetworkCommunicator.o"
 	@echo "... src/NetworkCommunicator.i"
 	@echo "... src/NetworkCommunicator.s"
+	@echo "... src/Physics.o"
+	@echo "... src/Physics.i"
+	@echo "... src/Physics.s"
+	@echo "... src/PhysicsSystem.o"
+	@echo "... src/PhysicsSystem.i"
+	@echo "... src/PhysicsSystem.s"
+	@echo "... src/Planet.o"
+	@echo "... src/Planet.i"
+	@echo "... src/Planet.s"
+	@echo "... src/Player.o"
+	@echo "... src/Player.i"
+	@echo "... src/Player.s"
+	@echo "... src/RectangleCollider.o"
+	@echo "... src/RectangleCollider.i"
+	@echo "... src/RectangleCollider.s"
+	@echo "... src/TextureManager.o"
+	@echo "... src/TextureManager.i"
+	@echo "... src/TextureManager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

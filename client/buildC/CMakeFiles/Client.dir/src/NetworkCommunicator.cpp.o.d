@@ -164,6 +164,8 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o: \
  /usr/include/enet/protocol.h /usr/include/enet/list.h \
  /usr/include/enet/callbacks.h /usr/include/c++/14.2.1/cstring \
  /usr/include/string.h /usr/include/strings.h \
+ /usr/include/c++/14.2.1/thread /usr/include/c++/14.2.1/bits/std_thread.h \
+ /usr/include/c++/14.2.1/bits/unique_ptr.h \
  /usr/include/c++/14.2.1/bits/this_thread_sleep.h \
  /usr/include/c++/14.2.1/bits/chrono.h /usr/include/c++/14.2.1/ratio \
  /usr/include/c++/14.2.1/cstdint \
@@ -182,4 +184,59 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o: \
  /usr/include/sys/ucontext.h /usr/include/bits/sigstack.h \
  /usr/include/bits/sigstksz.h /usr/include/bits/ss_flags.h \
  /usr/include/bits/types/struct_sigstack.h /usr/include/bits/sigthread.h \
- /usr/include/bits/signal_ext.h
+ /usr/include/bits/signal_ext.h /usr/include/c++/14.2.1/functional \
+ /usr/include/c++/14.2.1/bits/std_function.h \
+ /usr/include/c++/14.2.1/unordered_map \
+ /usr/include/c++/14.2.1/bits/unordered_map.h \
+ /usr/include/c++/14.2.1/bits/hashtable.h \
+ /usr/include/c++/14.2.1/bits/hashtable_policy.h \
+ /usr/include/c++/14.2.1/ext/aligned_buffer.h \
+ /usr/include/c++/14.2.1/bits/enable_special_members.h \
+ /usr/include/c++/14.2.1/bits/node_handle.h \
+ /usr/include/c++/14.2.1/bits/erase_if.h /usr/include/c++/14.2.1/array \
+ /usr/include/c++/14.2.1/compare \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/Entity.hpp \
+ /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_stdinc.h \
+ /usr/include/SDL2/SDL_config.h /usr/include/SDL2/SDL_platform.h \
+ /usr/include/SDL2/begin_code.h /usr/include/SDL2/close_code.h \
+ /usr/include/inttypes.h /usr/include/c++/14.2.1/math.h \
+ /usr/include/c++/14.2.1/cmath /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
+ /usr/include/bits/fp-fast.h \
+ /usr/include/bits/mathcalls-helper-functions.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
+ /usr/include/bits/iscanonical.h /usr/include/c++/14.2.1/bits/specfun.h \
+ /usr/include/c++/14.2.1/tr1/gamma.tcc \
+ /usr/include/c++/14.2.1/tr1/special_function_util.h \
+ /usr/include/c++/14.2.1/tr1/bessel_function.tcc \
+ /usr/include/c++/14.2.1/tr1/beta_function.tcc \
+ /usr/include/c++/14.2.1/tr1/ell_integral.tcc \
+ /usr/include/c++/14.2.1/tr1/exp_integral.tcc \
+ /usr/include/c++/14.2.1/tr1/hypergeometric.tcc \
+ /usr/include/c++/14.2.1/tr1/legendre_function.tcc \
+ /usr/include/c++/14.2.1/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/14.2.1/tr1/poly_hermite.tcc \
+ /usr/include/c++/14.2.1/tr1/poly_laguerre.tcc \
+ /usr/include/c++/14.2.1/tr1/riemann_zeta.tcc \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h \
+ /usr/include/SDL2/SDL_rect.h /usr/include/SDL2/SDL_error.h \
+ /usr/include/SDL2/SDL_pixels.h /usr/include/SDL2/SDL_endian.h \
+ /usr/include/SDL2/SDL_rwops.h /usr/include/SDL2/SDL_video.h \
+ /usr/include/SDL2/SDL_surface.h /usr/include/SDL2/SDL_blendmode.h \
+ /usr/include/c++/14.2.1/memory \
+ /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
+ /usr/include/c++/14.2.1/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/14.2.1/bits/align.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr_base.h \
+ /usr/include/c++/14.2.1/bits/allocated_ptr.h \
+ /usr/include/c++/14.2.1/ext/concurrence.h \
+ /usr/include/c++/14.2.1/bits/shared_ptr_atomic.h \
+ /usr/include/c++/14.2.1/bits/atomic_base.h \
+ /usr/include/c++/14.2.1/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/14.2.1/backward/auto_ptr.h \
+ /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
+ /usr/include/c++/14.2.1/pstl/execution_defs.h \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/Vector2D.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/Collider.hpp
