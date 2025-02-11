@@ -38,7 +38,7 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
         return;
     }
 
-    font = TTF_OpenFont("../res/Fonts/Roboto-Regular.ttf", 24);
+    font = TTF_OpenFont("../../res/Fonts/Roboto-Regular.ttf", 24);
     if (!font)
     {
         std::cerr << "Font Load Error: " << TTF_GetError() << std::endl;
@@ -57,7 +57,7 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    drawBackground(entityList[0].get());
+    drawBackground(entityList[0].get()); 
     Vector2D playerPos = entityList[0]->getPosition();
 
     for (std::unique_ptr<Entity> &entity : entityList)

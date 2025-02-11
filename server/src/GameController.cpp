@@ -27,7 +27,7 @@ void GameController::gameLoop()
         if (deltaTime > updateTime)
         {
             previousTime = std::chrono::steady_clock::now();
-            nc->NetworkHandler();
+            nc->NetworkHandler(); 
             physicsSystem.update(entityList, deltaTime / 1000.0); // Convert to seconds
             nc->sendWorldStateToClients(); 
         } 

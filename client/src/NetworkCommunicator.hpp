@@ -19,24 +19,25 @@ public:
     NetworkCommunicator(std::string &ipAddress);
     ~NetworkCommunicator();
     void NetworkHandler();
-    
 
+#pragma pack(push, 1)
     struct EntityData
     {
-        int entityType; // 0 = Player, 1 = Planet
-        enet_uint32 ID; 
-        double radius;
-        double posX, posY;
-        double velocityX, velocityY;
-        double accelerationX, accelerationY;
-        double mass;
+        enet_uint32 entityType;
+        enet_uint32 ID;
+        float posX, posY;
+        float velocityX, velocityY;
+        float accelerationX, accelerationY; 
+        float mass;
+        float radius;
     };
+#pragma pack(pop)
 
     struct PlayerInputs
     {
         double thrust;
         double rotation;
-    }; 
+    };
 
     void setEntityCallback(std::function<void(std::vector<EntityData>)> callback) { entityCallback = callback; }
     void sendInputToServer(PlayerInputs inputs);
@@ -47,14 +48,15 @@ private:
     ENetPeer *serverPeer;
     ENetHost *client;
 
-    std::function<void(std::vector<EntityData>)> entityCallback;
+    std::function<void(std::vector<EntityData>)> entityCallback; 
 
     struct ConnectData
     {
         std::string username;
         int width;
         int height;
-    }; ConnectData connectData = {"", 45, 352};
+    };
+    ConnectData connectData = {"", 45, 352}; 
 
     static bool connected;
 

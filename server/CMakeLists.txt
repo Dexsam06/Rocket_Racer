@@ -37,3 +37,5 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 # Ensure correct C++ standard
 set(CMAKE_CXX_STANDARD 17)
+
+set(CMAKE_BUILD_TYPE Debug)

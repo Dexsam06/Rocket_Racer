@@ -25,6 +25,8 @@ public:
     double getMass() const { return mass; }
     Vector2D getAcceleration() const { return acceleration; }
 
+    Vector2D getPosition() {return position; }
+
     void setPosition(Vector2D position) { this->position = position; }
     void setVelocity(Vector2D velocity) { this->velocity = velocity; }
     void setAcceleration(Vector2D acceleration) { this->acceleration = acceleration; } 

@@ -29,7 +29,6 @@ NetworkCommunicator::NetworkCommunicator(std::string &ipAddress)
 
     std::cout << "Type your username: ";
     std::cin >> connectData.username;
-    double width, height = 50;
 
     serverPeer = enet_host_connect(client, &address, 1, 0);
     if (serverPeer == NULL)
@@ -56,7 +55,7 @@ NetworkCommunicator::NetworkCommunicator(std::string &ipAddress)
     }
 }
 
-NetworkCommunicator::~NetworkCommunicator() {} 
+NetworkCommunicator::~NetworkCommunicator() {}
 
 void NetworkCommunicator::NetworkHandler()
 {
@@ -114,7 +113,7 @@ void NetworkCommunicator::NetworkHandler()
 void NetworkCommunicator::sendInputToServer(NetworkCommunicator::PlayerInputs inputs)
 {
     ENetPacket *packet = enet_packet_create(&inputs, sizeof(inputs), ENET_PACKET_FLAG_RELIABLE);
-    enet_peer_send(serverPeer, 0 ,packet);
+    enet_peer_send(serverPeer, 0, packet);
     enet_host_flush(client);
     enet_packet_destroy(packet);
 }

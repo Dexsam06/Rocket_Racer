@@ -17,7 +17,7 @@ GameController::~GameController() {}
 void GameController::loadResources()
 {
     // Background
-    SDL_Texture *backgroundTexture = textureManager.loadTexture("background", "../res/spaceBackgroundTiling.jpg", gv->getRenderer());
+    SDL_Texture *backgroundTexture = textureManager.loadTexture("background", "../../res/spaceBackgroundTiling.jpg", gv->getRenderer());
     gv->setBackground(backgroundTexture);
 
     // Buttons
@@ -53,14 +53,13 @@ void GameController::render(std::vector<Vector2D> futurePath)
 
 void GameController::gameLoop()
 {
-
     int fps = 60;
     int updateTime = (int)((1 / fps) * 1000);
     Uint32 previousTime = SDL_GetTicks();
     while (gv->running())
     {
         long deltaTime = (SDL_GetTicks() - previousTime);
-
+        nc->NetworkHandler();
         if (deltaTime > updateTime)
         {
             previousTime = SDL_GetTicks();
@@ -75,7 +74,7 @@ void GameController::gameLoop()
 void GameController::handleEvents()
 {
     InputHandler::PlayerInputs inputs = inputHandler.handleInput(dynamic_cast<Player *>(entityList[0].get()), buttonList);
-
+    std::cout << "maybe it be crashing here" << std::endl;
     NetworkCommunicator::PlayerInputs playerInputs;
     playerInputs.thrust = inputs.thrust;
     playerInputs.rotation = inputs.rotation;
@@ -105,11 +104,11 @@ void GameController::handleIncomingEntityData(std::vector<NetworkCommunicator::E
 
         for (auto &entity : entityList)
         {
-
             Player *player = dynamic_cast<Player *>(entity.get());
             Planet *planet = dynamic_cast<Planet *>(entity.get());
 
-            if (player && player->getPeerID() == data.ID)
+            // Handle player entity
+            if (data.entityType == 0 && player && player->getPeerID() == data.ID)
             {
                 player->setPeerID(data.ID);
                 player->setPosition(Vector2D(data.posX, data.posY));
@@ -121,7 +120,8 @@ void GameController::handleIncomingEntityData(std::vector<NetworkCommunicator::E
                 break;
             }
 
-            else if (planet && planet->getUniqueID() == data.ID)
+            // Handle planet entity
+            else if (data.entityType == 1 && planet && planet->getUniqueID() == data.ID)
             {
                 planet->setUniqueID(data.ID);
                 planet->setPosition(Vector2D(data.posX, data.posY));
@@ -136,10 +136,13 @@ void GameController::handleIncomingEntityData(std::vector<NetworkCommunicator::E
         {
             if (data.entityType == 0)
             {
-
                 int height, width;
                 // Player
-                SDL_Texture *playerTexture = textureManager.loadTexture("player", "../res/player.png", gv->getRenderer());
+                SDL_Texture *playerTexture = textureManager.loadTexture("player", "../../res/player.png", gv->getRenderer());
+                if (!playerTexture)
+                {
+                    std::cerr << "Failed to load player texture!" << std::endl;
+                }
                 SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height);
 
                 player = std::make_unique<Player>(
@@ -155,6 +158,7 @@ void GameController::handleIncomingEntityData(std::vector<NetworkCommunicator::E
                     data.ID);
                 player->setPlayerWidth(width);
                 player->setPlayerHeight(height);
+
                 entityList.push_back(std::move(player));
 
                 std::cout << "New player added with peerID: " << data.ID << std::endl;
@@ -162,8 +166,8 @@ void GameController::handleIncomingEntityData(std::vector<NetworkCommunicator::E
 
             else if (data.entityType == 1)
             {
-                std::string filePath = "../res/planet" + std::to_string(data.ID) + ".png";
-                SDL_Texture *texture = textureManager.loadTexture("player", filePath, gv->getRenderer());
+                std::string filePath = "../../res/planet" + std::to_string(data.ID) + ".png";
+                SDL_Texture *texture = textureManager.loadTexture("planet", filePath, gv->getRenderer());
 
                 std::unique_ptr<Planet> planet = std::make_unique<Planet>(
                     std::make_unique<CircleCollider>(

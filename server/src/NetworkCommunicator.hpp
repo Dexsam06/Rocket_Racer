@@ -25,7 +25,7 @@ public:
 private:
     ENetAddress address;
     ENetEvent event;
-    ENetHost *server; 
+    ENetHost *server;
 
     bool serverRunningState = true;
 
@@ -45,18 +45,19 @@ private:
         double rotation;
     };
 
+#pragma pack(push, 1)
     struct EntityData
     {
-        int entityType; // 0 = Player, 1 = Planet
-        enet_uint32 ID; 
-        double radius;
-        double posX, posY;
-        double velocityX, velocityY;
-        double accelerationX, accelerationY;
-        double mass;
+        enet_uint32 entityType;
+        enet_uint32 ID;
+        float posX, posY;
+        float velocityX, velocityY;
+        float accelerationX, accelerationY;
+        float mass;
+        float radius; 
     };
+#pragma pack(pop)
 
-    void handleIncomingConnections(ENetEvent &event);
     void handleDisconnections(ENetEvent &event);
     void handleIncomingPacket(ENetEvent &event);
     ENetPacket *createWorldStatePacket(enet_uint32 peerID);

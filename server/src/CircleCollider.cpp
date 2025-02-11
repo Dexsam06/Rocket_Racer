@@ -20,7 +20,7 @@ bool CircleCollider::checkCollision(const Collider& other, Vector2D& collisionNo
         return rect->checkCircleCollision(*this, collisionNormal);
     }
 
-    return false;
+    return false; 
 }
 
 void CircleCollider::resolveCollision(Vector2D& velocity, const Vector2D& collisionNormal, double restitution) const {
