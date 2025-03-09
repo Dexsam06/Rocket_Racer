@@ -1,12 +1,12 @@
-#include "Planet.hpp"
+#include "../include/Planet.hpp"
 #include "Physics.hpp"
 #include <vector> 
 
-Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius, int uniqueID) 
-    : Entity(std::move(collider), pos, vel, mass), radius(radius), uniqueID(uniqueID) {
+Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius, int entityType, int ID) 
+    : Entity(std::move(collider), pos, vel, mass, 0, entityType, ID), radius(radius) {
 }
 
-void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaTime){
+void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaTime){ 
     acceleration.x = Physics::acceleration(xGravityForce, mass);
     acceleration.y = Physics::acceleration(yGravityForce, mass);
 

@@ -237,7 +237,14 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
- /usr/include/SDL2/SDL_misc.h \
+ /usr/include/SDL2/SDL_misc.h /usr/include/c++/14.2.1/unordered_map \
+ /usr/include/c++/14.2.1/bits/unordered_map.h \
+ /usr/include/c++/14.2.1/bits/hashtable.h \
+ /usr/include/c++/14.2.1/bits/hashtable_policy.h \
+ /usr/include/c++/14.2.1/ext/aligned_buffer.h \
+ /usr/include/c++/14.2.1/bits/enable_special_members.h \
+ /usr/include/c++/14.2.1/bits/node_handle.h \
+ /usr/include/c++/14.2.1/bits/erase_if.h \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/NetworkCommunicator.hpp \
  /usr/include/c++/14.2.1/iostream /usr/include/c++/14.2.1/ostream \
  /usr/include/c++/14.2.1/ios /usr/include/c++/14.2.1/iosfwd \
@@ -333,15 +340,7 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: \
  /usr/include/bits/types/struct_sigstack.h /usr/include/bits/sigthread.h \
  /usr/include/bits/signal_ext.h /usr/include/c++/14.2.1/functional \
  /usr/include/c++/14.2.1/bits/std_function.h \
- /usr/include/c++/14.2.1/unordered_map \
- /usr/include/c++/14.2.1/bits/unordered_map.h \
- /usr/include/c++/14.2.1/bits/hashtable.h \
- /usr/include/c++/14.2.1/bits/hashtable_policy.h \
- /usr/include/c++/14.2.1/ext/aligned_buffer.h \
- /usr/include/c++/14.2.1/bits/enable_special_members.h \
- /usr/include/c++/14.2.1/bits/node_handle.h \
- /usr/include/c++/14.2.1/bits/erase_if.h /usr/include/c++/14.2.1/array \
- /usr/include/c++/14.2.1/compare \
+ /usr/include/c++/14.2.1/array /usr/include/c++/14.2.1/compare \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/Entity.hpp \
  /usr/include/SDL2/SDL_render.h /usr/include/c++/14.2.1/memory \
  /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
@@ -369,4 +368,10 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/PhysicsSystem.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/Physics.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/RectangleCollider.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/client/src/CircleCollider.hpp
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/CircleCollider.hpp \
+ /usr/include/c++/14.2.1/algorithm \
+ /usr/include/c++/14.2.1/bits/stl_algo.h \
+ /usr/include/c++/14.2.1/bits/algorithmfwd.h \
+ /usr/include/c++/14.2.1/bits/stl_heap.h \
+ /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
+ /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h

@@ -311,19 +311,6 @@ CMakeFiles/Client.dir/src/GameView.cpp.o: \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/Vector2D.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/Collider.hpp \
- /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
- /home/samuel/Dev/c++/Rocket_Racer/client/src/Button.hpp \
- /usr/include/c++/14.2.1/functional \
- /usr/include/c++/14.2.1/bits/std_function.h \
- /usr/include/c++/14.2.1/unordered_map \
- /usr/include/c++/14.2.1/bits/unordered_map.h \
- /usr/include/c++/14.2.1/bits/hashtable.h \
- /usr/include/c++/14.2.1/bits/hashtable_policy.h \
- /usr/include/c++/14.2.1/bits/enable_special_members.h \
- /usr/include/c++/14.2.1/bits/node_handle.h \
- /usr/include/c++/14.2.1/bits/erase_if.h /usr/include/c++/14.2.1/array \
- /usr/include/c++/14.2.1/compare \
- /home/samuel/Dev/c++/Rocket_Racer/client/src/Player.hpp \
  /usr/include/enet/enet.h /usr/include/enet/unix.h \
  /usr/include/sys/time.h /usr/include/sys/socket.h \
  /usr/include/bits/types/struct_iovec.h /usr/include/bits/socket.h \
@@ -341,4 +328,17 @@ CMakeFiles/Client.dir/src/GameView.cpp.o: \
  /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
  /usr/include/linux/close_range.h /usr/include/enet/types.h \
  /usr/include/enet/protocol.h /usr/include/enet/list.h \
- /usr/include/enet/callbacks.h
+ /usr/include/enet/callbacks.h /usr/include/SDL2/SDL_ttf.h \
+ /usr/include/SDL2/SDL.h \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/Button.hpp \
+ /usr/include/c++/14.2.1/functional \
+ /usr/include/c++/14.2.1/bits/std_function.h \
+ /usr/include/c++/14.2.1/unordered_map \
+ /usr/include/c++/14.2.1/bits/unordered_map.h \
+ /usr/include/c++/14.2.1/bits/hashtable.h \
+ /usr/include/c++/14.2.1/bits/hashtable_policy.h \
+ /usr/include/c++/14.2.1/bits/enable_special_members.h \
+ /usr/include/c++/14.2.1/bits/node_handle.h \
+ /usr/include/c++/14.2.1/bits/erase_if.h /usr/include/c++/14.2.1/array \
+ /usr/include/c++/14.2.1/compare \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/Player.hpp

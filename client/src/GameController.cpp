@@ -1,24 +1,166 @@
 
-#include "GameController.hpp"
-#include "Physics.hpp"
-#include <iostream>
+#include "../include/GameController.hpp"
 
-GameController::GameController(GameView *gv, NetworkCommunicator *nc) : gv(gv), nc(nc)
+GameController::GameController(NetworkCommunicator *nc, GameView *gv) : nc(nc), gv(gv)
 {
     loadResources();
-
-    // Register the callback function
-    nc->setEntityCallback([this](std::vector<NetworkCommunicator::EntityData> data)
-                          { handleIncomingEntityData(data); });
 }
 
 GameController::~GameController() {}
+
+void GameController::gameLoop()
+{
+    int fps = 60;
+    int updateTime = (int)((1 / fps) * 1000);
+    Uint32 previousTime = SDL_GetTicks();
+
+    while (gv->running())
+    {
+        long deltaTime = (SDL_GetTicks() - previousTime);
+        if (deltaTime > updateTime)
+        {
+            previousTime = SDL_GetTicks();
+            nc->handleReceivedPacket();
+            clientPlayer->reconcileClientState(clientPlayer->getPosition(), Vector2D(nc->getGameStatePacket().clientState.serverPosX, nc->getGameStatePacket().clientState.serverPosY), nc->getGameStatePacket().clientState.rotation, 0.2f);
+            removeConfirmedInputs();
+            handleEvents();
+            reapplyUnconfirmedInputs();
+            physicsSystem.predictClientPosition(entityList, deltaTime / 1000.0);
+            nc->sendInputPacketToServer(inputBuffer); 
+            interpolateOtherEntities();
+            gv->render(entityList, buttonList); 
+        }
+    }
+    gv->clean();
+}
+
+void GameController::handleEvents()
+{
+    std::vector<InputHandler::keyInput> keyInputPacket = inputHandler.handleInput(buttonList);
+
+    if (keyInputPacket.empty()) 
+    {
+        return;
+    }
+
+    InputWithSequence inputWithSeq = {inputSequenceNumber++, keyInputPacket};
+
+    inputBuffer.push_back(inputWithSeq);
+
+    if (inputHandler.isQuit())
+    {
+        nc->disconnectFromServer();
+        gv->setIsRunning(false);
+    }
+}
+
+void GameController::removeConfirmedInputs()
+{
+    int lastVerifiedInputID = nc->getGameStatePacket().clientState.lastVerifiedInputID;
+
+    inputBuffer.erase(
+        std::remove_if(inputBuffer.begin(), inputBuffer.end(),
+                       [lastVerifiedInputID](const InputWithSequence &input)
+                       {
+                           return input.sequenceNumber <= lastVerifiedInputID;
+                       }),
+        inputBuffer.end());
+}
+
+void GameController::reapplyUnconfirmedInputs()
+{
+    for (InputWithSequence &InputPacket : inputBuffer)
+    {
+        for (InputHandler::keyInput &keyInput : InputPacket.keyInputPacket)
+        {
+            clientPlayer->applyInput(keyInput.keyCode, keyInput.duration);
+        }
+    }
+}
+
+void GameController::interpolateOtherEntities()
+{
+    uint32_t clientPlayerID = nc->getClientID();
+
+    int entityIndex = 1; 
+    for (const auto &serverEntity : nc->getGameStatePacket().entities)
+    {
+        Vector2D clientEntityPosition = (entityList[entityIndex]->getPosition().x, entityList[entityIndex]->getPosition().y);
+        Vector2D serverEntityPosition = (serverEntity.posX, serverEntity.posY);
+
+        double deltaX = serverEntityPosition.x - clientEntityPosition.x;
+        double deltaY = serverEntityPosition.y - clientEntityPosition.y;
+        double distanceSquared = (deltaX * deltaX) + (deltaY * deltaY);
+
+        double snapThreshold = 0.5;
+
+        // Check if we should snap (if within the threshold)
+        if (distanceSquared < snapThreshold * snapThreshold)
+        {
+            entityList[entityIndex]->setPosition(Vector2D(serverEntityPosition.x, serverEntityPosition.y));
+        }
+        else
+        {
+            entityList[entityIndex]->setPosition(Vector2D(Physics::lerp(clientEntityPosition.x, serverEntity.posX, 0.2f), Physics::lerp(clientEntityPosition.y, serverEntity.posY, 0.2f)));
+        }
+
+        if (serverEntity.entityID < 1000)
+        {
+            double rotation = entityList[entityIndex]->getRotation();
+            if (rotation > serverEntity.rotation - 5 && rotation < serverEntity.rotation + 5)
+            {
+                rotation = serverEntity.rotation;
+            }
+            else
+            {
+                rotation = Physics::lerp(rotation, serverEntity.rotation, 0.2f);
+            }
+        }
+
+        entityIndex++;
+    }
+}
+
+void GameController::onZoomButtonClickOut()
+{
+    gv->setScalingFactors(Vector2D(0.9, 0.9));
+}
+void GameController::onZoomButtonClickIn()
+{
+    gv->setScalingFactors(Vector2D(1.1, 1.1));
+}
 
 void GameController::loadResources()
 {
     // Background
     SDL_Texture *backgroundTexture = textureManager.loadTexture("background", "../../res/spaceBackgroundTiling.jpg", gv->getRenderer());
     gv->setBackground(backgroundTexture);
+
+    int height, width;
+
+    SDL_Texture *playerTexture = textureManager.loadTexture("player", "../../res/player.png", gv->getRenderer());
+    if (!playerTexture)
+    {
+        std::cerr << "Failed to load player texture!" << std::endl;
+    }
+    SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height);
+
+    clientPlayer = std::make_unique<Player>(
+        std::make_unique<RectangleCollider>(
+            Vector2D(700 + (70 * nc->getClientID()), 500),
+            width,
+            height),
+        playerTexture,
+        Vector2D(700 + (70 * nc->getClientID()), 500),
+        Vector2D(0, 0),
+        playerMass,
+        nc->getClientID());
+    clientPlayer->setPlayerWidth(width);
+    clientPlayer->setPlayerHeight(height);
+
+    entityList.push_back(std::move(clientPlayer));
+
+    std::cout << "clientPlayer added: " << nc->getClientID() << std::endl;
 
     // Buttons
     zoomButtonIn = std::make_unique<Button>(
@@ -44,145 +186,4 @@ void GameController::loadResources()
         gv->getFont(),
         std::bind(&GameController::onZoomButtonClickIn, this));
     buttonList.push_back(std::move(zoomButtonOut));
-}
-
-void GameController::render(std::vector<Vector2D> futurePath)
-{
-    gv->render(entityList, buttonList, futurePath);
-}
-
-void GameController::gameLoop()
-{
-    int fps = 60;
-    int updateTime = (int)((1 / fps) * 1000);
-    Uint32 previousTime = SDL_GetTicks();
-    while (gv->running())
-    {
-        long deltaTime = (SDL_GetTicks() - previousTime);
-        nc->NetworkHandler();
-        if (deltaTime > updateTime)
-        {
-            previousTime = SDL_GetTicks();
-            handleEvents();
-            nc->NetworkHandler();
-            render(physicsSystem.update(entityList, deltaTime / 1000.0));
-        }
-    }
-    gv->clean();
-}
-
-void GameController::handleEvents()
-{
-    InputHandler::PlayerInputs inputs = inputHandler.handleInput(dynamic_cast<Player *>(entityList[0].get()), buttonList);
-    std::cout << "maybe it be crashing here" << std::endl;
-    NetworkCommunicator::PlayerInputs playerInputs;
-    playerInputs.thrust = inputs.thrust;
-    playerInputs.rotation = inputs.rotation;
-
-    nc->sendInputToServer(playerInputs);
-
-    if (inputHandler.isQuit())
-    {
-        gv->setIsRunning(false);
-    }
-}
-
-void GameController::onZoomButtonClickOut()
-{
-    gv->setScalingFactors(Vector2D(0.9, 0.9));
-}
-void GameController::onZoomButtonClickIn()
-{
-    gv->setScalingFactors(Vector2D(1.1, 1.1));
-}
-
-void GameController::handleIncomingEntityData(std::vector<NetworkCommunicator::EntityData> entityDataList)
-{
-    for (auto &data : entityDataList)
-    {
-        bool found = false;
-
-        for (auto &entity : entityList)
-        {
-            Player *player = dynamic_cast<Player *>(entity.get());
-            Planet *planet = dynamic_cast<Planet *>(entity.get());
-
-            // Handle player entity
-            if (data.entityType == 0 && player && player->getPeerID() == data.ID)
-            {
-                player->setPeerID(data.ID);
-                player->setPosition(Vector2D(data.posX, data.posY));
-                player->setVelocity(Vector2D(data.velocityX, data.velocityY));
-                player->setAcceleration(Vector2D(data.accelerationX, data.accelerationY));
-                player->setMass(data.mass);
-
-                found = true;
-                break;
-            }
-
-            // Handle planet entity
-            else if (data.entityType == 1 && planet && planet->getUniqueID() == data.ID)
-            {
-                planet->setUniqueID(data.ID);
-                planet->setPosition(Vector2D(data.posX, data.posY));
-                planet->setVelocity(Vector2D(data.velocityX, data.velocityY));
-                planet->setAcceleration(Vector2D(data.accelerationX, data.accelerationY));
-                found = true;
-                break;
-            }
-        }
-
-        if (!found)
-        {
-            if (data.entityType == 0)
-            {
-                int height, width;
-                // Player
-                SDL_Texture *playerTexture = textureManager.loadTexture("player", "../../res/player.png", gv->getRenderer());
-                if (!playerTexture)
-                {
-                    std::cerr << "Failed to load player texture!" << std::endl;
-                }
-                SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height);
-
-                player = std::make_unique<Player>(
-                    std::make_unique<RectangleCollider>(
-                        Vector2D(data.posX, data.posY),
-                        width,
-                        height,
-                        0),
-                    playerTexture,
-                    Vector2D(data.posX, data.posY),
-                    Vector2D(data.velocityX, data.velocityY),
-                    data.mass,
-                    data.ID);
-                player->setPlayerWidth(width);
-                player->setPlayerHeight(height);
-
-                entityList.push_back(std::move(player));
-
-                std::cout << "New player added with peerID: " << data.ID << std::endl;
-            }
-
-            else if (data.entityType == 1)
-            {
-                std::string filePath = "../../res/planet" + std::to_string(data.ID) + ".png";
-                SDL_Texture *texture = textureManager.loadTexture("planet", filePath, gv->getRenderer());
-
-                std::unique_ptr<Planet> planet = std::make_unique<Planet>(
-                    std::make_unique<CircleCollider>(
-                        Vector2D(data.posX, data.posY),
-                        data.radius),
-                    texture,
-                    Vector2D(data.posX, data.posY),
-                    Vector2D(data.velocityX, data.velocityY),
-                    data.mass,
-                    data.radius,
-                    data.ID);
-                entityList.push_back(std::move(planet));
-
-                std::cout << "New planet added with uniqueID: " << data.ID << std::endl;
-            }
-        }
-    }
 }

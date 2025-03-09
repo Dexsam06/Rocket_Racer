@@ -1,5 +1,6 @@
 
-#include "NetworkCommunicator.hpp"
+#include "../include/NetworkCommunicator.hpp"
+#include <string.h>
 
 NetworkCommunicator::NetworkCommunicator()
 {
@@ -28,10 +29,41 @@ void NetworkCommunicator::NetworkHandler()
 {
     while (enet_host_service(server, &event, 0) > 0)
     {
+        ClientInfoPacket clientInfoPacket;
+        std::vector<InputWithSequence> receivedInputs;
+
         switch (event.type)
         {
+        case ENET_EVENT_TYPE_CONNECT:
+            handleConnections(event);
+            break;
         case ENET_EVENT_TYPE_RECEIVE:
-            handleIncomingPacket(event);
+
+            if (!event.packet || event.packet->data == nullptr)
+            {
+                std::cerr << "Error: Null or corrupted packet received!" << std::endl;
+                return;
+            }
+
+            const uint8_t *buffer = event.packet->data;
+            size_t packetSize = event.packet->dataLength;
+
+            PacketType type = static_cast<PacketType>(buffer[0]);
+
+            switch (type)
+            {
+            case PacketType::CLIENT_INFO_PACKET:
+                clientInfoPacket.Deserialize(buffer, packetSize);
+                std::cout << "Received client info from ID: " << event.peer->incomingPeerID << std::endl;
+                sendNewConnectedPlayerPacket(event.peer->incomingPeerID, clientInfoPacket.username);
+                std::cout << "Sent message that a new player has been added" << std::endl;
+                break;
+            case PacketType::INPUT_PACKET:
+                InputWithSequence::Deserialize(buffer, packetSize, receivedInputs);
+                clientsInputBuffer.push_back({event.peer->incomingPeerID, receivedInputs});
+                break;
+            }
+
             break;
         case ENET_EVENT_TYPE_DISCONNECT:
             handleDisconnections(event);
@@ -40,66 +72,29 @@ void NetworkCommunicator::NetworkHandler()
     }
 }
 
-void NetworkCommunicator::handleIncomingPacket(ENetEvent &event)
+void NetworkCommunicator::handleConnections(ENetEvent &event)
 {
-    enet_uint32 peerID = event.peer->incomingPeerID;
+    std::vector<uint32_t> playerIDs;
 
-    if (event.packet && event.packet->dataLength == sizeof(ClientGameData))
+    for (std::pair<const enet_uint32, ENetPeer *> &client : clients)
     {
-        ClientGameData *gameData = reinterpret_cast<ClientGameData *>(event.packet->data);
-
-        for (auto it = entityList->begin(); it != entityList->end();)
-        {
-            Player *player = dynamic_cast<Player *>(it->get());
-            if (player && player->getPeerID() == peerID)
-            {
-                player->setThrust(gameData->thrust);
-                player->setRotation(gameData->rotation);
-                break;
-            }
-            else
-            {
-                ++it;
-            }
-        }
+        playerIDs.push_back(client.first);
     }
-    else if (event.packet && event.packet->dataLength == sizeof(ClientConnectData))
-    {
-        ClientConnectData *client = reinterpret_cast<ClientConnectData *>(event.packet->data);
-        clients[peerID] = event.peer;
-        std::cout << "Client connected! Username: " << client->username << " and ID: " << peerID << std::endl;
 
-        std::unique_ptr<Player> player = std::make_unique<Player>(
-            std::make_unique<RectangleCollider>(
-                Vector2D(700 + (50 * peerID), 500),
-                client->width,
-                client->height),
-            Vector2D(700 + (50 * peerID), 500),
-            Vector2D(0, 0),
-            100.0,
-            client->username,
-            peerID);
-        player->setPlayerWidth(50);
-        player->setPlayerHeight(100);
-
-        entityList->push_back(std::move(player));
-
-        ENetPacket *packet = createWorldStatePacket(peerID);
-        enet_peer_send(event.peer, 0, packet);
-    }
-    enet_packet_destroy(event.packet);
+    sendAllConnectedPlayersPacket(event.peer, playerIDs);
 }
 
 void NetworkCommunicator::handleDisconnections(ENetEvent &event)
 {
-    enet_uint32 peerID = event.peer->incomingPeerID;
+    enet_uint16 peerID = event.peer->incomingPeerID;
 
     clients.erase(peerID);
 
+    /*
     for (auto it = entityList->begin(); it != entityList->end();)
     {
         Player *player = dynamic_cast<Player *>(it->get());
-        if (player && player->getPeerID() == peerID)
+        if (player && player->getID() == peerID)
         {
             it = entityList->erase(it);
             break;
@@ -109,61 +104,57 @@ void NetworkCommunicator::handleDisconnections(ENetEvent &event)
             ++it;
         }
     }
+    */
 
-    std::cout << "Client disconnected! Peer ID: " << peerID << std::endl;
+    std::cout << "Client disconnected! ID: " << peerID << std::endl;
+
+    sendPlayerDisconnectedPacket(peerID);
+
+    std::cout << "Sent message that a player has been removed" << std::endl; 
 }
 
-void NetworkCommunicator::sendWorldStateToClients()
+void NetworkCommunicator::sendAllConnectedPlayersPacket(ENetPeer *peer, const std::vector<uint32_t> &playerIDs)
 {
-    for (const auto &client : clients)
+    ConnectedPlayersPacket packet(playerIDs);
+
+    std::vector<uint8_t> data = packet.Serialize();
+    ENetPacket *enetPacket = enet_packet_create(data.data(), data.size(), ENET_PACKET_FLAG_RELIABLE);
+
+    enet_peer_send(peer, 0, enetPacket);
+    enet_host_flush(server);
+}
+
+void NetworkCommunicator::sendNewConnectedPlayerPacket(uint16_t &playerID, char username[32])
+{
+    NewPlayerConnectedPacket packet(playerID, username);
+    std::vector<uint8_t> data = packet.Serialize();
+    ENetPacket *enetPacket = enet_packet_create(data.data(), data.size(), ENET_PACKET_FLAG_RELIABLE);
+
+    for (std::pair<const enet_uint32, ENetPeer *> &client : clients)
     {
-        ENetPacket *packet = createWorldStatePacket(client.first);
-        enet_peer_send(client.second, 0, packet);
-        enet_host_flush(client.second->host);
-        enet_packet_destroy(packet);
+        enet_peer_send(client.second, 0, enetPacket);
+        enet_host_flush(server);
     }
 }
 
-ENetPacket *NetworkCommunicator::createWorldStatePacket(enet_uint32 peerID)
+void NetworkCommunicator::sendPlayerDisconnectedPacket(uint16_t &playerID)
 {
-    std::vector<EntityData> dataList;
+    PlayerDisconnectedPacket packet(playerID);
+    std::vector<uint8_t> data = packet.Serialize();
+    ENetPacket *enetPacket = enet_packet_create(data.data(), data.size(), ENET_PACKET_FLAG_RELIABLE);
 
-    for (auto &entity : *entityList)
+    for (std::pair<const enet_uint32, ENetPeer *> &client : clients)
     {
-        EntityData data;
-
-        if (!entity) // Check if entity is nullptr
-        {
-            std::cerr << "ERROR: Null entity found in entityList!" << std::endl;
-            continue; // Skip this iteration
-        }
-
-        if (Player *player = dynamic_cast<Player *>(entity.get()))
-        {
-            data.entityType = 0; // Player
-            data.ID = player->getPeerID();
-            data.radius = 0.0f; 
-        }
-        else if (Planet *planet = dynamic_cast<Planet *>(entity.get()))
-        {
-            data.entityType = 1; // Planet
-            data.ID = planet->getUniqueID();
-            data.radius = planet->getRadius();
-        }
-
-        // Serialize common attributes
-        data.posX = entity->getPosition().x; 
-        data.posY = entity->getPosition().y;
-        data.velocityX = entity->getVelocity().x;
-        data.velocityY = entity->getVelocity().y;
-        data.accelerationX = entity->getAcceleration().x;
-        data.accelerationY = entity->getAcceleration().y;
-        data.mass = entity->getMass();
-
-        dataList.push_back(data);
+        enet_peer_send(client.second, 0, enetPacket);
+        enet_host_flush(server);
     }
+}
 
-    size_t dataSize = dataList.size() * sizeof(EntityData);
-    ENetPacket *packet = enet_packet_create(dataList.data(), dataSize, ENET_PACKET_FLAG_RELIABLE);
-    return packet;
+void NetworkCommunicator::sendGameStatePacketToClient(ENetPeer *peer, const GameStatePacket &packet)
+{
+    std::vector<uint8_t> data = packet.Serialize();
+    ENetPacket *enetPacket = enet_packet_create(data.data(), data.size(), ENET_PACKET_FLAG_RELIABLE);
+
+    enet_peer_send(peer, 0, enetPacket);
+    enet_host_flush(server);
 }

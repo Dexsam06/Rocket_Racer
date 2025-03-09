@@ -1,4 +1,4 @@
-#include "RectangleCollider.hpp"
+#include "../include/RectangleCollider.hpp"
 #include <cmath>
 #include <algorithm>
 #include <limits>

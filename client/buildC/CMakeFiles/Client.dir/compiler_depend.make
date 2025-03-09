@@ -599,20 +599,35 @@ CMakeFiles/Client.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/SDL2/begin_code.h \
   /usr/include/SDL2/close_code.h \
   /usr/include/alloca.h \
+  /usr/include/arpa/inet.h \
+  /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/include/asm-generic/socket.h \
+  /usr/include/asm-generic/sockios.h \
+  /usr/include/asm/bitsperlong.h \
   /usr/include/asm/errno.h \
+  /usr/include/asm/posix_types.h \
+  /usr/include/asm/posix_types_64.h \
+  /usr/include/asm/socket.h \
+  /usr/include/asm/sockios.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
+  /usr/include/bits/confname.h \
   /usr/include/bits/cpu-set.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
+  /usr/include/bits/environments.h \
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
   /usr/include/bits/flt-eval-method.h \
   /usr/include/bits/fp-fast.h \
   /usr/include/bits/fp-logb.h \
+  /usr/include/bits/getopt_core.h \
+  /usr/include/bits/getopt_posix.h \
+  /usr/include/bits/in.h \
   /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/bits/libm-simd-decl-stubs.h \
@@ -622,12 +637,16 @@ CMakeFiles/Client.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/bits/mathcalls-helper-functions.h \
   /usr/include/bits/mathcalls-narrow.h \
   /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix_opt.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
   /usr/include/bits/sched.h \
   /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
+  /usr/include/bits/sockaddr.h \
+  /usr/include/bits/socket.h \
+  /usr/include/bits/socket_type.h \
   /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdint-least.h \
   /usr/include/bits/stdint-uintn.h \
@@ -657,7 +676,9 @@ CMakeFiles/Client.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/bits/types/struct_iovec.h \
   /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/types/struct_osockaddr.h \
   /usr/include/bits/types/struct_sched_param.h \
   /usr/include/bits/types/struct_timespec.h \
   /usr/include/bits/types/struct_timeval.h \
@@ -667,6 +688,7 @@ CMakeFiles/Client.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/unistd_ext.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
@@ -813,15 +835,25 @@ CMakeFiles/Client.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/enet/callbacks.h \
+  /usr/include/enet/enet.h \
+  /usr/include/enet/list.h \
+  /usr/include/enet/protocol.h \
+  /usr/include/enet/types.h \
+  /usr/include/enet/unix.h \
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
+  /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
   /usr/include/locale.h \
   /usr/include/math.h \
+  /usr/include/netinet/in.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -833,8 +865,11 @@ CMakeFiles/Client.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
+  /usr/include/sys/socket.h \
+  /usr/include/sys/time.h \
   /usr/include/sys/types.h \
   /usr/include/time.h \
+  /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h \
@@ -1025,10 +1060,12 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/c++/14.2.1/algorithm \
   /usr/include/c++/14.2.1/array \
   /usr/include/c++/14.2.1/backward/auto_ptr.h \
   /usr/include/c++/14.2.1/backward/binders.h \
   /usr/include/c++/14.2.1/bit \
+  /usr/include/c++/14.2.1/bits/algorithmfwd.h \
   /usr/include/c++/14.2.1/bits/align.h \
   /usr/include/c++/14.2.1/bits/alloc_traits.h \
   /usr/include/c++/14.2.1/bits/allocated_ptr.h \
@@ -1086,10 +1123,12 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/std_function.h \
   /usr/include/c++/14.2.1/bits/std_thread.h \
+  /usr/include/c++/14.2.1/bits/stl_algo.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_bvector.h \
   /usr/include/c++/14.2.1/bits/stl_construct.h \
   /usr/include/c++/14.2.1/bits/stl_function.h \
+  /usr/include/c++/14.2.1/bits/stl_heap.h \
   /usr/include/c++/14.2.1/bits/stl_iterator.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
@@ -1103,6 +1142,7 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
   /usr/include/c++/14.2.1/bits/this_thread_sleep.h \
+  /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/14.2.1/bits/unique_ptr.h \
   /usr/include/c++/14.2.1/bits/unordered_map.h \
   /usr/include/c++/14.2.1/bits/uses_allocator.h \
@@ -1146,6 +1186,7 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/new \
   /usr/include/c++/14.2.1/ostream \
   /usr/include/c++/14.2.1/pstl/execution_defs.h \
+  /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/14.2.1/pstl/pstl_config.h \
   /usr/include/c++/14.2.1/ratio \
@@ -2689,20 +2730,35 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/SDL2/begin_code.h \
   /usr/include/SDL2/close_code.h \
   /usr/include/alloca.h \
+  /usr/include/arpa/inet.h \
+  /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/include/asm-generic/socket.h \
+  /usr/include/asm-generic/sockios.h \
+  /usr/include/asm/bitsperlong.h \
   /usr/include/asm/errno.h \
+  /usr/include/asm/posix_types.h \
+  /usr/include/asm/posix_types_64.h \
+  /usr/include/asm/socket.h \
+  /usr/include/asm/sockios.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
+  /usr/include/bits/confname.h \
   /usr/include/bits/cpu-set.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
+  /usr/include/bits/environments.h \
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
   /usr/include/bits/flt-eval-method.h \
   /usr/include/bits/fp-fast.h \
   /usr/include/bits/fp-logb.h \
+  /usr/include/bits/getopt_core.h \
+  /usr/include/bits/getopt_posix.h \
+  /usr/include/bits/in.h \
   /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/bits/libm-simd-decl-stubs.h \
@@ -2712,12 +2768,16 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/bits/mathcalls-helper-functions.h \
   /usr/include/bits/mathcalls-narrow.h \
   /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix_opt.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
   /usr/include/bits/sched.h \
   /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
+  /usr/include/bits/sockaddr.h \
+  /usr/include/bits/socket.h \
+  /usr/include/bits/socket_type.h \
   /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdint-least.h \
   /usr/include/bits/stdint-uintn.h \
@@ -2747,7 +2807,9 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/bits/types/struct_iovec.h \
   /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/types/struct_osockaddr.h \
   /usr/include/bits/types/struct_sched_param.h \
   /usr/include/bits/types/struct_timespec.h \
   /usr/include/bits/types/struct_timeval.h \
@@ -2757,6 +2819,7 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/unistd_ext.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
@@ -2903,15 +2966,25 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/enet/callbacks.h \
+  /usr/include/enet/enet.h \
+  /usr/include/enet/list.h \
+  /usr/include/enet/protocol.h \
+  /usr/include/enet/types.h \
+  /usr/include/enet/unix.h \
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
+  /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
   /usr/include/locale.h \
   /usr/include/math.h \
+  /usr/include/netinet/in.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -2923,8 +2996,11 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
+  /usr/include/sys/socket.h \
+  /usr/include/sys/time.h \
   /usr/include/sys/types.h \
   /usr/include/time.h \
+  /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h \
@@ -2953,20 +3029,35 @@ CMakeFiles/Client.dir/src/Planet.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/SDL2/begin_code.h \
   /usr/include/SDL2/close_code.h \
   /usr/include/alloca.h \
+  /usr/include/arpa/inet.h \
+  /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/include/asm-generic/socket.h \
+  /usr/include/asm-generic/sockios.h \
+  /usr/include/asm/bitsperlong.h \
   /usr/include/asm/errno.h \
+  /usr/include/asm/posix_types.h \
+  /usr/include/asm/posix_types_64.h \
+  /usr/include/asm/socket.h \
+  /usr/include/asm/sockios.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
+  /usr/include/bits/confname.h \
   /usr/include/bits/cpu-set.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
+  /usr/include/bits/environments.h \
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
   /usr/include/bits/flt-eval-method.h \
   /usr/include/bits/fp-fast.h \
   /usr/include/bits/fp-logb.h \
+  /usr/include/bits/getopt_core.h \
+  /usr/include/bits/getopt_posix.h \
+  /usr/include/bits/in.h \
   /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/bits/libm-simd-decl-stubs.h \
@@ -2976,12 +3067,16 @@ CMakeFiles/Client.dir/src/Planet.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/bits/mathcalls-helper-functions.h \
   /usr/include/bits/mathcalls-narrow.h \
   /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix_opt.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
   /usr/include/bits/sched.h \
   /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
+  /usr/include/bits/sockaddr.h \
+  /usr/include/bits/socket.h \
+  /usr/include/bits/socket_type.h \
   /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdint-least.h \
   /usr/include/bits/stdint-uintn.h \
@@ -3011,7 +3106,9 @@ CMakeFiles/Client.dir/src/Planet.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/bits/types/struct_iovec.h \
   /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/types/struct_osockaddr.h \
   /usr/include/bits/types/struct_sched_param.h \
   /usr/include/bits/types/struct_timespec.h \
   /usr/include/bits/types/struct_timeval.h \
@@ -3021,6 +3118,7 @@ CMakeFiles/Client.dir/src/Planet.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/unistd_ext.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
@@ -3167,15 +3265,25 @@ CMakeFiles/Client.dir/src/Planet.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/enet/callbacks.h \
+  /usr/include/enet/enet.h \
+  /usr/include/enet/list.h \
+  /usr/include/enet/protocol.h \
+  /usr/include/enet/types.h \
+  /usr/include/enet/unix.h \
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
+  /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
   /usr/include/locale.h \
   /usr/include/math.h \
+  /usr/include/netinet/in.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -3187,8 +3295,11 @@ CMakeFiles/Client.dir/src/Planet.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
+  /usr/include/sys/socket.h \
+  /usr/include/sys/time.h \
   /usr/include/sys/types.h \
   /usr/include/time.h \
+  /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h \
@@ -4513,10 +4624,24 @@ CMakeFiles/Client.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/s
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavesintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h
 
-bin/Client: /usr/lib/libc.so \
+bin/Client: /usr/lib/Scrt1.o \
+  /usr/lib/crti.o \
+  /usr/lib/crtn.o \
+  /usr/lib/libSDL2_image.so \
+  /usr/lib/libSDL2_ttf.so \
+  /usr/lib/libc.so \
+  /usr/lib/libenet.so \
   /usr/lib/libgcc_s.so \
+  /usr/lib/libgcc_s.so.1 \
   /usr/lib/libm.so \
+  /usr/lib/libpthread.a \
+  /usr/lib/libstdc++.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a \
   /usr/lib/ld-linux-x86-64.so.2 \
+  /usr/lib/libSDL2-2.0.so.0.3000.11 \
+  /usr/lib/libSDL2main.a \
   /usr/lib/libSvtAv1Enc.so.2 \
   /usr/lib/libaom.so.3 \
   /usr/lib/libavif.so.16 \
@@ -4524,6 +4649,8 @@ bin/Client: /usr/lib/libc.so \
   /usr/lib/libbrotlidec.so.1 \
   /usr/lib/libbrotlienc.so.1 \
   /usr/lib/libbz2.so.1.0 \
+  /usr/lib/libc.so.6 \
+  /usr/lib/libc_nonshared.a \
   /usr/lib/libdav1d.so.7 \
   /usr/lib/libfreetype.so.6 \
   /usr/lib/libglib-2.0.so.0 \
@@ -4535,6 +4662,8 @@ bin/Client: /usr/lib/libc.so \
   /usr/lib/libjxl.so.0.11 \
   /usr/lib/libjxl_cms.so.0.11 \
   /usr/lib/liblzma.so.5 \
+  /usr/lib/libm.so.6 \
+  /usr/lib/libmvec.so.1 \
   /usr/lib/libpcre2-8.so.0 \
   /usr/lib/libpng16.so.16 \
   /usr/lib/librav1e.so.0.7 \
@@ -4553,8 +4682,42 @@ bin/Client: /usr/lib/libc.so \
   /usr/lib32/liblzma.so.5 \
   /usr/lib32/libpcre2-8.so.0 \
   /usr/lib32/libz.so.1 \
-  /usr/lib32/libzstd.so.1
+  /usr/lib32/libzstd.so.1 \
+  CMakeFiles/Client.dir/src/Button.cpp.o \
+  CMakeFiles/Client.dir/src/CircleCollider.cpp.o \
+  CMakeFiles/Client.dir/src/Entity.cpp.o \
+  CMakeFiles/Client.dir/src/GameController.cpp.o \
+  CMakeFiles/Client.dir/src/GameView.cpp.o \
+  CMakeFiles/Client.dir/src/InputHandler.cpp.o \
+  CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o \
+  CMakeFiles/Client.dir/src/Physics.cpp.o \
+  CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o \
+  CMakeFiles/Client.dir/src/Planet.cpp.o \
+  CMakeFiles/Client.dir/src/Player.cpp.o \
+  CMakeFiles/Client.dir/src/RectangleCollider.cpp.o \
+  CMakeFiles/Client.dir/src/TextureManager.cpp.o \
+  CMakeFiles/Client.dir/src/main.cpp.o
 
+
+CMakeFiles/Client.dir/src/RectangleCollider.cpp.o:
+
+CMakeFiles/Client.dir/src/Player.cpp.o:
+
+CMakeFiles/Client.dir/src/Planet.cpp.o:
+
+CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o:
+
+CMakeFiles/Client.dir/src/InputHandler.cpp.o:
+
+CMakeFiles/Client.dir/src/GameView.cpp.o:
+
+CMakeFiles/Client.dir/src/GameController.cpp.o:
+
+CMakeFiles/Client.dir/src/Entity.cpp.o:
+
+CMakeFiles/Client.dir/src/CircleCollider.cpp.o:
+
+CMakeFiles/Client.dir/src/Button.cpp.o:
 
 /usr/lib32/libzstd.so.1:
 
@@ -4564,11 +4727,29 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/lib32/liblzma.so.5:
 
+/usr/lib32/libbrotlicommon.so.1:
+
+/usr/lib/libz.so.1:
+
+/usr/lib/libtiff.so.6:
+
+/usr/lib/librav1e.so.0.7:
+
+/usr/lib/libpng16.so.16:
+
+/usr/lib/libpcre2-8.so.0:
+
+/usr/lib/libjxl.so.0.11:
+
+/usr/lib/libjpeg.so.8:
+
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
 
 /usr/include/c++/14.2.1/bits/stl_bvector.h:
 
 /usr/include/bits/getopt_posix.h:
+
+CMakeFiles/Client.dir/src/TextureManager.cpp.o:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h:
 
@@ -4618,6 +4799,8 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/c++/14.2.1/streambuf:
 
+CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o:
+
 /usr/include/c++/14.2.1/debug/assertions.h:
 
 /usr/include/bits/time.h:
@@ -4629,6 +4812,10 @@ bin/Client: /usr/lib/libc.so \
 /usr/include/c++/14.2.1/cstdlib:
 
 /usr/include/c++/14.2.1/bits/stl_algobase.h:
+
+/usr/lib/libwebp.so.7:
+
+/usr/include/c++/14.2.1/cstdio:
 
 /usr/include/c++/14.2.1/compare:
 
@@ -4655,6 +4842,8 @@ bin/Client: /usr/lib/libc.so \
 /usr/include/c++/14.2.1/bits/streambuf_iterator.h:
 
 /usr/include/SDL2/SDL_audio.h:
+
+/usr/lib/libgcc_s.so.1:
 
 /usr/include/c++/14.2.1/iosfwd:
 
@@ -4708,8 +4897,6 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/pthread.h:
 
-/usr/lib/libjpeg.so.8:
-
 /usr/include/c++/14.2.1/iostream:
 
 /usr/include/asm/errno.h:
@@ -4740,6 +4927,8 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/c++/14.2.1/bits/functexcept.h:
 
+/usr/lib/libSDL2main.a:
+
 /usr/include/c++/14.2.1/bits/exception_defines.h:
 
 /usr/include/c++/14.2.1/bits/hashtable_policy.h:
@@ -4755,8 +4944,6 @@ bin/Client: /usr/lib/libc.so \
 /usr/include/asm/bitsperlong.h:
 
 /usr/include/c++/14.2.1/bits/concept_check.h:
-
-/usr/include/bits/signum-arch.h:
 
 /usr/include/c++/14.2.1/bits/basic_ios.tcc:
 
@@ -4778,11 +4965,11 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/c++/14.2.1/array:
 
+/usr/lib/Scrt1.o:
+
 /usr/include/SDL2/SDL_version.h:
 
 /usr/include/bits/uintn-identity.h:
-
-/usr/lib/libz.so.1:
 
 /usr/include/bits/types/clockid_t.h:
 
@@ -4830,10 +5017,6 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/SDL2/SDL_shape.h:
 
-/usr/include/SDL2/SDL_quit.h:
-
-/usr/include/SDL2/SDL_atomic.h:
-
 /usr/include/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/c++/14.2.1/cstddef:
@@ -4843,6 +5026,8 @@ bin/Client: /usr/lib/libc.so \
 /usr/include/bits/waitstatus.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/adxintrin.h:
+
+/usr/lib/libenet.so:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512cdintrin.h:
 
@@ -4898,7 +5083,7 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/lib/libSvtAv1Enc.so.2:
 
-/usr/include/bits/fp-fast.h:
+CMakeFiles/Client.dir/src/Physics.cpp.o:
 
 /usr/include/sched.h:
 
@@ -4934,6 +5119,10 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/SDL2/SDL_sensor.h:
 
+/usr/lib/libwebpdemux.so.2:
+
+/usr/include/bits/setjmp.h:
+
 /usr/include/c++/14.2.1/bits/charconv.h:
 
 /usr/include/c++/14.2.1/tr1/special_function_util.h:
@@ -4961,6 +5150,10 @@ bin/Client: /usr/lib/libc.so \
 /usr/include/bits/stdint-least.h:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr.h:
+
+/usr/lib/liblzma.so.5:
+
+/usr/include/SDL2/SDL_power.h:
 
 /home/samuel/Dev/c++/Rocket_Racer/client/src/CircleCollider.cpp:
 
@@ -5020,8 +5213,6 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124vnniwintrin.h:
 
-/usr/lib/libjxl.so.0.11:
-
 /usr/include/SDL2/SDL_messagebox.h:
 
 /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h:
@@ -5030,11 +5221,13 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/SDL2/SDL_log.h:
 
-/usr/lib/libtiff.so.6:
-
 /usr/include/SDL2/SDL_surface.h:
 
 /usr/include/bits/cpu-set.h:
+
+/usr/lib/libyuv.so:
+
+/usr/include/SDL2/SDL_cpuinfo.h:
 
 /usr/include/c++/14.2.1/bits/basic_string.tcc:
 
@@ -5064,8 +5257,6 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/bits/iscanonical.h:
 
-/usr/lib/librav1e.so.0.7:
-
 /usr/include/c++/14.2.1/ext/aligned_buffer.h:
 
 /usr/include/bits/libc-header-start.h:
@@ -5081,6 +5272,8 @@ bin/Client: /usr/lib/libc.so \
 /usr/include/bits/locale.h:
 
 /usr/include/bits/long-double.h:
+
+CMakeFiles/Client.dir/src/main.cpp.o:
 
 /usr/include/ctype.h:
 
@@ -5214,6 +5407,8 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/c++/14.2.1/bits/uniform_int_dist.h:
 
+/usr/lib/libstdc++.so:
+
 /usr/lib/libaom.so.3:
 
 /usr/include/stdc-predef.h:
@@ -5233,6 +5428,10 @@ bin/Client: /usr/lib/libc.so \
 /usr/include/bits/atomic_wide_counter.h:
 
 /usr/include/signal.h:
+
+/usr/lib/libzstd.so.1:
+
+/usr/include/sys/cdefs.h:
 
 /usr/include/sys/select.h:
 
@@ -5260,6 +5459,8 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxint8intrin.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxtileintrin.h:
 
 /usr/include/c++/14.2.1/bits/hash_bytes.h:
@@ -5267,10 +5468,6 @@ bin/Client: /usr/lib/libc.so \
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124fmapsintrin.h:
-
-/usr/include/SDL2/SDL_power.h:
-
-/usr/lib/liblzma.so.5:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16vlintrin.h:
 
@@ -5299,6 +5496,8 @@ bin/Client: /usr/lib/libc.so \
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmivlintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vlbwintrin.h:
+
+/usr/lib/libm.so.6:
 
 /home/samuel/Dev/c++/Rocket_Racer/client/src/InputHandler.hpp:
 
@@ -5426,7 +5625,7 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/c++/14.2.1/bits/atomic_lockfree_defines.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h:
+/usr/lib/crtn.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h:
 
@@ -5478,8 +5677,6 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/lib/libdav1d.so.7:
 
-/usr/lib/libpng16.so.16:
-
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clflushoptintrin.h:
 
 /usr/include/c++/14.2.1/bits/align.h:
@@ -5496,15 +5693,9 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/c++/14.2.1/ext/concurrence.h:
 
+/usr/lib/libSDL2_image.so:
+
 /usr/include/c++/14.2.1/pstl/glue_memory_defs.h:
-
-/home/samuel/Dev/c++/Rocket_Racer/client/src/GameController.cpp:
-
-/home/samuel/Dev/c++/Rocket_Racer/client/src/GameController.hpp:
-
-/home/samuel/Dev/c++/Rocket_Racer/client/src/NetworkCommunicator.hpp:
-
-/home/samuel/Dev/c++/Rocket_Racer/client/src/PhysicsSystem.hpp:
 
 /usr/include/asm-generic/posix_types.h:
 
@@ -5520,6 +5711,46 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/bits/posix_opt.h:
 
+/usr/include/bits/sockaddr.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vldqintrin.h:
+
+/usr/include/bits/siginfo-consts.h:
+
+/usr/include/SDL2/SDL_endian.h:
+
+/usr/include/bits/in.h:
+
+/usr/include/bits/socket.h:
+
+/usr/lib/libjxl_cms.so.0.11:
+
+/usr/include/linux/posix_types.h:
+
+/usr/include/enet/callbacks.h:
+
+/usr/include/bits/thread-shared-types.h:
+
+/usr/include/enet/list.h:
+
+/usr/include/enet/protocol.h:
+
+/usr/lib/libmvec.so.1:
+
+/usr/include/bits/fp-logb.h:
+
+/usr/include/linux/stddef.h:
+
+/usr/include/netinet/in.h:
+
+/home/samuel/Dev/c++/Rocket_Racer/client/src/GameController.cpp:
+
+/home/samuel/Dev/c++/Rocket_Racer/client/src/GameController.hpp:
+
+/home/samuel/Dev/c++/Rocket_Racer/client/src/NetworkCommunicator.hpp:
+
+/home/samuel/Dev/c++/Rocket_Racer/client/src/PhysicsSystem.hpp:
+
 /usr/include/bits/sigaction.h:
 
 /usr/include/bits/sigcontext.h:
@@ -5532,12 +5763,6 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/bits/siginfo-consts-arch.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vldqintrin.h:
-
-/usr/include/bits/siginfo-consts.h:
-
-/usr/include/bits/sockaddr.h:
-
 /usr/include/bits/signum-generic.h:
 
 /home/samuel/Dev/c++/Rocket_Racer/client/src/RectangleCollider.hpp:
@@ -5549,12 +5774,6 @@ bin/Client: /usr/lib/libc.so \
 /usr/include/bits/sigstksz.h:
 
 /usr/include/bits/sigthread.h:
-
-/usr/include/SDL2/SDL_endian.h:
-
-/usr/include/bits/in.h:
-
-/usr/include/bits/socket.h:
 
 /usr/include/bits/ss_flags.h:
 
@@ -5574,6 +5793,10 @@ bin/Client: /usr/lib/libc.so \
 
 /usr/include/c++/14.2.1/bits/std_thread.h:
 
+/home/samuel/Dev/c++/Rocket_Racer/client/src/GameView.hpp:
+
+/usr/include/c++/14.2.1/bits/stl_algo.h:
+
 /usr/include/c++/14.2.1/cstdint:
 
 /usr/include/c++/14.2.1/cstring:
@@ -5581,18 +5804,6 @@ bin/Client: /usr/lib/libc.so \
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clzerointrin.h:
 
 /usr/include/c++/14.2.1/ctime:
-
-/usr/include/bits/thread-shared-types.h:
-
-/usr/include/enet/list.h:
-
-/usr/include/enet/protocol.h:
-
-/usr/include/bits/fp-logb.h:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/netinet/in.h:
 
 /home/samuel/Dev/c++/Rocket_Racer/client/src/PhysicsSystem.cpp:
 
@@ -5602,19 +5813,41 @@ bin/Client: /usr/lib/libc.so \
 
 /home/samuel/Dev/c++/Rocket_Racer/client/src/RectangleCollider.cpp:
 
-/home/samuel/Dev/c++/Rocket_Racer/client/src/GameView.hpp:
-
-/usr/include/c++/14.2.1/bits/stl_algo.h:
-
 /usr/include/bits/getopt_core.h:
 
 /usr/include/SDL2/SDL_image.h:
 
 /home/samuel/Dev/c++/Rocket_Racer/client/src/main.cpp:
 
+/usr/include/bits/signum-arch.h:
+
+/usr/lib/crti.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h:
+
+/usr/lib/libSDL2_ttf.so:
+
+/usr/lib/libpthread.a:
+
+/usr/include/SDL2/SDL_quit.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a:
+
+/usr/lib/libSDL2-2.0.so.0.3000.11:
+
 /usr/lib/libavif.so.16:
 
 /usr/lib/libbrotlienc.so.1:
+
+/usr/include/bits/fp-fast.h:
+
+/usr/lib/libc.so.6:
+
+/usr/include/SDL2/SDL_atomic.h:
+
+/usr/lib/libc_nonshared.a:
 
 /usr/include/c++/14.2.1/bits/enable_special_members.h:
 
@@ -5625,29 +5858,3 @@ bin/Client: /usr/lib/libc.so \
 /usr/lib/libharfbuzz.so.0:
 
 /usr/lib/libjbig.so.2.1:
-
-/usr/include/linux/posix_types.h:
-
-/usr/include/enet/callbacks.h:
-
-/usr/lib/libjxl_cms.so.0.11:
-
-/usr/lib/libpcre2-8.so.0:
-
-/usr/include/c++/14.2.1/cstdio:
-
-/usr/lib/libwebp.so.7:
-
-/usr/include/bits/setjmp.h:
-
-/usr/lib/libwebpdemux.so.2:
-
-/usr/include/SDL2/SDL_cpuinfo.h:
-
-/usr/lib/libyuv.so:
-
-/usr/include/sys/cdefs.h:
-
-/usr/lib/libzstd.so.1:
-
-/usr/lib32/libbrotlicommon.so.1:

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -isystem /usr/include/SDL2
 
-CXX_FLAGS = -g
+CXX_FLAGS = -O0 -g
 

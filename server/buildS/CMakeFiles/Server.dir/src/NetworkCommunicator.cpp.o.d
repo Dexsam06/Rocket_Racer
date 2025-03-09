@@ -214,4 +214,5 @@ CMakeFiles/Server.dir/src/NetworkCommunicator.cpp.o: \
  /home/samuel/Dev/c++/Rocket_Racer/server/src/Collider.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/server/src/RectangleCollider.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/server/src/CircleCollider.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/server/src/Planet.hpp
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/Planet.hpp \
+ /usr/include/string.h /usr/include/strings.h

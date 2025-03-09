@@ -1,3 +1,0 @@
-/home/samuel/Dev/c++/Rocket_Racer/singleplayer/build/CMakeFiles/Rocket_Racer.dir
-/home/samuel/Dev/c++/Rocket_Racer/singleplayer/build/CMakeFiles/edit_cache.dir
-/home/samuel/Dev/c++/Rocket_Racer/singleplayer/build/CMakeFiles/rebuild_cache.dir

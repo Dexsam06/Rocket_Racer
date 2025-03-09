@@ -1,5 +1,5 @@
 
-#include "GameView.hpp"
+#include "../include/GameView.hpp"
 #include "Player.hpp"
 #include <iostream>
 
@@ -18,7 +18,7 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
     {
         std::cerr << "TTF_Init Error: " << TTF_GetError() << std::endl;
         SDL_Quit();
-        return;
+        return; 
     }
 
     window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, flags);
@@ -32,7 +32,7 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!renderer)
     {
-        std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+        std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl; 
         SDL_DestroyWindow(window);
         SDL_Quit();
         return;
@@ -52,26 +52,39 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
 
 GameView::~GameView() {}
 
-void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vector<std::unique_ptr<Button>> &buttonList, std::vector<Vector2D> &futurePath)
+void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vector<std::unique_ptr<Button>> &buttonList)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
     drawBackground(entityList[0].get()); 
-    Vector2D playerPos = entityList[0]->getPosition();
+    Vector2D clientPlayerPos = entityList[0]->getPosition();
 
     for (std::unique_ptr<Entity> &entity : entityList)
     {
-        entity->draw(renderer, screenWidth, screenHeight, playerPos, scalingFactor);
+        if (!entity) { 
+            std::cerr << "Warning: Null entity found in entityList!" << std::endl;
+            continue;
+        }
+        SDL_Texture* texture = entity->getTexture();  
+        if (!texture || texture == nullptr) {
+            std::cerr << "Warning: Entity has null texture!" << std::endl;
+            continue;
+        }
+        entity->draw(renderer, screenWidth, screenHeight, clientPlayerPos, scalingFactor); 
     }
 
     for (std::unique_ptr<Button> &button : buttonList)
     {
+        if (!button) {
+            std::cerr << "Warning: Null button found in buttonList!" << std::endl; 
+            continue;
+        }
         button->render();
     }
 
-    drawFuturePath(futurePath, playerPos);
-    SDL_RenderPresent(renderer);
+    //drawFuturePath(futurePath, clientPlayerPos); 
+    SDL_RenderPresent(renderer); 
 }
 
 void GameView::clean()
@@ -90,18 +103,18 @@ void GameView::clean()
     std::cout << "Game Cleaned" << std::endl;
 }
 
-void GameView::drawBackground(Entity *player)
+void GameView::drawBackground(Entity *clientPlayer)
 {
     int bgWidth, bgHeight;
     SDL_QueryTexture(background, nullptr, nullptr, &bgWidth, &bgHeight);
 
-    double xScale = 1 + (std::pow(std::abs(player->getVelocity().x), 2) / 1000000.0);
-    double yScale = 1 + (std::pow(std::abs(player->getVelocity().y), 2) / 1000000.0);
+    double xScale = 1 + (std::pow(std::abs(clientPlayer->getVelocity().x), 2) / 1000000.0);
+    double yScale = 1 + (std::pow(std::abs(clientPlayer->getVelocity().y), 2) / 1000000.0);
 
     SDL_RenderSetScale(renderer, xScale, yScale);
 
-    int offsetX = static_cast<int>(player->getPosition().x) % bgWidth;
-    int offsetY = static_cast<int>(player->getPosition().y) % bgHeight;
+    int offsetX = static_cast<int>(clientPlayer->getPosition().x) % bgWidth;
+    int offsetY = static_cast<int>(clientPlayer->getPosition().y) % bgHeight;
 
     int startX = -((offsetX % bgWidth) + bgWidth) % bgWidth;
     int startY = -((offsetY % bgHeight) + bgHeight) % bgHeight;

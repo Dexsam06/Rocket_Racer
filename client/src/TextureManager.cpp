@@ -1,5 +1,4 @@
-#include "TextureManager.hpp"
-#include <SDL2/SDL_image.h>
+#include "../include/TextureManager.hpp"
 
 SDL_Texture* TextureManager::loadTexture(const std::string& id, const std::string& filename, SDL_Renderer* renderer) {
     SDL_Surface* tempSurface = IMG_Load(filename.c_str());

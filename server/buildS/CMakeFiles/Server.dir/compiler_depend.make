@@ -1004,6 +1004,8 @@ CMakeFiles/Server.dir/src/NetworkCommunicator.cpp.o: /home/samuel/Dev/c++/Rocket
   /usr/include/stdint.h \
   /usr/include/stdio.h \
   /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
@@ -2395,6 +2397,8 @@ bin/Server: /usr/lib/libc.so \
 
 /home/samuel/Dev/c++/Rocket_Racer/server/src/Physics.cpp:
 
+/usr/include/strings.h:
+
 /home/samuel/Dev/c++/Rocket_Racer/server/src/NetworkCommunicator.cpp:
 
 /usr/include/netinet/in.h:
@@ -2424,6 +2428,8 @@ bin/Server: /usr/lib/libc.so \
 /usr/include/c++/14.2.1/bits/enable_special_members.h:
 
 /usr/include/bits/types/struct_osockaddr.h:
+
+/usr/include/string.h:
 
 /usr/include/bits/socket_type.h:
 

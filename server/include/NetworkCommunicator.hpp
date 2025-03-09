@@ -1,0 +1,55 @@
+
+#ifndef NETWORKCOMMUNICATOR_HPP
+#define NETWORKCOMMUNICATOR_HPP
+
+#include <iostream>
+#include <unordered_map>
+#include <enet/enet.h>
+#include <vector>
+#include <memory>
+#include <cstring>
+#include <cstdlib>
+
+#include "NetworkPackets.hpp"
+
+class NetworkCommunicator
+{
+
+public:
+    NetworkCommunicator();
+    ~NetworkCommunicator();
+    void NetworkHandler();
+    bool serverRunning() { return serverRunningState; }
+
+    std::unordered_map<enet_uint32, ENetPeer *>& getClientList() {return clients; }
+
+    // Input information
+    struct ClientInputs
+    {
+        int clientID;
+        std::vector<InputWithSequence> inputBuffer;
+    };
+
+    std::vector<ClientInputs> getClientsInputBuffer() { return clientsInputBuffer; }
+
+    void sendGameStatePacketToClient(ENetPeer* peer, const GameStatePacket& gameStatePacket); 
+private:
+    ENetAddress address;
+    ENetEvent event;
+    ENetHost *server;
+
+    bool serverRunningState = true;
+
+    std::unordered_map<enet_uint32, ENetPeer *> clients; 
+    std::vector<ClientInputs> clientsInputBuffer; 
+
+    void handleConnections(ENetEvent &event);
+    void handleDisconnections(ENetEvent &event);
+    
+    void sendAllConnectedPlayersPacket(ENetPeer* peer, const std::vector<uint32_t>& playerIDs);
+    void sendNewConnectedPlayerPacket(uint16_t &playerID, char username[32]);
+    void sendPlayerDisconnectedPacket(uint16_t& playerID);
+    
+};
+
+#endif 

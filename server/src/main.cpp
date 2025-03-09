@@ -1,5 +1,5 @@
-#include "NetworkCommunicator.hpp"
-#include "GameController.hpp"
+#include "../include/NetworkCommunicator.hpp"
+#include "../include/GameController.hpp"
 #include <iostream>
 
 int main(int argc, const char * argv[]) {

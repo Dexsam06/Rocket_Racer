@@ -1,5 +1,5 @@
 
-#include "Physics.hpp"
+#include "../include/Physics.hpp"
 #include <cmath>
 
 const double Physics::GRAVITY_CONSTANT = 6.6743e-11; 
@@ -27,8 +27,12 @@ double Physics::forceVectorYAxis(double totalForce, double angle) {
 
 double Physics::forceVectorXAxis(double totalForce, double angle) { 
     return std::sin(angle) * totalForce;
-}
+} 
 
 double Physics::rotation(double rotationSpeed, double deltaTime) {
     return rotationSpeed * deltaTime;
+}
+
+float Physics::lerp(double a, double b, double t) { 
+    return a + t * (b - a); 
 }

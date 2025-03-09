@@ -1,9 +1,9 @@
-#include "Planet.hpp"
+#include "../include/Planet.hpp"
 #include "Physics.hpp"
 #include <vector> 
 
-Planet::Planet(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass, double radius, int uniqueID) 
-    : Entity(std::move(collider), texture, pos, vel, mass), radius(radius), uniqueID(uniqueID) {
+Planet::Planet(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass, double radius, int ID) 
+    : Entity(std::move(collider), texture, pos, vel, mass, ID), radius(radius) {
 }
 
 void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaTime){

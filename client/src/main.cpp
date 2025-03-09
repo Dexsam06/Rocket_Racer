@@ -1,10 +1,10 @@
 
-#include "NetworkCommunicator.hpp"
-#include "GameController.hpp"
-#include "GameView.hpp"
-#include <iostream>
+#include "../include/NetworkCommunicator.hpp"
+#include "../include/GameView.hpp"
+#include "../include/GameController.hpp"
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char * argv[])
+{
     std::cout << "Starting Client..." << std::endl;
 
     const int windowWidth = 1920;
@@ -12,16 +12,14 @@ int main(int argc, const char * argv[]) {
     const char* windowTitle = "Rocket Racer";
 
     GameView gv(windowWidth, windowHeight, windowTitle, false); 
+    
+    NetworkCommunicator nc;
 
-    std::string ipAddress;
-    std::cout << "Skriv ip-address: " << std::endl; 
-    std::cin >> ipAddress; 
-
-    NetworkCommunicator nc(ipAddress); 
-
-    GameController gc(&gv, &nc);
+    GameController gc(&nc, &gv); 
 
     gc.gameLoop();
 
     return 0; 
+
+    
 }

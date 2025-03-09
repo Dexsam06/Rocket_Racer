@@ -1,20 +1,15 @@
 
+#include "../include/GameController.hpp"
 
-#include "GameController.hpp"
-#include "Physics.hpp"
-#include <iostream>
-#include <chrono>
-
-GameController::GameController(NetworkCommunicator *nc) : nc(nc) 
+GameController::GameController(NetworkCommunicator *nc) : nc(nc)
 {
-    loadResources(); 
+    loadResources();
 }
 
 GameController::~GameController() {}
 
 void GameController::gameLoop()
 {
-    nc->setEntityList(&entityList); 
     int fps = 12;
     int updateTime = (int)((1.0 / fps) * 1000); // Milliseconds per frame
     auto previousTime = std::chrono::steady_clock::now();
@@ -27,39 +22,103 @@ void GameController::gameLoop()
         if (deltaTime > updateTime)
         {
             previousTime = std::chrono::steady_clock::now();
-            nc->NetworkHandler(); 
-            physicsSystem.update(entityList, deltaTime / 1000.0); // Convert to seconds
-            nc->sendWorldStateToClients(); 
-        } 
+            nc->NetworkHandler();
+            applyClientsInputs();
+            physicsSystem.update(entityList, deltaTime / 1000.0);
+            sendGameStatePacketToClients();
+        }
+    }
+}
+
+void GameController::applyClientsInputs()
+{
+    for (NetworkCommunicator::ClientInputs &clientInputs : nc->getClientsInputBuffer())
+    {
+        int clientID = clientInputs.clientID;
+
+        auto it = std::find_if(entityList.begin(), entityList.end(),
+                               [clientID](const std::unique_ptr<Entity> &entity)
+                               {
+                                   // Attempt to cast the entity to Player and check if the cast was successful and the ID matches
+                                   Player *player = dynamic_cast<Player *>(entity.get());
+                                   return (player != nullptr && player->getID() == clientID);
+                               });
+
+        if (it != entityList.end())
+        {
+            // Successfully found the player in the entity list and cast it
+            Player *clientPlayer = dynamic_cast<Player *>(it->get());
+            if (clientPlayer)
+            {
+                // Apply inputs to the player
+                for (InputWithSequence &InputPacket : clientInputs.inputBuffer)
+                {
+                    for (KeyInput &keyInput : InputPacket.keyInputPacket)
+                    {
+                        clientPlayer->applyInput(keyInput.keyCode, keyInput.duration);
+                    }
+                }
+            }
+        }
+        else
+        {
+            std::cerr << "Player not found in the entity list when applying inputs for client ID " << clientID << std::endl;
+        }
+    }
+}
+
+void GameController::sendGameStatePacketToClients()
+{
+    for (std::pair<enet_uint32, ENetPeer *> client : nc->getClientList())
+    {
+        GameStatePacket gameStatePacket;
+        gameStatePacket.numEntities = entityList.size();
+
+        int clientID = client.first;
+        auto it = std::find_if(entityList.begin(), entityList.end(),
+                               [clientID](const std::unique_ptr<Entity> &entity)
+                               {
+                                   // Attempt to cast the entity to Player and check if the cast was successful and the ID matches
+                                   Player *player = dynamic_cast<Player *>(entity.get());
+                                   return (player != nullptr && player->getID() == clientID);
+                               });
+
+        if (it != entityList.end())
+        {
+            // Successfully found the player in the entity list and cast it
+            Player *clientPlayer = dynamic_cast<Player *>(it->get());
+            if (clientPlayer) 
+            {
+                gameStatePacket.clientState.lastVerifiedInputID = clientPlayer->getLastVerifiedInput();
+                gameStatePacket.clientState.rotation = clientPlayer->getRotation();
+                gameStatePacket.clientState.serverPosX = clientPlayer->getPosition().x;
+                gameStatePacket.clientState.serverPosY = clientPlayer->getPosition().y;
+            }
+        }
+        else
+        {
+            std::cerr << "Player not found in the entity list when creating clientState for client ID " << clientID << std::endl;
+        }
+        for (const std::unique_ptr<Entity>& entity : entityList)
+        {
+            if (entity->getID() == client.first)
+            {
+                continue;
+            }
+                
+            EntityState entityState;
+            entityState.entityID = entity->getID();
+            entityState.posX = entity->getPosition().x;
+            entityState.posY = entity->getPosition().y;
+            entityState.rotation = entity->getRotation();
+            gameStatePacket.entities.push_back(entityState);
+        }
+        
+        nc->sendGameStatePacketToClient(client.second, gameStatePacket); 
     }
 }
 
 void GameController::loadResources() 
 {
-    // Planets
-    earth = std::make_unique<Planet>(
-        std::make_unique<CircleCollider>( 
-            Vector2D(700, 1500),
-            1000.0),
-        Vector2D(700, 1500),    
-        Vector2D(0, 0),
-        10000000.0,
-        1000.0,
-        0
-        );
-    entityList.push_back(std::move(earth)); 
-
-    moon = std::make_unique<Planet>(
-        std::make_unique<CircleCollider>( 
-            Vector2D(900, 100), 
-            400.0), 
-        Vector2D(900, 100), 
-        Vector2D(150, 0), 
-        100000.0, 
-        400.0,
-        1
-        );
-    entityList.push_back(std::move(moon));
+    std::cout << "Loading imaginary resources..." << std::endl;
 }
-
-
