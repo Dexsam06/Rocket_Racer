@@ -116,7 +116,7 @@ struct NewPlayerConnectedPacket : public BasePacket
     }
 };
 
-// Packet that is sent to every connected client that a client has disconnected
+// Packet that is sent to every connected client that a client has disconnected 
 struct PlayerDisconnectedPacket : public BasePacket
 {
     uint16_t playerID;
@@ -163,7 +163,7 @@ struct GameStatePacket : public BasePacket
     GameStatePacket(const std::vector<EntityState>& entityList, const ClientState& state) { 
         numEntities = static_cast<uint16_t> (entityList.size());
         entities = entityList;
-        clientState = state;
+        clientState = state; 
     }
 
     std::vector<uint8_t> Serialize() const {
@@ -235,7 +235,7 @@ struct InputWithSequence : public BasePacket {
             for (const auto& keyInput : input.keyInputPacket) {
                 buffer.insert(buffer.end(), reinterpret_cast<const uint8_t*>(&keyInput.keyCode), reinterpret_cast<const uint8_t*>(&keyInput.keyCode) + sizeof(int));
                 buffer.insert(buffer.end(), reinterpret_cast<const uint8_t*>(&keyInput.duration), reinterpret_cast<const uint8_t*>(&keyInput.duration) + sizeof(float));
-            }
+            } 
         }
 
         return buffer;
@@ -254,7 +254,7 @@ struct InputWithSequence : public BasePacket {
         inputList.resize(numInputWithSequence);
         for (auto& input : inputList) {
             // Deserialize the sequence number
-            std::memcpy(&input.sequenceNumber, data + offset, sizeof(int));
+            std::memcpy(&input.sequenceNumber, data + offset, sizeof(int)); 
             offset += sizeof(int);
 
             // Deserialize the number of key inputs

@@ -18,7 +18,7 @@ enum class PacketType : uint8_t
 // Base packet class 
 struct BasePacket 
 {
-    PacketType type; 
+    PacketType type;
 
     virtual std::vector<uint8_t> Serialize() const = 0;  
     virtual void Deserialize(const uint8_t* data, size_t size) = 0; 
@@ -159,6 +159,7 @@ struct GameStatePacket : public BasePacket
 
     GameStatePacket() {type = PacketType::GAME_STATE_PACKET; }
     GameStatePacket(const std::vector<EntityState>& entityList, const ClientState& state) { 
+        type = PacketType::GAME_STATE_PACKET;
         numEntities = static_cast<uint16_t> (entityList.size());
         entities = entityList;
         clientState = state;
@@ -172,7 +173,7 @@ struct GameStatePacket : public BasePacket
         uint16_t num = numEntities;
         buffer.insert(buffer.end(), reinterpret_cast<const uint8_t*>(&num), reinterpret_cast<const uint8_t*>(&num) + sizeof(uint16_t));
 
-        for (const auto& entity : entities) { 
+        for (const auto& entity : entities) {
             buffer.insert(buffer.end(), reinterpret_cast<const uint8_t*>(&entity), reinterpret_cast<const uint8_t*>(&entity) + sizeof(EntityState));
         }
 
@@ -189,7 +190,7 @@ struct GameStatePacket : public BasePacket
         std::memcpy(&numEntities, data + offset, sizeof(uint16_t));
         offset += sizeof(uint16_t);
 
-        size_t expectedSize = sizeof(uint16_t) + numEntities * sizeof(EntityState) + sizeof(ClientState); 
+        size_t expectedSize = sizeof(uint16_t) + numEntities * sizeof(EntityState) + sizeof(ClientState);
         if (size < expectedSize) return;  
 
         entities.resize(numEntities);  
@@ -210,11 +211,19 @@ struct InputWithSequence : public BasePacket {
     int sequenceNumber;
     std::vector<KeyInput> keyInputPacket;
 
-    InputWithSequence() { type = PacketType::INPUT_PACKET; } 
+    InputWithSequence() { type = PacketType::INPUT_PACKET; }
+    InputWithSequence(int &inputSequenceNumber, std::vector<KeyInput> &keyInput) { 
+        type = PacketType::INPUT_PACKET;
+        sequenceNumber = inputSequenceNumber;
+        keyInputPacket = keyInput;
+    }
+
+    std::vector<uint8_t> Serialize() const override {}
+    void Deserialize(const uint8_t* data, size_t size) override {}
 
     // Serialize a vector of InputWithSequence into a byte buffer
     static std::vector<uint8_t> Serialize(const std::vector<InputWithSequence>& inputList) {
-        std::vector<uint8_t> buffer;
+        std::vector<uint8_t> buffer; 
 
         // First, serialize the number of InputWithSequence packets
         int numInputWithSequence = inputList.size();

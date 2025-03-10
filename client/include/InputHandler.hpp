@@ -7,23 +7,19 @@
 
 #include "Player.hpp"
 #include "Button.hpp"
+#include "NetworkPackets.hpp"
+#include "Physics.hpp" 
 
 class InputHandler
 {
 
 public:
-    struct keyInput
-    {
-        int keyCode;
-        float duration;
-    };
-
-    std::vector<keyInput> handleInput(std::vector<std::unique_ptr<Button>> &buttonList);
+    std::vector<KeyInput> handleInput(std::vector<std::unique_ptr<Button>> &buttonList);
     bool isQuit() const { return quit; }
 
 private:
     bool quit = false;
-    keyInput newInput;
+    KeyInput newInput;
 };
 
 #endif

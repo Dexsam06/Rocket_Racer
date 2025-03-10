@@ -4,11 +4,23 @@
 GameController::GameController(NetworkCommunicator *nc, GameView *gv) : nc(nc), gv(gv)
 {
     loadResources();
+
+    nc->setConPlaCallback([this](ConnectedPlayersPacket & data) {
+        this->HandleConPlaData(data);
+    });
+
+    nc->setNewPlaCallback([this](NewPlayerConnectedPacket & data) {
+        this->HandleNewPlaData(data);
+    });
+
+    nc->setDisPlaCallback([this](PlayerDisconnectedPacket & data) {
+        this->HandleDisPLaData(data);
+    }); 
 }
 
-GameController::~GameController() {}
+GameController::~GameController() {} 
 
-void GameController::gameLoop()
+void GameController::gameLoop() 
 {
     int fps = 60;
     int updateTime = (int)((1 / fps) * 1000);
@@ -26,9 +38,9 @@ void GameController::gameLoop()
             handleEvents();
             reapplyUnconfirmedInputs();
             physicsSystem.predictClientPosition(entityList, deltaTime / 1000.0);
-            nc->sendInputPacketToServer(inputBuffer); 
+            nc->sendInputPacketToServer(inputBuffer);
             interpolateOtherEntities();
-            gv->render(entityList, buttonList); 
+            gv->render(entityList, buttonList);
         }
     }
     gv->clean();
@@ -36,25 +48,26 @@ void GameController::gameLoop()
 
 void GameController::handleEvents()
 {
-    std::vector<InputHandler::keyInput> keyInputPacket = inputHandler.handleInput(buttonList);
+    std::vector<KeyInput> keyInputPacket = inputHandler.handleInput(buttonList);
 
-    if (keyInputPacket.empty()) 
+    if (keyInputPacket.empty())
     {
         return;
     }
 
-    InputWithSequence inputWithSeq = {inputSequenceNumber++, keyInputPacket};
+    InputWithSequence inputWithSeq(inputSequenceNumber, keyInputPacket); 
+    inputSequenceNumber++; 
 
-    inputBuffer.push_back(inputWithSeq);
+    inputBuffer.push_back(inputWithSeq); 
 
     if (inputHandler.isQuit())
     {
-        nc->disconnectFromServer();
+        nc->disconnectFromServer(); 
         gv->setIsRunning(false);
     }
 }
-
-void GameController::removeConfirmedInputs()
+ 
+void GameController::removeConfirmedInputs() 
 {
     int lastVerifiedInputID = nc->getGameStatePacket().clientState.lastVerifiedInputID;
 
@@ -69,9 +82,9 @@ void GameController::removeConfirmedInputs()
 
 void GameController::reapplyUnconfirmedInputs()
 {
-    for (InputWithSequence &InputPacket : inputBuffer)
+    for (InputWithSequence &InputPacket : inputBuffer) 
     {
-        for (InputHandler::keyInput &keyInput : InputPacket.keyInputPacket)
+        for (KeyInput &keyInput : InputPacket.keyInputPacket)
         {
             clientPlayer->applyInput(keyInput.keyCode, keyInput.duration);
         }
@@ -82,7 +95,7 @@ void GameController::interpolateOtherEntities()
 {
     uint32_t clientPlayerID = nc->getClientID();
 
-    int entityIndex = 1; 
+    int entityIndex = 1;
     for (const auto &serverEntity : nc->getGameStatePacket().entities)
     {
         Vector2D clientEntityPosition = (entityList[entityIndex]->getPosition().x, entityList[entityIndex]->getPosition().y);
@@ -90,11 +103,11 @@ void GameController::interpolateOtherEntities()
 
         double deltaX = serverEntityPosition.x - clientEntityPosition.x;
         double deltaY = serverEntityPosition.y - clientEntityPosition.y;
-        double distanceSquared = (deltaX * deltaX) + (deltaY * deltaY);
+        double distanceSquared = (deltaX * deltaX) + (deltaY * deltaY);  
 
         double snapThreshold = 0.5;
 
-        // Check if we should snap (if within the threshold)
+        // Check if we should snap (if within the threshold) 
         if (distanceSquared < snapThreshold * snapThreshold)
         {
             entityList[entityIndex]->setPosition(Vector2D(serverEntityPosition.x, serverEntityPosition.y));
@@ -107,7 +120,7 @@ void GameController::interpolateOtherEntities()
         if (serverEntity.entityID < 1000)
         {
             double rotation = entityList[entityIndex]->getRotation();
-            if (rotation > serverEntity.rotation - 5 && rotation < serverEntity.rotation + 5)
+            if (rotation > serverEntity.rotation - 5 && rotation < serverEntity.rotation + 5) 
             {
                 rotation = serverEntity.rotation;
             }
@@ -128,6 +141,86 @@ void GameController::onZoomButtonClickOut()
 void GameController::onZoomButtonClickIn()
 {
     gv->setScalingFactors(Vector2D(1.1, 1.1));
+}
+
+void GameController::HandleConPlaData(ConnectedPlayersPacket & data)
+{
+    int height, width; 
+
+    SDL_Texture *playerTexture = textureManager.loadTexture("player", "../../res/player.png", gv->getRenderer());
+    if (!playerTexture)
+    {
+        std::cerr << "Failed to load player texture!" << std::endl;
+    }
+    SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height);
+
+    for (uint32_t& id : data.playerIDs)
+    {
+        std::unique_ptr<Player> player = std::make_unique<Player>(
+            std::make_unique<RectangleCollider>(
+                Vector2D(700 + (70 * id), 500),
+                width,
+                height),
+            playerTexture,
+            Vector2D(700 + (70 * id), 500),
+            Vector2D(0, 0),
+            playerMass,
+            id);
+        player->setPlayerWidth(width);
+        player->setPlayerHeight(height);
+    
+        entityList.push_back(std::move(player));
+    }
+
+    std::cout << "Added all current connected players!" << std::endl;
+}
+
+void GameController::HandleNewPlaData(NewPlayerConnectedPacket & data)
+{
+    int height, width; 
+
+    SDL_Texture *playerTexture = textureManager.loadTexture("player", "../../res/player.png", gv->getRenderer());
+    if (!playerTexture)
+    {
+        std::cerr << "Failed to load player texture!" << std::endl;
+    }
+    SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height);
+
+    std::unique_ptr<Player> player = std::make_unique<Player>(
+        std::make_unique<RectangleCollider>(
+            Vector2D(700 + (70 * data.playerID), 500),
+            width,
+            height),
+        playerTexture,
+        Vector2D(700 + (70 * data.playerID), 500),  
+        Vector2D(0, 0),
+        playerMass,
+        data.playerID); 
+    player->setPlayerWidth(width);
+    player->setPlayerHeight(height);
+
+    entityList.push_back(std::move(player));
+
+    std::cout << "Added a new player with ID: " << data.playerID << std::endl;
+}
+
+void GameController::HandleDisPLaData(PlayerDisconnectedPacket & data)
+{
+    for (auto it = entityList.begin(); it != entityList.end();)
+    {
+        Player *player = dynamic_cast<Player *>(it->get());
+        if (player && player->getID() == data.playerID)
+        {
+            it = entityList.erase(it);
+            break;
+        }
+        else
+        {
+            ++it;
+        }
+    }
+
+    std::cout << "Removed player with ID: " << data.playerID << std::endl;
 }
 
 void GameController::loadResources()

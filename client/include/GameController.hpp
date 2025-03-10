@@ -48,9 +48,15 @@ private:
     TextureManager textureManager;
     PhysicsSystem physicsSystem;
 
+    std::vector<InputWithSequence> inputBuffer;
+    int inputSequenceNumber = 0;
 
     void onZoomButtonClickIn();
     void onZoomButtonClickOut();
+
+    void HandleConPlaData(ConnectedPlayersPacket & data);
+    void HandleNewPlaData(NewPlayerConnectedPacket & data);
+    void HandleDisPLaData(PlayerDisconnectedPacket & data);
 
     struct PlanetProperties {
         std::string name;
@@ -66,11 +72,6 @@ private:
         {0, {"Earth", 10000000.0, 1000, 0, 0}},
         {1, {"Moon", 100000.0, 400, 150, 0}}
     };
-
-    std::vector<InputWithSequence> inputBuffer;
-    int inputSequenceNumber = 0;
-
-
 };
 
 #endif

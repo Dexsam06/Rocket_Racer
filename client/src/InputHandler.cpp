@@ -1,14 +1,13 @@
 #include "../include/InputHandler.hpp"
-#include "Physics.hpp"
 
-std::vector<InputHandler::keyInput> InputHandler::handleInput(std::vector<std::unique_ptr<Button>> &buttonList)
+std::vector<KeyInput> InputHandler::handleInput(std::vector<std::unique_ptr<Button>> &buttonList)
 {
     SDL_Event event;
     std::unordered_map<SDL_Keycode, Uint32> keyPressTimes;
     std::unordered_map<SDL_Keycode, float> keyHoldDurations;
 
     quit = false;
-    std::vector<keyInput> keyInputPacket;
+    std::vector<KeyInput> keyInputPacket;
 
     while (SDL_PollEvent(&event))
     {

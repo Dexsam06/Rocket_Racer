@@ -48,7 +48,7 @@ NetworkCommunicator::NetworkCommunicator()
     }
 }
 
-void NetworkCommunicator::handleReceivedPacket()
+void NetworkCommunicator::handleReceivedPacket() 
 {
     while (enet_host_service(client, &event, 0) > 0)
     {
@@ -61,33 +61,36 @@ void NetworkCommunicator::handleReceivedPacket()
                 return;
             }
 
-            const uint8_t* buffer = event.packet->data;
+            const uint8_t* buffer = event.packet->data; 
             size_t packetSize = event.packet->dataLength;
 
             PacketType type = static_cast<PacketType>(buffer[0]);
 
-            ConnectedPlayersPacket connectedPlayersPacket;
+            ConnectedPlayersPacket connectedPlayersPacket; 
             NewPlayerConnectedPacket newPlayerPacket;
             PlayerDisconnectedPacket playerDisPacket;
-            GameStatePacket gameStatePacket;
 
             switch (type)
             {
-                case PacketType::CONNECTED_PLAYERS_PACKET:
+                case PacketType::CONNECTED_PLAYERS_PACKET: 
+
                     connectedPlayersPacket.Deserialize(buffer, packetSize);
                     std::cout << "Received all connected players from server" << std::endl; 
+                    ReceiveConPlaPacket(connectedPlayersPacket);
                     break;
                 case PacketType::NEW_PLAYER_CONNECTED_PACKET:
                     newPlayerPacket.Deserialize(buffer, packetSize);
                     std::cout << "New player added, id: " << newPlayerPacket.playerID << std::endl; 
+                    ReceiveNewPlaPacket(newPlayerPacket); 
                     break;
-                case PacketType::PLAYER_DISCONNECTED_PACKET:
+                case PacketType::PLAYER_DISCONNECTED_PACKET: 
                     playerDisPacket.Deserialize(buffer, packetSize);
-                    std::cout << "Player disconnected" << std::endl;
+                    std::cout << "Player disconnected, id: " << playerDisPacket.playerID << std::endl;
+                    ReceiveDisPlaPacket(playerDisPacket); 
                     break;
                 case PacketType::GAME_STATE_PACKET:
                     gameStatePacket.Deserialize(buffer, packetSize); 
-            }
+            } 
         }
     }
 }
@@ -130,5 +133,5 @@ void NetworkCommunicator::sendInputPacketToServer(std::vector<InputWithSequence>
 
     enet_peer_send(serverPeer, 0, packet);
 
-    enet_host_flush(client);
+    enet_host_flush(client);  
 }

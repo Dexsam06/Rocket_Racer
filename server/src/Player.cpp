@@ -3,11 +3,11 @@
 
 #include <iostream> 
 
-Player::Player(std::unique_ptr<Collider> collider, SDL_Texture* texture, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID) 
-    : rotationSpeed(0), Entity(std::move(collider), texture, pos, vel, mass, ID) { 
+Player::Player(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID, std::string username) 
+    : rotationSpeed(0), Entity(std::move(collider), pos, vel, mass, ID), username(username) { 
 } 
 
-void Player::applyInput(int keyCode, float duration)
+void Player::applyInput(int keyCode, float duration) 
 {
     switch (keyCode) 
     {
@@ -46,37 +46,7 @@ void Player::update(double &xGravityForce, double &yGravityForce, double &deltaT
     velocity.y += Physics::velocity(acceleration.y, deltaTime);  
 
     thrustForce = 0; 
-}
-
-void Player::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerClientPos, Vector2D scalingFactor) 
-{
-    Vector2D screenCenter(screenWidth / 2, screenHeight / 2); 
-
-    Vector2D offsetFromClientPlayer(
-        position.x - playerClientPos.x,  
-        position.y - playerClientPos.y
-    );
-
-    Vector2D scaledOffset(
-        offsetFromClientPlayer.x * scalingFactor.x, 
-        offsetFromClientPlayer.y * scalingFactor.y 
-    );
-
-    Vector2D scaledPosition( 
-        screenCenter.x + scaledOffset.x, 
-        screenCenter.y + scaledOffset.y 
-    );
-
-    int scaledWidth = static_cast<int>(playerWidth * scalingFactor.x);
-    int scaledHeight = static_cast<int>(playerHeight * scalingFactor.y);  
-
-    SDL_Rect playerDestRect = { 
-        screenWidth / 2 - scaledWidth / 2, 
-        screenHeight / 2 - scaledHeight / 2,  
-        scaledWidth,
-        scaledHeight}; 
-
-    SDL_RenderCopyEx(renderer, texture, nullptr, &playerDestRect, rotation, nullptr, SDL_FLIP_NONE);
 } 
+
 
  

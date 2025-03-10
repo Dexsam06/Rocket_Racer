@@ -12,9 +12,9 @@
 class Entity  
 {
 public:
-    Entity(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID); 
+    Entity(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID); 
 
-    virtual std::unique_ptr<Entity> clone() const { return std::make_unique<Entity>(collider->clone(), texture, position, velocity, mass, ID);}
+    virtual std::unique_ptr<Entity> clone() const { return std::make_unique<Entity>(collider->clone(), position, velocity, mass, ID);}
 
     virtual void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerClientPos, Vector2D scalingFactor) {}
     virtual void update(double &xGravityForce, double &yGravityForce, double &deltaTime) {} 
@@ -28,7 +28,6 @@ public:
     double getMass() const { return mass; }
     Vector2D getAcceleration() const { return acceleration; }
     enet_uint32 getID() {return ID; } 
-    SDL_Texture* getTexture() {return texture; }
     double getRotation() {return rotation; }
 
     void setPosition(Vector2D position) { this->position = position; }
@@ -40,7 +39,6 @@ public:
 
 protected:
     std::unique_ptr<Collider> collider;
-    SDL_Texture *texture;
     Vector2D position;
     Vector2D velocity;
     Vector2D acceleration;

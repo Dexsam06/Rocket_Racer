@@ -13,24 +13,30 @@
 #include "Player.hpp"
 #include "PhysicsSystem.hpp"
 #include "NetworkPackets.hpp"
+#include "RectangleCollider.hpp"
 
-class GameController {
+class GameController
+{
 
-    public:
-        GameController(NetworkCommunicator* nc);
-        ~GameController(); 
-        void gameLoop();
-    private: 
-        NetworkCommunicator* nc;    
-        PhysicsSystem physicsSystem;
+public:
+    GameController(NetworkCommunicator *nc);
+    ~GameController();
+    void gameLoop();
 
-        std::vector<std::unique_ptr<Entity>> entityList; 
+private:
+    NetworkCommunicator *nc;
+    PhysicsSystem physicsSystem;
 
-        void loadResources();
+    std::vector<std::unique_ptr<Entity>> entityList;
 
-        void applyClientsInputs();
+    void loadResources();
 
-        void sendGameStatePacketToClients(); 
+    void applyClientsInputs();
+
+    void sendGameStatePacketToClients(); 
+
+    void HandleCliInfData(uint16_t &clientID, ClientInfoPacket &data);
+    void HandleDisPlaData(uint16_t &clientID); 
 };
 
 #endif

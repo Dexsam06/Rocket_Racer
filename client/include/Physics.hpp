@@ -15,7 +15,7 @@ public:
     static double forceVectorYAxis(double totalForce, double angle); 
     static double forceVectorXAxis(double totalForce, double angle);
     static double rotation(double rotationSpeed, double deltaTime);
-    static float lerp(double a, double b, double t);
+    static float lerp(double a, double b, double t); 
 };
 
 #endif 

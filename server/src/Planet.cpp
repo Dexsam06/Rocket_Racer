@@ -2,8 +2,8 @@
 #include "Physics.hpp"
 #include <vector> 
 
-Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius, int entityType, int ID) 
-    : Entity(std::move(collider), pos, vel, mass, 0, entityType, ID), radius(radius) {
+Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius, int ID) 
+    : Entity(std::move(collider), pos, vel, mass, ID), radius(radius) {
 }
 
 void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaTime){ 
@@ -15,5 +15,5 @@ void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaT
 
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
     velocity.y += Physics::velocity(acceleration.y, deltaTime); 
-    getCollider()->updatePosition(getPosition());
+    getCollider()->updatePosition(getPosition());  
 }  
