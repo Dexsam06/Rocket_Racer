@@ -2,8 +2,9 @@
 #define RECTANGLECOLLIDER_HPP
 
 #include "Collider.hpp"
-#include "CircleCollider.hpp"
 #include <vector>
+
+class CircleCollider;
 
 class RectangleCollider : public Collider {
 private:
@@ -16,7 +17,7 @@ public:
     std::vector<Vector2D> getVertices() const;
     std::vector<Vector2D> getAxes() const;
 
-    std::unique_ptr<Collider> clone() const override {
+    std::unique_ptr<Collider> clone() const override {  
         return std::make_unique<RectangleCollider>(center, width, height);
     }
     void projectOntoAxis(const Vector2D& axis, double& min, double& max) const;

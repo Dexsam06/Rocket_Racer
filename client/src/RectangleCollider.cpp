@@ -1,4 +1,5 @@
 #include "../include/RectangleCollider.hpp"
+#include "../include/CircleCollider.hpp"
 #include <cmath>
 #include <algorithm>
 #include <limits>

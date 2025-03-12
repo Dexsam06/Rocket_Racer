@@ -1,7 +1,5 @@
-#include "Button.hpp"
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_render.h>
-#include <iostream>
+#include "../include/Button.hpp"
+
 
 Button::Button(int x, int y, int w, int h, SDL_Color color, const char* text, SDL_Renderer* renderer, TTF_Font* font, ButtonCallback callback)
     : x(x), y(y), w(w), h(h), color(color), text(text), renderer(renderer), font(font), callback(callback) 

@@ -214,6 +214,9 @@ struct InputWithSequence : public BasePacket {
 
     InputWithSequence() { type = PacketType::INPUT_PACKET; }
 
+    std::vector<uint8_t> Serialize() const override {}
+    void Deserialize(const uint8_t* data, size_t size) override {}
+
     // Serialize a vector of InputWithSequence into a byte buffer
     static std::vector<uint8_t> Serialize(const std::vector<InputWithSequence>& inputList) {
         std::vector<uint8_t> buffer;

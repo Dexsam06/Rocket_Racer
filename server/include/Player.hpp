@@ -34,7 +34,7 @@ public:
     std::unique_ptr<Entity> clone() const override
     {
         return std::make_unique<Player>(
-            collider->clone(), position, velocity, mass, ID 
+            collider->clone(), position, velocity, mass, ID, username
         );
     } 
 
@@ -46,9 +46,7 @@ private:
     double rotationSpeed;
     int playerWidth, playerHeight;
     int lastVerifiedInput;
-    std::string username; 
-
-    void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerClientPos, Vector2D scalingFactor) override;
+    std::string username;  
 };
 
 #endif 

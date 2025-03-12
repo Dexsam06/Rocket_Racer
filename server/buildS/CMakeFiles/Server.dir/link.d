@@ -3,14 +3,14 @@ bin/Server: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o \
   CMakeFiles/Server.dir/src/CircleCollider.cpp.o \
-  CMakeFiles/Server.dir/src/NetworkCommunicator.cpp.o \
-  CMakeFiles/Server.dir/src/Player.cpp.o \
   CMakeFiles/Server.dir/src/Entity.cpp.o \
   CMakeFiles/Server.dir/src/GameController.cpp.o \
   CMakeFiles/Server.dir/src/main.cpp.o \
+  CMakeFiles/Server.dir/src/NetworkCommunicator.cpp.o \
   CMakeFiles/Server.dir/src/Physics.cpp.o \
   CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o \
   CMakeFiles/Server.dir/src/Planet.cpp.o \
+  CMakeFiles/Server.dir/src/Player.cpp.o \
   CMakeFiles/Server.dir/src/RectangleCollider.cpp.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libenet.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libpthread.a \
@@ -50,21 +50,21 @@ bin/Server: \
 
 CMakeFiles/Server.dir/src/CircleCollider.cpp.o:
 
-CMakeFiles/Server.dir/src/NetworkCommunicator.cpp.o:
-
-CMakeFiles/Server.dir/src/Player.cpp.o:
-
 CMakeFiles/Server.dir/src/Entity.cpp.o:
 
 CMakeFiles/Server.dir/src/GameController.cpp.o:
 
 CMakeFiles/Server.dir/src/main.cpp.o:
 
+CMakeFiles/Server.dir/src/NetworkCommunicator.cpp.o:
+
 CMakeFiles/Server.dir/src/Physics.cpp.o:
 
 CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o:
 
 CMakeFiles/Server.dir/src/Planet.cpp.o:
+
+CMakeFiles/Server.dir/src/Player.cpp.o:
 
 CMakeFiles/Server.dir/src/RectangleCollider.cpp.o:
 

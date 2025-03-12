@@ -18,7 +18,7 @@ class NetworkCommunicator
 
 public:
     NetworkCommunicator();
-    ~NetworkCommunicator();
+    ~NetworkCommunicator() {}
     void NetworkHandler();
     bool serverRunning() { return serverRunningState; }
     void sendGameStatePacketToClient(ENetPeer* peer, const GameStatePacket& gameStatePacket); 

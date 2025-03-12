@@ -24,13 +24,13 @@ include_directories(
 # Set the source files
 set(SOURCES
     src/Button.cpp
-    src/NetworkCommunicator.cpp
     src/CircleCollider.cpp
     src/Entity.cpp 
     src/GameController.cpp
     src/GameView.cpp
     src/InputHandler.cpp
     src/main.cpp
+    src/NetworkCommunicator.cpp
     src/Physics.cpp
     src/PhysicsSystem.cpp
     src/Planet.cpp

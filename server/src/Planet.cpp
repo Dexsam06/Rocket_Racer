@@ -1,5 +1,4 @@
 #include "../include/Planet.hpp"
-#include "Physics.hpp"
 #include <vector> 
 
 Planet::Planet(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, double radius, int ID) 

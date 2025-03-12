@@ -2,6 +2,7 @@
 #define CIRCLECOLLIDER_HPP
 
 #include "Collider.hpp"
+#include "RectangleCollider.hpp"
 
 class CircleCollider : public Collider {
 private:

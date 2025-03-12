@@ -13,7 +13,7 @@ class NetworkCommunicator
 {
 public:
     NetworkCommunicator();
-    ~NetworkCommunicator();
+    ~NetworkCommunicator() {}
 
     void handleReceivedPacket();
     void disconnectFromServer();

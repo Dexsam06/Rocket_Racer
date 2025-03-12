@@ -1,6 +1,8 @@
 
 #include "../include/GameController.hpp"
 
+#include "../include/NetworkCommunicator.hpp"
+
 GameController::GameController(NetworkCommunicator *nc, GameView *gv) : nc(nc), gv(gv)
 {
     loadResources();
@@ -56,7 +58,7 @@ void GameController::handleEvents()
     }
 
     InputWithSequence inputWithSeq(inputSequenceNumber, keyInputPacket); 
-    inputSequenceNumber++; 
+    inputSequenceNumber++;  
 
     inputBuffer.push_back(inputWithSeq); 
 

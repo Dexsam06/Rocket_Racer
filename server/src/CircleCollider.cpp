@@ -1,6 +1,6 @@
-#include "CircleCollider.hpp"
-#include "RectangleCollider.hpp"
-#include <cmath>
+#include "../include/CircleCollider.hpp"
+#include "../include/RectangleCollider.hpp"
+#include <cmath> 
 
 bool CircleCollider::checkCollision(const Collider& other, Vector2D& collisionNormal, double restitution) const {
     const CircleCollider* circle = dynamic_cast<const CircleCollider*>(&other);

@@ -1,6 +1,4 @@
-#include "CircleCollider.hpp"
-#include "RectangleCollider.hpp"
-#include <cmath>
+#include "../include/CircleCollider.hpp"
 
 bool CircleCollider::checkCollision(const Collider& other, Vector2D& collisionNormal, double restitution) const {
     const CircleCollider* circle = dynamic_cast<const CircleCollider*>(&other);
@@ -15,7 +13,7 @@ bool CircleCollider::checkCollision(const Collider& other, Vector2D& collisionNo
         return false;
     }
 
-    const RectangleCollider* rect = dynamic_cast<const RectangleCollider*>(&other);
+    const RectangleCollider* rect = dynamic_cast<const RectangleCollider*>(&other); 
     if (rect) {
         return rect->checkCircleCollision(*this, collisionNormal);
     }

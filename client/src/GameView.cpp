@@ -1,6 +1,5 @@
 
 #include "../include/GameView.hpp"
-#include "Player.hpp"
 #include <iostream>
 
 GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fullscreen)

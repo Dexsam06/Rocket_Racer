@@ -3,13 +3,13 @@ bin/Client: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o \
   CMakeFiles/Client.dir/src/Button.cpp.o \
-  CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o \
   CMakeFiles/Client.dir/src/CircleCollider.cpp.o \
   CMakeFiles/Client.dir/src/Entity.cpp.o \
   CMakeFiles/Client.dir/src/GameController.cpp.o \
   CMakeFiles/Client.dir/src/GameView.cpp.o \
   CMakeFiles/Client.dir/src/InputHandler.cpp.o \
   CMakeFiles/Client.dir/src/main.cpp.o \
+  CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o \
   CMakeFiles/Client.dir/src/Physics.cpp.o \
   CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o \
   CMakeFiles/Client.dir/src/Planet.cpp.o \
@@ -19,7 +19,7 @@ bin/Client: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libenet.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libpthread.a \
   /usr/lib/libSDL2main.a \
-  /usr/lib/libSDL2-2.0.so.0.3000.11 \
+  /usr/lib/libSDL2-2.0.so.0.3200.50 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libSDL2_ttf.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libSDL2_image.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libstdc++.so \
@@ -95,8 +95,6 @@ bin/Client: \
 
 CMakeFiles/Client.dir/src/Button.cpp.o:
 
-CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o:
-
 CMakeFiles/Client.dir/src/CircleCollider.cpp.o:
 
 CMakeFiles/Client.dir/src/Entity.cpp.o:
@@ -108,6 +106,8 @@ CMakeFiles/Client.dir/src/GameView.cpp.o:
 CMakeFiles/Client.dir/src/InputHandler.cpp.o:
 
 CMakeFiles/Client.dir/src/main.cpp.o:
+
+CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o:
 
 CMakeFiles/Client.dir/src/Physics.cpp.o:
 
@@ -127,7 +127,7 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.o:
 
 /usr/lib/libSDL2main.a:
 
-/usr/lib/libSDL2-2.0.so.0.3000.11:
+/usr/lib/libSDL2-2.0.so.0.3200.50:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libSDL2_ttf.so:
 

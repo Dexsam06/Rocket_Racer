@@ -2,8 +2,9 @@
 #define RECTANGLECOLLIDER_HPP
 
 #include "Collider.hpp"
-#include "CircleCollider.hpp"
 #include <vector>
+
+class CircleCollider;
 
 class RectangleCollider : public Collider {
 private:

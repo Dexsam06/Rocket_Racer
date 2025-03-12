@@ -2,6 +2,7 @@
 #define PLANET_HPP
 
 #include "Entity.hpp"
+#include "Physics.hpp"
 
 class Planet : public Entity {
 public:

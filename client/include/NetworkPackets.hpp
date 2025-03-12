@@ -245,7 +245,7 @@ struct InputWithSequence : public BasePacket {
             }
         }
 
-        return buffer;
+        return buffer; 
     }
 
     // Deserialize a vector of InputWithSequence from a byte buffer

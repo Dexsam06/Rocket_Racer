@@ -10,5 +10,5 @@ SDL_Texture* TextureManager::loadTexture(const std::string& id, const std::strin
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, tempSurface);
     SDL_FreeSurface(tempSurface);
 
-    return texture;  
+    return texture;   
 }

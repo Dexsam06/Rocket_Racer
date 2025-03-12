@@ -7,7 +7,6 @@
 #include "Vector2D.hpp"
 #include "Physics.hpp"
 #include "Collider.hpp"
-#include "InputHandler.hpp"
 #include "Player.hpp"
 
 class PhysicsSystem 

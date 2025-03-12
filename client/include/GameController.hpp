@@ -8,7 +8,6 @@
 #include <iostream>
 #include <algorithm>
 
-#include "NetworkCommunicator.hpp"
 #include "GameView.hpp"
 #include "InputHandler.hpp"
 #include "TextureManager.hpp"
@@ -17,6 +16,8 @@
 #include "RectangleCollider.hpp"
 #include "PhysicsSystem.hpp"
 #include "NetworkPackets.hpp"
+
+class NetworkCommunicator;
 
 class GameController
 {
@@ -37,7 +38,7 @@ private:
     std::unique_ptr<Button> zoomButtonOut;
 
     GameView *gv;
-    NetworkCommunicator *nc;
+    NetworkCommunicator *nc; 
 
     std::unique_ptr<Player> clientPlayer;
 

@@ -3,11 +3,13 @@
 #define GAMEVIEW_HPP
 
 #include <SDL2/SDL.h>
-#include "Entity.hpp"
-#include "Vector2D.hpp"
 #include <SDL2/SDL_ttf.h>
-#include "Button.hpp"
 #include <memory>
+
+#include "Entity.hpp"
+#include "Player.hpp"
+#include "Vector2D.hpp"
+#include "Button.hpp"
 
 class GameView {
 
