@@ -366,6 +366,8 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: \
  /usr/include/c++/14.2.1/cstdint /usr/include/c++/14.2.1/cstring \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/TextureManager.hpp \
  /usr/include/SDL2/SDL_image.h \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Planet.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/CircleCollider.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/RectangleCollider.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/PhysicsSystem.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/NetworkCommunicator.hpp \

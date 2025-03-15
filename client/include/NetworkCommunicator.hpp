@@ -12,7 +12,7 @@
 class NetworkCommunicator
 {
 public:
-    NetworkCommunicator();
+    NetworkCommunicator(std::string ipAddress, std::string username);
     ~NetworkCommunicator() {}
 
     void handleReceivedPacket();
@@ -22,6 +22,8 @@ public:
     void sendInputPacketToServer(std::vector<InputWithSequence> &inputList);
 
     int getClientID() { return clientID; }
+    bool getHasReceivedFirstGameState() {return hasReceivedFirstGameState; }
+    bool getHasReceivedConnectedPlayers() {return hasReceivedConnectedPlayers; }
 
     GameStatePacket &getGameStatePacket() { return gameStatePacket; }
     GameStatePacket gameStatePacket;
@@ -50,13 +52,16 @@ private:
     ENetPeer *serverPeer;
     ENetHost *client;
 
-    std::string ipAddress;
-    char username[32];
+    std::string ipAddress; 
+    std::string username;
     int clientID;
 
     ConPlaCallback conPlaCallback;
     NewPlaCallback newPlaCallback;
     DisPlaCallback disPlaCallback;
-};
+
+    bool hasReceivedFirstGameState = false;
+    bool hasReceivedConnectedPlayers = false;
+}; 
 
 #endif

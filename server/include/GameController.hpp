@@ -11,9 +11,12 @@
 #include "NetworkCommunicator.hpp"
 #include "Entity.hpp"
 #include "Player.hpp"
+#include "Planet.hpp"
 #include "PhysicsSystem.hpp"
 #include "NetworkPackets.hpp"
+
 #include "RectangleCollider.hpp"
+#include "CircleCollider.hpp"
 
 class GameController
 {

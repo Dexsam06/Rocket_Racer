@@ -16,6 +16,7 @@ bin/Client: \
   CMakeFiles/Client.dir/src/Player.cpp.o \
   CMakeFiles/Client.dir/src/RectangleCollider.cpp.o \
   CMakeFiles/Client.dir/src/TextureManager.cpp.o \
+  CMakeFiles/Client.dir/src/UserInputWindow.cpp.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libenet.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libpthread.a \
   /usr/lib/libSDL2main.a \
@@ -120,6 +121,8 @@ CMakeFiles/Client.dir/src/Player.cpp.o:
 CMakeFiles/Client.dir/src/RectangleCollider.cpp.o:
 
 CMakeFiles/Client.dir/src/TextureManager.cpp.o:
+
+CMakeFiles/Client.dir/src/UserInputWindow.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libenet.so:
 

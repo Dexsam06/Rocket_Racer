@@ -26,6 +26,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Client.dir/src/RectangleCollider.cpp.o.d"
   "CMakeFiles/Client.dir/src/TextureManager.cpp.o"
   "CMakeFiles/Client.dir/src/TextureManager.cpp.o.d"
+  "CMakeFiles/Client.dir/src/UserInputWindow.cpp.o"
+  "CMakeFiles/Client.dir/src/UserInputWindow.cpp.o.d"
   "CMakeFiles/Client.dir/src/main.cpp.o"
   "CMakeFiles/Client.dir/src/main.cpp.o.d"
   "bin/Client"

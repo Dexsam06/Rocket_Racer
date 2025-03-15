@@ -441,6 +441,30 @@ src/TextureManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/TextureManager.cpp.s
 .PHONY : src/TextureManager.cpp.s
 
+src/UserInputWindow.o: src/UserInputWindow.cpp.o
+.PHONY : src/UserInputWindow.o
+
+# target to build an object file
+src/UserInputWindow.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
+.PHONY : src/UserInputWindow.cpp.o
+
+src/UserInputWindow.i: src/UserInputWindow.cpp.i
+.PHONY : src/UserInputWindow.i
+
+# target to preprocess a source file
+src/UserInputWindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/UserInputWindow.cpp.i
+.PHONY : src/UserInputWindow.cpp.i
+
+src/UserInputWindow.s: src/UserInputWindow.cpp.s
+.PHONY : src/UserInputWindow.s
+
+# target to generate assembly for a file
+src/UserInputWindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/UserInputWindow.cpp.s
+.PHONY : src/UserInputWindow.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -513,6 +537,9 @@ help:
 	@echo "... src/TextureManager.o"
 	@echo "... src/TextureManager.i"
 	@echo "... src/TextureManager.s"
+	@echo "... src/UserInputWindow.o"
+	@echo "... src/UserInputWindow.i"
+	@echo "... src/UserInputWindow.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

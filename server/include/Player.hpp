@@ -24,7 +24,6 @@ public:
     void setLastVerifiedInput(int lastVerifiedInput) {this->lastVerifiedInput = lastVerifiedInput; }
 
     double getRotationSpeed() const { return rotationSpeed; }
-    double getRotation() {return rotation; }
     Vector2D& getPosition() {return position; }
     int getLastVerifiedInput() {return lastVerifiedInput; } 
 

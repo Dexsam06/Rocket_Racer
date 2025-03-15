@@ -36,6 +36,7 @@ public:
     void setAcceleration(Vector2D acceleration) { this->acceleration = acceleration; } 
     void setMass(double mass) { this->mass = mass; }
     void setID(enet_uint32 ID) {this->ID = ID; }
+    void setRotation(double rotation) {this->rotation = rotation; }
     
 
 protected:

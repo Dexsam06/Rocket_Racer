@@ -24,6 +24,8 @@ public:
 
     double getRotationSpeed() const { return rotationSpeed; }
     Vector2D& getPosition() {return position; }
+    int getPlayerWidth() {return playerWidth; }
+    int getPlayerHeight() {return playerHeight; }
 
     void resetClientThrustForce() {thrustForce = 0; }
     void resetClientRotationSpeed() {rotationSpeed = 0; }
@@ -36,7 +38,7 @@ public:
     } 
 
     void update(double &xGravityForce, double &yGravityForce, double &deltaTime) override;
-    void reconcileClientState(Vector2D &clientPos, Vector2D serverPos, double serverRotation, double lerpFactor); 
+    void reconcileClientState(Vector2D &serverPos, double serverRotation, double lerpFactor); 
     void applyInput(int keyCode, float duration);
 
 private:

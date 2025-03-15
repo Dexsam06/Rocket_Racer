@@ -18,7 +18,7 @@ class GameView {
         ~GameView();
         void render(std::vector<std::unique_ptr<Entity>>& entityList, std::vector<std::unique_ptr<Button>>& buttonList);
         void clean();
-        void drawBackground(Entity* clientPlayer);
+        void drawBackground(Player* clientPlayer);
         void drawFuturePath(std::vector<Vector2D>& futurePath, Vector2D playerPos);
         std::vector<SDL_Point> convertToSDLPoints(const std::vector<Vector2D>& points);
 

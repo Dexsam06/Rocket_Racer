@@ -37,11 +37,11 @@ void NetworkCommunicator::NetworkHandler()
         switch (event.type)
         {
         case ENET_EVENT_TYPE_CONNECT:
-            handleConnections(event);
+            handleConnections(event); 
             break;
         case ENET_EVENT_TYPE_RECEIVE:
 
-            if (!event.packet || event.packet->data == nullptr)
+            if (!event.packet || event.packet->data == nullptr) 
             {
                 std::cerr << "Error: Null or corrupted packet received!" << std::endl;
                 return;
@@ -50,21 +50,22 @@ void NetworkCommunicator::NetworkHandler()
             buffer = event.packet->data;
             packetSize = event.packet->dataLength;
 
-            type = static_cast<PacketType>(buffer[0]); 
+            type = static_cast<PacketType>(buffer[0]);    
 
             switch (type)
             {
-            case PacketType::CLIENT_INFO_PACKET:
+            case PacketType::CLIENT_INFO_PACKET: 
                 clientInfoPacket.Deserialize(buffer, packetSize);
                 std::cout << "Received client info from ID: " << event.peer->incomingPeerID << std::endl;
                 sendNewConnectedPlayerPacket(event.peer->incomingPeerID, clientInfoPacket.username);
-                std::cout << "Sent message that a new player has been added to all clients" << std::endl;
-                ReceiveCliInfPacket(event.peer->incomingPeerID, clientInfoPacket);
+                std::cout << "Sent message that a new player has been added to all clients" << std::endl; 
+                ReceiveCliInfPacket(event.peer->incomingPeerID, clientInfoPacket); 
                 break;
             case PacketType::INPUT_PACKET:
-                InputWithSequence::Deserialize(buffer, packetSize, receivedInputs);
+                InputWithSequence::Deserialize(buffer, packetSize, receivedInputs); 
                 clientsInputBuffer.push_back({event.peer->incomingPeerID, receivedInputs});
-                break;
+                std::cout << "Received a input packet from client: " << event.peer->incomingPeerID << std::endl;
+                break;  
             }
 
             break;
@@ -72,6 +73,8 @@ void NetworkCommunicator::NetworkHandler()
             handleDisconnections(event);
             break;
         }
+
+        enet_packet_destroy(event.packet); 
     }
 }
 
@@ -81,37 +84,38 @@ void NetworkCommunicator::handleConnections(ENetEvent &event)
 
     for (std::pair<const enet_uint32, ENetPeer *> &client : clients)
     {
-        playerIDs.push_back(client.first);
-    }
+        playerIDs.push_back(client.first); 
+    } 
 
     sendAllConnectedPlayersPacket(event.peer, playerIDs);
+    std::cout << "Sent all connected players to the newly connected client with id: " << event.peer->incomingPeerID << std::endl; 
 
     clients[event.peer->incomingPeerID] = event.peer;
 }
 
 void NetworkCommunicator::handleDisconnections(ENetEvent &event)
 {
-    enet_uint16 peerID = event.peer->incomingPeerID;
-
-    sendPlayerDisconnectedPacket(peerID);
-
-    std::cout << "Sent message that a player has been removed to all clients" << std::endl;
+    enet_uint16 peerID = event.peer->incomingPeerID; 
 
     clients.erase(peerID);
 
     ReceiveDisPlaPacket(event.peer->incomingPeerID);
 
     std::cout << "Client disconnected! ID: " << peerID << std::endl;
+
+    sendPlayerDisconnectedPacket(peerID);
+
+    std::cout << "Sent message that a player has been removed to all clients" << std::endl;
 }
 
 void NetworkCommunicator::sendAllConnectedPlayersPacket(ENetPeer *peer, const std::vector<uint32_t> &playerIDs)
 {
-    ConnectedPlayersPacket packet(playerIDs);
+    ConnectedPlayersPacket packet(playerIDs, peer->incomingPeerID);
 
     std::vector<uint8_t> data = packet.Serialize();
     ENetPacket *enetPacket = enet_packet_create(data.data(), data.size(), ENET_PACKET_FLAG_RELIABLE);
 
-    enet_peer_send(peer, 0, enetPacket);
+    enet_peer_send(peer, 0, enetPacket); 
     enet_host_flush(server);
 }
 
@@ -147,5 +151,5 @@ void NetworkCommunicator::sendGameStatePacketToClient(ENetPeer *peer, const Game
     ENetPacket *enetPacket = enet_packet_create(data.data(), data.size(), ENET_PACKET_FLAG_RELIABLE);
 
     enet_peer_send(peer, 0, enetPacket);
-    enet_host_flush(server);
+    enet_host_flush(server); 
 }

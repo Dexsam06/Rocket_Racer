@@ -23,6 +23,8 @@ void Player::update(double& xGravityForce, double& yGravityForce, double& deltaT
 
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
     velocity.y += Physics::velocity(acceleration.y, deltaTime);  
+    getCollider()->updatePosition(getPosition()); 
+    getCollider()->setRotation((rotation * M_PI) / 180);
 }  
 
 void Player::applyInput(int keyCode, float duration)
@@ -30,16 +32,16 @@ void Player::applyInput(int keyCode, float duration)
     switch (keyCode) 
     {
         //Left arrow
-        case 8592:
-            rotationSpeed -= duration * 0.1;
+        case 1073741904:
+            rotationSpeed -= duration * 2;
             break;    
         //Right arrow
-        case 8594:
-            rotationSpeed += duration * 0.1; 
+        case 1073741903:
+            rotationSpeed += duration * 2; 
             break;
         //Spacebar
         case 32:
-            thrustForce +=  duration * 100; 
+            thrustForce +=  duration * 100000;  
             break;
     }
 }
@@ -49,12 +51,12 @@ void Player::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vec
     Vector2D screenCenter(screenWidth / 2, screenHeight / 2); 
 
     Vector2D offsetFromClientPlayer(
-        position.x - playerClientPos.x,  
+        position.x - playerClientPos.x,   
         position.y - playerClientPos.y
     );
 
     Vector2D scaledOffset(
-        offsetFromClientPlayer.x * scalingFactor.x, 
+        offsetFromClientPlayer.x * scalingFactor.x,  
         offsetFromClientPlayer.y * scalingFactor.y 
     );
 
@@ -67,30 +69,30 @@ void Player::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vec
     int scaledHeight = static_cast<int>(playerHeight * scalingFactor.y);  
 
     SDL_Rect playerDestRect = { 
-        screenWidth / 2 - scaledWidth / 2, 
-        screenHeight / 2 - scaledHeight / 2,  
+        scaledPosition.x - scaledWidth / 2, 
+        scaledPosition.y - scaledHeight / 2,   
         scaledWidth,
         scaledHeight}; 
 
     SDL_RenderCopyEx(renderer, texture, nullptr, &playerDestRect, rotation, nullptr, SDL_FLIP_NONE);
 } 
 
-void Player::reconcileClientState(Vector2D &clientPos, Vector2D serverPos, double serverRotation, double lerpFactor) {
-    double deltaX = serverPos.x - clientPos.x;
-    double deltaY = serverPos.y - clientPos.y;
+void Player::reconcileClientState(Vector2D &serverPos, double serverRotation, double lerpFactor) {
+    double deltaX = serverPos.x - position.x;
+    double deltaY = serverPos.y - position.y;
     double distanceSquared = (deltaX * deltaX) + (deltaY * deltaY);
 
-    double snapThreshold = 0.5;
+    double snapThreshold = 3;
 
     // Check if we should snap (if within the threshold)
     if (distanceSquared < snapThreshold * snapThreshold) {
-        clientPos.x = serverPos.x; 
-        clientPos.y = serverPos.y;
+        position.x = serverPos.x; 
+        position.y = serverPos.y; 
     } else {
         // Smoothly interpolate towards the correct position
-        clientPos.x = Physics::lerp(clientPos.x, serverPos.x, lerpFactor);
-        clientPos.y = Physics::lerp(clientPos.y, serverPos.y, lerpFactor);
-    }
+        position.x = Physics::lerp(position.x, serverPos.x, lerpFactor);
+        position.y = Physics::lerp(position.y, serverPos.y, lerpFactor);
+    } 
 
     if(rotation > serverRotation - 5 && rotation < serverRotation + 5)
     {

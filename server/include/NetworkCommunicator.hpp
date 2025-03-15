@@ -30,7 +30,7 @@ public:
         std::vector<InputWithSequence> inputBuffer;
     };
 
-    std::vector<ClientInputs> getClientsInputBuffer() { return clientsInputBuffer; }
+    std::vector<ClientInputs>& getClientsInputBuffer() { return clientsInputBuffer; }
     std::unordered_map<enet_uint32, ENetPeer *>& getClientList() {return clients; }
 
     using CliInfCallback = std::function<void(uint16_t, ClientInfoPacket &)>;

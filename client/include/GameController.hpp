@@ -12,7 +12,9 @@
 #include "InputHandler.hpp"
 #include "TextureManager.hpp"
 #include "Player.hpp"
+#include "Planet.hpp"
 #include "Physics.hpp" 
+#include "CircleCollider.hpp"
 #include "RectangleCollider.hpp"
 #include "PhysicsSystem.hpp"
 #include "NetworkPackets.hpp"
@@ -40,7 +42,7 @@ private:
     GameView *gv;
     NetworkCommunicator *nc; 
 
-    std::unique_ptr<Player> clientPlayer;
+    Player* clientPlayer;
 
     std::vector<std::unique_ptr<Entity>> entityList; 
     std::vector<std::unique_ptr<Button>> buttonList; 
@@ -49,6 +51,7 @@ private:
     TextureManager textureManager;
     PhysicsSystem physicsSystem;
 
+    std::vector<InputWithSequence> unconfirmedInputs;
     std::vector<InputWithSequence> inputBuffer;
     int inputSequenceNumber = 0;
 
@@ -58,21 +61,6 @@ private:
     void HandleConPlaData(ConnectedPlayersPacket & data);
     void HandleNewPlaData(NewPlayerConnectedPacket & data);
     void HandleDisPLaData(PlayerDisconnectedPacket & data);
-
-    struct PlanetProperties {
-        std::string name;
-        double mass; 
-        double radius;
-        double startVelocityX; 
-        double startVelocityY; 
-    };
-
-    double playerMass = 100.0; 
-
-    std::unordered_map<int, PlanetProperties> planetData = {  
-        {0, {"Earth", 10000000.0, 1000, 0, 0}},
-        {1, {"Moon", 100000.0, 400, 150, 0}}
-    };
 };
 
 #endif

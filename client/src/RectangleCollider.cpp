@@ -81,7 +81,7 @@ bool RectangleCollider::checkCollision(const Collider& other, Vector2D& collisio
         for (const auto& axis : axes) {
             double minA, maxA, minB, maxB;
             projectOntoAxis(axis, minA, maxA);
-            rect->projectOntoAxis(axis, minB, maxB);
+            rect->projectOntoAxis(axis, minB, maxB); 
 
             if (std::min(maxA, maxB) - std::max(minA, minB) <= 0) {
                 return false;

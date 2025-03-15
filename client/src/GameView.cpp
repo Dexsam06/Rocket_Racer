@@ -56,24 +56,37 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    drawBackground(entityList[0].get()); 
-    Vector2D clientPlayerPos = entityList[0]->getPosition();
+    Player *clientPlayer = dynamic_cast<Player *>(entityList[0].get());
+    drawBackground(clientPlayer); 
+    Vector2D clientPlayerPos = clientPlayer->getPosition();
+    
 
-    for (std::unique_ptr<Entity> &entity : entityList)
-    {
-        if (!entity) { 
+    //Draw client player
+    int scaledWidth = static_cast<int>(clientPlayer->getPlayerWidth() * scalingFactor.x); 
+    int scaledHeight = static_cast<int>(clientPlayer->getPlayerHeight() * scalingFactor.y); 
+
+    SDL_Rect playerDestRect = { 
+        screenWidth / 2 - scaledWidth / 2,  
+        screenHeight / 2 - scaledHeight / 2,   
+        scaledWidth,
+        scaledHeight}; 
+    SDL_RenderCopyEx(renderer, clientPlayer->getTexture(), nullptr, &playerDestRect, clientPlayer->getRotation(), nullptr, SDL_FLIP_NONE);
+
+    //Draw other entities
+    for (int i = 1; i < entityList.size(); i++) {
+        if (!entityList[i]) { 
             std::cerr << "Warning: Null entity found in entityList!" << std::endl;
             continue;
         }
-        SDL_Texture* texture = entity->getTexture();  
+        SDL_Texture* texture = entityList[i]->getTexture();  
         if (!texture || texture == nullptr) {
             std::cerr << "Warning: Entity has null texture!" << std::endl;
-            continue;
+            continue; 
         }
-        entity->draw(renderer, screenWidth, screenHeight, clientPlayerPos, scalingFactor); 
+        entityList[i]->draw(renderer, screenWidth, screenHeight, clientPlayerPos, scalingFactor); 
     }
 
-    for (std::unique_ptr<Button> &button : buttonList)
+    for (std::unique_ptr<Button> &button : buttonList) 
     {
         if (!button) {
             std::cerr << "Warning: Null button found in buttonList!" << std::endl; 
@@ -102,7 +115,7 @@ void GameView::clean()
     std::cout << "Game Cleaned" << std::endl;
 }
 
-void GameView::drawBackground(Entity *clientPlayer)
+void GameView::drawBackground(Player *clientPlayer)
 {
     int bgWidth, bgHeight;
     SDL_QueryTexture(background, nullptr, nullptr, &bgWidth, &bgHeight);

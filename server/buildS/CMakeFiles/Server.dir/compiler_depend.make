@@ -514,6 +514,7 @@ CMakeFiles/Server.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
 
 CMakeFiles/Server.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/src/GameController.cpp \
+  /home/samuel/Dev/c++/Rocket_Racer/server/include/CircleCollider.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Collider.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Entity.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/GameController.hpp \
@@ -521,6 +522,7 @@ CMakeFiles/Server.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /home/samuel/Dev/c++/Rocket_Racer/server/include/NetworkPackets.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Physics.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/PhysicsSystem.hpp \
+  /home/samuel/Dev/c++/Rocket_Racer/server/include/Planet.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Player.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/RectangleCollider.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Vector2D.hpp \
@@ -2792,6 +2794,7 @@ CMakeFiles/Server.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Rocket_R
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
 
 CMakeFiles/Server.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/src/main.cpp \
+  /home/samuel/Dev/c++/Rocket_Racer/server/include/CircleCollider.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Collider.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Entity.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/GameController.hpp \
@@ -2799,6 +2802,7 @@ CMakeFiles/Server.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/s
   /home/samuel/Dev/c++/Rocket_Racer/server/include/NetworkPackets.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Physics.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/PhysicsSystem.hpp \
+  /home/samuel/Dev/c++/Rocket_Racer/server/include/Planet.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Player.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/RectangleCollider.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/server/include/Vector2D.hpp \
@@ -3381,12 +3385,6 @@ CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fxsrintrin.h:
 
-/usr/lib/libm.so:
-
-/home/samuel/Dev/c++/Rocket_Racer/server/include/Planet.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/f16cintrin.h:
-
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cetintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmiintrin.h:
@@ -3514,6 +3512,12 @@ CMakeFiles/Server.dir/src/CircleCollider.cpp.o:
 /usr/include/SDL2/SDL_assert.h:
 
 /home/samuel/Dev/c++/Rocket_Racer/server/include/Player.hpp:
+
+/usr/lib/libm.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/f16cintrin.h:
+
+/home/samuel/Dev/c++/Rocket_Racer/server/include/Planet.hpp:
 
 /usr/include/SDL2/SDL_gamecontroller.h:
 

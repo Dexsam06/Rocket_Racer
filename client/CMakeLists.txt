@@ -37,6 +37,7 @@ set(SOURCES
     src/Player.cpp
     src/RectangleCollider.cpp
     src/TextureManager.cpp
+    src/UserInputWindow.cpp
 )
 
 # Create the executable

@@ -1,6 +1,6 @@
 #include "../include/NetworkCommunicator.hpp"
 
-NetworkCommunicator::NetworkCommunicator()
+NetworkCommunicator::NetworkCommunicator(std::string ipAddress, std::string username) : ipAddress(ipAddress), username(username)
 {
     if (enet_initialize() != 0)
     {
@@ -17,11 +17,6 @@ NetworkCommunicator::NetworkCommunicator()
         return;
     }
 
-    std::cout << "Skriv ip-address: " << std::endl;
-    ipAddress = "127.0.0.1";
-    std::cout << "Type your username: ";
-    std::cin >> username;  
-
     enet_address_set_host(&address, ipAddress.c_str());
     address.port = 7777; 
 
@@ -34,11 +29,9 @@ NetworkCommunicator::NetworkCommunicator()
 
     if (enet_host_service(client, &event, 5000) > 0 && event.type == ENET_EVENT_TYPE_CONNECT)
     {
-        clientID = serverPeer->incomingPeerID;
         std::cout << "Connection to " << address.host << ":7777 succeeded!" << std::endl;
 
-        sendInfoClientPacket(username); 
-        std::cout << "Sent client info to server!" << std::endl;
+        sendInfoClientPacket(username.c_str()); 
     }
     else
     {
@@ -57,8 +50,8 @@ void NetworkCommunicator::handleReceivedPacket()
         case ENET_EVENT_TYPE_RECEIVE:
             if (!event.packet || event.packet->data == nullptr)
             {
-                std::cerr << "Error: Null or corrupted packet received!" << std::endl;
-                return;
+                std::cerr << "Error: Null or corrupted packet received!" << std::endl; 
+                return; 
             }
 
             const uint8_t* buffer = event.packet->data; 
@@ -77,11 +70,18 @@ void NetworkCommunicator::handleReceivedPacket()
                     connectedPlayersPacket.Deserialize(buffer, packetSize);
                     std::cout << "Received all connected players from server" << std::endl; 
                     ReceiveConPlaPacket(connectedPlayersPacket);
+
+                    if (hasReceivedConnectedPlayers == false) {
+                        clientID = connectedPlayersPacket.clientID;
+                        hasReceivedConnectedPlayers = true;
+                    }
                     break;
-                case PacketType::NEW_PLAYER_CONNECTED_PACKET:
-                    newPlayerPacket.Deserialize(buffer, packetSize);
-                    std::cout << "New player added, id: " << newPlayerPacket.playerID << std::endl; 
-                    ReceiveNewPlaPacket(newPlayerPacket); 
+                case PacketType::NEW_PLAYER_CONNECTED_PACKET: 
+                    newPlayerPacket.Deserialize(buffer, packetSize); 
+                    if (newPlayerPacket.playerID != clientID) {
+                        ReceiveNewPlaPacket(newPlayerPacket); 
+                        std::cout << "New player added, id: " << newPlayerPacket.playerID << std::endl; 
+                    }
                     break;
                 case PacketType::PLAYER_DISCONNECTED_PACKET: 
                     playerDisPacket.Deserialize(buffer, packetSize);
@@ -90,8 +90,13 @@ void NetworkCommunicator::handleReceivedPacket()
                     break;
                 case PacketType::GAME_STATE_PACKET:
                     gameStatePacket.Deserialize(buffer, packetSize); 
+                    hasReceivedFirstGameState = true;
+                    break; 
             } 
+            break;
         }
+
+        enet_packet_destroy(event.packet); 
     }
 }
 
@@ -121,7 +126,12 @@ void NetworkCommunicator::sendInfoClientPacket(const char* username)
 
     ENetPacket* enetPacket = enet_packet_create(data.data(), data.size(), ENET_PACKET_FLAG_RELIABLE);
 
-    enet_peer_send(serverPeer, 0, enetPacket); 
+    if (enet_peer_send(serverPeer, 0, enetPacket) != 0) {
+        std::cerr << "Error sending CLIENT_INFO_PACKET!" << std::endl;
+    } else {
+        std::cout << "CLIENT_INFO_PACKET successfully sent!" << std::endl;
+    }
+
     enet_host_flush(client);
 }
 
@@ -134,4 +144,6 @@ void NetworkCommunicator::sendInputPacketToServer(std::vector<InputWithSequence>
     enet_peer_send(serverPeer, 0, packet);
 
     enet_host_flush(client);  
+
+    std::cout << "Sent input packet to the server!" << std::endl;
 }

@@ -20,6 +20,9 @@ public:
 private:
     bool quit = false;
     KeyInput newInput;
+
+    std::unordered_map<SDL_Keycode, Uint32> keyPressTimes;   // Stores key press timestamps
+    std::unordered_map<SDL_Keycode, float> keyHoldDurations;
 };
 
 #endif

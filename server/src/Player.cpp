@@ -11,16 +11,16 @@ void Player::applyInput(int keyCode, float duration)
     switch (keyCode) 
     {
         //Left arrow
-        case 8592:
-            rotationSpeed -= duration * 0.1;
+        case 1073741904: 
+            rotationSpeed -= duration * 2;
             break;    
         //Right arrow
-        case 8594:
-            rotationSpeed += duration * 0.1; 
+        case 1073741903:
+            rotationSpeed += duration * 2; 
             break;
         //Spacebar
         case 32:
-            thrustForce +=  duration * 100; 
+            thrustForce +=  duration * 100000; 
             break;
     }
 }
@@ -45,6 +45,9 @@ void Player::update(double &xGravityForce, double &yGravityForce, double &deltaT
     velocity.y += Physics::velocity(acceleration.y, deltaTime);  
 
     thrustForce = 0; 
+
+    getCollider()->updatePosition(getPosition()); 
+    getCollider()->setRotation((rotation * M_PI) / 180);
 } 
 
 
