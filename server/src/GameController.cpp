@@ -28,7 +28,7 @@ void GameController::gameLoop()
         if (deltaTime > updateTime)
         {
             previousTime = std::chrono::steady_clock::now();
-            nc->NetworkHandler(); 
+            nc->NetworkHandler();
             applyClientsInputs();
             physicsSystem.update(entityList, deltaTime / 1000.0);
             sendGameStatePacketToClients();
@@ -40,10 +40,11 @@ void GameController::applyClientsInputs()
 {
     auto &clientsInputBuffer = nc->getClientsInputBuffer();
 
-    while (!clientsInputBuffer.empty()) {
+    while (!clientsInputBuffer.empty())
+    {
         auto it = clientsInputBuffer.begin();
         int clientID = it->clientID;
-    
+
         auto playerIt = std::find_if(entityList.begin(), entityList.end(),
                                      [clientID](const std::unique_ptr<Entity> &entity)
                                      {
@@ -73,7 +74,7 @@ void GameController::applyClientsInputs()
         {
             std::cerr << "Player not found in the entity list when applying inputs for client ID " << clientID << std::endl;
         }
-    
+
         clientsInputBuffer.erase(it);
     }
 }
@@ -83,7 +84,7 @@ void GameController::sendGameStatePacketToClients()
     for (std::pair<enet_uint32, ENetPeer *> client : nc->getClientList())
     {
         GameStatePacket gameStatePacket;
-        gameStatePacket.numEntities = entityList.size() - 1; 
+        gameStatePacket.numEntities = entityList.size() - 1;
 
         int clientID = client.first;
 
@@ -106,11 +107,11 @@ void GameController::sendGameStatePacketToClients()
 
         for (const std::unique_ptr<Entity> &entity : entityList)
         {
-            if (entity->getID() == clientID) 
+            if (entity->getID() == clientID)
             {
                 continue;
-            } 
-                
+            }
+
             EntityState entityState;
             entityState.entityID = entity->getID();
             entityState.posX = entity->getPosition().x;
@@ -136,7 +137,7 @@ void GameController::HandleCliInfData(uint16_t &clientID, ClientInfoPacket &data
         100,
         clientID,
         usernameStr);
-    player->setPlayerWidth(45); 
+    player->setPlayerWidth(45);
     player->setPlayerHeight(352);
 
     entityList.push_back(std::move(player));
@@ -156,7 +157,7 @@ void GameController::HandleDisPlaData(uint16_t &clientID)
         }
         else
         {
-            ++it; 
+            ++it;
         }
     }
 }
@@ -168,15 +169,27 @@ void GameController::loadResources()
     // Planets
     std::unique_ptr<Planet> earth = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(960, (1080 / 2) + (352 / 2 + 1000)), 
+            Vector2D(960, (1080 / 2) + (352 / 2 + 1000)),
             1000.0),
-        Vector2D(960, (1080 / 2) + (352 / 2 + 1000)),    
+        Vector2D(960, (1080 / 2) + (352 / 2 + 1000)),
         Vector2D(0, 0),
-        1000000.0, 
-        1000.0, 
-        1000
-        );
-    entityList.push_back(std::move(earth)); 
+        10000000.0,
+        1000.0,
+        1000);
+    entityList.push_back(std::move(earth));
 
     std::cout << "Added earth with id: " << 1000 << std::endl;
+
+    std::unique_ptr<Planet> moon = std::make_unique<Planet>(
+        std::make_unique<CircleCollider>(
+            Vector2D(960, (1080 / 2) + (352 / 2) - 1000),
+            400.0),
+        Vector2D(960, (1080 / 2) + (352 / 2) - 1000),
+        Vector2D(150, 0),
+        100000.0,
+        400.0,
+        1001);
+    entityList.push_back(std::move(moon));
+
+    std::cout << "Added moon with id: " << 1001 << std::endl;
 }

@@ -247,6 +247,26 @@ void GameController::loadResources()
     gv->setBackground(backgroundTexture);
 
     // Planets
+    SDL_Texture *moonTexture = textureManager.loadTexture("moon", "../../res/moon.png", gv->getRenderer());
+    if(!moonTexture || moonTexture == nullptr) {
+        std::cout << "Failed to load moon texture" << std::endl;
+    }
+
+    std::unique_ptr<Planet> moon = std::make_unique<Planet>(
+        std::make_unique<CircleCollider>(
+            Vector2D(960, (1080 / 2) + (352 / 2) - 1000), 
+            400.0), 
+        moonTexture,
+        Vector2D(960, (1080 / 2) + (352 / 2) - 1000),    
+        Vector2D(150, 0),
+        100000.0,
+        400.0,
+        1001
+        );
+    entityList.insert(entityList.begin(), std::move(moon));  
+
+    std::cout << "Added moon with id: " << 1001 << std::endl;
+
     SDL_Texture *earthTexture = textureManager.loadTexture("earth", "../../res/earth.png", gv->getRenderer());
     if(!earthTexture || earthTexture == nullptr) {
         std::cout << "Failed to load earth texture" << std::endl;
@@ -259,13 +279,13 @@ void GameController::loadResources()
         earthTexture,
         Vector2D(960, (1080 / 2) + (352 / 2) + 1000),    
         Vector2D(0, 0),
-        1000000.0,
+        10000000.0,
         1000.0,
         1000
         );
     entityList.insert(entityList.begin(), std::move(earth));  
 
-    std::cout << "Added planet with id: " << 1000 << std::endl;
+    std::cout << "Added earth with id: " << 1000 << std::endl;
 
     int height, width;
 
