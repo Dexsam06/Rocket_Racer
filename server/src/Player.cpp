@@ -2,8 +2,8 @@
 
 #include <iostream> 
 
-Player::Player(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID, std::string username) 
-    : rotationSpeed(0), Entity(std::move(collider), pos, vel, mass, ID), username(username) { 
+Player::Player(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID) 
+    : rotationSpeed(0), Entity(std::move(collider), pos, vel, mass, ID) { 
 } 
 
 void Player::applyInput(int keyCode, float duration) 

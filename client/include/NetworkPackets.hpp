@@ -31,16 +31,16 @@ struct BasePacket
 struct ConnectedPlayersPacket : public BasePacket
 {
     uint16_t numPlayers;
-    std::vector<uint32_t> playerIDs;
+    std::vector<std::pair<uint32_t, std::string>> clients;
     uint16_t clientID;
 
     ConnectedPlayersPacket() { type = PacketType::CONNECTED_PLAYERS_PACKET; }
-    ConnectedPlayersPacket(const std::vector<uint32_t> &ids, uint16_t &clientID)
+    ConnectedPlayersPacket(const std::vector<std::pair<uint32_t, std::string>> &clients, uint16_t &clientID)
     {
-        type = PacketType::CONNECTED_PLAYERS_PACKET; 
-        numPlayers = static_cast<uint16_t>(ids.size()); 
-        playerIDs = ids;
-        this->clientID = clientID; 
+        type = PacketType::CONNECTED_PLAYERS_PACKET;
+        numPlayers = static_cast<uint16_t>(clients.size());
+        this->clients = clients;
+        this->clientID = clientID;
     }
 
     std::vector<uint8_t> Serialize() const override
@@ -52,20 +52,28 @@ struct ConnectedPlayersPacket : public BasePacket
 
         buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&clientID), reinterpret_cast<const uint8_t *>(&clientID) + sizeof(uint16_t));
 
-        for (uint32_t id : playerIDs)
+        for (const auto &client : clients)
         {
-            buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&id),
-                          reinterpret_cast<const uint8_t *>(&id) + sizeof(uint32_t));
-        }
+            uint32_t id = client.first;
+            const std::string &name = client.second;
+            uint32_t nameLength = name.size(); // Store string length
 
-        
+            // Append ID
+            buffer.insert(buffer.end(), reinterpret_cast<uint8_t *>(&id), reinterpret_cast<uint8_t *>(&id) + sizeof(uint32_t));
+
+            // Append string length
+            buffer.insert(buffer.end(), reinterpret_cast<uint8_t *>(&nameLength), reinterpret_cast<uint8_t *>(&nameLength) + sizeof(uint32_t));
+
+            // Append string characters
+            buffer.insert(buffer.end(), name.begin(), name.end());
+        }
 
         return buffer;
     }
 
     void Deserialize(const uint8_t *data, size_t size) override
     {
-        if (size < 3)
+        if (size < 5) // Minimum size check (1 byte for type, 2 bytes for numPlayers, 2 bytes for clientID)
             return;
 
         size_t offset = 0;
@@ -75,15 +83,31 @@ struct ConnectedPlayersPacket : public BasePacket
         offset += sizeof(uint16_t);
 
         std::memcpy(&clientID, &data[offset], sizeof(uint16_t));
-        offset += sizeof(uint16_t); 
+        offset += sizeof(uint16_t);
 
-        if (size < offset + numPlayers * sizeof(uint32_t))
-            return; 
+        clients.clear(); // Clear existing data before inserting new entries
 
-        playerIDs.resize(numPlayers);
-        std::memcpy(playerIDs.data(), &data[offset], numPlayers * sizeof(uint32_t));
+        for (uint16_t i = 0; i < numPlayers; i++)
+        {
+            if (offset + sizeof(uint32_t) > size)
+                return; // Bounds check for ID
+            uint32_t id;
+            std::memcpy(&id, &data[offset], sizeof(uint32_t));
+            offset += sizeof(uint32_t);
 
+            if (offset + sizeof(uint32_t) > size)
+                return; // Bounds check for string length
+            uint32_t nameLength;
+            std::memcpy(&nameLength, &data[offset], sizeof(uint32_t));
+            offset += sizeof(uint32_t);
 
+            if (offset + nameLength > size)
+                return; // Bounds check for string data
+            std::string name(reinterpret_cast<const char *>(&data[offset]), nameLength);
+            offset += nameLength;
+
+            clients.emplace_back(id, name);
+        }
     }
 };
 
@@ -201,7 +225,11 @@ struct GameStatePacket : public BasePacket
     std::vector<EntityState> entities;
     ClientState clientState;
 
-    GameStatePacket() { numEntities = 0; type = PacketType::GAME_STATE_PACKET; }
+    GameStatePacket()
+    {
+        numEntities = 0;
+        type = PacketType::GAME_STATE_PACKET;
+    }
     GameStatePacket(const std::vector<EntityState> &entityList, const ClientState &state)
     {
         type = PacketType::GAME_STATE_PACKET;
@@ -210,7 +238,7 @@ struct GameStatePacket : public BasePacket
         clientState = state;
     }
 
-    std::vector<uint8_t> Serialize() const 
+    std::vector<uint8_t> Serialize() const
     {
         std::vector<uint8_t> buffer;
         buffer.reserve(1 + sizeof(uint16_t) + numEntities * sizeof(EntityState) + sizeof(ClientState));
@@ -260,63 +288,62 @@ struct GameStatePacket : public BasePacket
     }
 
     void Deserialize(const uint8_t *data, size_t size)
-{
-    if (size < 3) // Need at least type (1 byte) + numEntities (2 bytes)
     {
-        std::cerr << "GameStatePacket: Packet size too small (header missing)!" << std::endl;
-        return;
-    }
+        if (size < 3) // Need at least type (1 byte) + numEntities (2 bytes)
+        {
+            std::cerr << "GameStatePacket: Packet size too small (header missing)!" << std::endl;
+            return;
+        }
 
-    size_t offset = 0;
+        size_t offset = 0;
 
-    // Skip the first byte (type)
-    offset += 1;
+        // Skip the first byte (type)
+        offset += 1;
 
-    // Read number of entities (2 bytes)
-    std::memcpy(&numEntities, &data[offset], sizeof(uint16_t));
-    offset += sizeof(uint16_t);
+        // Read number of entities (2 bytes)
+        std::memcpy(&numEntities, &data[offset], sizeof(uint16_t));
+        offset += sizeof(uint16_t);
 
-    // Ensure the packet is large enough
-    size_t requiredSize = offset + (numEntities * sizeof(EntityState)) + sizeof(ClientState);
-    if (size < requiredSize)
-    {
-        std::cerr << "GameStatePacket: Packet size too small! Expected at least "
-                  << requiredSize << " bytes but got " << size << " bytes." << std::endl;
-        return;
-    }
+        // Ensure the packet is large enough
+        size_t requiredSize = offset + (numEntities * sizeof(EntityState)) + sizeof(ClientState);
+        if (size < requiredSize)
+        {
+            std::cerr << "GameStatePacket: Packet size too small! Expected at least "
+                      << requiredSize << " bytes but got " << size << " bytes." << std::endl;
+            return;
+        }
 
-    // Deserialize entities
-    entities.resize(numEntities);
-    for (auto &entity : entities)
-    {
-        std::memcpy(&entity.entityID, &data[offset], sizeof(uint32_t));
+        // Deserialize entities
+        entities.resize(numEntities);
+        for (auto &entity : entities)
+        {
+            std::memcpy(&entity.entityID, &data[offset], sizeof(uint32_t));
+            offset += sizeof(uint32_t);
+
+            std::memcpy(&entity.posX, &data[offset], sizeof(float));
+            offset += sizeof(float);
+
+            std::memcpy(&entity.posY, &data[offset], sizeof(float));
+            offset += sizeof(float);
+
+            std::memcpy(&entity.rotation, &data[offset], sizeof(float));
+            offset += sizeof(float);
+        }
+
+        // Deserialize client state
+        std::memcpy(&clientState.lastVerifiedInputID, &data[offset], sizeof(uint32_t));
         offset += sizeof(uint32_t);
 
-        std::memcpy(&entity.posX, &data[offset], sizeof(float));
+        std::memcpy(&clientState.serverPosX, &data[offset], sizeof(float));
         offset += sizeof(float);
 
-        std::memcpy(&entity.posY, &data[offset], sizeof(float));
+        std::memcpy(&clientState.serverPosY, &data[offset], sizeof(float));
         offset += sizeof(float);
 
-        std::memcpy(&entity.rotation, &data[offset], sizeof(float));
+        std::memcpy(&clientState.rotation, &data[offset], sizeof(float));
         offset += sizeof(float);
     }
-
-    // Deserialize client state
-    std::memcpy(&clientState.lastVerifiedInputID, &data[offset], sizeof(uint32_t));
-    offset += sizeof(uint32_t);
-
-    std::memcpy(&clientState.serverPosX, &data[offset], sizeof(float));
-    offset += sizeof(float);
-
-    std::memcpy(&clientState.serverPosY, &data[offset], sizeof(float));
-    offset += sizeof(float);
-
-    std::memcpy(&clientState.rotation, &data[offset], sizeof(float));
-    offset += sizeof(float);
-}
 };
-
 
 struct KeyInput
 {

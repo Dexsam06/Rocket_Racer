@@ -13,7 +13,7 @@ class Player : public Entity
 {
 public:
     // Constructor
-    Player(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID);
+    Player(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID, std::string username);
     ~Player(){};
  
     void setPlayerWidth(int playerWidth) { this->playerWidth = playerWidth; }
@@ -26,6 +26,7 @@ public:
     Vector2D& getPosition() {return position; }
     int getPlayerWidth() {return playerWidth; }
     int getPlayerHeight() {return playerHeight; }
+    std::string getUsername() {return username; }
 
     void resetClientThrustForce() {thrustForce = 0; }
     void resetClientRotationSpeed() {rotationSpeed = 0; }
@@ -33,7 +34,7 @@ public:
     std::unique_ptr<Entity> clone() const override
     {
         return std::make_unique<Player>(
-            collider->clone(), texture, position, velocity, mass, ID 
+            collider->clone(), texture, position, velocity, mass, ID, username
         );
     } 
 
@@ -45,6 +46,7 @@ private:
     double thrustForce;
     double rotationSpeed;
     int playerWidth, playerHeight;
+    std::string username; 
 
     void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerClientPos, Vector2D scalingFactor) override;
 };

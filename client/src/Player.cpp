@@ -2,8 +2,8 @@
 
 #include <iostream> 
 
-Player::Player(std::unique_ptr<Collider> collider, SDL_Texture* texture, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID) 
-    : rotationSpeed(0), Entity(std::move(collider), texture, pos, vel, mass, ID) { 
+Player::Player(std::unique_ptr<Collider> collider, SDL_Texture* texture, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID, std::string username) 
+    : rotationSpeed(0), Entity(std::move(collider), texture, pos, vel, mass, ID), username(username) { 
 } 
 
 void Player::update(double& xGravityForce, double& yGravityForce, double& deltaTime){ 

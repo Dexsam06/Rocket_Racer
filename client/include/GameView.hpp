@@ -18,10 +18,7 @@ class GameView {
         ~GameView();
         void render(std::vector<std::unique_ptr<Entity>>& entityList, std::vector<std::unique_ptr<Button>>& buttonList);
         void clean();
-        void drawBackground(Player* clientPlayer);
-        void drawFuturePath(std::vector<Vector2D>& futurePath, Vector2D playerPos);
-        std::vector<SDL_Point> convertToSDLPoints(const std::vector<Vector2D>& points);
-
+        
         bool running() {return isRunning; } 
         void setIsRunning(bool isRunning) {this->isRunning = isRunning; }
         SDL_Renderer* getRenderer() {return renderer; }
@@ -39,6 +36,11 @@ class GameView {
         bool fullscreen;
         bool isRunning; 
         Vector2D scalingFactor;
+
+        void drawPlayerUsername(int &x, int &y, const std::string &username);
+        void drawBackground(Player* clientPlayer);
+        void drawFuturePath(std::vector<Vector2D>& futurePath, Vector2D playerPos);
+        std::vector<SDL_Point> convertToSDLPoints(const std::vector<Vector2D>& points);
 };
 
 #endif

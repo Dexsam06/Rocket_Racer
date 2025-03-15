@@ -22,6 +22,7 @@ public:
     void sendInputPacketToServer(std::vector<InputWithSequence> &inputList);
 
     int getClientID() { return clientID; }
+    std::string getUsername() {return username; }
     bool getHasReceivedFirstGameState() {return hasReceivedFirstGameState; }
     bool getHasReceivedConnectedPlayers() {return hasReceivedConnectedPlayers; }
 

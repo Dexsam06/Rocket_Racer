@@ -81,7 +81,7 @@ void GameController::applyClientsInputs()
 
 void GameController::sendGameStatePacketToClients()
 {
-    for (std::pair<enet_uint32, ENetPeer *> client : nc->getClientList())
+    for (std::pair<enet_uint32, std::pair<std::string, ENetPeer *>> client : nc->getClientList())
     {
         GameStatePacket gameStatePacket;
         gameStatePacket.numEntities = entityList.size() - 1;
@@ -120,13 +120,12 @@ void GameController::sendGameStatePacketToClients()
             gameStatePacket.entities.push_back(entityState);
         }
 
-        nc->sendGameStatePacketToClient(client.second, gameStatePacket);
+        nc->sendGameStatePacketToClient(client.second.second, gameStatePacket);
     }
 }
 
 void GameController::HandleCliInfData(uint16_t &clientID, ClientInfoPacket &data)
 {
-    std::string usernameStr(data.username);
     std::unique_ptr<Player> player = std::make_unique<Player>(
         std::make_unique<RectangleCollider>(
             Vector2D(760 + (100 * clientID), 500),
@@ -135,8 +134,7 @@ void GameController::HandleCliInfData(uint16_t &clientID, ClientInfoPacket &data
         Vector2D(760 + (100 * clientID), 500),
         Vector2D(0, 0),
         100,
-        clientID,
-        usernameStr);
+        clientID);
     player->setPlayerWidth(45);
     player->setPlayerHeight(352);
 
@@ -173,7 +171,7 @@ void GameController::loadResources()
             1000.0),
         Vector2D(960, (1080 / 2) + (352 / 2 + 1000)),
         Vector2D(0, 0),
-        10000000.0,
+        1000000.0,
         1000.0,
         1000);
     entityList.push_back(std::move(earth));
@@ -191,5 +189,5 @@ void GameController::loadResources()
         1001);
     entityList.push_back(std::move(moon));
 
-    std::cout << "Added moon with id: " << 1001 << std::endl;
+    std::cout << "Added moon with id: " << 1001 << std::endl; 
 }

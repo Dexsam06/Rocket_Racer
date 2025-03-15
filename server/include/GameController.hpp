@@ -24,7 +24,7 @@ class GameController
 public:
     GameController(NetworkCommunicator *nc);
     ~GameController();
-    void gameLoop();
+    void gameLoop(); 
 
 private:
     NetworkCommunicator *nc;

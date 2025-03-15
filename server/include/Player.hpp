@@ -13,7 +13,7 @@ class Player : public Entity
 {
 public:
     // Constructor
-    Player(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID, std::string username);
+    Player(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID);
     ~Player(){};
  
     void setPlayerWidth(int playerWidth) { this->playerWidth = playerWidth; }
@@ -33,7 +33,7 @@ public:
     std::unique_ptr<Entity> clone() const override
     {
         return std::make_unique<Player>(
-            collider->clone(), position, velocity, mass, ID, username
+            collider->clone(), position, velocity, mass, ID
         );
     } 
 
@@ -44,8 +44,7 @@ private:
     double thrustForce;
     double rotationSpeed;
     int playerWidth, playerHeight;
-    int lastVerifiedInput;
-    std::string username;  
+    int lastVerifiedInput; 
 };
 
 #endif 

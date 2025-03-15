@@ -31,7 +31,7 @@ public:
     };
 
     std::vector<ClientInputs>& getClientsInputBuffer() { return clientsInputBuffer; }
-    std::unordered_map<enet_uint32, ENetPeer *>& getClientList() {return clients; }
+    std::unordered_map<enet_uint32, std::pair<std::string, ENetPeer *>>& getClientList() {return clients; }
 
     using CliInfCallback = std::function<void(uint16_t, ClientInfoPacket &)>;
     using DisPlaCallback = std::function<void(uint16_t)>;
@@ -52,16 +52,16 @@ private:
 
     bool serverRunningState = true;
 
-    std::unordered_map<enet_uint32, ENetPeer *> clients; 
+    std::unordered_map<enet_uint32, std::pair<std::string, ENetPeer *>> clients; 
     std::vector<ClientInputs> clientsInputBuffer;   
 
     CliInfCallback cliInfCallback;
     DisPlaCallback disPlaCallback;
 
-    void handleConnections(ENetEvent &event);
+    void handleConnections(ENetEvent &event, ClientInfoPacket& clientInfoPacket);
     void handleDisconnections(ENetEvent &event);
     
-    void sendAllConnectedPlayersPacket(ENetPeer* peer, const std::vector<uint32_t>& playerIDs);
+    void sendAllConnectedPlayersPacket(ENetPeer *peer, const std::vector<std::pair<uint32_t, std::string>> &clientsConnected);
     void sendNewConnectedPlayerPacket(uint16_t &playerID, char username[32]);
     void sendPlayerDisconnectedPacket(uint16_t& playerID);
 };

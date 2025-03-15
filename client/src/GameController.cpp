@@ -99,7 +99,7 @@ void GameController::removeConfirmedInputs()
         std::remove_if(unconfirmedInputs.begin(), unconfirmedInputs.end(),
                        [lastVerifiedInputID](const InputWithSequence &input)
                        {
-                           return input.sequenceNumber <= lastVerifiedInputID;
+                           return input.sequenceNumber <= lastVerifiedInputID; 
                        }),
         unconfirmedInputs.end());
 }
@@ -171,18 +171,19 @@ void GameController::HandleConPlaData(ConnectedPlayersPacket &data)
     }
     SDL_QueryTexture(playerTexture, nullptr, nullptr, &width, &height);
 
-    for (uint32_t &id : data.playerIDs)
+    for (std::pair<uint32_t, std::string> &client : data.clients)
     {
         std::unique_ptr<Player> player = std::make_unique<Player>(
             std::make_unique<RectangleCollider>(
-                Vector2D(700 + (70 * id), 500),
+                Vector2D(700 + (70 * client.first), 500),
                 width,
                 height),
             playerTexture,
-            Vector2D(700 + (70 * id), 500),
+            Vector2D(700 + (70 * client.first), 500),
             Vector2D(0, 0),
             100.0,
-            id);
+            client.first,
+            client.second);
         player->setPlayerWidth(width);
         player->setPlayerHeight(height);
 
@@ -212,7 +213,8 @@ void GameController::HandleNewPlaData(NewPlayerConnectedPacket &data)
         Vector2D(760 + (100 * data.playerID), 500),
         Vector2D(0, 0),
         100.0,
-        data.playerID);
+        data.playerID,
+        data.username);
     player->setPlayerWidth(width);
     player->setPlayerHeight(height);
 
@@ -279,7 +281,7 @@ void GameController::loadResources()
         earthTexture,
         Vector2D(960, (1080 / 2) + (352 / 2) + 1000),    
         Vector2D(0, 0),
-        10000000.0,
+        1000000.0,
         1000.0,
         1000
         );
@@ -305,7 +307,8 @@ void GameController::loadResources()
         Vector2D(760 + (100 * nc->getClientID()), 500),
         Vector2D(0, 0),
         100.0,
-        nc->getClientID());
+        nc->getClientID(),
+        nc->getUsername());
     tempClientPlayer->setPlayerWidth(width); 
     tempClientPlayer->setPlayerHeight(height);
 

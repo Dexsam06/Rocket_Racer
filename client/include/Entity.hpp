@@ -13,6 +13,7 @@ class Entity
 {
 public:
     Entity(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID); 
+    virtual ~Entity() = default;
 
     virtual std::unique_ptr<Entity> clone() const { return std::make_unique<Entity>(collider->clone(), texture, position, velocity, mass, ID);}
 
