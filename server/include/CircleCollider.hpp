@@ -1,27 +1,21 @@
-#ifndef CIRCLECOLLIDER_HPP
-#define CIRCLECOLLIDER_HPP
-
+#pragma once
 #include "Collider.hpp"
-#include "RectangleCollider.hpp"
 
 class CircleCollider : public Collider {
-private:
-    double radius;
-
+    double m_radius;
+    
 public:
-    CircleCollider(const Vector2D& center, double radius)
-        : Collider(center), radius(radius) {}
+    CircleCollider(const Vector2D& position, double radius, double rotation = 0)
+        : Collider(position, rotation), m_radius(radius) {}
 
-    double getRadius() const { return radius; }
+    // Core functionality
+    bool CheckCollision(const Collider& other, Vector2D& normal, double& penetration) const override;
+    void ResolveCollision(Vector2D& velocity, const Vector2D& normal, double restitution, double inverseMass) const override;
 
-    std::unique_ptr<Collider> clone() const override {
-        return std::make_unique<CircleCollider>(center, radius);
-    }
+    // Projection
+    void ProjectOntoAxis(const Vector2D& axis, double& min, double& max) const override; 
 
-    bool checkCollision(const Collider& other, Vector2D& collisionNormal, double restitution) const override;
-    void resolveCollision(Vector2D& velocity, const Vector2D& collisionNormal, double restitution) const override;
-
-    void projectOntoAxis(const Vector2D& axis, double& min, double& max) const;
+    // Circle-specific
+    double GetRadius() const { return m_radius; }
+    void SetRadius(double radius) { m_radius = radius; }
 };
-
-#endif // CIRCLECOLLIDER_HPP

@@ -24,7 +24,7 @@ void Player::update(double& xGravityForce, double& yGravityForce, double& deltaT
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
     velocity.y += Physics::velocity(acceleration.y, deltaTime);  
     getCollider()->updatePosition(getPosition()); 
-    getCollider()->setRotation((rotation * M_PI) / 180);
+    getCollider()->setRotation((rotation * M_PI) / 180); 
 }  
 
 void Player::applyInput(int keyCode, float duration)
@@ -33,11 +33,11 @@ void Player::applyInput(int keyCode, float duration)
     {
         //Left arrow
         case 1073741904:
-            rotationSpeed -= duration * 2;
+            rotationSpeed -= duration * 3;
             break;    
         //Right arrow
         case 1073741903:
-            rotationSpeed += duration * 2; 
+            rotationSpeed += duration * 3; 
             break;
         //Spacebar
         case 32:

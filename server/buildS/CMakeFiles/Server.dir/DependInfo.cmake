@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/samuel/Dev/c++/Rocket_Racer/server/src/CircleCollider.cpp" "CMakeFiles/Server.dir/src/CircleCollider.cpp.o" "gcc" "CMakeFiles/Server.dir/src/CircleCollider.cpp.o.d"
+  "/home/samuel/Dev/c++/Rocket_Racer/server/src/Collider.cpp" "CMakeFiles/Server.dir/src/Collider.cpp.o" "gcc" "CMakeFiles/Server.dir/src/Collider.cpp.o.d"
   "/home/samuel/Dev/c++/Rocket_Racer/server/src/Entity.cpp" "CMakeFiles/Server.dir/src/Entity.cpp.o" "gcc" "CMakeFiles/Server.dir/src/Entity.cpp.o.d"
   "/home/samuel/Dev/c++/Rocket_Racer/server/src/GameController.cpp" "CMakeFiles/Server.dir/src/GameController.cpp.o" "gcc" "CMakeFiles/Server.dir/src/GameController.cpp.o.d"
   "/home/samuel/Dev/c++/Rocket_Racer/server/src/NetworkCommunicator.cpp" "CMakeFiles/Server.dir/src/NetworkCommunicator.cpp.o" "gcc" "CMakeFiles/Server.dir/src/NetworkCommunicator.cpp.o.d"
@@ -16,7 +16,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/samuel/Dev/c++/Rocket_Racer/server/src/PhysicsSystem.cpp" "CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o" "gcc" "CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o.d"
   "/home/samuel/Dev/c++/Rocket_Racer/server/src/Planet.cpp" "CMakeFiles/Server.dir/src/Planet.cpp.o" "gcc" "CMakeFiles/Server.dir/src/Planet.cpp.o.d"
   "/home/samuel/Dev/c++/Rocket_Racer/server/src/Player.cpp" "CMakeFiles/Server.dir/src/Player.cpp.o" "gcc" "CMakeFiles/Server.dir/src/Player.cpp.o.d"
-  "/home/samuel/Dev/c++/Rocket_Racer/server/src/RectangleCollider.cpp" "CMakeFiles/Server.dir/src/RectangleCollider.cpp.o" "gcc" "CMakeFiles/Server.dir/src/RectangleCollider.cpp.o.d"
   "/home/samuel/Dev/c++/Rocket_Racer/server/src/main.cpp" "CMakeFiles/Server.dir/src/main.cpp.o" "gcc" "CMakeFiles/Server.dir/src/main.cpp.o.d"
   "" "bin/Server" "gcc" "CMakeFiles/Server.dir/link.d"
   )

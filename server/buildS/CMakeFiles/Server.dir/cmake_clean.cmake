@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Server.dir/link.d"
-  "CMakeFiles/Server.dir/src/CircleCollider.cpp.o"
-  "CMakeFiles/Server.dir/src/CircleCollider.cpp.o.d"
+  "CMakeFiles/Server.dir/src/Collider.cpp.o"
+  "CMakeFiles/Server.dir/src/Collider.cpp.o.d"
   "CMakeFiles/Server.dir/src/Entity.cpp.o"
   "CMakeFiles/Server.dir/src/Entity.cpp.o.d"
   "CMakeFiles/Server.dir/src/GameController.cpp.o"
@@ -16,8 +16,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Server.dir/src/Planet.cpp.o.d"
   "CMakeFiles/Server.dir/src/Player.cpp.o"
   "CMakeFiles/Server.dir/src/Player.cpp.o.d"
-  "CMakeFiles/Server.dir/src/RectangleCollider.cpp.o"
-  "CMakeFiles/Server.dir/src/RectangleCollider.cpp.o.d"
   "CMakeFiles/Server.dir/src/main.cpp.o"
   "CMakeFiles/Server.dir/src/main.cpp.o.d"
   "bin/Server"

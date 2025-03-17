@@ -27,6 +27,7 @@ public:
     Vector2D operator-(const Vector2D& other) const { return Vector2D(x - other.x, y - other.y); }
     Vector2D operator+(const Vector2D& other) const { return Vector2D(x + other.x, y + other.y); }
     Vector2D operator*(double scalar) const { return Vector2D(x * scalar, y * scalar); }
+    Vector2D operator/(double scalar) const {return Vector2D(x / scalar, y / scalar); }
 
     Vector2D& operator*=(const Vector2D &vec)   { x *= vec.x, y *= vec.y; return *this; }
     Vector2D& operator-=(const Vector2D& other) { x -= other.x; y -= other.y; return *this; }

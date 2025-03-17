@@ -33,9 +33,13 @@ void PhysicsSystem::predictClientPosition(std::vector<std::unique_ptr<Entity>> &
             forces[j].second -= fy;
         }
     }  
-     
-    entityList[0]->update(forces[0].first, forces[0].second, deltaTime); 
-    handleCollision(entityList); 
+
+    for (size_t i = 0; i < n; ++i)
+    {
+        //entityList[i]->update(forces[i].first, forces[i].second, deltaTime);
+    }
+
+    //handleCollision(entityList); 
 }
 
 void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entityList)

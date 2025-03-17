@@ -129,8 +129,7 @@ void GameController::HandleCliInfData(uint16_t &clientID, ClientInfoPacket &data
     std::unique_ptr<Player> player = std::make_unique<Player>(
         std::make_unique<RectangleCollider>(
             Vector2D(760 + (100 * clientID), 500),
-            45,
-            352),
+            Vector2D(45, 352)), 
         Vector2D(760 + (100 * clientID), 500),
         Vector2D(0, 0),
         100,
@@ -180,14 +179,14 @@ void GameController::loadResources()
 
     std::unique_ptr<Planet> moon = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(960, (1080 / 2) + (352 / 2) - 1000),
+            Vector2D(1300, (1080 / 2) + (352 / 2) - 700),
             400.0),
-        Vector2D(960, (1080 / 2) + (352 / 2) - 1000),
+        Vector2D(1300, (1080 / 2) + (352 / 2) - 700),
         Vector2D(150, 0),
         100000.0,
         400.0,
         1001);
-    entityList.push_back(std::move(moon));
+    entityList.push_back(std::move(moon)); 
 
     std::cout << "Added moon with id: " << 1001 << std::endl; 
 }

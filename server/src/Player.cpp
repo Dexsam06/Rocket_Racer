@@ -12,11 +12,11 @@ void Player::applyInput(int keyCode, float duration)
     {
         //Left arrow
         case 1073741904: 
-            rotationSpeed -= duration * 2;
+            rotationSpeed -= duration * 3;
             break;    
         //Right arrow
         case 1073741903:
-            rotationSpeed += duration * 2; 
+            rotationSpeed += duration * 3; 
             break;
         //Spacebar
         case 32:
@@ -46,8 +46,8 @@ void Player::update(double &xGravityForce, double &yGravityForce, double &deltaT
 
     thrustForce = 0; 
 
-    getCollider()->updatePosition(getPosition()); 
-    getCollider()->setRotation((rotation * M_PI) / 180);
+    getCollider()->UpdatePosition(getPosition()); 
+    getCollider()->UpdateRotation((rotation * M_PI) / 180);
 } 
 
 

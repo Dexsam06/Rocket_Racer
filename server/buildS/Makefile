@@ -129,29 +129,29 @@ Server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
 .PHONY : Server/fast
 
-src/CircleCollider.o: src/CircleCollider.cpp.o
-.PHONY : src/CircleCollider.o
+src/Collider.o: src/Collider.cpp.o
+.PHONY : src/Collider.o
 
 # target to build an object file
-src/CircleCollider.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/CircleCollider.cpp.o
-.PHONY : src/CircleCollider.cpp.o
+src/Collider.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Collider.cpp.o
+.PHONY : src/Collider.cpp.o
 
-src/CircleCollider.i: src/CircleCollider.cpp.i
-.PHONY : src/CircleCollider.i
+src/Collider.i: src/Collider.cpp.i
+.PHONY : src/Collider.i
 
 # target to preprocess a source file
-src/CircleCollider.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/CircleCollider.cpp.i
-.PHONY : src/CircleCollider.cpp.i
+src/Collider.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Collider.cpp.i
+.PHONY : src/Collider.cpp.i
 
-src/CircleCollider.s: src/CircleCollider.cpp.s
-.PHONY : src/CircleCollider.s
+src/Collider.s: src/Collider.cpp.s
+.PHONY : src/Collider.s
 
 # target to generate assembly for a file
-src/CircleCollider.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/CircleCollider.cpp.s
-.PHONY : src/CircleCollider.cpp.s
+src/Collider.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Collider.cpp.s
+.PHONY : src/Collider.cpp.s
 
 src/Entity.o: src/Entity.cpp.o
 .PHONY : src/Entity.o
@@ -321,30 +321,6 @@ src/Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Player.cpp.s
 .PHONY : src/Player.cpp.s
 
-src/RectangleCollider.o: src/RectangleCollider.cpp.o
-.PHONY : src/RectangleCollider.o
-
-# target to build an object file
-src/RectangleCollider.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/RectangleCollider.cpp.o
-.PHONY : src/RectangleCollider.cpp.o
-
-src/RectangleCollider.i: src/RectangleCollider.cpp.i
-.PHONY : src/RectangleCollider.i
-
-# target to preprocess a source file
-src/RectangleCollider.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/RectangleCollider.cpp.i
-.PHONY : src/RectangleCollider.cpp.i
-
-src/RectangleCollider.s: src/RectangleCollider.cpp.s
-.PHONY : src/RectangleCollider.s
-
-# target to generate assembly for a file
-src/RectangleCollider.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/RectangleCollider.cpp.s
-.PHONY : src/RectangleCollider.cpp.s
-
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -378,9 +354,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Server"
-	@echo "... src/CircleCollider.o"
-	@echo "... src/CircleCollider.i"
-	@echo "... src/CircleCollider.s"
+	@echo "... src/Collider.o"
+	@echo "... src/Collider.i"
+	@echo "... src/Collider.s"
 	@echo "... src/Entity.o"
 	@echo "... src/Entity.i"
 	@echo "... src/Entity.s"
@@ -402,9 +378,6 @@ help:
 	@echo "... src/Player.o"
 	@echo "... src/Player.i"
 	@echo "... src/Player.s"
-	@echo "... src/RectangleCollider.o"
-	@echo "... src/RectangleCollider.i"
-	@echo "... src/RectangleCollider.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

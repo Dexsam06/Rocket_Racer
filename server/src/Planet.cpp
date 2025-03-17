@@ -14,5 +14,5 @@ void Planet::update(double& xGravityForce, double& yGravityForce, double& deltaT
 
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
     velocity.y += Physics::velocity(acceleration.y, deltaTime); 
-    getCollider()->updatePosition(getPosition());  
+    getCollider()->UpdatePosition(getPosition());  
 }  

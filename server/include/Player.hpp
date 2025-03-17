@@ -29,13 +29,6 @@ public:
 
     void resetClientThrustForce() {thrustForce = 0; }
     void resetClientRotationSpeed() {rotationSpeed = 0; }
-    
-    std::unique_ptr<Entity> clone() const override
-    {
-        return std::make_unique<Player>(
-            collider->clone(), position, velocity, mass, ID
-        );
-    } 
 
     void applyInput(int keyCode, float duration);
     void update(double &xGravityForce, double &yGravityForce, double &deltaTime) override; 

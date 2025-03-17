@@ -72,19 +72,19 @@ include CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/codegen:
 .PHONY : CMakeFiles/Server.dir/codegen
 
-CMakeFiles/Server.dir/src/CircleCollider.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/src/CircleCollider.cpp
-CMakeFiles/Server.dir/src/CircleCollider.cpp.o: CMakeFiles/Server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/server/buildS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Server.dir/src/CircleCollider.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Server.dir/src/CircleCollider.cpp.o -MF CMakeFiles/Server.dir/src/CircleCollider.cpp.o.d -o CMakeFiles/Server.dir/src/CircleCollider.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/server/src/CircleCollider.cpp
+CMakeFiles/Server.dir/src/Collider.cpp.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/src/Collider.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/src/Collider.cpp
+CMakeFiles/Server.dir/src/Collider.cpp.o: CMakeFiles/Server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/server/buildS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Server.dir/src/Collider.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Server.dir/src/Collider.cpp.o -MF CMakeFiles/Server.dir/src/Collider.cpp.o.d -o CMakeFiles/Server.dir/src/Collider.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/server/src/Collider.cpp
 
-CMakeFiles/Server.dir/src/CircleCollider.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Server.dir/src/CircleCollider.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samuel/Dev/c++/Rocket_Racer/server/src/CircleCollider.cpp > CMakeFiles/Server.dir/src/CircleCollider.cpp.i
+CMakeFiles/Server.dir/src/Collider.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Server.dir/src/Collider.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samuel/Dev/c++/Rocket_Racer/server/src/Collider.cpp > CMakeFiles/Server.dir/src/Collider.cpp.i
 
-CMakeFiles/Server.dir/src/CircleCollider.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Server.dir/src/CircleCollider.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/server/src/CircleCollider.cpp -o CMakeFiles/Server.dir/src/CircleCollider.cpp.s
+CMakeFiles/Server.dir/src/Collider.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Server.dir/src/Collider.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/server/src/Collider.cpp -o CMakeFiles/Server.dir/src/Collider.cpp.s
 
 CMakeFiles/Server.dir/src/Entity.cpp.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/src/Entity.cpp
@@ -198,23 +198,9 @@ CMakeFiles/Server.dir/src/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Server.dir/src/Player.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/server/src/Player.cpp -o CMakeFiles/Server.dir/src/Player.cpp.s
 
-CMakeFiles/Server.dir/src/RectangleCollider.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/src/RectangleCollider.cpp
-CMakeFiles/Server.dir/src/RectangleCollider.cpp.o: CMakeFiles/Server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/server/buildS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Server.dir/src/RectangleCollider.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Server.dir/src/RectangleCollider.cpp.o -MF CMakeFiles/Server.dir/src/RectangleCollider.cpp.o.d -o CMakeFiles/Server.dir/src/RectangleCollider.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/server/src/RectangleCollider.cpp
-
-CMakeFiles/Server.dir/src/RectangleCollider.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Server.dir/src/RectangleCollider.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samuel/Dev/c++/Rocket_Racer/server/src/RectangleCollider.cpp > CMakeFiles/Server.dir/src/RectangleCollider.cpp.i
-
-CMakeFiles/Server.dir/src/RectangleCollider.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Server.dir/src/RectangleCollider.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/server/src/RectangleCollider.cpp -o CMakeFiles/Server.dir/src/RectangleCollider.cpp.s
-
 # Object files for target Server
 Server_OBJECTS = \
-"CMakeFiles/Server.dir/src/CircleCollider.cpp.o" \
+"CMakeFiles/Server.dir/src/Collider.cpp.o" \
 "CMakeFiles/Server.dir/src/Entity.cpp.o" \
 "CMakeFiles/Server.dir/src/GameController.cpp.o" \
 "CMakeFiles/Server.dir/src/main.cpp.o" \
@@ -222,13 +208,12 @@ Server_OBJECTS = \
 "CMakeFiles/Server.dir/src/Physics.cpp.o" \
 "CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o" \
 "CMakeFiles/Server.dir/src/Planet.cpp.o" \
-"CMakeFiles/Server.dir/src/Player.cpp.o" \
-"CMakeFiles/Server.dir/src/RectangleCollider.cpp.o"
+"CMakeFiles/Server.dir/src/Player.cpp.o"
 
 # External object files for target Server
 Server_EXTERNAL_OBJECTS =
 
-bin/Server: CMakeFiles/Server.dir/src/CircleCollider.cpp.o
+bin/Server: CMakeFiles/Server.dir/src/Collider.cpp.o
 bin/Server: CMakeFiles/Server.dir/src/Entity.cpp.o
 bin/Server: CMakeFiles/Server.dir/src/GameController.cpp.o
 bin/Server: CMakeFiles/Server.dir/src/main.cpp.o
@@ -237,11 +222,10 @@ bin/Server: CMakeFiles/Server.dir/src/Physics.cpp.o
 bin/Server: CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o
 bin/Server: CMakeFiles/Server.dir/src/Planet.cpp.o
 bin/Server: CMakeFiles/Server.dir/src/Player.cpp.o
-bin/Server: CMakeFiles/Server.dir/src/RectangleCollider.cpp.o
 bin/Server: CMakeFiles/Server.dir/build.make
 bin/Server: CMakeFiles/Server.dir/compiler_depend.ts
 bin/Server: CMakeFiles/Server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/server/buildS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable bin/Server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/server/buildS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable bin/Server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

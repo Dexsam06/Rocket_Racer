@@ -1,7 +1,6 @@
-CMakeFiles/Server.dir/src/CircleCollider.cpp.o: \
- /home/samuel/Dev/c++/Rocket_Racer/server/src/CircleCollider.cpp \
+CMakeFiles/Server.dir/src/Collider.cpp.o: \
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/Collider.cpp \
  /usr/include/stdc-predef.h \
- /home/samuel/Dev/c++/Rocket_Racer/server/src/../include/CircleCollider.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/server/src/../include/Collider.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/server/src/../include/Vector2D.hpp \
  /usr/include/c++/14.2.1/cmath \
@@ -137,7 +136,6 @@ CMakeFiles/Server.dir/src/CircleCollider.cpp.o: \
  /usr/include/c++/14.2.1/backward/auto_ptr.h \
  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
- /home/samuel/Dev/c++/Rocket_Racer/server/src/../include/RectangleCollider.hpp \
  /usr/include/c++/14.2.1/vector /usr/include/c++/14.2.1/bits/stl_vector.h \
  /usr/include/c++/14.2.1/initializer_list \
  /usr/include/c++/14.2.1/bits/stl_bvector.h \
@@ -146,4 +144,12 @@ CMakeFiles/Server.dir/src/CircleCollider.cpp.o: \
  /usr/include/c++/14.2.1/bits/memory_resource.h \
  /usr/include/c++/14.2.1/cstddef \
  /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
- /home/samuel/Dev/c++/Rocket_Racer/server/src/../include/RectangleCollider.hpp
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/../include/RectangleCollider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/server/src/../include/CircleCollider.hpp \
+ /usr/include/c++/14.2.1/algorithm \
+ /usr/include/c++/14.2.1/bits/stl_algo.h \
+ /usr/include/c++/14.2.1/bits/algorithmfwd.h \
+ /usr/include/c++/14.2.1/bits/stl_heap.h \
+ /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
+ /usr/include/c++/14.2.1/cstdlib \
+ /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h

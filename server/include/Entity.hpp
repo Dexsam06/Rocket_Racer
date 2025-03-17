@@ -14,18 +14,15 @@ class Entity
 public:
     Entity(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID); 
 
-    virtual std::unique_ptr<Entity> clone() const { return std::make_unique<Entity>(collider->clone(), position, velocity, mass, ID);}
-
     virtual void draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerClientPos, Vector2D scalingFactor) {}
     virtual void update(double &xGravityForce, double &yGravityForce, double &deltaTime) {} 
-
-    bool checkCollision(const Entity &other, Vector2D &collisionNormal, double restitution) const;
 
     Vector2D getPosition() const { return position; }
     Vector2D &getVelocity() { return velocity; }
     const Vector2D &getVelocity() const { return velocity; }
     const std::unique_ptr<Collider> &getCollider() const { return collider; }
     double getMass() const { return mass; }
+    double getInverseMass() {return (1.0 / mass); }
     Vector2D getAcceleration() const { return acceleration; }
     enet_uint32 getID() {return ID; } 
     double getRotation() {return rotation; }

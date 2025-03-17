@@ -4,16 +4,16 @@
 void PhysicsSystem::update(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime)
 {
     size_t n = entityList.size();
-    std::vector<std::pair<double, double>> forces(n, {0.0, 0.0}); 
+    std::vector<std::pair<double, double>> forces(n, {0.0, 0.0});
 
     for (size_t i = 0; i < n; ++i)
     {
-        for (size_t j = i + 1; j < n; ++j) 
+        for (size_t j = i + 1; j < n; ++j)
         {
 
             if (i == j)
                 continue;
-                
+
             const Vector2D pos1 = entityList[i]->getPosition();
             const Vector2D pos2 = entityList[j]->getPosition();
 
@@ -30,64 +30,72 @@ void PhysicsSystem::update(std::vector<std::unique_ptr<Entity>> &entityList, dou
             forces[i].first += fx;
             forces[i].second += fy;
             forces[j].first -= fx;
-            forces[j].second -= fy; 
+            forces[j].second -= fy;
         }
     }
 
     for (size_t i = 0; i < n; ++i)
     {
-        entityList[i]->update(forces[i].first, forces[i].second, deltaTime); 
+        entityList[i]->update(forces[i].first, forces[i].second, deltaTime);
     }
 
-    handleCollision(entityList);  
+    handleCollision(entityList);
 }
 
 void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entityList)
 {
     double restitution = 0.2;
+
     for (size_t i = 0; i < entityList.size(); ++i)
     {
-        for (size_t j = i + 1; j < entityList.size(); ++j) 
+        for (size_t j = i + 1; j < entityList.size(); ++j)
         {
-            if (i == j)  
-                continue; 
-            
-            Vector2D collisionNormal; 
+            Entity &a = *entityList[i];
+            Entity &b = *entityList[j];
 
-            
-            const auto& entity1 = *entityList[i]; 
-            const auto& entity2 = *entityList[j];
+            // Skip if either entity doesn't have a collider
+            if (!a.getCollider() || !b.getCollider())
+                continue;
 
-            if (entity1.checkCollision(entity2, collisionNormal, restitution)) 
+            Vector2D normal;
+            double penetration = 0;
+
+            // Debug information
+            // std::cout << "Checking collision between entities " << i << " and " << j << std::endl;
+
+            if (a.getCollider()->CheckCollision(*b.getCollider(), normal, penetration))
             {
-                entity1.getCollider()->resolveCollision(entityList[i]->getVelocity(), collisionNormal, restitution); 
-                entity2.getCollider()->resolveCollision(entityList[j]->getVelocity(), -collisionNormal, restitution);
+                // Debug collision detection
+                // std::cout << "Collision detected between entities " << i << " and " << j << std::endl;
+                // std::cout << "Normal: (" << normal.x << ", " << normal.y << ")" << std::endl;
+                // std::cout << "Penetration: " << penetration << std::endl;
+
+                // Resolve velocities with mass consideration
+                double invMassA = a.getInverseMass();
+                double invMassB = b.getInverseMass();
+                double totalInvMass = invMassA + invMassB;
+                if (totalInvMass <= 0)
+                    continue; // Both static
+
+                Vector2D relativeVelocity = b.getVelocity() - a.getVelocity();
+                double velocityAlongNormal = relativeVelocity.dot(normal);
+                if (velocityAlongNormal > 0)
+                    continue; // Objects are moving away from each other
+
+                double impulseMagnitude = -(1 + restitution) * velocityAlongNormal / totalInvMass;
+                Vector2D impulse = normal * impulseMagnitude;
+
+                a.getVelocity() -= impulse * invMassA;
+                b.getVelocity() += impulse * invMassB;
+
+                // Positional correction to prevent sinking
+                const double slop = 0.01; // Penetration allowance
+                const double percent = 0.4; // Correction percentage
+                Vector2D correction = normal * std::max(penetration - slop, 0.0) * percent / totalInvMass;
+
+                a.setPosition(a.getPosition() - correction * invMassA);
+                b.setPosition(b.getPosition() + correction * invMassB);
             }
-        } 
+        }
     }
-}
-
-std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime, double predictionTime)
-{
-    std::vector<std::unique_ptr<Entity>> tempEntities;
-    for (std::unique_ptr<Entity> &entity : entityList)
-    {
-        tempEntities.push_back(entity->clone());
-    }
-
-    int steps = static_cast<int>(predictionTime / deltaTime);
-    std::vector<Vector2D> futurePath;
-
-    for (int i = 0; i < steps; ++i)
-    {
-        //applyGravity(tempEntities, deltaTime); 
-        handleCollision(tempEntities);
-
-        if (tempEntities.size() > 0)
-            futurePath.push_back(tempEntities[0]->getPosition());
-        if (tempEntities.size() > 2)
-            futurePath.push_back(tempEntities[2]->getPosition());
-    }
-
-    return futurePath;
 }

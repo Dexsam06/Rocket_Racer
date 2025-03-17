@@ -12,7 +12,7 @@ include_directories(${ENet_INCLUDE_DIRS})
 
 # Set the source files
 set(SOURCES
-    src/CircleCollider.cpp
+    src/Collider.cpp
     src/Entity.cpp
     src/GameController.cpp
     src/main.cpp
@@ -21,7 +21,6 @@ set(SOURCES
     src/PhysicsSystem.cpp
     src/Planet.cpp
     src/Player.cpp
-    src/RectangleCollider.cpp 
 )
 
 # Create the executable
