@@ -14,7 +14,7 @@
 class GameView {
 
     public:
-        GameView(int screenWidth, int screenHeight, const char* title, bool fullscreen);
+        GameView(int screenWidth, int screenHeight, const char* title, std::string resourcePath, bool fullscreen);
         ~GameView();
         void render(std::vector<std::unique_ptr<Entity>>& entityList, std::vector<std::unique_ptr<Button>>& buttonList);
         void clean();
@@ -28,7 +28,7 @@ class GameView {
         void setBackground(SDL_Texture* background) {this->background = background; }
         void setScalingFactors(Vector2D scalingFactor) {this->scalingFactor *= scalingFactor; } 
     private:
-        SDL_Texture* background; 
+        SDL_Texture* background;  
         SDL_Window* window;
         SDL_Renderer* renderer;
         TTF_Font* font;

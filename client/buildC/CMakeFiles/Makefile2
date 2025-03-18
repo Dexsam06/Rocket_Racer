@@ -85,12 +85,12 @@ clean: CMakeFiles/Client.dir/clean
 CMakeFiles/Client.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target Client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target Client"
 .PHONY : CMakeFiles/Client.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles 0
 .PHONY : CMakeFiles/Client.dir/rule
@@ -102,7 +102,7 @@ Client: CMakeFiles/Client.dir/rule
 # codegen rule for target.
 CMakeFiles/Client.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Finished codegen for target Client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Finished codegen for target Client"
 .PHONY : CMakeFiles/Client.dir/codegen
 
 # clean rule for target.

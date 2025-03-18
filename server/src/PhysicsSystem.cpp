@@ -60,16 +60,8 @@ void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entity
             Vector2D normal;
             double penetration = 0;
 
-            // Debug information
-            // std::cout << "Checking collision between entities " << i << " and " << j << std::endl;
-
             if (a.getCollider()->CheckCollision(*b.getCollider(), normal, penetration))
             {
-                // Debug collision detection
-                // std::cout << "Collision detected between entities " << i << " and " << j << std::endl;
-                // std::cout << "Normal: (" << normal.x << ", " << normal.y << ")" << std::endl;
-                // std::cout << "Penetration: " << penetration << std::endl;
-
                 // Resolve velocities with mass consideration
                 double invMassA = a.getInverseMass();
                 double invMassB = b.getInverseMass();

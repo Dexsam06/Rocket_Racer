@@ -3,7 +3,7 @@
 
 #include "../include/NetworkCommunicator.hpp"
 
-GameController::GameController(NetworkCommunicator *nc, GameView *gv) : nc(nc), gv(gv)
+GameController::GameController(NetworkCommunicator *nc, GameView *gv, std::string &resourcePath) : nc(nc), gv(gv), resourcePath(resourcePath)
 {
     nc->setConPlaCallback([this](ConnectedPlayersPacket &data)
                           { this->HandleConPlaData(data); });
@@ -65,8 +65,6 @@ void GameController::gameLoop()
 
             interpolateOtherEntities();
             gv->render(entityList, buttonList);
-
-            //std::cout << "ClientPlayer, id: " << nc->getClientID() << " has position x: " << clientPlayer->getPosition().x << std::endl;
         }
     }
     gv->clean();
@@ -164,7 +162,9 @@ void GameController::HandleConPlaData(ConnectedPlayersPacket &data)
 {
     int height, width;
 
-    SDL_Texture *playerTexture = textureManager.loadTexture("player", "../../res/player.png", gv->getRenderer());
+    std::string playerResource = resourcePath + "player.png";
+
+    SDL_Texture *playerTexture = textureManager.loadTexture("player", playerResource, gv->getRenderer());
     if (!playerTexture)
     {
         std::cerr << "Failed to load player texture!" << std::endl;
@@ -176,8 +176,7 @@ void GameController::HandleConPlaData(ConnectedPlayersPacket &data)
         std::unique_ptr<Player> player = std::make_unique<Player>(
             std::make_unique<RectangleCollider>(
                 Vector2D(700 + (70 * client.first), 500),
-                width,
-                height),
+                Vector2D(width, height)),
             playerTexture,
             Vector2D(700 + (70 * client.first), 500),
             Vector2D(0, 0),
@@ -197,7 +196,9 @@ void GameController::HandleNewPlaData(NewPlayerConnectedPacket &data)
 {
     int height, width;
 
-    SDL_Texture *playerTexture = textureManager.loadTexture("player", "../../res/player.png", gv->getRenderer());
+    std::string playerResource = resourcePath + "player.png";
+
+    SDL_Texture *playerTexture = textureManager.loadTexture("player", playerResource, gv->getRenderer());
     if (!playerTexture)
     {
         std::cerr << "Failed to load player texture!" << std::endl;
@@ -207,8 +208,7 @@ void GameController::HandleNewPlaData(NewPlayerConnectedPacket &data)
     std::unique_ptr<Player> player = std::make_unique<Player>(
         std::make_unique<RectangleCollider>(
             Vector2D(760 + (100 * data.playerID), 500),
-            width,
-            height),
+            Vector2D(width, height)),
         playerTexture,
         Vector2D(760 + (100 * data.playerID), 500),
         Vector2D(0, 0),
@@ -245,11 +245,13 @@ void GameController::HandleDisPLaData(PlayerDisconnectedPacket &data)
 void GameController::loadResources()
 {
     // Background
-    SDL_Texture *backgroundTexture = textureManager.loadTexture("background", "../../res/spaceBackgroundTiling.jpg", gv->getRenderer());
+    std::string backgroundResource = resourcePath + "spaceBackgroundTiling.jpg";
+    SDL_Texture *backgroundTexture = textureManager.loadTexture("background", backgroundResource, gv->getRenderer());
     gv->setBackground(backgroundTexture);
 
     // Planets
-    SDL_Texture *moonTexture = textureManager.loadTexture("moon", "../../res/moon.png", gv->getRenderer());
+    std::string planetResource = resourcePath + "moon.png";
+    SDL_Texture *moonTexture = textureManager.loadTexture("moon", planetResource, gv->getRenderer());
     if(!moonTexture || moonTexture == nullptr) {
         std::cout << "Failed to load moon texture" << std::endl;
     }
@@ -269,7 +271,9 @@ void GameController::loadResources()
 
     std::cout << "Added moon with id: " << 1001 << std::endl;
 
-    SDL_Texture *earthTexture = textureManager.loadTexture("earth", "../../res/earth.png", gv->getRenderer());
+    planetResource = resourcePath + "earth.png";
+
+    SDL_Texture *earthTexture = textureManager.loadTexture("earth", planetResource, gv->getRenderer());
     if(!earthTexture || earthTexture == nullptr) {
         std::cout << "Failed to load earth texture" << std::endl;
     }
@@ -291,7 +295,9 @@ void GameController::loadResources()
 
     int height, width;
 
-    SDL_Texture *playerTexture = textureManager.loadTexture("player", "../../res/player.png", gv->getRenderer());
+    std::string playerResource = resourcePath + "player.png";
+
+    SDL_Texture *playerTexture = textureManager.loadTexture("player", playerResource, gv->getRenderer());
     if (!playerTexture)
     {
         std::cerr << "Failed to load player texture!" << std::endl;
@@ -301,8 +307,7 @@ void GameController::loadResources()
     std::unique_ptr<Player> tempClientPlayer = std::make_unique<Player>(
         std::make_unique<RectangleCollider>(
             Vector2D(760 + (100 * nc->getClientID()), 500),
-            width,
-            height),
+            Vector2D(width, height)),
         playerTexture,
         Vector2D(760 + (100 * nc->getClientID()), 500),
         Vector2D(0, 0),

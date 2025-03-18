@@ -86,19 +86,19 @@ CMakeFiles/Client.dir/src/Button.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Client.dir/src/Button.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/client/src/Button.cpp -o CMakeFiles/Client.dir/src/Button.cpp.s
 
-CMakeFiles/Client.dir/src/CircleCollider.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/src/CircleCollider.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/src/CircleCollider.cpp
-CMakeFiles/Client.dir/src/CircleCollider.cpp.o: CMakeFiles/Client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Client.dir/src/CircleCollider.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Client.dir/src/CircleCollider.cpp.o -MF CMakeFiles/Client.dir/src/CircleCollider.cpp.o.d -o CMakeFiles/Client.dir/src/CircleCollider.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/client/src/CircleCollider.cpp
+CMakeFiles/Client.dir/src/Collider.cpp.o: CMakeFiles/Client.dir/flags.make
+CMakeFiles/Client.dir/src/Collider.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/src/Collider.cpp
+CMakeFiles/Client.dir/src/Collider.cpp.o: CMakeFiles/Client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Client.dir/src/Collider.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Client.dir/src/Collider.cpp.o -MF CMakeFiles/Client.dir/src/Collider.cpp.o.d -o CMakeFiles/Client.dir/src/Collider.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/client/src/Collider.cpp
 
-CMakeFiles/Client.dir/src/CircleCollider.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Client.dir/src/CircleCollider.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samuel/Dev/c++/Rocket_Racer/client/src/CircleCollider.cpp > CMakeFiles/Client.dir/src/CircleCollider.cpp.i
+CMakeFiles/Client.dir/src/Collider.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Client.dir/src/Collider.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samuel/Dev/c++/Rocket_Racer/client/src/Collider.cpp > CMakeFiles/Client.dir/src/Collider.cpp.i
 
-CMakeFiles/Client.dir/src/CircleCollider.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Client.dir/src/CircleCollider.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/client/src/CircleCollider.cpp -o CMakeFiles/Client.dir/src/CircleCollider.cpp.s
+CMakeFiles/Client.dir/src/Collider.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Client.dir/src/Collider.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/client/src/Collider.cpp -o CMakeFiles/Client.dir/src/Collider.cpp.s
 
 CMakeFiles/Client.dir/src/Entity.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/src/Entity.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/src/Entity.cpp
@@ -240,24 +240,10 @@ CMakeFiles/Client.dir/src/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Client.dir/src/Player.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/client/src/Player.cpp -o CMakeFiles/Client.dir/src/Player.cpp.s
 
-CMakeFiles/Client.dir/src/RectangleCollider.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/src/RectangleCollider.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/src/RectangleCollider.cpp
-CMakeFiles/Client.dir/src/RectangleCollider.cpp.o: CMakeFiles/Client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Client.dir/src/RectangleCollider.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Client.dir/src/RectangleCollider.cpp.o -MF CMakeFiles/Client.dir/src/RectangleCollider.cpp.o.d -o CMakeFiles/Client.dir/src/RectangleCollider.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/client/src/RectangleCollider.cpp
-
-CMakeFiles/Client.dir/src/RectangleCollider.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Client.dir/src/RectangleCollider.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/samuel/Dev/c++/Rocket_Racer/client/src/RectangleCollider.cpp > CMakeFiles/Client.dir/src/RectangleCollider.cpp.i
-
-CMakeFiles/Client.dir/src/RectangleCollider.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Client.dir/src/RectangleCollider.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/samuel/Dev/c++/Rocket_Racer/client/src/RectangleCollider.cpp -o CMakeFiles/Client.dir/src/RectangleCollider.cpp.s
-
 CMakeFiles/Client.dir/src/TextureManager.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/src/TextureManager.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/src/TextureManager.cpp
 CMakeFiles/Client.dir/src/TextureManager.cpp.o: CMakeFiles/Client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Client.dir/src/TextureManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Client.dir/src/TextureManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Client.dir/src/TextureManager.cpp.o -MF CMakeFiles/Client.dir/src/TextureManager.cpp.o.d -o CMakeFiles/Client.dir/src/TextureManager.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/client/src/TextureManager.cpp
 
 CMakeFiles/Client.dir/src/TextureManager.cpp.i: cmake_force
@@ -271,7 +257,7 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.s: cmake_force
 CMakeFiles/Client.dir/src/UserInputWindow.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/src/UserInputWindow.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/src/UserInputWindow.cpp
 CMakeFiles/Client.dir/src/UserInputWindow.cpp.o: CMakeFiles/Client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Client.dir/src/UserInputWindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Client.dir/src/UserInputWindow.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Client.dir/src/UserInputWindow.cpp.o -MF CMakeFiles/Client.dir/src/UserInputWindow.cpp.o.d -o CMakeFiles/Client.dir/src/UserInputWindow.cpp.o -c /home/samuel/Dev/c++/Rocket_Racer/client/src/UserInputWindow.cpp
 
 CMakeFiles/Client.dir/src/UserInputWindow.cpp.i: cmake_force
@@ -285,7 +271,7 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.s: cmake_force
 # Object files for target Client
 Client_OBJECTS = \
 "CMakeFiles/Client.dir/src/Button.cpp.o" \
-"CMakeFiles/Client.dir/src/CircleCollider.cpp.o" \
+"CMakeFiles/Client.dir/src/Collider.cpp.o" \
 "CMakeFiles/Client.dir/src/Entity.cpp.o" \
 "CMakeFiles/Client.dir/src/GameController.cpp.o" \
 "CMakeFiles/Client.dir/src/GameView.cpp.o" \
@@ -296,7 +282,6 @@ Client_OBJECTS = \
 "CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o" \
 "CMakeFiles/Client.dir/src/Planet.cpp.o" \
 "CMakeFiles/Client.dir/src/Player.cpp.o" \
-"CMakeFiles/Client.dir/src/RectangleCollider.cpp.o" \
 "CMakeFiles/Client.dir/src/TextureManager.cpp.o" \
 "CMakeFiles/Client.dir/src/UserInputWindow.cpp.o"
 
@@ -304,7 +289,7 @@ Client_OBJECTS = \
 Client_EXTERNAL_OBJECTS =
 
 bin/Client: CMakeFiles/Client.dir/src/Button.cpp.o
-bin/Client: CMakeFiles/Client.dir/src/CircleCollider.cpp.o
+bin/Client: CMakeFiles/Client.dir/src/Collider.cpp.o
 bin/Client: CMakeFiles/Client.dir/src/Entity.cpp.o
 bin/Client: CMakeFiles/Client.dir/src/GameController.cpp.o
 bin/Client: CMakeFiles/Client.dir/src/GameView.cpp.o
@@ -315,7 +300,6 @@ bin/Client: CMakeFiles/Client.dir/src/Physics.cpp.o
 bin/Client: CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o
 bin/Client: CMakeFiles/Client.dir/src/Planet.cpp.o
 bin/Client: CMakeFiles/Client.dir/src/Player.cpp.o
-bin/Client: CMakeFiles/Client.dir/src/RectangleCollider.cpp.o
 bin/Client: CMakeFiles/Client.dir/src/TextureManager.cpp.o
 bin/Client: CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
 bin/Client: CMakeFiles/Client.dir/build.make
@@ -323,7 +307,7 @@ bin/Client: CMakeFiles/Client.dir/compiler_depend.ts
 bin/Client: /usr/lib/libSDL2main.a
 bin/Client: /usr/lib/libSDL2-2.0.so.0.3200.50
 bin/Client: CMakeFiles/Client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable bin/Client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable bin/Client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

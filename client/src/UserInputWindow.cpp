@@ -25,7 +25,7 @@ bool validateUsername(const std::string &username) {
 }
 
 // Input window loop to gather user input for IP and username
-bool getUserInput(std::string &serverIP, std::string &username) {
+bool getUserInput(std::string &serverIP, std::string &username, std::string &resourcePath) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0 || TTF_Init() < 0) {
         std::cerr << "SDL or TTF initialization failed: " << SDL_GetError() << std::endl;
         return false;
@@ -34,7 +34,8 @@ bool getUserInput(std::string &serverIP, std::string &username) {
     const int WIDTH = 500, HEIGHT = 300;
     SDL_Window *window = SDL_CreateWindow("Enter Server Details", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    TTF_Font *font = TTF_OpenFont("../../res/Fonts/Roboto-Regular.ttf", 24);
+    std::string fontPath = resourcePath + "Fonts/Roboto-Regular.ttf";
+    TTF_Font *font = TTF_OpenFont(fontPath.c_str(), 24);
 
     if (!window || !renderer || !font) {
         std::cerr << "SDL Window, Renderer, or Font creation failed!" << std::endl;

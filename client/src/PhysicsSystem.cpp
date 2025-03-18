@@ -36,38 +36,70 @@ void PhysicsSystem::predictClientPosition(std::vector<std::unique_ptr<Entity>> &
 
     for (size_t i = 0; i < n; ++i)
     {
-        //entityList[i]->update(forces[i].first, forces[i].second, deltaTime);
+        entityList[i]->update(forces[i].first, forces[i].second, deltaTime);
     }
 
-    //handleCollision(entityList); 
+    handleCollision(entityList);  
 }
 
 void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entityList)
 {
     double restitution = 0.2;
-    
-    if (entityList.empty()) return;
 
-    auto &player = *entityList[0]; 
-
-    for (size_t j = 1; j < entityList.size(); ++j)  
+    for (size_t i = 0; i < entityList.size(); ++i)
     {
-        Vector2D collisionNormal;
-        const auto &otherEntity = *entityList[j];
+        for (size_t j = i + 1; j < entityList.size(); ++j)
+        {
+            Entity &a = *entityList[i];
+            Entity &b = *entityList[j];
 
-        if (player.checkCollision(otherEntity, collisionNormal, restitution))
-        { 
-            player.getCollider()->resolveCollision(player.getVelocity(), collisionNormal, restitution);
+            // Skip if either entity doesn't have a collider
+            if (!a.getCollider() || !b.getCollider())
+                continue;
+
+            Vector2D normal;
+            double penetration = 0;
+
+            if (a.getCollider()->CheckCollision(*b.getCollider(), normal, penetration))
+            {
+
+                // Resolve velocities with mass consideration
+                double invMassA = a.getInverseMass();
+                double invMassB = b.getInverseMass();
+                double totalInvMass = invMassA + invMassB;
+                if (totalInvMass <= 0)
+                    continue; // Both static
+
+                Vector2D relativeVelocity = b.getVelocity() - a.getVelocity();
+                double velocityAlongNormal = relativeVelocity.dot(normal);
+                if (velocityAlongNormal > 0)
+                    continue; // Objects are moving away from each other
+
+                double impulseMagnitude = -(1 + restitution) * velocityAlongNormal / totalInvMass;
+                Vector2D impulse = normal * impulseMagnitude;
+
+                a.getVelocity() -= impulse * invMassA;
+                b.getVelocity() += impulse * invMassB;
+
+                // Positional correction to prevent sinking
+                const double slop = 0.01; // Penetration allowance
+                const double percent = 0.4; // Correction percentage
+                Vector2D correction = normal * std::max(penetration - slop, 0.0) * percent / totalInvMass;
+
+                a.setPosition(a.getPosition() - correction * invMassA);
+                b.setPosition(b.getPosition() + correction * invMassB);
+            }
         }
     }
 }
+
 
 std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime, double predictionTime)
 {
     std::vector<std::unique_ptr<Entity>> tempEntities; 
     for (std::unique_ptr<Entity> &entity : entityList)
     {
-        tempEntities.push_back(entity->clone());
+        //tempEntities.push_back(entity->clone()); 
     }
 
     int steps = static_cast<int>(predictionTime / deltaTime);

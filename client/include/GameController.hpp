@@ -25,7 +25,7 @@ class GameController
 {
 
 public:
-    GameController(NetworkCommunicator *nc, GameView *gv);
+    GameController(NetworkCommunicator *nc, GameView *gv, std::string &resourcePath);
     ~GameController();
     void gameLoop();
     void loadResources();
@@ -41,6 +41,8 @@ private:
 
     GameView *gv;
     NetworkCommunicator *nc; 
+
+    std::string resourcePath;
 
     Player* clientPlayer;
 

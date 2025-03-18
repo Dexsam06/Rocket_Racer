@@ -16,7 +16,7 @@ void Planet::update(double &xGravityForce, double &yGravityForce, double &deltaT
 
     velocity.x += Physics::velocity(acceleration.x, deltaTime);
     velocity.y += Physics::velocity(acceleration.y, deltaTime);
-    getCollider()->updatePosition(getPosition());
+    getCollider()->UpdatePosition(getPosition());
 }
 
 void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerPos, Vector2D scalingFactor)

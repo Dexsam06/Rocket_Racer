@@ -2,7 +2,7 @@
 #include "../include/GameView.hpp"
 #include <iostream>
 
-GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fullscreen)
+GameView::GameView(int screenWidth, int screenHeight, const char *title, std::string resourcePath, bool fullscreen)
     : screenWidth(screenWidth), screenHeight(screenHeight), fullscreen(fullscreen), isRunning(false), scalingFactor(1.0, 1.0)
 {
     int flags = fullscreen ? SDL_WINDOW_FULLSCREEN : 0;
@@ -16,7 +16,7 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
     if (TTF_Init() != 0)
     {
         std::cerr << "TTF_Init Error: " << TTF_GetError() << std::endl;
-        SDL_Quit();
+        SDL_Quit(); 
         return;
     }
 
@@ -28,8 +28,8 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
         return;
     }
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (!renderer)
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED); 
+    if (!renderer || renderer == nullptr)
     {
         std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
@@ -37,10 +37,11 @@ GameView::GameView(int screenWidth, int screenHeight, const char *title, bool fu
         return;
     }
 
-    font = TTF_OpenFont("../../res/Fonts/Roboto-Regular.ttf", 24);
+    std::string fontPath = resourcePath + "Fonts/Roboto-Regular.ttf";
+    font = TTF_OpenFont(fontPath.c_str(), 24); 
     if (!font)
     {
-        std::cerr << "Font Load Error: " << TTF_GetError() << std::endl;
+        std::cerr << "Font Load Error: " << TTF_GetError() << std::endl; 
         TTF_Quit();
         SDL_Quit();
         return;

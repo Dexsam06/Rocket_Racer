@@ -13,13 +13,6 @@ public:
 
     double getRadius() const { return radius; }
 
-    std::unique_ptr<Entity> clone() const override
-    {
-        return std::make_unique<Planet>(
-            collider->clone(), texture, position, velocity, mass, radius, ID
-        );
-    }
-
 private:
     double radius;
 

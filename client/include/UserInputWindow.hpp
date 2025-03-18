@@ -7,7 +7,7 @@
 #include <iostream>
 #include <regex>
 
-bool getUserInput(std::string &serverIP, std::string &username);
+bool getUserInput(std::string &serverIP, std::string &username, std::string &resourcePath);
 
 bool validateIPAddress(const std::string &ip);
 

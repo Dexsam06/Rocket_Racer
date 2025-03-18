@@ -23,8 +23,8 @@ void Player::update(double& xGravityForce, double& yGravityForce, double& deltaT
 
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
     velocity.y += Physics::velocity(acceleration.y, deltaTime);  
-    getCollider()->updatePosition(getPosition()); 
-    getCollider()->setRotation((rotation * M_PI) / 180); 
+    getCollider()->UpdatePosition(getPosition()); 
+    getCollider()->UpdateRotation((rotation * M_PI) / 180); 
 }  
 
 void Player::applyInput(int keyCode, float duration)

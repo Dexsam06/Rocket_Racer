@@ -30,13 +30,6 @@ public:
 
     void resetClientThrustForce() {thrustForce = 0; }
     void resetClientRotationSpeed() {rotationSpeed = 0; }
-    
-    std::unique_ptr<Entity> clone() const override
-    {
-        return std::make_unique<Player>(
-            collider->clone(), texture, position, velocity, mass, ID, username
-        );
-    } 
 
     void update(double &xGravityForce, double &yGravityForce, double &deltaTime) override;
     void reconcileClientState(Vector2D &serverPos, double serverRotation, double lerpFactor); 
