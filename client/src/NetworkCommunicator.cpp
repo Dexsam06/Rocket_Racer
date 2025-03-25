@@ -135,13 +135,13 @@ void NetworkCommunicator::sendInfoClientPacket(const char* username)
     enet_host_flush(client);
 }
 
-void NetworkCommunicator::sendInputPacketToServer(std::vector<InputWithSequence>& inputList)
+void NetworkCommunicator::sendInputToServer(ClientInputPacket &clientInputPacket)
 {
-    std::vector<uint8_t> data = InputWithSequence::Serialize(inputList);
+    std::vector<uint8_t> data = clientInputPacket.Serialize();
 
     ENetPacket* packet = enet_packet_create(data.data(), data.size(), ENET_PACKET_FLAG_RELIABLE);
 
-    enet_peer_send(serverPeer, 0, packet);
+    enet_peer_send(serverPeer, 0, packet); 
 
     enet_host_flush(client);  
 

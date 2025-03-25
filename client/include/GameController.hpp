@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <iostream>
 #include <algorithm>
+#include <thread>
 
 #include "GameView.hpp"
 #include "InputHandler.hpp"
@@ -32,8 +33,6 @@ public:
 
 private:
     void handleEvents();
-    void reapplyUnconfirmedInputs(); 
-    void removeConfirmedInputs();
     void interpolateOtherEntities();
 
     std::unique_ptr<Button> zoomButtonIn; 
@@ -53,16 +52,14 @@ private:
     TextureManager textureManager;
     PhysicsSystem physicsSystem;
 
-    std::vector<InputWithSequence> unconfirmedInputs;
-    std::vector<InputWithSequence> inputBuffer;
-    int inputSequenceNumber = 0;
-
     void onZoomButtonClickIn();
     void onZoomButtonClickOut();
 
-    void HandleConPlaData(ConnectedPlayersPacket & data);
-    void HandleNewPlaData(NewPlayerConnectedPacket & data);
-    void HandleDisPLaData(PlayerDisconnectedPacket & data);
+    void HandleConPlaData(ConnectedPlayersPacket &data);
+    void HandleNewPlaData(NewPlayerConnectedPacket &data);
+    void HandleDisPLaData(PlayerDisconnectedPacket &data);
+
+    void HandleInputEvent(ClientInputPacket &data);
 };
 
 #endif

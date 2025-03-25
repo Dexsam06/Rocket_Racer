@@ -8,6 +8,7 @@
 
 #include "Physics.hpp"
 #include "Entity.hpp"
+#include "NetworkPackets.hpp"
 
 class Player : public Entity
 {
@@ -26,18 +27,16 @@ public:
     Vector2D& getPosition() {return position; }
     int getPlayerWidth() {return playerWidth; }
     int getPlayerHeight() {return playerHeight; }
-    std::string getUsername() {return username; }
-
-    void resetClientThrustForce() {thrustForce = 0; }
-    void resetClientRotationSpeed() {rotationSpeed = 0; }
+    std::string getUsername() {return username; } 
 
     void update(double &xGravityForce, double &yGravityForce, double &deltaTime) override;
-    void reconcileClientState(Vector2D &serverPos, double serverRotation, double lerpFactor); 
-    void applyInput(int keyCode, float duration);
+    void reconcileClientState(GameStatePacket &gameStatePacket, double lerpFactor); 
+    void applyInput(SDL_Keycode keyCode, bool pressed); 
 
 private:
-    double thrustForce;
-    double rotationSpeed;
+    bool isThrusting = false, isTurningLeft = false, isTurningRight = false; 
+    double rotationSpeed; 
+    double thrustForce; 
     int playerWidth, playerHeight;
     std::string username; 
 

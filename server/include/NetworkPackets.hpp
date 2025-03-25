@@ -17,7 +17,7 @@ enum class PacketType : uint8_t
     INPUT_PACKET = 6
 };
 
-// Base packet class
+// Base packet class 
 struct BasePacket
 {
     PacketType type;
@@ -140,7 +140,7 @@ struct ClientInfoPacket : public BasePacket
     }
 };
 
-// Packet that is sent to every connected client that a new client has been added
+// Packet that is sent to every connected client that a new client has been added 
 struct NewPlayerConnectedPacket : public BasePacket
 {
     uint16_t playerID;
@@ -213,9 +213,9 @@ struct EntityState
 
 struct ClientState
 {
-    uint32_t lastVerifiedInputID = 0;
     float serverPosX = 0.0f, serverPosY = 0.0f;
     float rotation = 0.0f;
+    bool isThrusting = false, isTurningLeft = false, isTurningRight = false; 
 };
 
 // Packet that is sent to every client containing the state of the game
@@ -247,42 +247,32 @@ struct GameStatePacket : public BasePacket
         buffer.push_back(static_cast<uint8_t>(type));
 
         // Serialize number of entities (2 bytes)
-        std::array<uint8_t, sizeof(uint16_t)> tempBuffer16;
-        std::memcpy(tempBuffer16.data(), &numEntities, sizeof(uint16_t));
-        buffer.insert(buffer.end(), tempBuffer16.begin(), tempBuffer16.end());
-
-        // Temporary buffers
-        std::array<uint8_t, sizeof(uint32_t)> tempBuffer32;
-        std::array<uint8_t, sizeof(float)> tempBufferFloat;
+        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&numEntities), reinterpret_cast<const uint8_t *>(&numEntities) + sizeof(uint16_t));
 
         // Serialize entities
-        for (const auto &entity : entities)
+        for (const auto &entity : entities) 
         {
-            std::memcpy(tempBuffer32.data(), &entity.entityID, sizeof(uint32_t));
-            buffer.insert(buffer.end(), tempBuffer32.begin(), tempBuffer32.end());
+            buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&entity.entityID), reinterpret_cast<const uint8_t *>(&entity.entityID) + sizeof(uint32_t));
 
-            std::memcpy(tempBufferFloat.data(), &entity.posX, sizeof(float));
-            buffer.insert(buffer.end(), tempBufferFloat.begin(), tempBufferFloat.end());
+            buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&entity.posX), reinterpret_cast<const uint8_t *>(&entity.posX) + sizeof(float));
 
-            std::memcpy(tempBufferFloat.data(), &entity.posY, sizeof(float));
-            buffer.insert(buffer.end(), tempBufferFloat.begin(), tempBufferFloat.end());
+            buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&entity.posY), reinterpret_cast<const uint8_t *>(&entity.posY) + sizeof(float));
 
-            std::memcpy(tempBufferFloat.data(), &entity.rotation, sizeof(float));
-            buffer.insert(buffer.end(), tempBufferFloat.begin(), tempBufferFloat.end());
+            buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&entity.rotation), reinterpret_cast<const uint8_t *>(&entity.rotation) + sizeof(float));
         }
 
         // Serialize client state
-        std::memcpy(tempBuffer32.data(), &clientState.lastVerifiedInputID, sizeof(uint32_t));
-        buffer.insert(buffer.end(), tempBuffer32.begin(), tempBuffer32.end());
+        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&clientState.serverPosX), reinterpret_cast<const uint8_t *>(&clientState.serverPosX) + sizeof(float));
 
-        std::memcpy(tempBufferFloat.data(), &clientState.serverPosX, sizeof(float));
-        buffer.insert(buffer.end(), tempBufferFloat.begin(), tempBufferFloat.end());
+        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&clientState.serverPosY), reinterpret_cast<const uint8_t *>(&clientState.serverPosY) + sizeof(float));
 
-        std::memcpy(tempBufferFloat.data(), &clientState.serverPosY, sizeof(float));
-        buffer.insert(buffer.end(), tempBufferFloat.begin(), tempBufferFloat.end());
+        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&clientState.rotation), reinterpret_cast<const uint8_t *>(&clientState.rotation) + sizeof(float));
 
-        std::memcpy(tempBufferFloat.data(), &clientState.rotation, sizeof(float));
-        buffer.insert(buffer.end(), tempBufferFloat.begin(), tempBufferFloat.end());
+        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&clientState.isThrusting), reinterpret_cast<const uint8_t *>(&clientState.isThrusting) + sizeof(bool));
+
+        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&clientState.isTurningLeft), reinterpret_cast<const uint8_t *>(&clientState.isTurningLeft) + sizeof(bool));
+
+        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&clientState.isTurningRight), reinterpret_cast<const uint8_t *>(&clientState.isTurningRight) + sizeof(bool));
 
         return buffer;
     }
@@ -331,9 +321,6 @@ struct GameStatePacket : public BasePacket
         }
 
         // Deserialize client state
-        std::memcpy(&clientState.lastVerifiedInputID, &data[offset], sizeof(uint32_t));
-        offset += sizeof(uint32_t);
-
         std::memcpy(&clientState.serverPosX, &data[offset], sizeof(float));
         offset += sizeof(float);
 
@@ -342,111 +329,51 @@ struct GameStatePacket : public BasePacket
 
         std::memcpy(&clientState.rotation, &data[offset], sizeof(float));
         offset += sizeof(float);
-    }
-};
 
-struct KeyInput
-{
-    int keyCode;
-    float duration;
+        std::memcpy(&clientState.isThrusting, &data[offset], sizeof(bool));
+        offset += sizeof(bool);
+
+        std::memcpy(&clientState.isTurningLeft, &data[offset], sizeof(bool));
+        offset += sizeof(bool);
+
+        std::memcpy(&clientState.isTurningRight, &data[offset], sizeof(bool));
+        offset += sizeof(bool); 
+    }
 };
 
 // Packet when sending inputs from the client to the server
-struct InputWithSequence : public BasePacket
+struct ClientInputPacket : public BasePacket
 {
-    int sequenceNumber;
-    std::vector<KeyInput> keyInputPacket;
+    int key;
+    bool pressed;
 
-    InputWithSequence() { type = PacketType::INPUT_PACKET; }
-    InputWithSequence(int &inputSequenceNumber, std::vector<KeyInput> &keyInput)
+    ClientInputPacket() { type = PacketType::INPUT_PACKET; }
+    ClientInputPacket(int key, bool pressed)
     {
         type = PacketType::INPUT_PACKET;
-        sequenceNumber = inputSequenceNumber;
-        keyInputPacket = keyInput;
+        this->key = key; 
+        this->pressed = pressed;
     }
 
-    std::vector<uint8_t> Serialize() const override { return {}; }
-    void Deserialize(const uint8_t *data, size_t size) override {}
-
-    // Serialize a vector of InputWithSequence into a byte buffer
-    static std::vector<uint8_t> Serialize(const std::vector<InputWithSequence> &inputList)
-    {
+    std::vector<uint8_t> Serialize() const override { 
         std::vector<uint8_t> buffer;
 
-        buffer.push_back(static_cast<uint8_t>(PacketType::INPUT_PACKET)); // Packet type
+        buffer.push_back(static_cast<uint8_t>(type));
 
-        // First, serialize the number of InputWithSequence packets
-        int numInputWithSequence = static_cast<int>(inputList.size());
-        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&numInputWithSequence),
-                      reinterpret_cast<const uint8_t *>(&numInputWithSequence) + sizeof(int));
-
-        // Now serialize each InputWithSequence object
-        for (const auto &input : inputList)
-        {
-            // Serialize the sequence number
-            buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&input.sequenceNumber),
-                          reinterpret_cast<const uint8_t *>(&input.sequenceNumber) + sizeof(int));
-
-            // Serialize the number of key inputs
-            int numInputs = static_cast<int>(input.keyInputPacket.size());
-            buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&numInputs),
-                          reinterpret_cast<const uint8_t *>(&numInputs) + sizeof(int));
-
-            // Serialize all key inputs
-            for (const auto &keyInput : input.keyInputPacket)
-            {
-                buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&keyInput.keyCode),
-                              reinterpret_cast<const uint8_t *>(&keyInput.keyCode) + sizeof(int));
-                buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&keyInput.duration),
-                              reinterpret_cast<const uint8_t *>(&keyInput.duration) + sizeof(float));
-            }
-        }
-
+        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&key),
+                      reinterpret_cast<const uint8_t *>(&key) + sizeof(int));
+        buffer.insert(buffer.end(), reinterpret_cast<const uint8_t *>(&pressed), 
+                      reinterpret_cast<const uint8_t *>(&pressed) + sizeof(bool));
         return buffer;
     }
+    void Deserialize(const uint8_t *data, size_t size) override {
+        size_t offset = 0;
+        type = static_cast<PacketType>(data[offset++]);
 
-    // Deserialize a vector of InputWithSequence from a byte buffer
-    static void Deserialize(const uint8_t *data, size_t size, std::vector<InputWithSequence> &inputList)
-    {
-        if (size < 1 + sizeof(int)) // Ensure there's enough data for at least packet type and number of inputs
-            return;
-
-        size_t offset = 1; // Skip the first byte since it contains the PacketType (already used in switch-case)
-
-        // First, deserialize the number of InputWithSequence packets
-        int numInputWithSequence;
-        std::memcpy(&numInputWithSequence, &data[offset], sizeof(int));
+        std::memcpy(&key, &data[offset], sizeof(int)); 
         offset += sizeof(int);
 
-        if (size < offset + numInputWithSequence * (sizeof(int) + sizeof(int))) // Basic size check
-            return;
-
-        // Deserialize each InputWithSequence object
-        inputList.resize(numInputWithSequence);
-        for (auto &input : inputList)
-        {
-            // Deserialize the sequence number
-            std::memcpy(&input.sequenceNumber, &data[offset], sizeof(int));
-            offset += sizeof(int);
-
-            // Deserialize the number of key inputs
-            int numInputs;
-            std::memcpy(&numInputs, &data[offset], sizeof(int));
-            offset += sizeof(int);
-
-            if (size < offset + numInputs * (sizeof(int) + sizeof(float))) // Check size before reading inputs
-                return;
-
-            // Resize the keyInputPacket vector and deserialize each KeyInput
-            input.keyInputPacket.resize(numInputs);
-            for (int i = 0; i < numInputs; ++i)
-            {
-                std::memcpy(&input.keyInputPacket[i].keyCode, &data[offset], sizeof(int));
-                offset += sizeof(int);
-                std::memcpy(&input.keyInputPacket[i].duration, &data[offset], sizeof(float));
-                offset += sizeof(float);
-            }
-        }
+        std::memcpy(&pressed, &data[offset], sizeof(bool));
     }
 };
 

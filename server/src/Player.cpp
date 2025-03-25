@@ -6,27 +6,12 @@ Player::Player(std::unique_ptr<Collider> collider, Vector2D pos, Vector2D vel, d
     : rotationSpeed(0), Entity(std::move(collider), pos, vel, mass, ID) { 
 } 
 
-void Player::applyInput(int keyCode, float duration) 
-{
-    switch (keyCode) 
-    {
-        //Left arrow
-        case 1073741904: 
-            rotationSpeed -= duration * 3;
-            break;    
-        //Right arrow
-        case 1073741903:
-            rotationSpeed += duration * 3; 
-            break;
-        //Spacebar
-        case 32:
-            thrustForce +=  duration * 100000; 
-            break;
-    }
-}
-
 void Player::update(double &xGravityForce, double &yGravityForce, double &deltaTime)
 { 
+    thrustForce = isThrusting ? 100000 * deltaTime : 0; 
+    rotationSpeed -= isTurningLeft ? 3 * deltaTime : 0;
+    rotationSpeed += isTurningRight ? 3 * deltaTime : 0;
+
     rotation += Physics::rotation(rotationSpeed, deltaTime); 
 
     double xThrustForce = Physics::forceVectorXAxis(thrustForce, (rotation * M_PI) / 180);  
@@ -43,8 +28,6 @@ void Player::update(double &xGravityForce, double &yGravityForce, double &deltaT
 
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
     velocity.y += Physics::velocity(acceleration.y, deltaTime);  
-
-    thrustForce = 0; 
 
     getCollider()->UpdatePosition(getPosition()); 
     getCollider()->UpdateRotation((rotation * M_PI) / 180);

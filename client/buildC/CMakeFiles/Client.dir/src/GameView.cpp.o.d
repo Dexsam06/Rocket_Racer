@@ -340,6 +340,8 @@ CMakeFiles/Client.dir/src/GameView.cpp.o: \
  /usr/include/enet/callbacks.h \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Player.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Physics.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/NetworkPackets.hpp \
+ /usr/include/c++/14.2.1/cstdint /usr/include/c++/14.2.1/cstring \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Button.hpp \
  /usr/include/c++/14.2.1/functional \
  /usr/include/c++/14.2.1/bits/std_function.h \

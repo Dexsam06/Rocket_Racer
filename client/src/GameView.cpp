@@ -71,8 +71,8 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
         scaledWidth,
         scaledHeight};
     SDL_RenderCopyEx(renderer, clientPlayer->getTexture(), nullptr, &playerDestRect, clientPlayer->getRotation(), nullptr, SDL_FLIP_NONE);
-    int textPositionX = screenWidth / 2 - (45 / 2);
-    int textPositionY = (screenHeight / 2) + 200;
+    int textPositionX = screenWidth / 2 - (45 / 2) * scalingFactor.x;
+    int textPositionY = (screenHeight / 2) + 200 * scalingFactor.y;
     drawPlayerUsername(textPositionX, textPositionY, clientPlayer->getUsername());
 
     // Draw other entities
@@ -105,8 +105,8 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
 
             textPositionX = screenCenter.x + scaledOffset.x,
             textPositionY = screenCenter.y + scaledOffset.y;
-            drawPlayerUsername(textPositionX, textPositionY, player->getUsername());
-        }
+            drawPlayerUsername(textPositionX, textPositionY, player->getUsername()); 
+        } 
     }
 
     for (std::unique_ptr<Button> &button : buttonList)

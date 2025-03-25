@@ -342,4 +342,6 @@ CMakeFiles/Client.dir/src/Player.cpp.o: \
  /usr/include/c++/14.2.1/bits/ostream.tcc /usr/include/c++/14.2.1/istream \
  /usr/include/c++/14.2.1/bits/istream.tcc \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Vector2D.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Collider.hpp
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Collider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/NetworkPackets.hpp \
+ /usr/include/c++/14.2.1/cstdint /usr/include/c++/14.2.1/cstring

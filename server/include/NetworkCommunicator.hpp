@@ -23,14 +23,7 @@ public:
     bool serverRunning() { return serverRunningState; }
     void sendGameStatePacketToClient(ENetPeer* peer, const GameStatePacket& gameStatePacket); 
 
-    // Input information
-    struct ClientInputs
-    {
-        int clientID;
-        std::vector<InputWithSequence> inputBuffer;
-    };
-
-    std::vector<ClientInputs>& getClientsInputBuffer() { return clientsInputBuffer; }
+    std::unordered_map<enet_uint32, ClientInputPacket>& getClientsInputBuffer() { return clientsInputBuffer; }
     std::unordered_map<enet_uint32, std::pair<std::string, ENetPeer *>>& getClientList() {return clients; }
 
     using CliInfCallback = std::function<void(uint16_t, ClientInfoPacket &)>;
@@ -53,7 +46,7 @@ private:
     bool serverRunningState = true;
 
     std::unordered_map<enet_uint32, std::pair<std::string, ENetPeer *>> clients; 
-    std::vector<ClientInputs> clientsInputBuffer;   
+    std::unordered_map<enet_uint32, ClientInputPacket> clientsInputBuffer;    
 
     CliInfCallback cliInfCallback;
     DisPlaCallback disPlaCallback;

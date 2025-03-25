@@ -1,107 +1,122 @@
 #include "../include/Player.hpp"
 
-#include <iostream> 
+#include <iostream>
 
-Player::Player(std::unique_ptr<Collider> collider, SDL_Texture* texture, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID, std::string username) 
-    : rotationSpeed(0), Entity(std::move(collider), texture, pos, vel, mass, ID), username(username) { 
-} 
+Player::Player(std::unique_ptr<Collider> collider, SDL_Texture *texture, Vector2D pos, Vector2D vel, double mass, enet_uint32 ID, std::string username)
+    : rotationSpeed(0), Entity(std::move(collider), texture, pos, vel, mass, ID), username(username)
+{
+}
 
-void Player::update(double& xGravityForce, double& yGravityForce, double& deltaTime){ 
-    rotation += Physics::rotation(rotationSpeed, deltaTime); 
+void Player::update(double &xGravityForce, double &yGravityForce, double &deltaTime)
+{
+    thrustForce = isThrusting ? 100000 * deltaTime : 0; 
+    rotationSpeed -= isTurningLeft ? 3 * deltaTime : 0;
+    rotationSpeed += isTurningRight ? 3 * deltaTime : 0;
 
-    double xThrustForce = Physics::forceVectorXAxis(thrustForce, (rotation * M_PI) / 180);  
+    rotation += Physics::rotation(rotationSpeed, deltaTime);
+
+    double xThrustForce = Physics::forceVectorXAxis(thrustForce, (rotation * M_PI) / 180);
     double yThrustForce = -Physics::forceVectorYAxis(thrustForce, (rotation * M_PI) / 180);
 
-    double xTotalForce = xGravityForce + xThrustForce; 
+    double xTotalForce = xGravityForce + xThrustForce;
     double yTotalForce = yGravityForce + yThrustForce;
 
-    acceleration.x = Physics::acceleration(xTotalForce, mass); 
+    acceleration.x = Physics::acceleration(xTotalForce, mass);
     acceleration.y = Physics::acceleration(yTotalForce, mass);
 
-    position.x += Physics::distance(velocity.x, acceleration.x, deltaTime); 
-    position.y += Physics::distance(velocity.y, acceleration.y, deltaTime); 
+    position.x += Physics::distance(velocity.x, acceleration.x, deltaTime);
+    position.y += Physics::distance(velocity.y, acceleration.y, deltaTime);
 
-    velocity.x += Physics::velocity(acceleration.x, deltaTime); 
-    velocity.y += Physics::velocity(acceleration.y, deltaTime);  
-    getCollider()->UpdatePosition(getPosition()); 
+    velocity.x += Physics::velocity(acceleration.x, deltaTime);
+    velocity.y += Physics::velocity(acceleration.y, deltaTime);
+
+    getCollider()->UpdatePosition(getPosition());
     getCollider()->UpdateRotation((rotation * M_PI) / 180); 
-}  
+}
 
-void Player::applyInput(int keyCode, float duration)
+void Player::applyInput(SDL_Keycode keyCode, bool pressed)
 {
-    switch (keyCode) 
+    switch (keyCode)
     {
-        //Left arrow
-        case 1073741904:
-            rotationSpeed -= duration * 3;
-            break;    
-        //Right arrow
-        case 1073741903:
-            rotationSpeed += duration * 3; 
-            break;
-        //Spacebar
-        case 32:
-            thrustForce +=  duration * 100000;  
-            break;
+    // Left arrow
+    case SDLK_LEFT:
+        isTurningLeft = pressed ? true : false;
+        break;
+    // Right arrow
+    case SDLK_RIGHT:
+        isTurningRight = pressed ? true : false;
+        break;
+    // Spacebar
+    case SDLK_SPACE:
+        isThrusting = pressed ? true : false;
+        break;
     }
 }
 
-void Player::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerClientPos, Vector2D scalingFactor) 
+void Player::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vector2D playerClientPos, Vector2D scalingFactor)
 {
-    Vector2D screenCenter(screenWidth / 2, screenHeight / 2); 
+    Vector2D screenCenter(screenWidth / 2, screenHeight / 2);
 
     Vector2D offsetFromClientPlayer(
-        position.x - playerClientPos.x,   
-        position.y - playerClientPos.y
-    );
+        position.x - playerClientPos.x,
+        position.y - playerClientPos.y);
 
     Vector2D scaledOffset(
-        offsetFromClientPlayer.x * scalingFactor.x,  
-        offsetFromClientPlayer.y * scalingFactor.y 
-    );
+        offsetFromClientPlayer.x * scalingFactor.x,
+        offsetFromClientPlayer.y * scalingFactor.y);
 
-    Vector2D scaledPosition( 
-        screenCenter.x + scaledOffset.x, 
-        screenCenter.y + scaledOffset.y 
-    );
+    Vector2D scaledPosition(
+        screenCenter.x + scaledOffset.x,
+        screenCenter.y + scaledOffset.y);
 
     int scaledWidth = static_cast<int>(playerWidth * scalingFactor.x);
-    int scaledHeight = static_cast<int>(playerHeight * scalingFactor.y);  
+    int scaledHeight = static_cast<int>(playerHeight * scalingFactor.y);
 
-    SDL_Rect playerDestRect = { 
-        scaledPosition.x - scaledWidth / 2, 
-        scaledPosition.y - scaledHeight / 2,   
+    SDL_Rect playerDestRect = {
+        scaledPosition.x - scaledWidth / 2,
+        scaledPosition.y - scaledHeight / 2,
         scaledWidth,
-        scaledHeight}; 
+        scaledHeight};
 
     SDL_RenderCopyEx(renderer, texture, nullptr, &playerDestRect, rotation, nullptr, SDL_FLIP_NONE);
-} 
+}
 
-void Player::reconcileClientState(Vector2D &serverPos, double serverRotation, double lerpFactor) {
-    double deltaX = serverPos.x - position.x;
-    double deltaY = serverPos.y - position.y;
+void Player::reconcileClientState(GameStatePacket &gameStatePacket, double lerpFactor)
+{
+    double serverPosX = gameStatePacket.clientState.serverPosX;
+    double serverPosY = gameStatePacket.clientState.serverPosY;
+    double serverRotation = gameStatePacket.clientState.rotation;
+
+    double deltaX = serverPosX - position.x; 
+    double deltaY = serverPosY - position.y;
     double distanceSquared = (deltaX * deltaX) + (deltaY * deltaY);
 
     double snapThreshold = 3;
 
     // Check if we should snap (if within the threshold)
-    if (distanceSquared < snapThreshold * snapThreshold) {
-        position.x = serverPos.x; 
-        position.y = serverPos.y; 
-    } else {
-        // Smoothly interpolate towards the correct position
-        position.x = Physics::lerp(position.x, serverPos.x, lerpFactor);
-        position.y = Physics::lerp(position.y, serverPos.y, lerpFactor);
-    } 
-
-    if(rotation > serverRotation - 5 && rotation < serverRotation + 5)
+    if (distanceSquared < snapThreshold * snapThreshold)
     {
-        rotation = serverRotation;
-    } else {
-        rotation = Physics::lerp(rotation, serverRotation, lerpFactor); 
+        position.x = serverPosX;
+        position.y = serverPosY;
+    }
+    else
+    {
+        // Smoothly interpolate towards the correct position
+        position.x = Physics::lerp(position.x, serverPosX, lerpFactor);
+        position.y = Physics::lerp(position.y, serverPosY, lerpFactor);
     }
 
-    thrustForce = 0.0; 
+    if (rotation > serverRotation - 5 && rotation < serverRotation + 5)
+    {
+        rotation = serverRotation;
+    }
+    else
+    {
+        rotation = Physics::lerp(rotation, serverRotation, lerpFactor);
+    }
+
+    isThrusting = gameStatePacket.clientState.isThrusting;
+    isTurningLeft = gameStatePacket.clientState.isTurningLeft;
+    isTurningRight = gameStatePacket.clientState.isTurningRight;
     rotationSpeed = 0.0; 
 }
- 

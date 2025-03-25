@@ -339,12 +339,17 @@ CMakeFiles/Client.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
  /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
+ /usr/include/c++/14.2.1/thread /usr/include/c++/14.2.1/bits/std_thread.h \
+ /usr/include/c++/14.2.1/bits/unique_ptr.h \
+ /usr/include/c++/14.2.1/bits/this_thread_sleep.h \
+ /usr/include/c++/14.2.1/bits/chrono.h /usr/include/c++/14.2.1/ratio \
+ /usr/include/c++/14.2.1/cstdint /usr/include/c++/14.2.1/ctime \
+ /usr/include/c++/14.2.1/bits/parse_numbers.h \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/GameView.hpp \
  /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
  /usr/include/c++/14.2.1/memory \
  /usr/include/c++/14.2.1/bits/stl_raw_storage_iter.h \
  /usr/include/c++/14.2.1/bits/align.h \
- /usr/include/c++/14.2.1/bits/unique_ptr.h \
  /usr/include/c++/14.2.1/bits/shared_ptr.h \
  /usr/include/c++/14.2.1/bits/shared_ptr_base.h \
  /usr/include/c++/14.2.1/bits/allocated_ptr.h \
@@ -360,10 +365,10 @@ CMakeFiles/Client.dir/src/main.cpp.o: \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Collider.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Player.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Physics.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/NetworkPackets.hpp \
+ /usr/include/c++/14.2.1/cstring \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Button.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/InputHandler.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/NetworkPackets.hpp \
- /usr/include/c++/14.2.1/cstdint /usr/include/c++/14.2.1/cstring \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/TextureManager.hpp \
  /usr/include/SDL2/SDL_image.h \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Planet.hpp \
@@ -376,7 +381,6 @@ CMakeFiles/Client.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/regex /usr/include/c++/14.2.1/bitset \
  /usr/include/c++/14.2.1/locale \
  /usr/include/c++/14.2.1/bits/locale_facets_nonio.h \
- /usr/include/c++/14.2.1/ctime \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/messages_members.h \
  /usr/include/libintl.h /usr/include/c++/14.2.1/bits/codecvt.h \

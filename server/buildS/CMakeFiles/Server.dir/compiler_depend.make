@@ -751,6 +751,7 @@ CMakeFiles/Server.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/specfun.h \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/std_function.h \
+  /usr/include/c++/14.2.1/bits/std_thread.h \
   /usr/include/c++/14.2.1/bits/stl_algo.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_bvector.h \
@@ -769,6 +770,7 @@ CMakeFiles/Server.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
+  /usr/include/c++/14.2.1/bits/this_thread_sleep.h \
   /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/14.2.1/bits/unique_ptr.h \
   /usr/include/c++/14.2.1/bits/unordered_map.h \
@@ -824,6 +826,7 @@ CMakeFiles/Server.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/string \
   /usr/include/c++/14.2.1/string_view \
   /usr/include/c++/14.2.1/system_error \
+  /usr/include/c++/14.2.1/thread \
   /usr/include/c++/14.2.1/tr1/bessel_function.tcc \
   /usr/include/c++/14.2.1/tr1/beta_function.tcc \
   /usr/include/c++/14.2.1/tr1/ell_integral.tcc \
@@ -1558,12 +1561,16 @@ CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
   /usr/include/c++/14.2.1/bits/cxxabi_init_exception.h \
+  /usr/include/c++/14.2.1/bits/enable_special_members.h \
+  /usr/include/c++/14.2.1/bits/erase_if.h \
   /usr/include/c++/14.2.1/bits/exception.h \
   /usr/include/c++/14.2.1/bits/exception_defines.h \
   /usr/include/c++/14.2.1/bits/exception_ptr.h \
   /usr/include/c++/14.2.1/bits/functexcept.h \
   /usr/include/c++/14.2.1/bits/functional_hash.h \
   /usr/include/c++/14.2.1/bits/hash_bytes.h \
+  /usr/include/c++/14.2.1/bits/hashtable.h \
+  /usr/include/c++/14.2.1/bits/hashtable_policy.h \
   /usr/include/c++/14.2.1/bits/invoke.h \
   /usr/include/c++/14.2.1/bits/ios_base.h \
   /usr/include/c++/14.2.1/bits/istream.tcc \
@@ -1577,6 +1584,7 @@ CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/c++/14.2.1/bits/move.h \
   /usr/include/c++/14.2.1/bits/nested_exception.h \
   /usr/include/c++/14.2.1/bits/new_allocator.h \
+  /usr/include/c++/14.2.1/bits/node_handle.h \
   /usr/include/c++/14.2.1/bits/ostream.tcc \
   /usr/include/c++/14.2.1/bits/ostream_insert.h \
   /usr/include/c++/14.2.1/bits/postypes.h \
@@ -1607,6 +1615,7 @@ CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
   /usr/include/c++/14.2.1/bits/unique_ptr.h \
+  /usr/include/c++/14.2.1/bits/unordered_map.h \
   /usr/include/c++/14.2.1/bits/uses_allocator.h \
   /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/14.2.1/bits/utility.h \
@@ -1666,6 +1675,7 @@ CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/c++/14.2.1/tuple \
   /usr/include/c++/14.2.1/type_traits \
   /usr/include/c++/14.2.1/typeinfo \
+  /usr/include/c++/14.2.1/unordered_map \
   /usr/include/c++/14.2.1/vector \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
@@ -2324,12 +2334,16 @@ CMakeFiles/Server.dir/src/Player.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server
   /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
   /usr/include/c++/14.2.1/bits/cxxabi_init_exception.h \
+  /usr/include/c++/14.2.1/bits/enable_special_members.h \
+  /usr/include/c++/14.2.1/bits/erase_if.h \
   /usr/include/c++/14.2.1/bits/exception.h \
   /usr/include/c++/14.2.1/bits/exception_defines.h \
   /usr/include/c++/14.2.1/bits/exception_ptr.h \
   /usr/include/c++/14.2.1/bits/functexcept.h \
   /usr/include/c++/14.2.1/bits/functional_hash.h \
   /usr/include/c++/14.2.1/bits/hash_bytes.h \
+  /usr/include/c++/14.2.1/bits/hashtable.h \
+  /usr/include/c++/14.2.1/bits/hashtable_policy.h \
   /usr/include/c++/14.2.1/bits/invoke.h \
   /usr/include/c++/14.2.1/bits/ios_base.h \
   /usr/include/c++/14.2.1/bits/istream.tcc \
@@ -2343,6 +2357,7 @@ CMakeFiles/Server.dir/src/Player.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server
   /usr/include/c++/14.2.1/bits/move.h \
   /usr/include/c++/14.2.1/bits/nested_exception.h \
   /usr/include/c++/14.2.1/bits/new_allocator.h \
+  /usr/include/c++/14.2.1/bits/node_handle.h \
   /usr/include/c++/14.2.1/bits/ostream.tcc \
   /usr/include/c++/14.2.1/bits/ostream_insert.h \
   /usr/include/c++/14.2.1/bits/postypes.h \
@@ -2373,6 +2388,7 @@ CMakeFiles/Server.dir/src/Player.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
   /usr/include/c++/14.2.1/bits/unique_ptr.h \
+  /usr/include/c++/14.2.1/bits/unordered_map.h \
   /usr/include/c++/14.2.1/bits/uses_allocator.h \
   /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/14.2.1/bits/utility.h \
@@ -2432,6 +2448,7 @@ CMakeFiles/Server.dir/src/Player.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server
   /usr/include/c++/14.2.1/tuple \
   /usr/include/c++/14.2.1/type_traits \
   /usr/include/c++/14.2.1/typeinfo \
+  /usr/include/c++/14.2.1/unordered_map \
   /usr/include/c++/14.2.1/vector \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
@@ -2825,6 +2842,7 @@ CMakeFiles/Server.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/s
   /usr/include/c++/14.2.1/bits/specfun.h \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/std_function.h \
+  /usr/include/c++/14.2.1/bits/std_thread.h \
   /usr/include/c++/14.2.1/bits/stl_algo.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_bvector.h \
@@ -2843,6 +2861,7 @@ CMakeFiles/Server.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/s
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
+  /usr/include/c++/14.2.1/bits/this_thread_sleep.h \
   /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/14.2.1/bits/unique_ptr.h \
   /usr/include/c++/14.2.1/bits/unordered_map.h \
@@ -2898,6 +2917,7 @@ CMakeFiles/Server.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/server/s
   /usr/include/c++/14.2.1/string \
   /usr/include/c++/14.2.1/string_view \
   /usr/include/c++/14.2.1/system_error \
+  /usr/include/c++/14.2.1/thread \
   /usr/include/c++/14.2.1/tr1/bessel_function.tcc \
   /usr/include/c++/14.2.1/tr1/beta_function.tcc \
   /usr/include/c++/14.2.1/tr1/ell_integral.tcc \
@@ -3255,6 +3275,8 @@ CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o:
 
 /usr/include/c++/14.2.1/bits/unordered_map.h:
 
+/usr/include/c++/14.2.1/bits/std_thread.h:
+
 /usr/include/c++/14.2.1/bits/std_function.h:
 
 /usr/lib/libm.so.6:
@@ -3306,6 +3328,8 @@ CMakeFiles/Server.dir/src/PhysicsSystem.cpp.o:
 /usr/lib/libm.so:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/f16cintrin.h:
+
+/usr/include/c++/14.2.1/bits/this_thread_sleep.h:
 
 /home/samuel/Dev/c++/Rocket_Racer/server/include/Planet.hpp:
 
@@ -3516,6 +3540,8 @@ CMakeFiles/Server.dir/src/GameController.cpp.o:
 /usr/include/bits/timesize.h:
 
 /usr/include/bits/types/struct_tm.h:
+
+/usr/include/c++/14.2.1/thread:
 
 /usr/include/bits/types/struct_timeval.h:
 

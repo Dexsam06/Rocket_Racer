@@ -339,6 +339,8 @@ CMakeFiles/Client.dir/src/InputHandler.cpp.o: \
  /usr/include/c++/14.2.1/bits/istream.tcc \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Vector2D.hpp \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Collider.hpp \
+ /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/NetworkPackets.hpp \
+ /usr/include/c++/14.2.1/cstdint /usr/include/c++/14.2.1/cstring \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Button.hpp \
  /usr/include/c++/14.2.1/functional \
  /usr/include/c++/14.2.1/bits/std_function.h \
@@ -350,6 +352,4 @@ CMakeFiles/Client.dir/src/InputHandler.cpp.o: \
  /usr/include/c++/14.2.1/bits/node_handle.h \
  /usr/include/c++/14.2.1/bits/erase_if.h /usr/include/c++/14.2.1/array \
  /usr/include/c++/14.2.1/compare /usr/include/SDL2/SDL_ttf.h \
- /usr/include/SDL2/SDL.h \
- /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/NetworkPackets.hpp \
- /usr/include/c++/14.2.1/cstdint /usr/include/c++/14.2.1/cstring
+ /usr/include/SDL2/SDL.h

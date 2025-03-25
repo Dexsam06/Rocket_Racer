@@ -16,10 +16,10 @@ public:
     ~NetworkCommunicator() {}
 
     void handleReceivedPacket();
-    void disconnectFromServer();
+    void disconnectFromServer(); 
 
     void sendInfoClientPacket(const char *username);
-    void sendInputPacketToServer(std::vector<InputWithSequence> &inputList);
+    void sendInputToServer(ClientInputPacket &clientInputPacket); 
 
     int getClientID() { return clientID; }
     std::string getUsername() {return username; }

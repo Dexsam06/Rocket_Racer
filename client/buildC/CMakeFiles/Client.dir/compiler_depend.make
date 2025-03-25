@@ -1129,6 +1129,7 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/basic_string.tcc \
   /usr/include/c++/14.2.1/bits/char_traits.h \
   /usr/include/c++/14.2.1/bits/charconv.h \
+  /usr/include/c++/14.2.1/bits/chrono.h \
   /usr/include/c++/14.2.1/bits/concept_check.h \
   /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
@@ -1159,6 +1160,7 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/node_handle.h \
   /usr/include/c++/14.2.1/bits/ostream.tcc \
   /usr/include/c++/14.2.1/bits/ostream_insert.h \
+  /usr/include/c++/14.2.1/bits/parse_numbers.h \
   /usr/include/c++/14.2.1/bits/postypes.h \
   /usr/include/c++/14.2.1/bits/predefined_ops.h \
   /usr/include/c++/14.2.1/bits/ptr_traits.h \
@@ -1171,6 +1173,7 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/specfun.h \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/std_function.h \
+  /usr/include/c++/14.2.1/bits/std_thread.h \
   /usr/include/c++/14.2.1/bits/stl_algo.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_bvector.h \
@@ -1189,6 +1192,7 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
+  /usr/include/c++/14.2.1/bits/this_thread_sleep.h \
   /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/14.2.1/bits/unique_ptr.h \
   /usr/include/c++/14.2.1/bits/unordered_map.h \
@@ -1208,6 +1212,7 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
   /usr/include/c++/14.2.1/cstring \
+  /usr/include/c++/14.2.1/ctime \
   /usr/include/c++/14.2.1/cwchar \
   /usr/include/c++/14.2.1/cwctype \
   /usr/include/c++/14.2.1/debug/assertions.h \
@@ -1235,12 +1240,14 @@ CMakeFiles/Client.dir/src/GameController.cpp.o: /home/samuel/Dev/c++/Rocket_Race
   /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/14.2.1/pstl/pstl_config.h \
+  /usr/include/c++/14.2.1/ratio \
   /usr/include/c++/14.2.1/stdexcept \
   /usr/include/c++/14.2.1/stdlib.h \
   /usr/include/c++/14.2.1/streambuf \
   /usr/include/c++/14.2.1/string \
   /usr/include/c++/14.2.1/string_view \
   /usr/include/c++/14.2.1/system_error \
+  /usr/include/c++/14.2.1/thread \
   /usr/include/c++/14.2.1/tr1/bessel_function.tcc \
   /usr/include/c++/14.2.1/tr1/beta_function.tcc \
   /usr/include/c++/14.2.1/tr1/ell_integral.tcc \
@@ -1424,6 +1431,7 @@ CMakeFiles/Client.dir/src/GameView.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/clie
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Collider.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Entity.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/GameView.hpp \
+  /home/samuel/Dev/c++/Rocket_Racer/client/include/NetworkPackets.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Physics.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Player.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Vector2D.hpp \
@@ -1672,8 +1680,10 @@ CMakeFiles/Client.dir/src/GameView.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/clie
   /usr/include/c++/14.2.1/compare \
   /usr/include/c++/14.2.1/concepts \
   /usr/include/c++/14.2.1/cstddef \
+  /usr/include/c++/14.2.1/cstdint \
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
+  /usr/include/c++/14.2.1/cstring \
   /usr/include/c++/14.2.1/cwchar \
   /usr/include/c++/14.2.1/cwctype \
   /usr/include/c++/14.2.1/debug/assertions.h \
@@ -2545,6 +2555,7 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o: /home/samuel/Dev/c++/Rocket
   /usr/include/c++/14.2.1/bits/basic_string.tcc \
   /usr/include/c++/14.2.1/bits/char_traits.h \
   /usr/include/c++/14.2.1/bits/charconv.h \
+  /usr/include/c++/14.2.1/bits/chrono.h \
   /usr/include/c++/14.2.1/bits/concept_check.h \
   /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
@@ -2575,6 +2586,7 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o: /home/samuel/Dev/c++/Rocket
   /usr/include/c++/14.2.1/bits/node_handle.h \
   /usr/include/c++/14.2.1/bits/ostream.tcc \
   /usr/include/c++/14.2.1/bits/ostream_insert.h \
+  /usr/include/c++/14.2.1/bits/parse_numbers.h \
   /usr/include/c++/14.2.1/bits/postypes.h \
   /usr/include/c++/14.2.1/bits/predefined_ops.h \
   /usr/include/c++/14.2.1/bits/ptr_traits.h \
@@ -2587,6 +2599,7 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o: /home/samuel/Dev/c++/Rocket
   /usr/include/c++/14.2.1/bits/specfun.h \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/std_function.h \
+  /usr/include/c++/14.2.1/bits/std_thread.h \
   /usr/include/c++/14.2.1/bits/stl_algo.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_bvector.h \
@@ -2605,6 +2618,7 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o: /home/samuel/Dev/c++/Rocket
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
+  /usr/include/c++/14.2.1/bits/this_thread_sleep.h \
   /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/14.2.1/bits/unique_ptr.h \
   /usr/include/c++/14.2.1/bits/unordered_map.h \
@@ -2624,6 +2638,7 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o: /home/samuel/Dev/c++/Rocket
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
   /usr/include/c++/14.2.1/cstring \
+  /usr/include/c++/14.2.1/ctime \
   /usr/include/c++/14.2.1/cwchar \
   /usr/include/c++/14.2.1/cwctype \
   /usr/include/c++/14.2.1/debug/assertions.h \
@@ -2651,12 +2666,14 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o: /home/samuel/Dev/c++/Rocket
   /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/14.2.1/pstl/pstl_config.h \
+  /usr/include/c++/14.2.1/ratio \
   /usr/include/c++/14.2.1/stdexcept \
   /usr/include/c++/14.2.1/stdlib.h \
   /usr/include/c++/14.2.1/streambuf \
   /usr/include/c++/14.2.1/string \
   /usr/include/c++/14.2.1/string_view \
   /usr/include/c++/14.2.1/system_error \
+  /usr/include/c++/14.2.1/thread \
   /usr/include/c++/14.2.1/tr1/bessel_function.tcc \
   /usr/include/c++/14.2.1/tr1/beta_function.tcc \
   /usr/include/c++/14.2.1/tr1/ell_integral.tcc \
@@ -2940,6 +2957,7 @@ CMakeFiles/Client.dir/src/Physics.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/clien
 CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/src/PhysicsSystem.cpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Collider.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Entity.hpp \
+  /home/samuel/Dev/c++/Rocket_Racer/client/include/NetworkPackets.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Physics.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/PhysicsSystem.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Player.hpp \
@@ -3179,8 +3197,10 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o: /home/samuel/Dev/c++/Rocket_Racer
   /usr/include/c++/14.2.1/cmath \
   /usr/include/c++/14.2.1/concepts \
   /usr/include/c++/14.2.1/cstddef \
+  /usr/include/c++/14.2.1/cstdint \
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
+  /usr/include/c++/14.2.1/cstring \
   /usr/include/c++/14.2.1/cwchar \
   /usr/include/c++/14.2.1/cwctype \
   /usr/include/c++/14.2.1/debug/assertions.h \
@@ -3707,6 +3727,7 @@ CMakeFiles/Client.dir/src/Planet.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
 CMakeFiles/Client.dir/src/Player.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/src/Player.cpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Collider.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Entity.hpp \
+  /home/samuel/Dev/c++/Rocket_Racer/client/include/NetworkPackets.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Physics.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Player.hpp \
   /home/samuel/Dev/c++/Rocket_Racer/client/include/Vector2D.hpp \
@@ -3945,8 +3966,10 @@ CMakeFiles/Client.dir/src/Player.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client
   /usr/include/c++/14.2.1/cmath \
   /usr/include/c++/14.2.1/concepts \
   /usr/include/c++/14.2.1/cstddef \
+  /usr/include/c++/14.2.1/cstdint \
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
+  /usr/include/c++/14.2.1/cstring \
   /usr/include/c++/14.2.1/cwchar \
   /usr/include/c++/14.2.1/cwctype \
   /usr/include/c++/14.2.1/debug/assertions.h \
@@ -5146,6 +5169,7 @@ CMakeFiles/Client.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/s
   /usr/include/c++/14.2.1/bits/basic_string.tcc \
   /usr/include/c++/14.2.1/bits/char_traits.h \
   /usr/include/c++/14.2.1/bits/charconv.h \
+  /usr/include/c++/14.2.1/bits/chrono.h \
   /usr/include/c++/14.2.1/bits/codecvt.h \
   /usr/include/c++/14.2.1/bits/concept_check.h \
   /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
@@ -5181,6 +5205,7 @@ CMakeFiles/Client.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/s
   /usr/include/c++/14.2.1/bits/node_handle.h \
   /usr/include/c++/14.2.1/bits/ostream.tcc \
   /usr/include/c++/14.2.1/bits/ostream_insert.h \
+  /usr/include/c++/14.2.1/bits/parse_numbers.h \
   /usr/include/c++/14.2.1/bits/postypes.h \
   /usr/include/c++/14.2.1/bits/predefined_ops.h \
   /usr/include/c++/14.2.1/bits/ptr_traits.h \
@@ -5206,6 +5231,7 @@ CMakeFiles/Client.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/s
   /usr/include/c++/14.2.1/bits/sstream.tcc \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/std_function.h \
+  /usr/include/c++/14.2.1/bits/std_thread.h \
   /usr/include/c++/14.2.1/bits/stl_algo.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_bvector.h \
@@ -5228,6 +5254,7 @@ CMakeFiles/Client.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/s
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/string_view.tcc \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
+  /usr/include/c++/14.2.1/bits/this_thread_sleep.h \
   /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/14.2.1/bits/unique_ptr.h \
   /usr/include/c++/14.2.1/bits/unordered_map.h \
@@ -5278,6 +5305,7 @@ CMakeFiles/Client.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/s
   /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/14.2.1/pstl/pstl_config.h \
+  /usr/include/c++/14.2.1/ratio \
   /usr/include/c++/14.2.1/regex \
   /usr/include/c++/14.2.1/sstream \
   /usr/include/c++/14.2.1/stack \
@@ -5287,6 +5315,7 @@ CMakeFiles/Client.dir/src/main.cpp.o: /home/samuel/Dev/c++/Rocket_Racer/client/s
   /usr/include/c++/14.2.1/string \
   /usr/include/c++/14.2.1/string_view \
   /usr/include/c++/14.2.1/system_error \
+  /usr/include/c++/14.2.1/thread \
   /usr/include/c++/14.2.1/tr1/bessel_function.tcc \
   /usr/include/c++/14.2.1/tr1/beta_function.tcc \
   /usr/include/c++/14.2.1/tr1/ell_integral.tcc \
@@ -5617,6 +5646,16 @@ CMakeFiles/Client.dir/src/Button.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a:
 
+/usr/lib/libstdc++.so:
+
+/usr/lib/libpthread.a:
+
+/usr/lib/libm.so:
+
+/usr/lib/libgcc_s.so.1:
+
+/usr/lib/libgcc_s.so:
+
 /usr/include/c++/14.2.1/tr1/ell_integral.tcc:
 
 /usr/include/bits/pthread_stack_min-dynamic.h:
@@ -5686,8 +5725,6 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o:
 /usr/include/c++/14.2.1/bits/streambuf_iterator.h:
 
 /usr/include/SDL2/SDL_audio.h:
-
-/usr/lib/libgcc_s.so.1:
 
 /usr/include/c++/14.2.1/iosfwd:
 
@@ -5832,6 +5869,8 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.o:
 /usr/include/bits/types/time_t.h:
 
 /usr/include/bits/types/struct_timeval.h:
+
+/usr/include/c++/14.2.1/thread:
 
 /usr/include/bits/types/struct_timespec.h:
 
@@ -6329,8 +6368,6 @@ CMakeFiles/Client.dir/src/main.cpp.o:
 
 /usr/include/locale.h:
 
-/usr/lib/libstdc++.so:
-
 /usr/include/stdc-predef.h:
 
 /usr/lib32/libbrotlidec.so.1:
@@ -6372,6 +6409,8 @@ CMakeFiles/Client.dir/src/main.cpp.o:
 /usr/include/c++/14.2.1/stack:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxint8intrin.h:
+
+/usr/include/c++/14.2.1/bits/chrono.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vpopcntdqvlintrin.h:
 
@@ -6455,8 +6494,6 @@ CMakeFiles/Client.dir/src/main.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/f16cintrin.h:
 
-/usr/lib/libm.so:
-
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fxsrintrin.h:
 
 /usr/include/bits/types/struct_tm.h:
@@ -6486,8 +6523,6 @@ CMakeFiles/Client.dir/src/main.cpp.o:
 /usr/include/c++/14.2.1/bits/exception_defines.h:
 
 /usr/include/c++/14.2.1/bits/stl_tree.h:
-
-/usr/lib/libgcc_s.so:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/error_constants.h:
 
@@ -6599,9 +6634,13 @@ CMakeFiles/Client.dir/src/main.cpp.o:
 
 /usr/include/c++/14.2.1/bits/move.h:
 
+/usr/include/c++/14.2.1/bits/this_thread_sleep.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavesintrin.h:
+
+/usr/include/c++/14.2.1/bits/parse_numbers.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h:
 
@@ -6636,6 +6675,8 @@ CMakeFiles/Client.dir/src/main.cpp.o:
 /usr/include/c++/14.2.1/bits/regex_compiler.h:
 
 /usr/include/c++/14.2.1/locale:
+
+/usr/include/c++/14.2.1/ratio:
 
 /usr/lib/libbrotlicommon.so.1:
 
@@ -6681,9 +6722,15 @@ CMakeFiles/Client.dir/src/main.cpp.o:
 
 /usr/include/SDL2/SDL_image.h:
 
+/usr/include/c++/14.2.1/bits/std_thread.h:
+
 /usr/include/c++/14.2.1/cstdint:
 
 /usr/include/c++/14.2.1/cstring:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clzerointrin.h:
+
+/usr/include/c++/14.2.1/ctime:
 
 /home/samuel/Dev/c++/Rocket_Racer/client/src/PhysicsSystem.cpp:
 
@@ -6723,10 +6770,6 @@ CMakeFiles/Client.dir/src/main.cpp.o:
 
 /usr/include/c++/14.2.1/bits/regex_executor.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clzerointrin.h:
-
-/usr/include/c++/14.2.1/ctime:
-
 /usr/include/c++/14.2.1/sstream:
 
 /usr/include/c++/14.2.1/pstl/pstl_config.h:
@@ -6742,5 +6785,3 @@ CMakeFiles/Client.dir/src/main.cpp.o:
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h:
 
 /usr/lib/libSDL2_ttf.so:
-
-/usr/lib/libpthread.a:

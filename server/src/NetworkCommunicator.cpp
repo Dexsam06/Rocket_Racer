@@ -28,7 +28,7 @@ void NetworkCommunicator::NetworkHandler()
     while (enet_host_service(server, &event, 0) > 0)
     {
         ClientInfoPacket clientInfoPacket;
-        std::vector<InputWithSequence> receivedInputs;
+        ClientInputPacket clientInputPacket; 
 
         const uint8_t *buffer = nullptr;
         size_t packetSize;
@@ -57,8 +57,8 @@ void NetworkCommunicator::NetworkHandler()
                 handleConnections(event, clientInfoPacket);
                 break;
             case PacketType::INPUT_PACKET:
-                InputWithSequence::Deserialize(buffer, packetSize, receivedInputs);
-                clientsInputBuffer.push_back({event.peer->incomingPeerID, receivedInputs});
+                clientInputPacket.Deserialize(buffer, packetSize);
+                clientsInputBuffer[event.peer->incomingPeerID] = clientInputPacket;
                 std::cout << "Received a input packet from client: " << event.peer->incomingPeerID << std::endl;
                 break;
             }

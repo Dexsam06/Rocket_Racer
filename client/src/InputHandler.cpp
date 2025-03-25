@@ -1,9 +1,9 @@
 #include "../include/InputHandler.hpp"
 
-std::vector<KeyInput> InputHandler::handleInput(std::vector<std::unique_ptr<Button>> &buttonList)
+void InputHandler::handleInput(std::vector<std::unique_ptr<Button>> &buttonList)
 {
     SDL_Event event;
-    std::vector<KeyInput> keyInputPacket;
+    uint32_t currentTime;
 
     while (SDL_PollEvent(&event))
     {
@@ -12,24 +12,14 @@ std::vector<KeyInput> InputHandler::handleInput(std::vector<std::unique_ptr<Butt
         case SDL_KEYDOWN:
             if (event.key.repeat == 0) 
             {
-                if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_RIGHT ||
-                    event.key.keysym.sym == SDLK_SPACE)
-                {
-                    keyPressTimes[event.key.keysym.sym] = SDL_GetTicks(); 
-                }
+                currentTime = SDL_GetTicks();
+                sendInputToServer(ClientInputPacket(event.key.keysym.sym, true)); 
             }
             break;
 
         case SDL_KEYUP:
-            if (keyPressTimes.count(event.key.keysym.sym))
-            {
-                Uint32 pressTime = keyPressTimes[event.key.keysym.sym];
-                Uint32 releaseTime = SDL_GetTicks();
-                float duration = (releaseTime - pressTime) / 1000.0f; // Convert to seconds
-
-                keyHoldDurations[event.key.keysym.sym] = duration;
-                keyPressTimes.erase(event.key.keysym.sym); // Remove recorded press time
-            }
+                currentTime = SDL_GetTicks();
+                sendInputToServer(ClientInputPacket(event.key.keysym.sym, false));  
             break;
 
         case SDL_QUIT:
@@ -44,19 +34,4 @@ std::vector<KeyInput> InputHandler::handleInput(std::vector<std::unique_ptr<Butt
             break;
         }
     }
-
-    if (!keyHoldDurations.empty()) {
-        for (const auto &key : keyHoldDurations) 
-        {
-            int keyType = key.first; 
-            float duration = key.second;
-
-            keyInputPacket.push_back({keyType, duration});
-        } 
-
-        // Clear keyHoldDurations after sending the data
-        keyHoldDurations.clear();
-    }
-
-    return keyInputPacket;  
 }

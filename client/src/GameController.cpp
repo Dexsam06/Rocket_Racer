@@ -13,6 +13,8 @@ GameController::GameController(NetworkCommunicator *nc, GameView *gv, std::strin
 
     nc->setDisPlaCallback([this](PlayerDisconnectedPacket &data)
                           { this->HandleDisPLaData(data); });
+    inputHandler.setInputPacketCallback([this](ClientInputPacket &data)
+    { this->HandleInputEvent(data); });
 }
 
 GameController::~GameController() {}
@@ -40,47 +42,26 @@ void GameController::gameLoop()
         double deltaTime = (SDL_GetTicks() - previousTime);
         if (deltaTime > updateTime)
         {
-            previousTime = SDL_GetTicks();
+            previousTime = SDL_GetTicks(); 
             nc->handleReceivedPacket();
 
-            Vector2D serverPos(nc->getGameStatePacket().clientState.serverPosX, nc->getGameStatePacket().clientState.serverPosY);
-            clientPlayer->reconcileClientState(serverPos, nc->getGameStatePacket().clientState.rotation, 0.2f);
+            clientPlayer->reconcileClientState(nc->getGameStatePacket(), 0.2f);
         
-            removeConfirmedInputs();  
             handleEvents();
-            reapplyUnconfirmedInputs();
+            
             physicsSystem.predictClientPosition(entityList, deltaTime / 1000.0);
-
-            if (!inputBuffer.empty())
-            {
-                nc->sendInputPacketToServer(inputBuffer);
-
-                for (auto &input : inputBuffer)
-                {
-                    unconfirmedInputs.push_back(input);
-                }
-
-                inputBuffer.clear();
-            }
 
             interpolateOtherEntities();
             gv->render(entityList, buttonList);
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
-    gv->clean();
+    gv->clean(); 
 }
 
-void GameController::handleEvents()
+void GameController::handleEvents() 
 {
-    std::vector<KeyInput> keyInputPacket = inputHandler.handleInput(buttonList);
-
-    if (!keyInputPacket.empty())
-    {
-        InputWithSequence inputWithSeq(inputSequenceNumber, keyInputPacket);
-        inputSequenceNumber++;
-
-        inputBuffer.push_back(inputWithSeq);
-    }
+    inputHandler.handleInput(buttonList);
 
     if (inputHandler.isQuit())
     {
@@ -89,28 +70,10 @@ void GameController::handleEvents()
     }
 }
 
-void GameController::removeConfirmedInputs()
+void GameController::HandleInputEvent(ClientInputPacket &data)
 {
-    int lastVerifiedInputID = nc->getGameStatePacket().clientState.lastVerifiedInputID;
-
-    unconfirmedInputs.erase(
-        std::remove_if(unconfirmedInputs.begin(), unconfirmedInputs.end(),
-                       [lastVerifiedInputID](const InputWithSequence &input)
-                       {
-                           return input.sequenceNumber <= lastVerifiedInputID; 
-                       }),
-        unconfirmedInputs.end());
-}
-
-void GameController::reapplyUnconfirmedInputs()
-{
-    for (InputWithSequence &InputPacket : unconfirmedInputs)
-    {
-        for (KeyInput &keyInput : InputPacket.keyInputPacket)
-        {
-            clientPlayer->applyInput(keyInput.keyCode, keyInput.duration);
-        }
-    }
+    nc->sendInputToServer(data); 
+    clientPlayer->applyInput(data.key, data.pressed);
 }
 
 void GameController::interpolateOtherEntities() {

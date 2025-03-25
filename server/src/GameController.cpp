@@ -33,6 +33,7 @@ void GameController::gameLoop()
             physicsSystem.update(entityList, deltaTime / 1000.0);
             sendGameStatePacketToClients();
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 }
 
@@ -40,10 +41,10 @@ void GameController::applyClientsInputs()
 {
     auto &clientsInputBuffer = nc->getClientsInputBuffer();
 
-    while (!clientsInputBuffer.empty())
+    while (!clientsInputBuffer.empty()) 
     {
-        auto it = clientsInputBuffer.begin();
-        int clientID = it->clientID;
+        auto clientInput = clientsInputBuffer.begin()->second;
+        int clientID = clientsInputBuffer.begin()->first;
 
         auto playerIt = std::find_if(entityList.begin(), entityList.end(),
                                      [clientID](const std::unique_ptr<Entity> &entity)
@@ -59,23 +60,25 @@ void GameController::applyClientsInputs()
             Player *clientPlayer = dynamic_cast<Player *>(playerIt->get());
             if (clientPlayer)
             {
-                // Apply inputs to the player
-                for (InputWithSequence &InputPacket : it->inputBuffer)
-                {
-                    for (KeyInput &keyInput : InputPacket.keyInputPacket)
-                    {
-                        clientPlayer->applyInput(keyInput.keyCode, keyInput.duration);
-                    }
-                    clientPlayer->setLastVerifiedInput(InputPacket.sequenceNumber);
-                }
+                switch (clientInput.key) {
+                    case SDLK_LEFT:  // Use SDL key codes directly
+                        clientPlayer->setisTurningLeft(clientInput.pressed);
+                        break;
+                    case SDLK_RIGHT:
+                        clientPlayer->setisTurningRight(clientInput.pressed);
+                        break;
+                    case SDLK_SPACE:
+                        clientPlayer->setisThrusting(clientInput.pressed);
+                        break;
+                } 
             }
         }
-        else
+        else 
         {
             std::cerr << "Player not found in the entity list when applying inputs for client ID " << clientID << std::endl;
         }
 
-        clientsInputBuffer.erase(it);
+        clientsInputBuffer.erase(clientID); 
     }
 }
 
@@ -93,15 +96,17 @@ void GameController::sendGameStatePacketToClients()
             Player *player = dynamic_cast<Player *>(it->get());
             if (player && player->getID() == clientID)
             {
-                gameStatePacket.clientState.lastVerifiedInputID = player->getLastVerifiedInput();
                 gameStatePacket.clientState.serverPosX = player->getPosition().x;
                 gameStatePacket.clientState.serverPosY = player->getPosition().y;
                 gameStatePacket.clientState.rotation = player->getRotation();
-                break;
+                gameStatePacket.clientState.isThrusting = player->getisThrusting(); 
+                gameStatePacket.clientState.isTurningLeft = player->getisTurningLeft();
+                gameStatePacket.clientState.isTurningRight = player->getisTurningRight();
+                break; 
             }
             else
             {
-                ++it;
+                ++it; 
             }
         }
 
@@ -181,7 +186,7 @@ void GameController::loadResources()
         std::make_unique<CircleCollider>(
             Vector2D(1300, (1080 / 2) + (352 / 2) - 700),
             400.0),
-        Vector2D(1300, (1080 / 2) + (352 / 2) - 700),
+        Vector2D(1300, (1080 / 2) + (352 / 2) - 700), 
         Vector2D(150, 0),
         100000.0,
         400.0,

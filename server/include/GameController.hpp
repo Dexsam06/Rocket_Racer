@@ -6,6 +6,7 @@
 #include <iostream>
 #include <chrono>
 #include <algorithm>
+#include <thread>
 
 #include "Vector2D.hpp"
 #include "NetworkCommunicator.hpp"

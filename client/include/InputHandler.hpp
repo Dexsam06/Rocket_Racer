@@ -8,21 +8,26 @@
 #include "Player.hpp"
 #include "Button.hpp"
 #include "NetworkPackets.hpp"
-#include "Physics.hpp" 
 
 class InputHandler
 {
 
 public:
-    std::vector<KeyInput> handleInput(std::vector<std::unique_ptr<Button>> &buttonList);
+    void handleInput(std::vector<std::unique_ptr<Button>> &buttonList);
     bool isQuit() const { return quit; }
+
+    using InputPacketCallback = std::function<void(ClientInputPacket &)>;
+
+    void setInputPacketCallback(InputPacketCallback callback) {inputPacketCallback = callback; }
+
+    void sendInputToServer(ClientInputPacket packet) {
+        if (inputPacketCallback) inputPacketCallback(packet);
+    }
 
 private:
     bool quit = false;
-    KeyInput newInput;
 
-    std::unordered_map<SDL_Keycode, Uint32> keyPressTimes;   // Stores key press timestamps
-    std::unordered_map<SDL_Keycode, float> keyHoldDurations;
+    InputPacketCallback inputPacketCallback;
 };
 
 #endif

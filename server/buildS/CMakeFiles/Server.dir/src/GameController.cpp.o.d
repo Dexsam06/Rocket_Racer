@@ -166,6 +166,9 @@ CMakeFiles/Server.dir/src/GameController.cpp.o: \
  /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
  /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
+ /usr/include/c++/14.2.1/thread /usr/include/c++/14.2.1/bits/std_thread.h \
+ /usr/include/c++/14.2.1/bits/unique_ptr.h \
+ /usr/include/c++/14.2.1/bits/this_thread_sleep.h \
  /home/samuel/Dev/c++/Rocket_Racer/server/src/../include/Vector2D.hpp \
  /usr/include/c++/14.2.1/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
@@ -211,7 +214,6 @@ CMakeFiles/Server.dir/src/GameController.cpp.o: \
  /usr/include/enet/callbacks.h /usr/include/c++/14.2.1/memory \
  /usr/include/c++/14.2.1/bits/stl_raw_storage_iter.h \
  /usr/include/c++/14.2.1/bits/align.h \
- /usr/include/c++/14.2.1/bits/unique_ptr.h \
  /usr/include/c++/14.2.1/bits/shared_ptr.h \
  /usr/include/c++/14.2.1/bits/shared_ptr_base.h \
  /usr/include/c++/14.2.1/bits/allocated_ptr.h \
