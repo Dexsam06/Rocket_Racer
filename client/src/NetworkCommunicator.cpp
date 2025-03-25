@@ -144,6 +144,4 @@ void NetworkCommunicator::sendInputToServer(ClientInputPacket &clientInputPacket
     enet_peer_send(serverPeer, 0, packet); 
 
     enet_host_flush(client);  
-
-    std::cout << "Sent input packet to the server!" << std::endl;
 }

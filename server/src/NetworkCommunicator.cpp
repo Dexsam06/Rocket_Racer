@@ -59,12 +59,11 @@ void NetworkCommunicator::NetworkHandler()
             case PacketType::INPUT_PACKET:
                 clientInputPacket.Deserialize(buffer, packetSize);
                 clientsInputBuffer[event.peer->incomingPeerID] = clientInputPacket;
-                std::cout << "Received a input packet from client: " << event.peer->incomingPeerID << std::endl;
                 break;
             }
 
             break;
-        case ENET_EVENT_TYPE_DISCONNECT:
+        case ENET_EVENT_TYPE_DISCONNECT: 
             handleDisconnections(event);
             break;
         }

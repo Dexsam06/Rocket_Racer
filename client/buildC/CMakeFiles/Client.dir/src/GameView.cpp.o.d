@@ -217,9 +217,9 @@ CMakeFiles/Client.dir/src/GameView.cpp.o: \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
- /usr/include/SDL2/SDL_misc.h /usr/include/SDL2/SDL_ttf.h \
- /usr/include/SDL2/SDL.h /usr/include/c++/14.2.1/memory \
- /usr/include/c++/14.2.1/bits/memoryfwd.h \
+ /usr/include/SDL2/SDL_misc.h /usr/include/SDL2/SDL_image.h \
+ /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_ttf.h \
+ /usr/include/c++/14.2.1/memory /usr/include/c++/14.2.1/bits/memoryfwd.h \
  /usr/include/c++/14.2.1/bits/allocator.h \
  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
  /usr/include/c++/14.2.1/bits/new_allocator.h /usr/include/c++/14.2.1/new \

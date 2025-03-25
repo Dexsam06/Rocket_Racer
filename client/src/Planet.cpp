@@ -34,7 +34,7 @@ void Planet::draw(SDL_Renderer *renderer, int screenWidth, int screenHeight, Vec
     Vector2D scaledPosition(
         screenCenter.x + scaledOffset.x,
         screenCenter.y + scaledOffset.y);
-
+ 
     int scaledWidth = static_cast<int>((2 * radius) * scalingFactor.x);
     int scaledHeight = static_cast<int>((2 * radius) * scalingFactor.y);
 

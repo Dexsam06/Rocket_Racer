@@ -28,6 +28,7 @@ public:
     int getPlayerWidth() {return playerWidth; }
     int getPlayerHeight() {return playerHeight; }
     std::string getUsername() {return username; } 
+    bool getisThrusting() {return isThrusting; }
 
     void update(double &xGravityForce, double &yGravityForce, double &deltaTime) override;
     void reconcileClientState(GameStatePacket &gameStatePacket, double lerpFactor); 
