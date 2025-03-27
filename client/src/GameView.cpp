@@ -62,27 +62,11 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
     SDL_RenderClear(renderer);
 
     Player *clientPlayer = dynamic_cast<Player *>(entityList[0].get());
-    drawBackground(clientPlayer);
     Vector2D clientPlayerPos = clientPlayer->getPosition();
 
-    // Draw client player
-    int scaledWidth = static_cast<int>(clientPlayer->getPlayerWidth() * scalingFactor.x);
-    int scaledHeight = static_cast<int>(clientPlayer->getPlayerHeight() * scalingFactor.y);
-
-    SDL_Rect playerDestRect = {
-        screenWidth / 2 - scaledWidth / 2,
-        screenHeight / 2 - scaledHeight / 2,
-        scaledWidth,
-        scaledHeight};
-    SDL_RenderCopyEx(renderer, clientPlayer->getTexture(), nullptr, &playerDestRect, clientPlayer->getRotation(), nullptr, SDL_FLIP_NONE);
-    int textPositionX = screenWidth / 2 - (45 / 2) * scalingFactor.x;
-    int textPositionY = (screenHeight / 2) + 200 * scalingFactor.y;
-    drawPlayerUsername(textPositionX, textPositionY, clientPlayer->getUsername());
-    if (clientPlayer->getisThrusting() == true)
-    {
-        drawExhaustAnimation(clientPlayerPos, clientPlayerPos, clientPlayer->getRotation());
-    }
-
+    drawBackground(clientPlayer);
+    drawClientPlayer(clientPlayer);
+    
     // Draw other entities
     for (int i = 1; i < entityList.size(); i++)
     {
@@ -101,19 +85,7 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
 
         if (Player *player = dynamic_cast<Player *>(entityList[i].get()))
         {
-            Vector2D screenCenter(screenWidth / 2, screenHeight / 2);
-
-            Vector2D offsetFromClientPlayer(
-                player->getPosition().x - clientPlayerPos.x,
-                player->getPosition().y - clientPlayerPos.y);
-
-            Vector2D scaledOffset(
-                offsetFromClientPlayer.x * scalingFactor.x,
-                offsetFromClientPlayer.y * scalingFactor.y);
-
-            textPositionX = screenCenter.x + scaledOffset.x,
-            textPositionY = screenCenter.y + scaledOffset.y;
-            drawPlayerUsername(textPositionX, textPositionY, player->getUsername());
+            drawPlayerUsername(player->getPosition(), clientPlayerPos, player->getUsername());
         }
     }
 
@@ -147,31 +119,22 @@ void GameView::clean()
     std::cout << "Game Cleaned" << std::endl;
 }
 
-void GameView::setupFireExhaustSpriteSheet()
+void GameView::drawClientPlayer(Player* clientPlayer)
 {
-    std::string path = resourcePath + "fireSpriteSheet.png";
-    SDL_Surface *loadedSurface = IMG_Load(path.c_str());
-    if (!loadedSurface)
-    {
-        std::cerr << "Failed to load fire sprite sheet! SDL_image Error: " << IMG_GetError() << std::endl;
-        return;
-    }
+    // Draw client player
+    int scaledWidth = static_cast<int>(clientPlayer->getPlayerWidth() * scalingFactor.x);
+    int scaledHeight = static_cast<int>(clientPlayer->getPlayerHeight() * scalingFactor.y);
 
-    fireTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-    SDL_FreeSurface(loadedSurface);
-
-    if (!fireTexture)
+    SDL_Rect playerDestRect = {
+        screenWidth / 2 - scaledWidth / 2,
+        screenHeight / 2 - scaledHeight / 2,
+        scaledWidth,
+        scaledHeight};
+    SDL_RenderCopyEx(renderer, clientPlayer->getTexture(), nullptr, &playerDestRect, clientPlayer->getRotation(), nullptr, SDL_FLIP_NONE);
+    drawPlayerUsername(clientPlayer->getPosition(), clientPlayer->getPosition(), clientPlayer->getUsername());
+    if (clientPlayer->getisThrusting() == true)
     {
-        std::cerr << "Failed to create fire texture! SDL Error: " << SDL_GetError() << std::endl;
-        return;
-    }
-
-    for (int i = 0; i < FRAME_COUNT; i++)
-    {
-        spriteClips[i].x = i * FRAME_WIDTH;
-        spriteClips[i].y = 0;
-        spriteClips[i].w = FRAME_WIDTH;
-        spriteClips[i].h = FRAME_HEIGHT;
+        drawExhaustAnimation(clientPlayer->getPosition(), clientPlayer->getPosition(), clientPlayer->getRotation());
     }
 }
 
@@ -202,18 +165,16 @@ void GameView::drawExhaustAnimation(Vector2D currentPlayerPosition, Vector2D pla
     double fireY = scaledPosition.y + (cos(theta) * ROCKET_HEIGHT);
 
     // Scale width/height for flame
-    int scaledWidth = static_cast<int>(FRAME_WIDTH * scalingFactor.x) * 0.3;
+    int scaledWidth = static_cast<int>(FRAME_WIDTH * scalingFactor.x) * 0.35;
     int scaledHeight = static_cast<int>(FRAME_HEIGHT * scalingFactor.y) * 0.6;
 
     // Define SDL_Rect (centered at computed position)
     SDL_Rect destRect = {
         static_cast<int>(fireX - scaledWidth / 2),  // Center horizontally
-        static_cast<int>(fireY - scaledHeight / 2), // Center vertically
+        static_cast<int>(fireY - scaledHeight / 2), // Center vertically 3
         scaledWidth,
         scaledHeight};
 
-    // Fix pivot for proper rotation
-   
     // Correctly rotate flame (opposite to rocket)
     SDL_RenderCopyEx(renderer, fireTexture, &spriteClips[frame], &destRect, rotation + 180, nullptr, SDL_FLIP_NONE);
 }
@@ -239,49 +200,29 @@ void GameView::drawBackground(Player *clientPlayer)
         for (int y = startY; y < screenHeight; y += bgHeight)
         {
             SDL_Rect destRect = {x, y, bgWidth, bgHeight};
-            SDL_RenderCopy(renderer, background, nullptr, &destRect);
+            SDL_RenderCopy(renderer, background, nullptr, &destRect); 
         }
     }
 
     SDL_RenderSetScale(renderer, 1.0, 1.0);
 }
 
-void GameView::drawFuturePath(std::vector<Vector2D> &futurePath, Vector2D playerPos)
+void GameView::drawPlayerUsername(Vector2D currentPlayerPosition, Vector2D clientPlayerPosition, const std::string &username)
 {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    Vector2D screenCenter(screenWidth / 2, screenHeight / 2);
 
-    std::vector<Vector2D> adjustedPathPlayer;
-    std::vector<Vector2D> adjustedPathMoon;
-    int count = 0;
-    for (const auto &point : futurePath)
-    {
-        Vector2D adjusted = point - playerPos;
-        adjusted.x *= scalingFactor.x;
-        adjusted.y *= scalingFactor.y;
-        adjusted += Vector2D(screenWidth / 2, screenHeight / 2);
-        if (count % 2 == 0)
-        {
-            adjustedPathPlayer.push_back(adjusted);
-        }
-        else
-        {
-            adjustedPathMoon.push_back(adjusted);
-        }
-        count++;
-    }
+    Vector2D offsetFromClientPlayer(
+        currentPlayerPosition.x - clientPlayerPosition.x,
+        currentPlayerPosition.y - clientPlayerPosition.y); 
 
-    // Player future path
-    auto sdlPoints = convertToSDLPoints(adjustedPathPlayer);
-    SDL_RenderDrawLines(renderer, sdlPoints.data(), futurePath.size() / 2);
+    Vector2D scaledOffset(
+        offsetFromClientPlayer.x * scalingFactor.x,
+        offsetFromClientPlayer.y * scalingFactor.y);
 
-    // Moon future path
-    sdlPoints = convertToSDLPoints(adjustedPathMoon);
-    SDL_RenderDrawLines(renderer, sdlPoints.data(), futurePath.size() / 2);
-}
+    int textPositionX = screenCenter.x + scaledOffset.x;
+    int textPositionY = screenCenter.y + scaledOffset.y;
 
-void GameView::drawPlayerUsername(int &x, int &y, const std::string &username)
-{
-    SDL_Color textColor = {255, 255, 255, 255}; // White color
+    SDL_Color textColor = {0, 255, 0, 255}; 
     SDL_Surface *textSurface = TTF_RenderText_Solid(font, username.c_str(), textColor);
     if (!textSurface)
     {
@@ -292,26 +233,41 @@ void GameView::drawPlayerUsername(int &x, int &y, const std::string &username)
     if (!textTexture)
     {
         std::cerr << "Unable to create texture from text surface! SDL_Error: " << SDL_GetError() << std::endl;
-        SDL_FreeSurface(textSurface);
+        SDL_FreeSurface(textSurface); 
         return;
     }
 
-    SDL_Rect textRect = {x, y, textSurface->w, textSurface->h};
-    SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
+    SDL_Rect textRect = {textPositionX - textSurface->w / 2, textPositionY - textSurface->h / 2, textSurface->w, textSurface->h}; 
+    SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);  
 
-    SDL_FreeSurface(textSurface);
+    SDL_FreeSurface(textSurface); 
     SDL_DestroyTexture(textTexture);
 }
 
-std::vector<SDL_Point> GameView::convertToSDLPoints(const std::vector<Vector2D> &points)
+void GameView::setupFireExhaustSpriteSheet()
 {
-    std::vector<SDL_Point> sdlPoints;
-    sdlPoints.reserve(points.size());
-
-    for (const auto &point : points)
+    std::string path = resourcePath + "fireSpriteSheet.png";
+    SDL_Surface *loadedSurface = IMG_Load(path.c_str());
+    if (!loadedSurface)
     {
-        sdlPoints.push_back(SDL_Point{static_cast<int>(point.x), static_cast<int>(point.y)});
+        std::cerr << "Failed to load fire sprite sheet! SDL_image Error: " << IMG_GetError() << std::endl;
+        return;
     }
 
-    return sdlPoints;
+    fireTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+    SDL_FreeSurface(loadedSurface);
+
+    if (!fireTexture)
+    {
+        std::cerr << "Failed to create fire texture! SDL Error: " << SDL_GetError() << std::endl;
+        return;
+    }
+
+    for (int i = 0; i < FRAME_COUNT; i++)
+    {
+        spriteClips[i].x = i * FRAME_WIDTH;
+        spriteClips[i].y = 0;
+        spriteClips[i].w = FRAME_WIDTH;
+        spriteClips[i].h = FRAME_HEIGHT;
+    }
 }

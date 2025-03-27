@@ -70,7 +70,7 @@ void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entity
                 if (totalInvMass <= 0)
                     continue; // Both static
 
-                Vector2D relativeVelocity = b.getVelocity() - a.getVelocity();
+                Vector2D relativeVelocity = b.getVelocity() - a.getVelocity(); 
                 double velocityAlongNormal = relativeVelocity.dot(normal);
                 if (velocityAlongNormal > 0)
                     continue; // Objects are moving away from each other
@@ -93,28 +93,3 @@ void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entity
     }
 }
 
-
-std::vector<Vector2D> PhysicsSystem::calculateFuturePath(std::vector<std::unique_ptr<Entity>> &entityList, double deltaTime, double predictionTime)
-{
-    std::vector<std::unique_ptr<Entity>> tempEntities; 
-    for (std::unique_ptr<Entity> &entity : entityList)
-    {
-        //tempEntities.push_back(entity->clone()); 
-    }
-
-    int steps = static_cast<int>(predictionTime / deltaTime);
-    std::vector<Vector2D> futurePath;
-
-    for (int i = 0; i < steps; ++i)
-    {
-        //applyGravity(tempEntities, deltaTime); 
-        handleCollision(tempEntities);
-
-        if (tempEntities.size() > 0)
-            futurePath.push_back(tempEntities[0]->getPosition());
-        if (tempEntities.size() > 2)
-            futurePath.push_back(tempEntities[2]->getPosition());
-    }
-
-    return futurePath;
-}

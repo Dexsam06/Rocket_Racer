@@ -39,12 +39,11 @@ class GameView {
         Vector2D scalingFactor;
         std::string resourcePath;
 
-        void drawPlayerUsername(int &x, int &y, const std::string &username);
+        void drawClientPlayer(Player* clientPlayer);
+        void drawPlayerUsername(Vector2D currentPlayerPosition, Vector2D clientPlayerPosition, const std::string &username);
         void drawBackground(Player* clientPlayer);
-        void drawFuturePath(std::vector<Vector2D>& futurePath, Vector2D playerPos);
-        std::vector<SDL_Point> convertToSDLPoints(const std::vector<Vector2D>& points);
-
         void drawExhaustAnimation(Vector2D currentPlayerPosition, Vector2D playerClientPos, double rotation);
+
         void setupFireExhaustSpriteSheet();
 
         static const int FRAME_COUNT = 4;

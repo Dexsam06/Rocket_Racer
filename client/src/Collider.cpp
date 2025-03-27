@@ -14,7 +14,7 @@ bool CircleCollider::CheckCollision(const Collider& other, Vector2D& normal, dou
         // For circles, m_position is the center
         const Vector2D delta = circle->m_position - m_position;
         const double distance = delta.magnitude();
-        const double totalRadius = m_radius + circle->m_radius;
+        const double totalRadius = m_radius + circle->m_radius; 
 
         if(distance >= totalRadius) return false;
         
@@ -180,7 +180,7 @@ void RectangleCollider::ResolveCollision(Vector2D &velocity, const Vector2D &nor
         return;
 
     const double impulseMagnitude = -(1 + restitution) * velocityAlongNormal / (inverseMass);
-    velocity += normal * impulseMagnitude * inverseMass;
+    velocity += normal * impulseMagnitude * inverseMass; 
 }
 
 void RectangleCollider::ProjectOntoAxis(const Vector2D &axis, double &min, double &max) const

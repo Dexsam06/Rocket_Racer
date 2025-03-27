@@ -171,12 +171,12 @@ void GameController::loadResources()
     // Planets
     std::unique_ptr<Planet> earth = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(960, (1080 / 2) + (352 / 2 + 1000)),
-            1000.0),
-        Vector2D(960, (1080 / 2) + (352 / 2 + 1000)),
+            Vector2D(960, (1080 / 2) + (352 / 2 + 2000)),
+            2000.0),
+        Vector2D(960, (1080 / 2) + (352 / 2 + 2000)),
         Vector2D(0, 0),
-        1000000.0,
-        1000.0,
+        100000000.0,
+        2000.0,
         1000);
     entityList.push_back(std::move(earth));
 
@@ -184,12 +184,12 @@ void GameController::loadResources()
 
     std::unique_ptr<Planet> moon = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(1300, (1080 / 2) + (352 / 2) - 700),
-            400.0),
-        Vector2D(1300, (1080 / 2) + (352 / 2) - 700), 
-        Vector2D(150, 0),
-        100000.0,
-        400.0,
+            Vector2D(1300, (1080 / 2) + (352 / 2) - 3000),
+            800.0),
+        Vector2D(1300, (1080 / 2) + (352 / 2) - 3000), 
+        Vector2D(300, 0),
+        1000000.0,
+        800.0,
         1001);
     entityList.push_back(std::move(moon)); 
 

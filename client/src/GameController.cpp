@@ -138,11 +138,11 @@ void GameController::HandleConPlaData(ConnectedPlayersPacket &data)
     {
         std::unique_ptr<Player> player = std::make_unique<Player>(
             std::make_unique<RectangleCollider>(
-                Vector2D(700 + (70 * client.first), 500),
+                Vector2D(700 + (70 * client.first), 500), 
                 Vector2D(width, height)),
             playerTexture,
             Vector2D(700 + (70 * client.first), 500),
-            Vector2D(0, 0),
+            Vector2D(0, 0), 
             100.0,
             client.first,
             client.second);
@@ -221,13 +221,13 @@ void GameController::loadResources()
 
     std::unique_ptr<Planet> moon = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(1300, (1080 / 2) + (352 / 2) - 700), 
-            400.0), 
+            Vector2D(1300, (1080 / 2) + (352 / 2) - 3000), 
+            800.0), 
         moonTexture,
-        Vector2D(1300, (1080 / 2) + (352 / 2) - 700),      
-        Vector2D(0, 0),
-        100000.0,
-        400.0,
+        Vector2D(1300, (1080 / 2) + (352 / 2) - 3000),      
+        Vector2D(300, 0),
+        1000000.0,
+        800.0,
         1001
         );
     entityList.insert(entityList.begin(), std::move(moon));  
@@ -238,18 +238,18 @@ void GameController::loadResources()
 
     SDL_Texture *earthTexture = textureManager.loadTexture("earth", planetResource, gv->getRenderer());
     if(!earthTexture || earthTexture == nullptr) {
-        std::cout << "Failed to load earth texture" << std::endl;
+        std::cout << "Failed to load earth texture" << std::endl; 
     }
 
     std::unique_ptr<Planet> earth = std::make_unique<Planet>(
         std::make_unique<CircleCollider>(
-            Vector2D(960, (1080 / 2) + (352 / 2) + 1000), 
-            1000.0), 
+            Vector2D(960, (1080 / 2) + (352 / 2) + 2000), 
+            2000.0), 
         earthTexture,
-        Vector2D(960, (1080 / 2) + (352 / 2) + 1000),    
+        Vector2D(960, (1080 / 2) + (352 / 2) + 2000),    
         Vector2D(0, 0),
-        1000000.0,
-        1000.0,
+        100000000.0,
+        2000.0,
         1000
         );
     entityList.insert(entityList.begin(), std::move(earth));  
