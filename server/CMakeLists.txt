@@ -12,7 +12,8 @@ include_directories(${ENet_INCLUDE_DIRS})
 
 # Set the source files
 set(SOURCES
-    src/Collider.cpp
+    src/RectangleCollider.cpp
+    src/CircleCollider.cpp
     src/Entity.cpp
     src/GameController.cpp
     src/main.cpp

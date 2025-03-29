@@ -65,8 +65,9 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
     Vector2D clientPlayerPos = clientPlayer->getPosition();
 
     drawBackground(clientPlayer);
+    drawLeaderBoard(entityList);
     drawClientPlayer(clientPlayer);
-    
+
     // Draw other entities
     for (int i = 1; i < entityList.size(); i++)
     {
@@ -119,7 +120,66 @@ void GameView::clean()
     std::cout << "Game Cleaned" << std::endl;
 }
 
-void GameView::drawClientPlayer(Player* clientPlayer)
+void GameView::drawLeaderBoard(std::vector<std::unique_ptr<Entity>> &entityList)
+{
+    const char *text = "Leaderboard";
+    SDL_Surface *textSurface = TTF_RenderText_Blended(font, text, {255, 255, 255, 255});
+    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+    SDL_FreeSurface(textSurface);
+
+    int textWidth, textHeight;
+    SDL_QueryTexture(textTexture, nullptr, nullptr, &textWidth, &textHeight);
+    SDL_Rect textRect = {0.85 * screenWidth, 0.1 * screenHeight, textWidth, textHeight};
+    SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
+    SDL_DestroyTexture(textTexture);
+
+    Vector2D moonPos;
+
+    for (int i = 0; i < entityList.size(); i++)
+    {
+        if (entityList[i]->getID() == 1001)
+        {
+            moonPos = entityList[i]->getPosition();
+            break;
+        }
+    }
+
+    std::vector<std::pair<int, std::string>> leaderBoardData;
+
+    for (int i = 0; i < entityList.size(); i++)
+    {
+        Player *player = dynamic_cast<Player *>(entityList[i].get()); 
+        if (player)
+        {
+            Vector2D delta = player->getPosition() - moonPos;
+            int distance = static_cast<int>(delta.magnitude()) - 900;
+            std::string text = player->getUsername();
+            leaderBoardData.push_back({distance, text});
+        }
+    }
+
+    std::sort(leaderBoardData.begin(), leaderBoardData.end(),
+              [](const std::pair<int, std::string> &a, const std::pair<int, std::string> &b)
+              {
+                  return a.first < b.first;
+              });
+
+    for (int i = 0; i < leaderBoardData.size(); i++)
+    {
+        std::string text = std::to_string((i + 1)) + ": " + leaderBoardData[i].second + " - " + std::to_string(leaderBoardData[i].first) + " meters";
+        SDL_Surface *textSurface = TTF_RenderText_Blended(font, text.c_str(), {255, 255, 255, 255});
+        SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+        SDL_FreeSurface(textSurface);
+
+        int textWidth, textHeight;
+        SDL_QueryTexture(textTexture, nullptr, nullptr, &textWidth, &textHeight);
+        SDL_Rect textRect = {0.85 * screenWidth, (0.1 * screenHeight) + ((i + 1) * 50), textWidth, textHeight};
+        SDL_RenderCopy(renderer, textTexture, nullptr, &textRect); 
+        SDL_DestroyTexture(textTexture);
+    }
+}
+
+void GameView::drawClientPlayer(Player *clientPlayer)
 {
     // Draw client player
     int scaledWidth = static_cast<int>(clientPlayer->getPlayerWidth() * scalingFactor.x);
@@ -154,13 +214,10 @@ void GameView::drawExhaustAnimation(Vector2D currentPlayerPosition, Vector2D pla
         screenCenter.x + scaledOffset.x,
         screenCenter.y + scaledOffset.y);
 
-    // Rocket dimensions
-    const double ROCKET_HEIGHT = 250 * scalingFactor.y; // 352 / 2
+    const double ROCKET_HEIGHT = 250 * scalingFactor.y;
 
-    // Convert rotation to radians
     double theta = rotation * M_PI / 180.0;
 
-    // Compute exhaust position relative to the rocket
     double fireX = scaledPosition.x - (sin(theta) * ROCKET_HEIGHT);
     double fireY = scaledPosition.y + (cos(theta) * ROCKET_HEIGHT);
 
@@ -200,7 +257,7 @@ void GameView::drawBackground(Player *clientPlayer)
         for (int y = startY; y < screenHeight; y += bgHeight)
         {
             SDL_Rect destRect = {x, y, bgWidth, bgHeight};
-            SDL_RenderCopy(renderer, background, nullptr, &destRect); 
+            SDL_RenderCopy(renderer, background, nullptr, &destRect);
         }
     }
 
@@ -213,7 +270,7 @@ void GameView::drawPlayerUsername(Vector2D currentPlayerPosition, Vector2D clien
 
     Vector2D offsetFromClientPlayer(
         currentPlayerPosition.x - clientPlayerPosition.x,
-        currentPlayerPosition.y - clientPlayerPosition.y); 
+        currentPlayerPosition.y - clientPlayerPosition.y);
 
     Vector2D scaledOffset(
         offsetFromClientPlayer.x * scalingFactor.x,
@@ -222,7 +279,7 @@ void GameView::drawPlayerUsername(Vector2D currentPlayerPosition, Vector2D clien
     int textPositionX = screenCenter.x + scaledOffset.x;
     int textPositionY = screenCenter.y + scaledOffset.y;
 
-    SDL_Color textColor = {0, 255, 0, 255}; 
+    SDL_Color textColor = {0, 255, 0, 255};
     SDL_Surface *textSurface = TTF_RenderText_Solid(font, username.c_str(), textColor);
     if (!textSurface)
     {
@@ -233,14 +290,14 @@ void GameView::drawPlayerUsername(Vector2D currentPlayerPosition, Vector2D clien
     if (!textTexture)
     {
         std::cerr << "Unable to create texture from text surface! SDL_Error: " << SDL_GetError() << std::endl;
-        SDL_FreeSurface(textSurface); 
+        SDL_FreeSurface(textSurface);
         return;
     }
 
-    SDL_Rect textRect = {textPositionX - textSurface->w / 2, textPositionY - textSurface->h / 2, textSurface->w, textSurface->h}; 
-    SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);  
+    SDL_Rect textRect = {textPositionX - textSurface->w / 2, textPositionY - textSurface->h / 2, textSurface->w, textSurface->h};
+    SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
 
-    SDL_FreeSurface(textSurface); 
+    SDL_FreeSurface(textSurface);
     SDL_DestroyTexture(textTexture);
 }
 

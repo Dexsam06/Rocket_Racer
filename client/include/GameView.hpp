@@ -6,6 +6,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <memory>
+#include <algorithm>
 
 #include "Entity.hpp"
 #include "Player.hpp"
@@ -43,6 +44,7 @@ class GameView {
         void drawPlayerUsername(Vector2D currentPlayerPosition, Vector2D clientPlayerPosition, const std::string &username);
         void drawBackground(Player* clientPlayer);
         void drawExhaustAnimation(Vector2D currentPlayerPosition, Vector2D playerClientPos, double rotation);
+        void drawLeaderBoard(std::vector<std::unique_ptr<Entity>> &entityList);
 
         void setupFireExhaustSpriteSheet();
 

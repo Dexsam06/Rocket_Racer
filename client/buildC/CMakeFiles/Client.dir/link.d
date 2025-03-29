@@ -3,7 +3,8 @@ bin/Client: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o \
   CMakeFiles/Client.dir/src/Button.cpp.o \
-  CMakeFiles/Client.dir/src/Collider.cpp.o \
+  CMakeFiles/Client.dir/src/CircleCollider.cpp.o \
+  CMakeFiles/Client.dir/src/RectangleCollider.cpp.o \
   CMakeFiles/Client.dir/src/Entity.cpp.o \
   CMakeFiles/Client.dir/src/GameController.cpp.o \
   CMakeFiles/Client.dir/src/GameView.cpp.o \
@@ -95,7 +96,9 @@ bin/Client: \
 
 CMakeFiles/Client.dir/src/Button.cpp.o:
 
-CMakeFiles/Client.dir/src/Collider.cpp.o:
+CMakeFiles/Client.dir/src/CircleCollider.cpp.o:
+
+CMakeFiles/Client.dir/src/RectangleCollider.cpp.o:
 
 CMakeFiles/Client.dir/src/Entity.cpp.o:
 

@@ -133,10 +133,10 @@ void GameController::HandleCliInfData(uint16_t &clientID, ClientInfoPacket &data
 {
     std::unique_ptr<Player> player = std::make_unique<Player>(
         std::make_unique<RectangleCollider>(
-            Vector2D(760 + (100 * clientID), 500),
+            Vector2D(760 + (200 * clientID), 500),
             Vector2D(45, 352)), 
-        Vector2D(760 + (100 * clientID), 500),
-        Vector2D(0, 0),
+        Vector2D(760 + (200 * clientID), 500),
+        Vector2D(0, 0), 
         100,
         clientID);
     player->setPlayerWidth(45);

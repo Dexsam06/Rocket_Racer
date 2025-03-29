@@ -138,10 +138,10 @@ void GameController::HandleConPlaData(ConnectedPlayersPacket &data)
     {
         std::unique_ptr<Player> player = std::make_unique<Player>(
             std::make_unique<RectangleCollider>(
-                Vector2D(700 + (70 * client.first), 500), 
+                Vector2D(760 + (200 * client.first), 500), 
                 Vector2D(width, height)),
             playerTexture,
-            Vector2D(700 + (70 * client.first), 500),
+            Vector2D(760 + (200 * client.first), 500),
             Vector2D(0, 0), 
             100.0,
             client.first,
@@ -170,10 +170,10 @@ void GameController::HandleNewPlaData(NewPlayerConnectedPacket &data)
 
     std::unique_ptr<Player> player = std::make_unique<Player>(
         std::make_unique<RectangleCollider>(
-            Vector2D(760 + (100 * data.playerID), 500),
+            Vector2D(760 + (200 * data.playerID), 500),
             Vector2D(width, height)),
         playerTexture,
-        Vector2D(760 + (100 * data.playerID), 500),
+        Vector2D(760 + (200 * data.playerID), 500),
         Vector2D(0, 0),
         100.0,
         data.playerID,
@@ -254,7 +254,7 @@ void GameController::loadResources()
         );
     entityList.insert(entityList.begin(), std::move(earth));  
 
-    std::cout << "Added earth with id: " << 1000 << std::endl;
+    std::cout << "Added earth with id: " << 1000 << std::endl; 
 
     int height, width;
 
@@ -269,10 +269,10 @@ void GameController::loadResources()
 
     std::unique_ptr<Player> tempClientPlayer = std::make_unique<Player>(
         std::make_unique<RectangleCollider>(
-            Vector2D(760 + (100 * nc->getClientID()), 500),
+            Vector2D(760 + (200 * nc->getClientID()), 500),
             Vector2D(width, height)),
         playerTexture,
-        Vector2D(760 + (100 * nc->getClientID()), 500),
+        Vector2D(760 + (200 * nc->getClientID()), 500),
         Vector2D(0, 0),
         100.0,
         nc->getClientID(),
@@ -296,8 +296,8 @@ void GameController::loadResources()
         "Zoom Out",
         gv->getRenderer(),
         gv->getFont(),
-        std::bind(&GameController::onZoomButtonClickOut, this));
-    buttonList.push_back(std::move(zoomButtonIn));
+        std::bind(&GameController::onZoomButtonClickOut, this)); 
+    buttonList.push_back(std::move(zoomButtonIn)); 
 
     zoomButtonOut = std::make_unique<Button>(
         0.85 * gv->getScreenWidth(),

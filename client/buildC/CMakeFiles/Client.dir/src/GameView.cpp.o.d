@@ -274,6 +274,13 @@ CMakeFiles/Client.dir/src/GameView.cpp.o: \
  /usr/include/c++/14.2.1/backward/auto_ptr.h \
  /usr/include/c++/14.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/14.2.1/pstl/execution_defs.h \
+ /usr/include/c++/14.2.1/algorithm \
+ /usr/include/c++/14.2.1/bits/stl_algo.h \
+ /usr/include/c++/14.2.1/bits/algorithmfwd.h \
+ /usr/include/c++/14.2.1/initializer_list \
+ /usr/include/c++/14.2.1/bits/stl_heap.h \
+ /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
+ /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/Entity.hpp \
  /usr/include/SDL2/SDL_render.h /usr/include/c++/14.2.1/iostream \
  /usr/include/c++/14.2.1/ostream /usr/include/c++/14.2.1/ios \
@@ -288,7 +295,6 @@ CMakeFiles/Client.dir/src/GameView.cpp.o: \
  /usr/include/c++/14.2.1/bits/ostream_insert.h \
  /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
  /usr/include/c++/14.2.1/bits/range_access.h \
- /usr/include/c++/14.2.1/initializer_list \
  /usr/include/c++/14.2.1/bits/basic_string.h \
  /usr/include/c++/14.2.1/string_view \
  /usr/include/c++/14.2.1/bits/string_view.tcc \

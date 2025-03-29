@@ -3,28 +3,19 @@
 #include <memory>
 #include <vector>
 
-class Collider {
-protected:
-    Vector2D m_position;
-    double m_rotation;
-    
+class Collider
+{
 public:
-    Collider(const Vector2D& position, double rotation)  
-        : m_position(position), m_rotation(rotation) {}
+    Collider(const Vector2D &position)
+        : m_position(position) {}
     virtual ~Collider() = default;
 
-    // Core functionality
-    virtual bool CheckCollision(const Collider& other, Vector2D& normal, double& penetration) const = 0;
-    virtual void ResolveCollision(Vector2D& velocity, const Vector2D& normal, double restitution, double inverseMass) const = 0;
+    virtual bool CheckCollision(const Collider &other, Vector2D &normal, double &penetration) const = 0;
+    virtual Vector2D ClosestPoint(const Vector2D &point) const = 0;
+    virtual void ProjectOntoAxis(const Vector2D &axis, double &min, double &max) const = 0;
 
-    // Transform operations
-    virtual void UpdatePosition(const Vector2D& newPosition) { m_position = newPosition; }
-    virtual void UpdateRotation(double newRotation) { m_rotation = newRotation; }
+    void updatePosition(Vector2D position) {m_position = position; } 
+    virtual void updateRotation(double rotation) = 0;
     
-    // Getters
-    Vector2D GetPosition() const { return m_position; }
-    double GetRotation() const { return m_rotation; }
-    
-    // Projection for SAT
-    virtual void ProjectOntoAxis(const Vector2D& axis, double& min, double& max) const = 0;
+    Vector2D m_position;
 };

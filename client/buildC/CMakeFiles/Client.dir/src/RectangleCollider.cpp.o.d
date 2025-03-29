@@ -146,7 +146,6 @@ CMakeFiles/Client.dir/src/RectangleCollider.cpp.o: \
  /usr/include/c++/14.2.1/cstddef \
  /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
  /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/CircleCollider.hpp \
- /home/samuel/Dev/c++/Rocket_Racer/client/src/../include/RectangleCollider.hpp \
  /usr/include/c++/14.2.1/algorithm \
  /usr/include/c++/14.2.1/bits/stl_algo.h \
  /usr/include/c++/14.2.1/bits/algorithmfwd.h \

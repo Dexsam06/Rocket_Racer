@@ -42,54 +42,42 @@ void PhysicsSystem::predictClientPosition(std::vector<std::unique_ptr<Entity>> &
     handleCollision(entityList);  
 }
 
-void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>> &entityList)
-{
-    double restitution = 0.2;
+void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>>& entities) {
+    for (size_t i = 0; i < entities.size(); ++i) {
+        for (size_t j = i + 1; j < entities.size(); ++j) {
+            Entity* a = entities[i].get();
+            Entity* b = entities[j].get();
 
-    for (size_t i = 0; i < entityList.size(); ++i)
-    {
-        for (size_t j = i + 1; j < entityList.size(); ++j)
-        {
-            Entity &a = *entityList[i];
-            Entity &b = *entityList[j];
-
-            // Skip if either entity doesn't have a collider
-            if (!a.getCollider() || !b.getCollider())
-                continue;
+            if (!a->getCollider() || !b->getCollider()) continue;
 
             Vector2D normal;
             double penetration = 0;
 
-            if (a.getCollider()->CheckCollision(*b.getCollider(), normal, penetration))
-            {
+            if (a->getCollider()->CheckCollision(*b->getCollider(), normal, penetration)) {
+                double invMassA = a->getInverseMass();
+                double invMassB = b->getInverseMass();
+                double totalInvMass = invMassA + invMassB; 
+                
+                if (totalInvMass <= 0) continue;
 
-                // Resolve velocities with mass consideration
-                double invMassA = a.getInverseMass();
-                double invMassB = b.getInverseMass();
-                double totalInvMass = invMassA + invMassB;
-                if (totalInvMass <= 0)
-                    continue; // Both static
+                Vector2D correction = normal * (penetration / totalInvMass);
+                a->setPosition(a->getPosition() - correction * invMassA);
+                b->setPosition(b->getPosition() + correction * invMassB);
 
-                Vector2D relativeVelocity = b.getVelocity() - a.getVelocity(); 
+                Vector2D relativeVelocity = b->getVelocity() - a->getVelocity();
                 double velocityAlongNormal = relativeVelocity.dot(normal);
-                if (velocityAlongNormal > 0)
-                    continue; // Objects are moving away from each other
 
-                double impulseMagnitude = -(1 + restitution) * velocityAlongNormal / totalInvMass;
-                Vector2D impulse = normal * impulseMagnitude;
+                // Only resolve if objects are moving toward each other
+                if (velocityAlongNormal > 0) continue;
 
-                a.getVelocity() -= impulse * invMassA;
-                b.getVelocity() += impulse * invMassB;
+                // Apply velocity correction
+                double restitution = 0.2; // Bounciness (0.0 = inelastic, 1.0 = perfectly elastic)
+                double j = -(1 + restitution) * velocityAlongNormal / totalInvMass;
+                Vector2D impulse = normal * j;
 
-                // Positional correction to prevent sinking
-                const double slop = 0.01; // Penetration allowance
-                const double percent = 0.4; // Correction percentage
-                Vector2D correction = normal * std::max(penetration - slop, 0.0) * percent / totalInvMass;
-
-                a.setPosition(a.getPosition() - correction * invMassA);
-                b.setPosition(b.getPosition() + correction * invMassB);
+                a->setVelocity(a->getVelocity() - impulse * invMassA);
+                b->setVelocity(b->getVelocity() + impulse * invMassB);
             }
         }
     }
 }
-

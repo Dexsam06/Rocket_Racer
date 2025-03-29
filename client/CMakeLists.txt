@@ -24,7 +24,8 @@ include_directories(
 # Set the source files
 set(SOURCES
     src/Button.cpp
-    src/Collider.cpp
+    src/CircleCollider.cpp
+    src/RectangleCollider.cpp
     src/Entity.cpp 
     src/GameController.cpp
     src/GameView.cpp

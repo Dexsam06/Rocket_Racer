@@ -29,8 +29,8 @@ void Player::update(double &xGravityForce, double &yGravityForce, double &deltaT
     velocity.x += Physics::velocity(acceleration.x, deltaTime); 
     velocity.y += Physics::velocity(acceleration.y, deltaTime);  
 
-    getCollider()->UpdatePosition(getPosition()); 
-    getCollider()->UpdateRotation((rotation * M_PI) / 180);
+    getCollider()->updatePosition(getPosition()); 
+    getCollider()->updateRotation((rotation * M_PI) / 180);
 } 
 
 
