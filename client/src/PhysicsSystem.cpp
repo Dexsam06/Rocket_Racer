@@ -58,7 +58,7 @@ void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>>& entiti
                 double invMassB = b->getInverseMass();
                 double totalInvMass = invMassA + invMassB; 
                 
-                if (totalInvMass <= 0) continue;
+                if (totalInvMass <= 0) continue; 
 
                 Vector2D correction = normal * (penetration / totalInvMass);
                 a->setPosition(a->getPosition() - correction * invMassA);
@@ -71,7 +71,7 @@ void PhysicsSystem::handleCollision(std::vector<std::unique_ptr<Entity>>& entiti
                 if (velocityAlongNormal > 0) continue;
 
                 // Apply velocity correction
-                double restitution = 0.2; // Bounciness (0.0 = inelastic, 1.0 = perfectly elastic)
+                double restitution = 0.2; // Bounciness (0.0 = inelastic, 1.0 = perfectly elastic) 
                 double j = -(1 + restitution) * velocityAlongNormal / totalInvMass;
                 Vector2D impulse = normal * j;
 

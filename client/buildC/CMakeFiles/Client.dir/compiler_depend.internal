@@ -11,7 +11,6 @@ CMakeFiles/Client.dir/src/Button.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -82,7 +81,6 @@ CMakeFiles/Client.dir/src/Button.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -90,8 +88,6 @@ CMakeFiles/Client.dir/src/Button.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
  /usr/include/bits/pthreadtypes.h
@@ -137,13 +133,11 @@ CMakeFiles/Client.dir/src/Button.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/array
  /usr/include/c++/14.2.1/backward/binders.h
  /usr/include/c++/14.2.1/bit
@@ -287,9 +281,7 @@ CMakeFiles/Client.dir/src/Button.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -372,7 +364,6 @@ CMakeFiles/Client.dir/src/Button.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -399,7 +390,6 @@ CMakeFiles/Client.dir/src/Button.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -625,7 +615,6 @@ CMakeFiles/Client.dir/src/Entity.cpp.o
  /home/samuel/Dev/c++/Rocket_Racer/client/include/Vector2D.hpp
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
  /usr/include/SDL2/SDL_pixels.h
@@ -674,7 +663,6 @@ CMakeFiles/Client.dir/src/Entity.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -682,8 +670,6 @@ CMakeFiles/Client.dir/src/Entity.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/posix_opt.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
@@ -735,14 +721,12 @@ CMakeFiles/Client.dir/src/Entity.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/unistd_ext.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/backward/auto_ptr.h
  /usr/include/c++/14.2.1/backward/binders.h
  /usr/include/c++/14.2.1/bit
@@ -896,10 +880,8 @@ CMakeFiles/Client.dir/src/Entity.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/close_range.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -926,11 +908,9 @@ CMakeFiles/Client.dir/src/Entity.cpp.o
  /usr/include/wchar.h
  /usr/include/wctype.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
 
 CMakeFiles/Client.dir/src/GameController.cpp.o
  /home/samuel/Dev/c++/Rocket_Racer/client/src/GameController.cpp
@@ -957,7 +937,6 @@ CMakeFiles/Client.dir/src/GameController.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -1039,7 +1018,6 @@ CMakeFiles/Client.dir/src/GameController.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -1047,8 +1025,6 @@ CMakeFiles/Client.dir/src/GameController.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/posix_opt.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
@@ -1100,14 +1076,12 @@ CMakeFiles/Client.dir/src/GameController.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/unistd_ext.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/algorithm
  /usr/include/c++/14.2.1/array
  /usr/include/c++/14.2.1/backward/auto_ptr.h
@@ -1287,10 +1261,8 @@ CMakeFiles/Client.dir/src/GameController.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/close_range.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -1377,7 +1349,6 @@ CMakeFiles/Client.dir/src/GameController.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -1404,7 +1375,6 @@ CMakeFiles/Client.dir/src/GameController.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -1440,7 +1410,6 @@ CMakeFiles/Client.dir/src/GameView.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -1522,7 +1491,6 @@ CMakeFiles/Client.dir/src/GameView.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -1530,8 +1498,6 @@ CMakeFiles/Client.dir/src/GameView.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/posix_opt.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
@@ -1583,14 +1549,12 @@ CMakeFiles/Client.dir/src/GameView.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/unistd_ext.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/algorithm
  /usr/include/c++/14.2.1/array
  /usr/include/c++/14.2.1/backward/auto_ptr.h
@@ -1763,10 +1727,8 @@ CMakeFiles/Client.dir/src/GameView.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/close_range.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -1853,7 +1815,6 @@ CMakeFiles/Client.dir/src/GameView.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -1880,7 +1841,6 @@ CMakeFiles/Client.dir/src/GameView.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -1916,7 +1876,6 @@ CMakeFiles/Client.dir/src/InputHandler.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -1997,7 +1956,6 @@ CMakeFiles/Client.dir/src/InputHandler.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -2005,8 +1963,6 @@ CMakeFiles/Client.dir/src/InputHandler.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/posix_opt.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
@@ -2058,14 +2014,12 @@ CMakeFiles/Client.dir/src/InputHandler.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/unistd_ext.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/array
  /usr/include/c++/14.2.1/backward/auto_ptr.h
  /usr/include/c++/14.2.1/backward/binders.h
@@ -2232,10 +2186,8 @@ CMakeFiles/Client.dir/src/InputHandler.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/close_range.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -2322,7 +2274,6 @@ CMakeFiles/Client.dir/src/InputHandler.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -2349,7 +2300,6 @@ CMakeFiles/Client.dir/src/InputHandler.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -2393,7 +2343,6 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -2475,7 +2424,6 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -2483,8 +2431,6 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/posix_opt.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
@@ -2536,14 +2482,12 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/unistd_ext.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/algorithm
  /usr/include/c++/14.2.1/array
  /usr/include/c++/14.2.1/backward/auto_ptr.h
@@ -2723,10 +2667,8 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/close_range.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -2813,7 +2755,6 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -2840,7 +2781,6 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -2978,7 +2918,6 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -3058,7 +2997,6 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -3066,8 +3004,6 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/posix_opt.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
@@ -3119,14 +3055,12 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/unistd_ext.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/backward/auto_ptr.h
  /usr/include/c++/14.2.1/backward/binders.h
  /usr/include/c++/14.2.1/bit
@@ -3282,10 +3216,8 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/close_range.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -3372,7 +3304,6 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -3399,7 +3330,6 @@ CMakeFiles/Client.dir/src/PhysicsSystem.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -3427,7 +3357,6 @@ CMakeFiles/Client.dir/src/Planet.cpp.o
  /home/samuel/Dev/c++/Rocket_Racer/client/include/Vector2D.hpp
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
  /usr/include/SDL2/SDL_pixels.h
@@ -3476,7 +3405,6 @@ CMakeFiles/Client.dir/src/Planet.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -3484,8 +3412,6 @@ CMakeFiles/Client.dir/src/Planet.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/posix_opt.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
@@ -3537,14 +3463,12 @@ CMakeFiles/Client.dir/src/Planet.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/unistd_ext.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/backward/auto_ptr.h
  /usr/include/c++/14.2.1/backward/binders.h
  /usr/include/c++/14.2.1/bit
@@ -3698,10 +3622,8 @@ CMakeFiles/Client.dir/src/Planet.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/close_range.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -3728,11 +3650,9 @@ CMakeFiles/Client.dir/src/Planet.cpp.o
  /usr/include/wchar.h
  /usr/include/wctype.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
 
 CMakeFiles/Client.dir/src/Player.cpp.o
  /home/samuel/Dev/c++/Rocket_Racer/client/src/Player.cpp
@@ -3749,7 +3669,6 @@ CMakeFiles/Client.dir/src/Player.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -3829,7 +3748,6 @@ CMakeFiles/Client.dir/src/Player.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -3837,8 +3755,6 @@ CMakeFiles/Client.dir/src/Player.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/posix_opt.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
@@ -3890,14 +3806,12 @@ CMakeFiles/Client.dir/src/Player.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/unistd_ext.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/backward/auto_ptr.h
  /usr/include/c++/14.2.1/backward/binders.h
  /usr/include/c++/14.2.1/bit
@@ -4053,10 +3967,8 @@ CMakeFiles/Client.dir/src/Player.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/close_range.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -4143,7 +4055,6 @@ CMakeFiles/Client.dir/src/Player.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -4170,7 +4081,6 @@ CMakeFiles/Client.dir/src/Player.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -4406,7 +4316,6 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -4468,7 +4377,6 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -4476,9 +4384,6 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
- /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
  /usr/include/bits/pthreadtypes.h
  /usr/include/bits/select.h
@@ -4515,12 +4420,10 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/backward/binders.h
  /usr/include/c++/14.2.1/bit
  /usr/include/c++/14.2.1/bits/alloc_traits.h
@@ -4624,9 +4527,7 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.o
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/locale.h
  /usr/include/math.h
  /usr/include/stdc-predef.h
@@ -4700,7 +4601,6 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -4727,7 +4627,6 @@ CMakeFiles/Client.dir/src/TextureManager.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -4756,7 +4655,6 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -4827,7 +4725,6 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -4835,8 +4732,6 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
  /usr/include/bits/pthreadtypes.h
@@ -4882,13 +4777,11 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/backward/binders.h
  /usr/include/c++/14.2.1/bit
  /usr/include/c++/14.2.1/bits/algorithmfwd.h
@@ -5064,9 +4957,7 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
  /usr/include/libintl.h
- /usr/include/limits.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -5149,7 +5040,6 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -5176,7 +5066,6 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -5221,7 +5110,6 @@ CMakeFiles/Client.dir/src/main.cpp.o
  /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_config_unix.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
@@ -5303,7 +5191,6 @@ CMakeFiles/Client.dir/src/main.cpp.o
  /usr/include/bits/iscanonical.h
  /usr/include/bits/libc-header-start.h
  /usr/include/bits/libm-simd-decl-stubs.h
- /usr/include/bits/local_lim.h
  /usr/include/bits/locale.h
  /usr/include/bits/long-double.h
  /usr/include/bits/math-vector.h
@@ -5311,8 +5198,6 @@ CMakeFiles/Client.dir/src/main.cpp.o
  /usr/include/bits/mathcalls-macros.h
  /usr/include/bits/mathcalls-narrow.h
  /usr/include/bits/mathcalls.h
- /usr/include/bits/posix1_lim.h
- /usr/include/bits/posix2_lim.h
  /usr/include/bits/posix_opt.h
  /usr/include/bits/pthread_stack_min-dynamic.h
  /usr/include/bits/pthreadtypes-arch.h
@@ -5364,14 +5249,12 @@ CMakeFiles/Client.dir/src/main.cpp.o
  /usr/include/bits/types/wint_t.h
  /usr/include/bits/typesizes.h
  /usr/include/bits/uintn-identity.h
- /usr/include/bits/uio_lim.h
  /usr/include/bits/unistd_ext.h
  /usr/include/bits/waitflags.h
  /usr/include/bits/waitstatus.h
  /usr/include/bits/wchar.h
  /usr/include/bits/wctype-wchar.h
  /usr/include/bits/wordsize.h
- /usr/include/bits/xopen_lim.h
  /usr/include/c++/14.2.1/algorithm
  /usr/include/c++/14.2.1/array
  /usr/include/c++/14.2.1/backward/auto_ptr.h
@@ -5582,10 +5465,8 @@ CMakeFiles/Client.dir/src/main.cpp.o
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h
  /usr/include/libintl.h
- /usr/include/limits.h
  /usr/include/linux/close_range.h
  /usr/include/linux/errno.h
- /usr/include/linux/limits.h
  /usr/include/linux/posix_types.h
  /usr/include/linux/sched/types.h
  /usr/include/linux/stddef.h
@@ -5672,7 +5553,6 @@ CMakeFiles/Client.dir/src/main.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h
@@ -5699,7 +5579,6 @@ CMakeFiles/Client.dir/src/main.cpp.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h
@@ -5735,9 +5614,9 @@ bin/Client
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a
  /usr/lib/ld-linux-x86-64.so.2
- /usr/lib/libSDL2-2.0.so.0.3200.50
+ /usr/lib/libSDL2-2.0.so.0.3200.2
  /usr/lib/libSDL2main.a
- /usr/lib/libSvtAv1Enc.so.2
+ /usr/lib/libSvtAv1Enc.so.3
  /usr/lib/libaom.so.3
  /usr/lib/libavif.so.16
  /usr/lib/libbrotlicommon.so.1

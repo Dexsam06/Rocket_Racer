@@ -521,7 +521,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_JPEG:INTERNAL=[/usr/lib/libjpeg.so][/usr/include][v
 //Details about finding PNG
 FIND_PACKAGE_MESSAGE_DETAILS_PNG:INTERNAL=[/usr/lib/libpng.so][/usr/include][v1.6.47()]
 //Details about finding PkgConfig
-FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v2.3.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v2.4.3()]
 //Details about finding TIFF
 FIND_PACKAGE_MESSAGE_DETAILS_TIFF:INTERNAL=[/usr/lib/libtiff.so][/usr/include][c ][v4.7.0()]
 //Details about finding ZLIB

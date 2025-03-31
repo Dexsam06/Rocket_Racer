@@ -179,14 +179,8 @@ CMakeFiles/Client.dir/src/NetworkCommunicator.cpp.o: \
  /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
  /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
- /usr/include/SDL2/close_code.h /usr/include/SDL2/SDL_config_unix.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h \
- /usr/include/limits.h /usr/include/bits/posix1_lim.h \
- /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
- /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
- /usr/include/bits/uio_lim.h /usr/include/string.h /usr/include/strings.h \
- /usr/include/inttypes.h \
+ /usr/include/SDL2/close_code.h /usr/include/string.h \
+ /usr/include/strings.h /usr/include/inttypes.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/stdint-least.h \
  /usr/include/c++/14.2.1/math.h /usr/include/c++/14.2.1/cmath \

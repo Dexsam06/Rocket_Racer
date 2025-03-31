@@ -58,6 +58,13 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
 {
     frame = (SDL_GetTicks() / 100) % FRAME_COUNT; // Change frames every 100ms
 
+    //Clamping scalingfactor for max and min value 
+    scalingFactor.x = std::max(scalingFactor.x, 0.01);
+    scalingFactor.y = std::max(scalingFactor.y, 0.01);
+
+    scalingFactor.x = std::min(scalingFactor.x, 1.3);
+    scalingFactor.y = std::min(scalingFactor.y, 1.3);
+
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
@@ -65,7 +72,6 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
     Vector2D clientPlayerPos = clientPlayer->getPosition();
 
     drawBackground(clientPlayer);
-    drawLeaderBoard(entityList);
     drawClientPlayer(clientPlayer);
 
     // Draw other entities
@@ -95,10 +101,12 @@ void GameView::render(std::vector<std::unique_ptr<Entity>> &entityList, std::vec
         if (!button)
         {
             std::cerr << "Warning: Null button found in buttonList!" << std::endl;
-            continue;
+            continue; 
         }
         button->render();
     }
+
+    drawLeaderBoard(entityList);
 
     // drawFuturePath(futurePath, clientPlayerPos);
     SDL_RenderPresent(renderer);
@@ -164,10 +172,10 @@ void GameView::drawLeaderBoard(std::vector<std::unique_ptr<Entity>> &entityList)
                   return a.first < b.first;
               });
 
-    for (int i = 0; i < leaderBoardData.size(); i++)
+    for (int i = 0; i < leaderBoardData.size(); i++) 
     {
-        std::string text = std::to_string((i + 1)) + ": " + leaderBoardData[i].second + " - " + std::to_string(leaderBoardData[i].first) + " meters";
-        SDL_Surface *textSurface = TTF_RenderText_Blended(font, text.c_str(), {255, 255, 255, 255});
+        std::string text = std::to_string((i + 1)) + ". " + leaderBoardData[i].second + ": " + std::to_string(leaderBoardData[i].first) + " m";
+        SDL_Surface *textSurface = TTF_RenderText_Blended(font, text.c_str(), {255, 255, 255, 255}); 
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
         SDL_FreeSurface(textSurface);
 
@@ -196,9 +204,30 @@ void GameView::drawClientPlayer(Player *clientPlayer)
     {
         drawExhaustAnimation(clientPlayer->getPosition(), clientPlayer->getPosition(), clientPlayer->getRotation());
     }
+
+    //Draw direction arrow
+    double rotation = (clientPlayer->getRotation() - 90) * M_PI / 180; 
+    Vector2D scaledLength = 300 * (scalingFactor); 
+    scaledLength.x = std::clamp(static_cast<int>(scaledLength.x), 100, 250);
+    scaledLength.y = std::clamp(static_cast<int>(scaledLength.y), 100, 250);
+
+    Vector2D otherPoint(cos(rotation) * scaledLength.x, sin(rotation) * scaledLength.y); 
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_RenderDrawLine(renderer, screenWidth / 2, screenHeight / 2, screenWidth / 2 + otherPoint.x, screenHeight / 2 + otherPoint.y); 
+
+    Vector2D arrowScaledLength = 20 * scalingFactor; 
+    arrowScaledLength.x = std::clamp(static_cast<int>(arrowScaledLength.x), 20, 50); 
+    arrowScaledLength.y = std::clamp(static_cast<int>(arrowScaledLength.x), 20, 50);
+
+    Vector2D endPoint(screenWidth / 2 + otherPoint.x, screenHeight / 2 + otherPoint.y);
+    Vector2D firstArrowPoint(cos(rotation + (135 * M_PI / 180)) * arrowScaledLength.x, sin(rotation + (135 * M_PI / 180)) * arrowScaledLength.y);
+    SDL_RenderDrawLine(renderer, endPoint.x, endPoint.y, endPoint.x + firstArrowPoint.x, endPoint.y + firstArrowPoint.y);
+
+    Vector2D secondArrowPoint(cos(rotation - (135 * M_PI / 180)) * arrowScaledLength.x, sin(rotation - (135 * M_PI / 180)) * arrowScaledLength.y);
+    SDL_RenderDrawLine(renderer, endPoint.x, endPoint.y, endPoint.x + secondArrowPoint.x, endPoint.y + secondArrowPoint.y);
 }
 
-void GameView::drawExhaustAnimation(Vector2D currentPlayerPosition, Vector2D playerClientPos, double rotation)
+void GameView::drawExhaustAnimation(Vector2D currentPlayerPosition, Vector2D playerClientPos, double rotation) 
 {
     Vector2D screenCenter(screenWidth / 2, screenHeight / 2);
 
@@ -211,7 +240,7 @@ void GameView::drawExhaustAnimation(Vector2D currentPlayerPosition, Vector2D pla
         offsetFromClientPlayer.y * scalingFactor.y);
 
     Vector2D scaledPosition(
-        screenCenter.x + scaledOffset.x,
+        screenCenter.x + scaledOffset.x, 
         screenCenter.y + scaledOffset.y);
 
     const double ROCKET_HEIGHT = 250 * scalingFactor.y;
@@ -222,7 +251,7 @@ void GameView::drawExhaustAnimation(Vector2D currentPlayerPosition, Vector2D pla
     double fireY = scaledPosition.y + (cos(theta) * ROCKET_HEIGHT);
 
     // Scale width/height for flame
-    int scaledWidth = static_cast<int>(FRAME_WIDTH * scalingFactor.x) * 0.35;
+    int scaledWidth = static_cast<int>(FRAME_WIDTH * scalingFactor.x) * 0.35; 
     int scaledHeight = static_cast<int>(FRAME_HEIGHT * scalingFactor.y) * 0.6;
 
     // Define SDL_Rect (centered at computed position)

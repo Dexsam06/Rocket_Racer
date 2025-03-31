@@ -321,7 +321,7 @@ bin/Client: CMakeFiles/Client.dir/src/UserInputWindow.cpp.o
 bin/Client: CMakeFiles/Client.dir/build.make
 bin/Client: CMakeFiles/Client.dir/compiler_depend.ts
 bin/Client: /usr/lib/libSDL2main.a
-bin/Client: /usr/lib/libSDL2-2.0.so.0.3200.50
+bin/Client: /usr/lib/libSDL2-2.0.so.0.3200.2
 bin/Client: CMakeFiles/Client.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/samuel/Dev/c++/Rocket_Racer/client/buildC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable bin/Client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Client.dir/link.txt --verbose=$(VERBOSE)

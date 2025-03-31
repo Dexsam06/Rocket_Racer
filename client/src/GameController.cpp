@@ -112,15 +112,6 @@ void GameController::interpolateOtherEntities() {
     }
 }
 
-void GameController::onZoomButtonClickOut()
-{
-    gv->setScalingFactors(Vector2D(0.9, 0.9));
-}
-void GameController::onZoomButtonClickIn()
-{
-    gv->setScalingFactors(Vector2D(1.1, 1.1));
-}
-
 void GameController::HandleConPlaData(ConnectedPlayersPacket &data)
 {
     int height, width;
@@ -205,6 +196,15 @@ void GameController::HandleDisPLaData(PlayerDisconnectedPacket &data)
     std::cout << "Removed player with ID: " << data.playerID << std::endl;
 }
 
+void GameController::onZoomButtonClickIn()
+{
+    gv->setScalingFactors(Vector2D(1.1, 1.1));
+}
+void GameController::onZoomButtonClickOut()
+{
+    gv->setScalingFactors(Vector2D(0.9, 0.9));
+}
+
 void GameController::loadResources()
 {
     // Background
@@ -213,7 +213,7 @@ void GameController::loadResources()
     gv->setBackground(backgroundTexture);
 
     // Planets
-    std::string planetResource = resourcePath + "moon.png";
+    std::string planetResource = resourcePath + "moon.svg";
     SDL_Texture *moonTexture = textureManager.loadTexture("moon", planetResource, gv->getRenderer());
     if(!moonTexture || moonTexture == nullptr) {
         std::cout << "Failed to load moon texture" << std::endl;
@@ -234,7 +234,7 @@ void GameController::loadResources()
 
     std::cout << "Added moon with id: " << 1001 << std::endl;
 
-    planetResource = resourcePath + "earth.png";
+    planetResource = resourcePath + "earth.svg";
 
     SDL_Texture *earthTexture = textureManager.loadTexture("earth", planetResource, gv->getRenderer());
     if(!earthTexture || earthTexture == nullptr) {
@@ -293,10 +293,10 @@ void GameController::loadResources()
         200,
         50,
         SDL_Color{0, 128, 255, 255},
-        "Zoom Out",
+        "Zoom In",
         gv->getRenderer(),
         gv->getFont(),
-        std::bind(&GameController::onZoomButtonClickOut, this)); 
+        std::bind(&GameController::onZoomButtonClickIn, this)); 
     buttonList.push_back(std::move(zoomButtonIn)); 
 
     zoomButtonOut = std::make_unique<Button>(
@@ -305,9 +305,9 @@ void GameController::loadResources()
         200,
         50,
         SDL_Color{0, 78, 255, 255},
-        "Zoom In",
+        "Zoom Out",
         gv->getRenderer(),
         gv->getFont(),
-        std::bind(&GameController::onZoomButtonClickIn, this));
+        std::bind(&GameController::onZoomButtonClickOut, this));
     buttonList.push_back(std::move(zoomButtonOut));
 }

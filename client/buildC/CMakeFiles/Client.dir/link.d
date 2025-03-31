@@ -20,7 +20,7 @@ bin/Client: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libenet.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libpthread.a \
   /usr/lib/libSDL2main.a \
-  /usr/lib/libSDL2-2.0.so.0.3200.50 \
+  /usr/lib/libSDL2-2.0.so.0.3200.2 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libSDL2_ttf.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libSDL2_image.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libstdc++.so \
@@ -81,7 +81,7 @@ bin/Client: \
   /usr/lib/libsharpyuv.so.0 \
   /usr/lib/libdav1d.so.7 \
   /usr/lib/librav1e.so.0.7 \
-  /usr/lib/libSvtAv1Enc.so.2 \
+  /usr/lib/libSvtAv1Enc.so.3 \
   /usr/lib/libaom.so.3 \
   /usr/lib32/libbrotlicommon.so.1 \
   /usr/lib/libbrotlicommon.so.1 \
@@ -130,7 +130,7 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.o:
 
 /usr/lib/libSDL2main.a:
 
-/usr/lib/libSDL2-2.0.so.0.3200.50:
+/usr/lib/libSDL2-2.0.so.0.3200.2:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/libSDL2_ttf.so:
 
@@ -252,7 +252,7 @@ CMakeFiles/Client.dir/src/UserInputWindow.cpp.o:
 
 /usr/lib/librav1e.so.0.7:
 
-/usr/lib/libSvtAv1Enc.so.2:
+/usr/lib/libSvtAv1Enc.so.3:
 
 /usr/lib/libaom.so.3:
 
